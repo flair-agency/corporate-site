@@ -73,6 +73,15 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z85HL3MPJH');
+    </script>
 </head>
 <body>
 
@@ -178,11 +187,11 @@
             <div class="text-lg md:text-xl text-center space-y-6">
                 <div>
                     <h3 class="text-xl font-semibold mb-2">所属クリエイター応募</h3>
-                    <p>TikTokから弊社公式アカウント <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" class="text-blue-600 hover:text-blue-800 underline transition-colors duration-200">@flair.agency.biz</a> にメッセージをお送りください。</p>
+                    <p>TikTokから弊社公式アカウント <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" class="text-blue-600 hover:text-blue-800 underline transition-colors duration-200" onclick="gtag('event','click_tiktok',{event_category:'engagement',event_label:'tiktok_tiktok'});">@flair.agency.biz</a> にメッセージをお送りください。</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold mb-2">その他のお問い合わせ</h3>
-                    <p><a href="mailto:contact@flair-agency.biz" class="text-blue-600 hover:text-blue-800 underline transition-colors duration-200">contact@flair-agency.biz</a> までご連絡ください。</p>
+                    <p><a href="mailto:contact@flair-agency.biz" class="text-blue-600 hover:text-blue-800 underline transition-colors duration-200" onclick="gtag('event','click_email',{event_category:'engagement',event_label:'mailto_contact'});">contact@flair-agency.biz</a> までご連絡ください。</p>
                 </div>
             </div>
         </section>
