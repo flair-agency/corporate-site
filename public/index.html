@@ -295,6 +295,10 @@
         .faq-item.open .fa-chevron-down {
             transform: rotate(180deg);
         }
+
+        /* ===== List indentation normalization ===== */
+        ul, ol { list-style-position: outside; padding-left: 1.25rem; margin-left: 0; }
+        ul ul, ul ol, ol ul, ol ol { padding-left: 1.25rem; }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
@@ -432,7 +436,7 @@
                     <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                         <div class="text-4xl text-red-500 mb-3"><i class="fas fa-bolt"></i></div>
                         <h3 class="font-bold mb-2">TikTokならでは</h3>
-                        <ul class="text-sm space-y-1 text-left list-disc list-inside">
+                        <ul class="text-sm space-y-1 text-left list-disc list-outside pl-5">
                             <li>短尺動画との連携で<strong>発見性</strong>が高い</li>
                             <li>コメント・ギフトが続く<strong>双方向性</strong></li>
                             <li>ギフト/案件で<strong>収益化</strong>しやすい導線</li>
@@ -523,7 +527,7 @@
                 <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                     <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><i
                             class="fas fa-list-check text-red-500 text-2xl"></i>主な業務</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
                         <li>クリエイターのスカウトと契約</li>
                         <li>配信ノウハウ・戦略の提供（企画・台本・KPI設計）</li>
                         <li>配信スケジュールの設計と目標達成支援</li>
@@ -598,7 +602,7 @@
         <!-- FAQ（よくある質問） -->
         <section id="faq" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">FAQ（よくある質問）</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">よくあるご質問</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">クリエイター・企業の皆さまから寄せられるご質問をまとめました。</p>
             </div>
@@ -611,13 +615,12 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-a px-4 pb-4 hidden text-gray-700">
-                        <ol class="list-decimal list-inside space-y-1">
-                            <li>視聴者がLIVE配信でギフト（コイン）を送る</li>
-                            <li>TikTok側でダイヤモンドとして集計・清算</li>
-                            <li>当社（Flair）が契約に基づき支払いを受領</li>
-                            <li>当社の分配規定に沿って、クリエイターへお支払い</li>
+                        <ol class="list-decimal list-outside pl-6 space-y-1">
+                            <li>視聴者がLIVE配信でギフトを送る → ダイヤモンドとして加算</li>
+                            <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
+                            <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
                         </ol>
-                        <p class="text-xs text-gray-500 mt-2">※ 分配比率・条件・支払日は、個別契約および最新ポリシーに準拠します。</p>
+                        <p class="text-xs text-gray-500 mt-2">※ クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</p>
                     </div>
                 </div>
 
@@ -628,7 +631,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-a px-4 pb-4 hidden text-gray-700">
-                        <p>月次での清算完了後、規定のスケジュールに沿ってお支払いします。詳しい日程は契約書・オリエン資料でご案内します。</p>
+                        <p><strong>TikTokからの分配</strong>：プラットフォームの清算サイクルに沿って支払われます（詳細は最新の公式ポリシーをご確認ください）。</p>
+                        <p class="mt-2"><strong>当社からの追加特典（月次）</strong>：当社の規定・個別契約に基づき、月次でお支払いする場合があります。</p>
                     </div>
                 </div>
 
@@ -662,7 +666,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-a px-4 pb-4 hidden text-gray-700">
-                        <ul class="list-disc list-inside space-y-1">
+                        <ul class="list-disc list-outside pl-5 space-y-1">
                             <li>配信戦略・KPI設計の伴走</li>
                             <li>初期機材の進呈・環境構築サポート</li>
                             <li>トラブル対応・最新ガイドラインの共有</li>
@@ -675,10 +679,8 @@
         <!-- 追加CTA（応募・問い合わせ） -->
         <section id="contact" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">応募・お問い合わせ</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">ご応募・お問い合わせ</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
-                <p class="mt-4 text-gray-600">【方針】<span class="font-semibold">DMは所属に関心のあるクリエイター専用</span>、<span
-                        class="font-semibold">企業・メディア・提携のご連絡はメール</span>でお願いします。</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-6 px-4">
@@ -704,9 +706,6 @@
                     <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
                 </div>
             </div>
-
-            <p class="text-center text-sm text-gray-500 mt-6">※ クリエイター以外のDMは確認が遅れる場合があります。営業・取材・提携等はメールでのご連絡をお願いいたします。
-            </p>
         </section>
 
         <!-- 会社概要セクション -->
