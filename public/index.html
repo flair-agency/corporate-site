@@ -66,6 +66,24 @@
             background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(15, 23, 42, 0.03));
         }
 
+        /* === Cool tone variant for business contact band === */
+        .biz-band--cool {
+            /* override only the variables & subtle bg tint */
+            --biz-band-bg: #EAF2FF; /* light blue */
+            background-image: linear-gradient(180deg, rgba(255,255,255,0), rgba(37,99,235,0.06));
+        }
+        .biz-band--cool .mv-btn {
+            background: #2563eb; /* blue-600 */
+        }
+        .biz-band--cool .mv-btn:hover {
+            box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
+        }
+        .biz-band--cool .mv-chip {
+            color: #1D4ED8; /* blue-700 */
+            border-color: #BFDBFE; /* blue-200 */
+            background: #EFF6FF; /* blue-50 */
+        }
+
         .biz-band h2,
         .biz-band .sec__head h2 {
             color: var(--biz-head);
@@ -446,7 +464,7 @@
                         <li><a class="nav-link" href="#how-to-start">はじめ方</a></li>
                         <li><a class="nav-link" href="#compare">伴走の価値</a></li>
                         <li><a class="nav-link" href="#faq">FAQ</a></li>
-                        <li><a class="nav-link" href="#contact">応募・問合せ</a></li>
+                        <li><a class="nav-link" href="#contact-creators">応募・問合せ</a></li>
                         <li><a class="nav-link" href="#mission-vision">理念</a></li>
                         <li><a class="nav-link" href="#services">事業</a></li>
                         <li><a class="nav-link" href="#company">会社</a></li>
@@ -454,6 +472,7 @@
                         <li><a class="nav-link" href="#growth">市場</a></li>
                         <li><a class="nav-link" href="#why-tiktok-live">特化理由</a></li>
                         <li><a class="nav-link" href="#growth-vision">成長</a></li>
+                        <li><a class="nav-link" href="#contact-business">企業窓口</a></li>
                     </ul>
                 </nav>
             </div>
@@ -622,7 +641,7 @@
             </div>
 
             <div class="text-center mt-8">
-                <a class="mv-btn" href="#contact"
+                <a class="mv-btn" href="#contact-creators"
                     onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});">応募・問い合わせへ</a>
             </div>
         </section>
@@ -685,7 +704,7 @@
                     </button>
                     <div class="faq-a px-4 pb-4 hidden text-gray-700">
                         <p>企業・メディア・提携に関するご相談は、<a class="underline text-red-500"
-                                href="#contact">#contact</a>のメール窓口へお寄せください。案件概要・時期・ご予算感などがあるとスムーズです。</p>
+                                href="#contact-business">企業窓口</a>へお寄せください。案件概要・時期・ご予算感などがあるとスムーズです。</p>
                     </div>
                 </div>
 
@@ -706,53 +725,43 @@
             </div>
         </section>
 
-        <!-- 追加CTA（応募・問い合わせ） -->
-        <section id="contact" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+        <!-- 応募・お問い合わせ（クリエイター向け） -->
+        <section id="contact-creators" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">ご応募・お問い合わせ</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">クリエイターのご応募・お問い合わせ</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <p class="mt-4 text-gray-600 text-base md:text-lg">ノルマなし・初期費用ゼロでスタートできます。</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-6 px-4">
-                <!-- クリエイター応募カード（DM導線） -->
+                <!-- 応募（フォーム導線） -->
                 <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="mv-chip mb-3 inline-block">クリエイターの方</div>
-                    <div class="text-4xl text-red-500 mb-3"><i class="fab fa-tiktok"></i></div>
-                    <h3 class="text-xl font-bold mb-2">所属の応募・お問い合わせ</h3>
-                    <p class="text-sm text-gray-700 mb-4">
-                        <strong>応募：</strong>お申し込みページからどうぞ。<br>
-                        <strong>お問い合わせ：</strong>公式アカウント宛の<strong>DM</strong>でどうぞ。
-                    </p>
-
-                    <div class="flex flex-col md:flex-row gap-3 justify-center">
-                        <!-- 応募：指定リンクへ -->
-                        <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
-                            onclick="gtag('event','click_apply',{event_category:'engagement',event_label:'cta_contact_apply_form'});">
-                            お申し込みページへ
-                        </a>
-
-                        <!-- お問い合わせ：アカウントDMへ -->
-                        <a class="inline-block px-4 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100"
-                            href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
-                            onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_contact_dm_creator'});">
-                            DMで問い合わせる
-                        </a>
-                    </div>
+                    <div class="mv-chip mb-3 inline-block">応募</div>
+                    <div class="text-4xl text-red-500 mb-3"><i class="fas fa-file-pen"></i></div>
+                    <h3 class="text-xl font-bold mb-2">所属の応募</h3>
+                    <p class="text-sm text-gray-700 mb-4">お申し込みページから必要事項をご入力ください。</p>
+                    <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+                       onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
+                        応募フォームへ
+                    </a>
                 </div>
 
-                <!-- 企業・提携問い合わせカード（メール導線） -->
+                <!-- お問い合わせ（DM導線） -->
                 <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="mv-chip mv-chip--accent mb-3 inline-block">企業・メディア・提携の方</div>
-                    <div class="text-4xl text-red-500 mb-3"><i class="fas fa-envelope"></i></div>
-                    <h3 class="text-xl font-bold mb-2">お仕事・取材・提携のご相談</h3>
-                    <p class="text-sm text-gray-700 mb-4">内容が分かるよう、社名・ご担当者名・目的をご記載のうえメールでご連絡ください。</p>
-                    <a class="mv-btn"
-                        href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%80%91%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%20-%20%E5%90%88%E5%90%8C%E4%BC%9A%E7%A4%BEFlair&body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%5Cn%E5%BE%A1%E5%90%8D%E5%89%8D%EF%BC%9A%5Cn%E9%80%A3%E7%B5%A1%E5%85%88%EF%BC%9A%5Cn%E3%81%94%E7%96%91%E5%95%8F%E3%83%BB%E7%9B%AE%E7%9A%84%EF%BC%9A%5Cn%E5%AE%9F%E6%96%BD%E6%97%A5%E3%81%AE%E7%94%B3%E3%81%97%E8%BE%BC%E3%81%BF%EF%BC%9A"
-                        onclick="gtag('event','click_email',{event_category:'engagement',event_label:'cta_contact_email_biz'});">メールで問い合わせる</a>
-                    <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
+                    <div class="mv-chip mb-3 inline-block">相談</div>
+                    <div class="text-4xl text-red-500 mb-3"><i class="fab fa-tiktok"></i></div>
+                    <h3 class="text-xl font-bold mb-2">DMで相談する</h3>
+                    <p class="text-sm text-gray-700 mb-4">疑問や不安点はDMで気軽にご相談ください。</p>
+                    <a class="inline-block px-4 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100"
+                       href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
+                       onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
+                        DMで問い合わせる
+                    </a>
                 </div>
             </div>
         </section>
+
+
 
         <!-- セクションディバイダー：「私たちについて」 -->
         <section id="about" class="section bg-transparent mt-12 mx-4" aria-label="私たちについて">
@@ -803,7 +812,7 @@
 
                 <!-- CTA（行動導線） -->
                 <div class="mv-cta">
-                    <a class="mv-btn" href="#contact"
+                    <a class="mv-btn" href="#contact-creators"
                         onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_hero_to_contact'});">
                         さあ、そのままのあなたで、はじめてみよう
                     </a>
@@ -1207,11 +1216,36 @@
             })();
         </script>
 
+        <!-- お問い合わせ（企業・メディア・提携向け） ※ページ末尾配置 -->
+        <section id="contact-business" class="section biz-band biz-band--cool mb-0">
+            <div class="biz-wrap">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">企業・メディア・提携のご相談</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-2 rounded-full"></div>
+                    <p class="mt-4 text-gray-600 text-base md:text-lg">案件・取材・タイアップのご相談は、下記窓口よりお寄せください。</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 px-4">
+                    <!-- メール窓口 -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center md:col-span-2">
+                        <div class="mv-chip mv-chip--accent mb-3 inline-block">Business</div>
+                        <div class="text-4xl text-blue-600 mb-3"><i class="fas fa-envelope"></i></div>
+                        <h3 class="text-xl font-bold mb-2">メールでお問い合わせ</h3>
+                        <p class="text-sm text-gray-700 mb-4">社名・ご担当者名・目的・希望時期・ご予算感（あれば）をご記載ください。</p>
+                        <a class="mv-btn"
+                           href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8"
+                           onclick="gtag('event','contact_business_email',{event_category:'engagement',event_label:'cta_contact_business_email'});">メールで問い合わせる</a>
+                        <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- フッター -->
     <footer class="bg-gray-800 text-white text-center p-4">
-        <p>&copy; 2025 合同会社Flair</p>
+        <p>&copy; 2025 Flair LLC</p>
     </footer>
 
     <script>
