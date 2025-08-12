@@ -69,19 +69,27 @@
         /* === Cool tone variant for business contact band === */
         .biz-band--cool {
             /* override only the variables & subtle bg tint */
-            --biz-band-bg: #EAF2FF; /* light blue */
-            background-image: linear-gradient(180deg, rgba(255,255,255,0), rgba(37,99,235,0.06));
+            --biz-band-bg: #EAF2FF;
+            /* light blue */
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(37, 99, 235, 0.06));
         }
+
         .biz-band--cool .mv-btn {
-            background: #2563eb; /* blue-600 */
+            background: #2563eb;
+            /* blue-600 */
         }
+
         .biz-band--cool .mv-btn:hover {
             box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
         }
+
         .biz-band--cool .mv-chip {
-            color: #1D4ED8; /* blue-700 */
-            border-color: #BFDBFE; /* blue-200 */
-            background: #EFF6FF; /* blue-50 */
+            color: #1D4ED8;
+            /* blue-700 */
+            border-color: #BFDBFE;
+            /* blue-200 */
+            background: #EFF6FF;
+            /* blue-50 */
         }
 
         .biz-band h2,
@@ -430,6 +438,49 @@
             letter-spacing: .12em;
             color: #9CA3AF;
         }
+
+        /* === Unified business card style (match #certification) === */
+        .card-biz {
+            background: #ffffff;
+            /* bg-white */
+            border: 1px solid #BFDBFE;
+            /* ≒ border-blue-100 の視認性確保 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+            /* shadow-sm */
+            padding: 1.5rem;
+            /* p-6 */
+        }
+
+        .card-biz:hover {
+            box-shadow: 0 6px 18px rgba(37, 99, 235, .08);
+        }
+
+        /* === Unified section title underline === */
+        .sec-underline {
+            width: 5rem;
+            /* w-20 */
+            height: 0.25rem;
+            /* h-1 */
+            margin: 0.5rem auto 0;
+            /* mt-2 + center */
+            border-radius: 9999px;
+            /* rounded-full */
+            background-image: linear-gradient(to right, #3B82F6, #22D3EE);
+            /* from-blue-500 to-cyan-400 */
+        }
+
+        /* === Section title underline variants === */
+        .sec-underline--cool {
+            background-image: linear-gradient(to right, #3B82F6, #22D3EE);
+            /* blue-500 -> cyan-400 */
+        }
+
+        .sec-underline--warm {
+            background-image: linear-gradient(to right, var(--brand), #F59E0B);
+            /* brand(red) -> amber-500 */
+        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
@@ -469,6 +520,7 @@
                         <li><a class="nav-link" href="#services">事業</a></li>
                         <li><a class="nav-link" href="#company">会社</a></li>
                         <li><a class="nav-link" href="#trust-foundation">信頼・基盤</a></li>
+                        <li><a class="nav-link" href="#certification">認定</a></li>
                         <li><a class="nav-link" href="#growth">市場</a></li>
                         <li><a class="nav-link" href="#why-tiktok-live">特化理由</a></li>
                         <li><a class="nav-link" href="#growth-vision">成長</a></li>
@@ -500,7 +552,7 @@
         <section id="what-is-agency" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">エージェンシーとは？</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <div class="sec-underline sec-underline--warm"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">配信者とプラットフォームをつなぎ、成長と収益化を伴走支援する専門集団です。</p>
             </div>
             <div class="grid md:grid-cols-2 gap-6 px-4">
@@ -526,10 +578,13 @@
         <section id="benefits" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">所属するメリット</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <div class="sec-underline sec-underline--warm"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">数字ではなく“続けやすさ”。はじめやすく、続けやすい環境を用意しています。</p>
             </div>
-            <div class="grid md:grid-cols-4 gap-6 px-4 text-center">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-4 text-center">
+                <div class="col-span-full text-left">
+                    <span class="mv-chip">成長サポート</span>
+                </div>
                 <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                     <div class="text-3xl mb-2"><i class="fas fa-circle-check text-red-500"></i></div>
                     <h3 class="font-bold">初期費用ゼロ・ノルマなし</h3>
@@ -550,6 +605,19 @@
                     <h3 class="font-bold">固定報酬オプション可</h3>
                     <p class="text-sm text-gray-700">条件に応じて月額固定のご相談も可能（個別審査）。</p>
                 </div>
+                <div class="col-span-full text-left">
+                    <span class="mv-chip mv-chip--accent">安心サポート</span>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="text-3xl mb-2"><i class="fas fa-id-card text-red-500"></i></div>
+                    <h3 class="font-bold">所属証明の発行対応</h3>
+                    <p class="text-sm text-gray-700">賃貸や各種審査で使える所属証明を無料発行</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="text-3xl mb-2"><i class="fas fa-calculator text-red-500"></i></div>
+                    <h3 class="font-bold">税務相談の窓口</h3>
+                    <p class="text-sm text-gray-700">確定申告と経費の基本を税理士監修でサポート</p>
+                </div>
             </div>
         </section>
 
@@ -557,7 +625,7 @@
         <section id="how-to-start" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">はじめる流れ</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <div class="sec-underline sec-underline--warm"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">最短1〜2週間で本番デビュー。まずは気軽にDMから。</p>
             </div>
             <ol class="grid md:grid-cols-3 gap-6 px-4 list-decimal list-outside">
@@ -596,7 +664,7 @@
         <section id="compare" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">伴走で変わること</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <div class="sec-underline sec-underline--warm"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">「誰でも始められる」からこそ、Flairが並走すると“続けて伸ばす”がしやすくなるポイントを整理しました。
                 </p>
             </div>
@@ -651,7 +719,7 @@
         <section id="faq" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">よくあるご質問</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <div class="sec-underline sec-underline--warm"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">クリエイター・企業の皆さまから寄せられるご質問をまとめました。</p>
             </div>
 
@@ -729,7 +797,7 @@
         <section id="contact-creators" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
             <div class="text-center mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">クリエイターのご応募・お問い合わせ</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-red-500 to-yellow-500 mx-auto mt-2 rounded-full"></div>
+                <div class="sec-underline sec-underline--warm"></div>
                 <p class="mt-4 text-gray-600 text-base md:text-lg">ノルマなし・初期費用ゼロでスタートできます。</p>
             </div>
 
@@ -741,7 +809,7 @@
                     <h3 class="text-xl font-bold mb-2">所属の応募</h3>
                     <p class="text-sm text-gray-700 mb-4">お申し込みページから必要事項をご入力ください。</p>
                     <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
-                       onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
+                        onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
                         応募フォームへ
                     </a>
                 </div>
@@ -753,8 +821,8 @@
                     <h3 class="text-xl font-bold mb-2">DMで相談する</h3>
                     <p class="text-sm text-gray-700 mb-4">疑問や不安点はDMで気軽にご相談ください。</p>
                     <a class="inline-block px-4 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100"
-                       href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
-                       onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
+                        href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
+                        onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
                         DMで問い合わせる
                     </a>
                 </div>
@@ -821,10 +889,11 @@
         </section>
 
         <!-- 事業内容セクション -->
-        <section id="services" class="section biz-band">
+        <section id="services" class="section biz-band biz-band--cool">
             <div class="biz-wrap">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl md:text-3xl font-bold">事業内容</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
                 </div>
                 <div class="text-lg md:text-xl text-center px-4">
                     <p class="mt-4 font-semibold text-slate-700 flex items-center justify-center space-x-2">
@@ -836,25 +905,25 @@
                 <!-- 事業内容詳細を4カラムカードで表示 -->
                 <div class="grid md:grid-cols-4 gap-6 mt-12 text-center">
                     <!-- カードA: クリエイターのスカウトと契約（①） -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-file-signature"></i></div>
                         <h3 class="text-xl font-bold mb-2">スカウトと契約</h3>
                         <p class="text-sm text-gray-600">適正に合う人材の発掘、条件調整から契約手続きまで一貫対応</p>
                     </div>
                     <!-- カードB: 機材提供・環境構築（②） -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-microphone"></i></div>
                         <h3 class="text-xl font-bold mb-2">機材提供・環境構築</h3>
                         <p class="text-sm text-gray-600">マイクやスタンドなど配信機材を進呈</p>
                     </div>
                     <!-- カードC: 配信戦略の設計（③） -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-chart-line"></i></div>
                         <h3 class="text-xl font-bold mb-2">配信戦略の設計</h3>
                         <p class="text-sm text-gray-600">ファン層拡大と収益最大化のための企画提案</p>
                     </div>
                     <!-- カードD: 配信活動サポート（④） -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-headset"></i></div>
                         <h3 class="text-xl font-bold mb-2">配信活動サポート</h3>
                         <p class="text-sm text-gray-600">トラブル対応・ガイド提供・交流機会</p>
@@ -868,6 +937,7 @@
             <div class="biz-wrap">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800">会社概要</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 px-4">
                     <div>
@@ -924,16 +994,17 @@
         </section>
 
         <!-- Flairの信頼性と事業基盤（HTMLのみ / 視認性重視） -->
-        <section id="trust-foundation" class="section biz-band">
+        <section id="trust-foundation" class="section biz-band biz-band--cool">
             <div class="biz-wrap">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairの信頼性と事業基盤</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
                     <p class="mt-3 text-gray-600 text-base md:text-lg">数値の羅列ではなく、運営の思想と仕組みを分かりやすく。</p>
                 </div>
 
                 <!-- 運営基準（画像ではなくHTMLで明瞭に） -->
                 <div class="grid md:grid-cols-3 gap-6 px-4">
-                    <article class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <article class="card-biz">
                         <div class="growth-kicker mb-2">OPERATIONS</div>
                         <h3 class="text-lg font-bold mb-2">安全な運営体制</h3>
                         <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
@@ -943,7 +1014,7 @@
                         </ul>
                     </article>
 
-                    <article class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <article class="card-biz">
                         <div class="growth-kicker mb-2">PERFORMANCE</div>
                         <h3 class="text-lg font-bold mb-2">パフォーマンス基準</h3>
                         <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
@@ -953,7 +1024,7 @@
                         </ul>
                     </article>
 
-                    <article class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <article class="card-biz">
                         <div class="growth-kicker mb-2">ENABLEMENT</div>
                         <h3 class="text-lg font-bold mb-2">成長サポート</h3>
                         <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
@@ -966,7 +1037,7 @@
 
                 <!-- 企業・団体向けCTA（任意） -->
                 <div class="text-center mt-8">
-                    <a class="inline-block px-5 py-3 rounded-full bg-gray-900 text-white font-semibold"
+                    <a class="mv-btn"
                         href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E5%8D%94%E6%A9%9F%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8">
                         企業・提携のご相談はこちら
                     </a>
@@ -974,17 +1045,71 @@
             </div>
         </section>
 
+        <!-- 認定・契約：TikTok LIVE Backstage -->
+        <section id="certification" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">TikTokとの契約・認定</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-4 text-gray-600 text-base md:text-lg">当社はTikTok Pte. Ltd.（シンガポール法人、UEN 201719908M）と<strong>「LIVE
+                            Backstageエージェンシー業務委託契約」</strong>を締結し、公式の枠組みでエージェンシー運営を行っています。</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 px-4">
+                    <!-- 契約の位置づけ -->
+                    <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <div class="mv-chip mv-chip--accent mb-2 inline-block">Contract</div>
+                        <h3 class="text-lg font-bold mb-2">契約の位置づけ</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>TikTok LIVEエージェンシーとしての業務委託契約</li>
+                            <li>最新の方針・運用基準に基づくサポート提供</li>
+                            <li>安全・コンプライアンスを重視した運営体制</li>
+                        </ul>
+                    </article>
+
+                    <!-- 企業向けの提供価値 -->
+                    <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <div class="mv-chip mv-chip--accent mb-2 inline-block">For Business</div>
+                        <h3 class="text-lg font-bold mb-2">企業向けの提供価値</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>タイアップや番組企画における出演・進行のプロデュース</li>
+                            <li>ブランドセーフティに配慮した配信設計とチェック</li>
+                            <li>案件要件に応じたクリエイターのキャスティング</li>
+                        </ul>
+                    </article>
+
+                    <!-- 確認方法 -->
+                    <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <div class="mv-chip mv-chip--accent mb-2 inline-block">Verification</div>
+                        <h3 class="text-lg font-bold mb-2">確認方法</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>契約の詳細は機密保持の観点から公開していません</li>
+                            <li>企業・メディアの皆さまには、必要に応じて確認資料をご提示可能</li>
+                            <li>まずは案件概要とともにご連絡ください</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a class="mv-btn" href="#contact-business"
+                        onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_cert_to_business'});">企業のご相談へ</a>
+                    <p class="text-xs text-gray-500 mt-3">※ご要望に応じて、登記事項証明書・定款の写し等もご用意できます（NDA可）。</p>
+                </div>
+            </div>
+        </section>
+
         <!-- 市場の伸び（印象的なビジュアル / 数値は控えめ） -->
-        <section id="growth" class="section biz-band">
+        <section id="growth" class="section biz-band biz-band--cool">
             <div class="biz-wrap">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800">市場の伸びとFlairの着眼点</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
                     <p class="mt-3 text-gray-600 text-base md:text-lg">右肩上がりのLIVE市場。新人でも伸ばしやすい設計と収益導線に注目しています。</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6 px-4 items-center">
                     <!-- 左：力強いトレンドのビジュアル（SVGエリアチャート） -->
-                    <figure class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <figure class="card-biz p-4">
                         <svg id="growthChart" viewBox="0 0 600 320" class="w-full h-auto" role="img"
                             aria-label="市場の伸びを示す概念図">
                             <defs>
@@ -1026,17 +1151,17 @@
 
                     <!-- 右：3つの強み（カード） -->
                     <div class="grid gap-4">
-                        <div class="growth-card bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <div class="growth-card card-biz">
                             <div class="growth-kicker mb-1">DISCOVERABILITY</div>
                             <h3 class="text-xl font-bold mb-1">発見されやすい設計</h3>
                             <p class="text-sm text-gray-700">短尺動画とLIVEの連動で、新人でも視聴が伸びやすい環境。</p>
                         </div>
-                        <div class="growth-card bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <div class="growth-card card-biz">
                             <div class="growth-kicker mb-1">INTERACTION</div>
                             <h3 class="text-xl font-bold mb-1">双方向性と熱量</h3>
                             <p class="text-sm text-gray-700">コメント・ギフトが循環し、ファンとの距離が近い。</p>
                         </div>
-                        <div class="growth-card bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <div class="growth-card card-biz">
                             <div class="growth-kicker mb-1">MONETIZATION</div>
                             <h3 class="text-xl font-bold mb-1">多様な収益導線</h3>
                             <p class="text-sm text-gray-700">ギフト／提携／ECなど、活動段階に応じた選択肢。</p>
@@ -1047,10 +1172,11 @@
         </section>
 
         <!-- なぜTikTok LIVEに特化するのか（出典付き・数値根拠） -->
-        <section id="why-tiktok-live" class="section biz-band">
+        <section id="why-tiktok-live" class="section biz-band biz-band--cool">
             <div class="biz-wrap">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl md:text-3xl font-bold">なぜFlairはTikTok LIVEに特化するのか</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
                     <p class="mt-4 text-base md:text-lg sec__lead">市場の拡大、視聴時間の伸長、そしてTikTokならではの発見性と収益導線</p>
                 </div>
                 <div class="max-w-4xl mx-auto text-gray-700 leading-relaxed text-lg">
@@ -1062,7 +1188,7 @@
 
                     <div class="grid md:grid-cols-3 gap-6">
                         <!-- 市場成長 -->
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                        <div class="card-biz">
                             <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-line"></i></div>
                             <h3 class="font-bold mb-2">市場が拡大</h3>
                             <p class="text-sm mb-2">
@@ -1074,7 +1200,7 @@
                         </div>
 
                         <!-- 視聴時間の拡大 -->
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                        <div class="card-biz">
                             <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-clock"></i></div>
                             <h3 class="font-bold mb-2">視聴時間が伸長</h3>
                             <p class="text-sm mb-2">
@@ -1086,7 +1212,7 @@
                         </div>
 
                         <!-- TikTok LIVEの特性 -->
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                        <div class="card-biz">
                             <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-bolt"></i></div>
                             <h3 class="font-bold mb-2">TikTokならでは</h3>
                             <ul class="text-sm space-y-1 text-left list-disc list-outside pl-5">
@@ -1103,19 +1229,19 @@
                         <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-6">日本市場での注目ポイント</h3>
                         <div class="grid md:grid-cols-3 gap-6">
                             <!-- 国内の伸び -->
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                            <div class="card-biz">
                                 <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-simple"></i></div>
                                 <h4 class="font-bold mb-2">国内市場の拡大</h4>
                                 <p class="text-sm mb-2">日本でもLIVE配信の視聴時間・課金額が右肩上がり。Z世代を中心に視聴習慣が定着。</p>
                             </div>
                             <!-- 収益化機会の拡大 -->
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                            <div class="card-biz">
                                 <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-coins"></i></div>
                                 <h4 class="font-bold mb-2">収益化機会が拡大</h4>
                                 <p class="text-sm mb-2">ギフト（投げ銭）文化が浸透し、ブランド案件の連携も増加。継続的なマネタイズが可能。</p>
                             </div>
                             <!-- 参入しやすさ＆成長速度 -->
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                            <div class="card-biz">
                                 <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-mobile-screen"></i></div>
                                 <h4 class="font-bold mb-2">参入しやすく、伸びが早い</h4>
                                 <p class="text-sm mb-2">スマホと基本機材で始められ、アルゴリズムの発見性により新人でも短期で伸ばしやすい。</p>
@@ -1130,29 +1256,30 @@
         </section>
 
         <!-- Flairの成長ビジョン（ステージ表示） -->
-        <section id="growth-vision" class="section biz-band">
+        <section id="growth-vision" class="section biz-band biz-band--cool">
             <div class="biz-wrap">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl md:text-3xl font-bold">Flairの成長ビジョン</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
                     <p class="mt-4 text-base md:text-lg sec__lead">一般的な成長ステージ「初期 → 成長期 → 成熟期 → 多角化」を、私たちの計画として明示します。</p>
                 </div>
                 <div class="grid md:grid-cols-4 gap-6 px-4 text-center">
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl mb-2"><i class="fas fa-seedling text-sky-600"></i></div>
                         <h3 class="font-bold">初期</h3>
                         <p class="text-sm text-gray-700 mt-1">厳選スカウトと基盤整備。運用ルール・安全ガイドを整備。</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl mb-2"><i class="fas fa-chart-line text-sky-600"></i></div>
                         <h3 class="font-bold">成長期</h3>
                         <p class="text-sm text-gray-700 mt-1">KPI管理の徹底と教育プログラム拡充。ケース共有で底上げ。</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl mb-2"><i class="fas fa-trophy text-sky-600"></i></div>
                         <h3 class="font-bold">成熟期</h3>
                         <p class="text-sm text-gray-700 mt-1">トップクリエイターのブランディング。外部タイアップ強化。</p>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="card-biz">
                         <div class="text-4xl mb-2"><i class="fas fa-sitemap text-sky-600"></i></div>
                         <h3 class="font-bold">多角化</h3>
                         <p class="text-sm text-gray-700 mt-1">イベント、EC、コンテンツ制作など周辺事業へ展開。</p>
@@ -1221,20 +1348,20 @@
             <div class="biz-wrap">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800">企業・メディア・提携のご相談</h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mt-2 rounded-full"></div>
+                    <div class="sec-underline sec-underline--cool"></div>
                     <p class="mt-4 text-gray-600 text-base md:text-lg">案件・取材・タイアップのご相談は、下記窓口よりお寄せください。</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6 px-4">
                     <!-- メール窓口 -->
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center md:col-span-2">
+                    <div class="card-biz text-center md:col-span-2">
                         <div class="mv-chip mv-chip--accent mb-3 inline-block">Business</div>
                         <div class="text-4xl text-blue-600 mb-3"><i class="fas fa-envelope"></i></div>
                         <h3 class="text-xl font-bold mb-2">メールでお問い合わせ</h3>
                         <p class="text-sm text-gray-700 mb-4">社名・ご担当者名・目的・希望時期・ご予算感（あれば）をご記載ください。</p>
                         <a class="mv-btn"
-                           href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8"
-                           onclick="gtag('event','contact_business_email',{event_category:'engagement',event_label:'cta_contact_business_email'});">メールで問い合わせる</a>
+                            href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8"
+                            onclick="gtag('event','contact_business_email',{event_category:'engagement',event_label:'cta_contact_business_email'});">メールで問い合わせる</a>
                         <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
                     </div>
                 </div>
