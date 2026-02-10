@@ -191,6 +191,61 @@
             background: #fff;
         }
 
+        .statement {
+            position: relative;
+            margin: 28px 0 10px;
+            padding: 16px 0 0 18px;
+        }
+
+        .statement::before {
+            content: "STATEMENT";
+            display: block;
+            margin: 0 0 10px;
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, .45);
+        }
+
+        .statement::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(0, 0, 0, .12);
+        }
+
+        .statement p {
+            margin: 0;
+            font-size: 1.04em;
+            line-height: 1.95;
+            letter-spacing: .01em;
+            color: rgba(0, 0, 0, .78);
+        }
+
+        .statement strong {
+            color: rgba(0, 0, 0, .92);
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .statement {
+                margin: 22px 0 8px;
+                padding-left: 14px;
+            }
+
+            .statement::before {
+                font-size: 11px;
+                letter-spacing: .14em;
+            }
+
+            .statement p {
+                font-size: 1em;
+            }
+        }
+
         .mv-wrap {
             max-width: 1080px;
             margin: 0 auto;
@@ -754,7 +809,7 @@
                     <p class="text-sm text-gray-700">生活に合わせたペース設計で、長く続けられる形を一緒に作ります。</p>
                 </div>
             </div>
-            <div class="bg-red-50 border border-red-100 rounded-lg p-6 mt-8 mx-4">
+            <div class="statement mt-8 mx-4">
                 <p class="text-sm md:text-base text-gray-700">
                     私たちは、クリエイターの挑戦に対して「誠実であること」を最優先にしています。
                     <span class="font-semibold text-gray-900">安心して続けられる環境と、納得して進める関係</span>をつくることが、Flairの責任です。
