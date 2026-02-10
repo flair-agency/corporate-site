@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合同会社Flair - 企業向け</title>
+    <meta name="description" content="TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。">
+    <meta name="keywords" content="合同会社Flair, Flair, TikTok LIVE, ライブ配信, マネジメント, エージェンシー, クリエイター支援">
+    <meta name="author" content="合同会社Flair">
+    <meta property="og:title" content="合同会社Flair - 企業向け">
+    <meta property="og:description" content="TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.flair-agency.biz/business.html">
+    <meta property="og:image" content="https://www.flair-agency.biz/logo.png">
+    <meta property="og:site_name" content="合同会社Flair">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="合同会社Flair - 企業向け">
+    <meta name="twitter:description" content="TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。">
+    <meta name="twitter:image" content="https://www.flair-agency.biz/logo.png">
+    <!-- ファビコン設定 -->
+    <link rel="icon" href="./favicon-192.png" onerror="this.href='favicon-192.png';">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            --brand: #ff5a3c;
+            --brand-accent-bg: #fff3ef;
+            --brand-accent-border: #ffb9a7;
+            --brand-chip-border: #ffd0c5;
+            --brand-chip-bg: #fff7f5;
+        }
+
+        /* バンド表示用（フルブリード） */
+        .full-bleed {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .biz-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        :root {
+            --biz-band-bg: #F1F5F9;
+            --biz-head: #0F172A;
+            --biz-body: #334155;
+        }
+
+        .biz-band {
+            background: var(--biz-band-bg);
+            padding: 4rem 0;
+            margin: 2rem 0;
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(15, 23, 42, 0.03));
+        }
+
+        /* === Cool tone variant for business contact band === */
+        .biz-band--cool {
+            /* override only the variables & subtle bg tint */
+            --biz-band-bg: #EAF2FF;
+            /* light blue */
+            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(37, 99, 235, 0.06));
+        }
+
+        .biz-band--cool .mv-btn {
+            background: #2563eb;
+            /* blue-600 */
+        }
+
+        .biz-band--cool .mv-btn:hover {
+            box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
+        }
+
+        .biz-band--cool .mv-chip {
+            color: #1D4ED8;
+            /* blue-700 */
+            border-color: #BFDBFE;
+            /* blue-200 */
+            background: #EFF6FF;
+            /* blue-50 */
+        }
+
+        .biz-band h2,
+        .biz-band .sec__head h2 {
+            color: var(--biz-head);
+        }
+
+        .biz-band,
+        .biz-band p,
+        .biz-band li,
+        .biz-band h3,
+        .biz-band h4 {
+            color: var(--biz-body);
+        }
+
+        .biz-card {
+            background: #fff;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .04);
+        }
+
+        .biz-muted {
+            color: #475569;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #f7f7f7;
+            line-height: 1.8;
+        }
+
+        .header {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 4rem 1rem;
+            margin: 2rem 1rem;
+        }
+
+        .hero-section {
+            position: relative;
+            z-index: 1;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            background-color: #1a202c;
+            /* Fallback background color */
+            transition: background-image 0.5s ease-in-out;
+            background-image: url('./background-image.png');
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 文字を見やすくするためのオーバーレイ */
+            z-index: -1;
+            border-radius: 0.5rem;
+        }
+
+        /* ===== Mission & Vision ===== */
+        .mv-chip {
+            /* 置換前の色指定だけ変更 */
+            /* color: #ff5a3c; */
+            color: var(--brand);
+            /* border: 1px solid #ffd0c5; */
+            border: 1px solid var(--brand-chip-border);
+            /* background: #fff7f5; */
+            background: var(--brand-chip-bg);
+        }
+
+        .mv-chip--accent {
+            /* background: #fff3ef; */
+            background: var(--brand-accent-bg);
+            /* border-color: #ffb9a7; */
+            border-color: var(--brand-accent-border);
+        }
+
+        .mv-btn {
+            /* background: #ff5a3c; */
+            background: var(--brand);
+        }
+
+        .mv-section {
+            padding: clamp(48px, 6vw, 80px) 16px;
+            background: #fff;
+        }
+
+        .mv-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .mv-head {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .mv-title {
+            font-size: clamp(20px, 2.6vw, 28px);
+            letter-spacing: .06em;
+            margin: 0;
+        }
+
+        .mv-subtitle {
+            color: #666;
+            margin: 8px 0 0;
+        }
+
+        .mv-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 960px) {
+            .mv-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+        }
+
+        .mv-card {
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: clamp(16px, 2vw, 24px);
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .02);
+        }
+
+        .mv-chip {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: .12em;
+            color: var(--brand);
+            border: 1px solid var(--brand-chip-border);
+            background: var(--brand-chip-bg);
+            padding: 6px 10px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+
+        .mv-chip--accent {
+            background: var(--brand-accent-bg);
+            border-color: var(--brand-accent-border);
+        }
+
+        .mv-catch {
+            font-size: clamp(18px, 2.2vw, 22px);
+            line-height: 1.6;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+
+        .mv-body {
+            color: #444;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        .mv-bullets {
+            margin: 14px 0 0;
+            padding-left: 1.2em;
+            color: #444;
+        }
+
+        .mv-bullets li {
+            margin: 6px 0;
+        }
+
+        .mv-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 14px;
+            display: block;
+        }
+
+        .mv-cta {
+            text-align: center;
+            margin-top: clamp(20px, 5vw, 36px);
+        }
+
+        .mv-btn {
+            display: inline-block;
+            background: var(--brand);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 999px;
+            transition: transform .08s ease, box-shadow .2s ease;
+        }
+
+        .mv-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(255, 90, 60, .25);
+        }
+
+        .mv-cta-note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .mv-cta-note a {
+            color: var(--brand);
+            text-decoration: underline;
+        }
+
+        .badge-accent {
+            background: var(--brand-accent-bg);
+            color: var(--brand);
+            border: 1px solid var(--brand-accent-border);
+        }
+
+        .title-text {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== Sticky Nav ===== */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        nav[aria-label="主要ナビゲーション"] {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .nav-list {
+            display: none;
+            gap: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 6px 0;
+            flex: 1;
+        }
+
+        .nav-list::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .nav-list::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 999px;
+        }
+
+        .nav-link {
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            color: #374151;
+        }
+
+        .nav-link:hover {
+            background: #fff1ee;
+            color: #111827;
+        }
+
+        .nav-link.active {
+            background: #ff5a3c;
+            color: #fff;
+        }
+
+        .footer-site-nav {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #6B7280;
+            white-space: nowrap;
+        }
+
+        .site-link {
+            padding: 6px 10px;
+            border-radius: 999px;
+            color: #E5E7EB;
+            border: 1px solid transparent;
+        }
+
+        .site-link:hover {
+            background: #374151;
+            color: #fff;
+        }
+
+        .site-nav .site-link {
+            color: #E5E7EB;
+        }
+
+        .site-link.is-current {
+            color: #111827;
+            background: #fff;
+            border-color: #E5E7EB;
+        }
+
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-list {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Offset anchor jump under sticky header */
+        section {
+            scroll-margin-top: 88px;
+        }
+
+        /* ===== FAQ accordion ===== */
+        .faq-q {
+            cursor: pointer;
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        .faq-item .fa-chevron-down {
+            transition: transform .2s ease;
+        }
+
+        .faq-item.open .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* ===== List indentation normalization ===== */
+        ul,
+        ol {
+            list-style-position: outside;
+            padding-left: 1.25rem;
+            margin-left: 0;
+        }
+
+        ul ul,
+        ul ol,
+        ol ul,
+        ol ol {
+            padding-left: 1.25rem;
+        }
+
+        /* ===== Visual helpers for growth section ===== */
+        .growth-card h3 {
+            letter-spacing: .02em;
+        }
+
+        .growth-kicker {
+            font-size: 12px;
+            letter-spacing: .12em;
+            color: #9CA3AF;
+        }
+
+        /* === Unified business card style (match #certification) === */
+        .card-biz {
+            background: #ffffff;
+            /* bg-white */
+            border: 1px solid #BFDBFE;
+            /* ≒ border-blue-100 の視認性確保 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+            /* shadow-sm */
+            padding: 1.5rem;
+            /* p-6 */
+        }
+
+        .card-biz:hover {
+            box-shadow: 0 6px 18px rgba(37, 99, 235, .08);
+        }
+
+        /* === Unified section title underline === */
+        .sec-underline {
+            width: 5rem;
+            /* w-20 */
+            height: 0.25rem;
+            /* h-1 */
+            margin: 0.5rem auto 0;
+            /* mt-2 + center */
+            border-radius: 9999px;
+            /* rounded-full */
+            background-image: linear-gradient(to right, #3B82F6, #22D3EE);
+            /* from-blue-500 to-cyan-400 */
+        }
+
+        /* === Section title underline variants === */
+        .sec-underline--cool {
+            background-image: linear-gradient(to right, #3B82F6, #22D3EE);
+            /* blue-500 -> cyan-400 */
+        }
+
+        .sec-underline--warm {
+            background-image: linear-gradient(to right, var(--brand), #F59E0B);
+            /* brand(red) -> amber-500 */
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z85HL3MPJH');
+    </script>
+</head>
+
+<body>
+    <header class="header sticky-nav">
+        <div class="nav-wrap px-4">
+            <div class="nav-inner py-3">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="./logo.png" alt="合同会社Flair ロゴ" class="logo h-12 md:h-14 rounded-lg"
+                        style="object-fit:contain">
+                </a>
+                <nav aria-label="主要ナビゲーション">
+                    <button id="navToggle" class="nav-toggle rounded md:hidden" aria-expanded="false"
+                        aria-controls="navMenu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <ul id="navMenu" class="nav-list page-nav" aria-label="ページ内ナビゲーション">
+                        <li><a class="nav-link" href="#top">トップ</a></li>
+                        <li><a class="nav-link" href="#services">事業</a></li>
+                        <li><a class="nav-link" href="#trust-foundation">信頼・基盤</a></li>
+                        <li><a class="nav-link" href="#certification">認定</a></li>
+                        <li><a class="nav-link" href="#growth">市場</a></li>
+                        <li><a class="nav-link" href="#why-tiktok-live">特化理由</a></li>
+                        <li><a class="nav-link" href="#growth-vision">成長</a></li>
+                        <li><a class="nav-link" href="#contact-business">企業窓口</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl">
+
+        <section id="top" class="hero-section text-center section rounded-lg mt-8 mx-4">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 title-text">LIVE配信の現場に、運営という視点を。</h2>
+            <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
+                安全性・継続性・パフォーマンスを前提に、配信者とプラットフォームの運営を支えています。</p>
+        </section>
+        <section id="services" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold">事業内容</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                </div>
+                <div class="text-lg md:text-xl text-center px-4">
+                    <p class="mt-4 font-semibold text-slate-700 flex items-center justify-center space-x-2">
+                        <span>ライブ配信者のマネジメント業</span>
+                    </p>
+                </div>
+                <!-- 事業内容詳細を4カラムカードで表示 -->
+                <div class="grid md:grid-cols-4 gap-6 mt-12 text-center">
+                    <!-- カードA: クリエイターのスカウトと契約（①） -->
+                    <div class="card-biz">
+                        <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-file-signature"></i></div>
+                        <h3 class="text-xl font-bold mb-2">スカウトと契約</h3>
+                        <p class="text-sm text-gray-600">適正に合う人材の発掘、条件調整から契約手続きまで一貫対応</p>
+                    </div>
+                    <!-- カードB: 機材提供・環境構築（②） -->
+                    <div class="card-biz">
+                        <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-microphone"></i></div>
+                        <h3 class="text-xl font-bold mb-2">機材提供・環境構築</h3>
+                        <p class="text-sm text-gray-600">マイクやスタンドなど配信機材を進呈</p>
+                    </div>
+                    <!-- カードC: 配信戦略の設計（③） -->
+                    <div class="card-biz">
+                        <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="text-xl font-bold mb-2">配信戦略の設計</h3>
+                        <p class="text-sm text-gray-600">ファン層拡大と収益最大化のための企画提案</p>
+                    </div>
+                    <!-- カードD: 配信活動サポート（④） -->
+                    <div class="card-biz">
+                        <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-headset"></i></div>
+                        <h3 class="text-xl font-bold mb-2">配信活動サポート</h3>
+                        <p class="text-sm text-gray-600">トラブル対応・ガイド提供・交流機会</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="trust-foundation" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairの信頼性と事業基盤</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-3 text-gray-600 text-base md:text-lg">数値の羅列ではなく、運営の思想と仕組みを分かりやすく。</p>
+                </div>
+                <!-- 運営基準（画像ではなくHTMLで明瞭に） -->
+                <div class="grid md:grid-cols-3 gap-6 px-4">
+                    <article class="card-biz">
+                        <div class="growth-kicker mb-2">OPERATIONS</div>
+                        <h3 class="text-lg font-bold mb-2">安全な運営体制</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>最新ガイドラインの共有と注意喚起の運用</li>
+                            <li>配信中トラブルの一次対応窓口</li>
+                            <li>透明な報酬・分配ルールの提示</li>
+                        </ul>
+                    </article>
+                    <article class="card-biz">
+                        <div class="growth-kicker mb-2">PERFORMANCE</div>
+                        <h3 class="text-lg font-bold mb-2">パフォーマンス基準</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>継続的な活動を支える伴走体制</li>
+                            <li>視聴者エンゲージメントを高める施策</li>
+                            <li>週次フィードバックによる改善サイクル</li>
+                        </ul>
+                    </article>
+                    <article class="card-biz">
+                        <div class="growth-kicker mb-2">ENABLEMENT</div>
+                        <h3 class="text-lg font-bold mb-2">成長サポート</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>機材・環境の最適化サポート</li>
+                            <li>企画・台本テンプレ／タイトル添削</li>
+                            <li>小規模コミュニティでの事例共有</li>
+                        </ul>
+                    </article>
+                </div>
+                <!-- 企業・団体向けCTA（任意） -->
+                <div class="text-center mt-8">
+                    <a class="mv-btn"
+                        href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E5%8D%94%E6%A9%9F%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8">
+                        企業・提携のご相談はこちら
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="certification" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">TikTokとの契約・認定</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-4 text-gray-600 text-base md:text-lg">当社は<strong>TikTok社と業務委託契約</strong>を締結し、公式の枠組みでLIVEエージェンシー運営を行っています。</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6 px-4">
+                    <!-- 契約の位置づけ -->
+                    <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <div class="mv-chip mv-chip--accent mb-2 inline-block">Contract</div>
+                        <h3 class="text-lg font-bold mb-2">契約の位置づけ</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>TikTok LIVEエージェンシーとしての業務委託契約</li>
+                            <li>最新の方針・運用基準に基づくサポート提供</li>
+                            <li>安全・コンプライアンスを重視した運営体制</li>
+                        </ul>
+                    </article>
+                    <!-- 企業向けの提供価値 -->
+                    <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <div class="mv-chip mv-chip--accent mb-2 inline-block">For Business</div>
+                        <h3 class="text-lg font-bold mb-2">企業向けの提供価値</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>タイアップや番組企画における出演・進行のプロデュース</li>
+                            <li>ブランドセーフティに配慮した配信設計とチェック</li>
+                            <li>案件要件に応じたクリエイターのキャスティング</li>
+                        </ul>
+                    </article>
+                    <!-- 確認方法 -->
+                    <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
+                        <div class="mv-chip mv-chip--accent mb-2 inline-block">Verification</div>
+                        <h3 class="text-lg font-bold mb-2">確認方法</h3>
+                        <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
+                            <li>契約の詳細は機密保持の観点から公開していません</li>
+                            <li>企業・メディアの皆さまには、必要に応じて確認資料をご提示可能</li>
+                            <li>まずは案件概要とともにご連絡ください</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="text-center mt-8">
+                    <a class="mv-btn" href="#contact-business"
+                        onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_cert_to_business'});">企業のご相談へ</a>
+                    <p class="text-xs text-gray-500 mt-3">※ご要望に応じて、登記事項証明書・定款の写し等もご用意できます（NDA可）。</p>
+                </div>
+            </div>
+        </section>
+        <section id="growth" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">市場の伸びとFlairの着眼点</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-3 text-gray-600 text-base md:text-lg">右肩上がりのLIVE市場。新人でも伸ばしやすい設計と収益導線に注目しています。</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 px-4 items-center">
+                    <!-- 左：力強いトレンドのビジュアル（SVGエリアチャート） -->
+                    <figure class="card-biz p-4">
+                        <svg id="growthChart" viewBox="0 0 600 320" class="w-full h-auto" role="img"
+                            aria-label="市場の伸びを示す概念図">
+                            <defs>
+                                <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#2563eb" stop-opacity="0.85" />
+                                    <stop offset="100%" stop-color="#2563eb" stop-opacity="0.05" />
+                                </linearGradient>
+                            </defs>
+                            <!-- 軸（控えめ） -->
+                            <line x1="48" y1="260" x2="560" y2="260" stroke="#E5E7EB" stroke-width="2" />
+                            <line x1="48" y1="40" x2="48" y2="260" stroke="#E5E7EB" stroke-width="2" />
+                            <!-- 描画レイヤ（JSで上書き） -->
+                            <path id="growthArea" d="" fill="url(#g1)" />
+                            <polyline id="growthLine" points="" fill="none" stroke="#2563eb" stroke-width="4" />
+                            <!-- 年代の目盛り（JSで生成） -->
+                            <g id="xlabels" fill="#9CA3AF" font-size="12"></g>
+                            <!-- タイトル -->
+                            <g fill="#111827" font-size="16" font-weight="700">
+                                <text x="64" y="72">右肩上がりのトレンド</text>
+                            </g>
+                            <!-- 削除: 概念図注釈 -->
+                        </svg>
+                        <figcaption class="text-xs text-gray-500 mt-2">
+                            数値は公開情報に基づく<strong>指数化グラフ</strong>です（2023年=100として年次補間）。主な出典：
+                            <a class="underline"
+                                href="https://www.grandviewresearch.com/industry-analysis/live-streaming-market-report"
+                                target="_blank" rel="noopener">Grand View Research『Live Streaming Market』(世界：2023年 USD
+                                87.55B、2024–2030 CAGR 23%)</a>、
+                            <a class="underline"
+                                href="https://www.grandviewresearch.com/horizon/outlook/video-streaming-market/japan"
+                                target="_blank" rel="noopener">Grand View Research『Japan Video Streaming Market
+                                Outlook』(日本：2024年 USD 7,813.9M、2025–2030 CAGR 22.2%、ライブが最大セグメント)</a>、
+                            <a class="underline"
+                                href="https://www.grandviewresearch.com/horizon/outlook/live-streaming-market/japan"
+                                target="_blank" rel="noopener">Grand View Research『Japan Live Streaming Market
+                                Outlook』(日本ライブ配信：2023年 USD 3,563.0M、2024–2030 CAGR 24.7%)</a>。
+                        </figcaption>
+                    </figure>
+                    <!-- 右：3つの強み（カード） -->
+                    <div class="grid gap-4">
+                        <div class="growth-card card-biz">
+                            <div class="growth-kicker mb-1">DISCOVERABILITY</div>
+                            <h3 class="text-xl font-bold mb-1">発見されやすい設計</h3>
+                            <p class="text-sm text-gray-700">短尺動画とLIVEの連動で、新人でも視聴が伸びやすい環境。</p>
+                        </div>
+                        <div class="growth-card card-biz">
+                            <div class="growth-kicker mb-1">INTERACTION</div>
+                            <h3 class="text-xl font-bold mb-1">双方向性と熱量</h3>
+                            <p class="text-sm text-gray-700">コメント・ギフトが循環し、ファンとの距離が近い。</p>
+                        </div>
+                        <div class="growth-card card-biz">
+                            <div class="growth-kicker mb-1">MONETIZATION</div>
+                            <h3 class="text-xl font-bold mb-1">多様な収益導線</h3>
+                            <p class="text-sm text-gray-700">ギフト／提携／ECなど、活動段階に応じた選択肢。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="why-tiktok-live" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold">なぜFlairはTikTok LIVEに特化するのか</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-4 text-base md:text-lg sec__lead">市場の拡大、視聴時間の伸長、そしてTikTokならではの発見性と収益導線</p>
+                </div>
+                <div class="max-w-4xl mx-auto text-gray-700 leading-relaxed text-lg">
+                    <p class="mb-8">
+                        LIVE配信市場は世界的に拡大を続けています。TikTok LIVEは、短尺動画との連携による<strong>発見性</strong>、
+                        コメントやギフトがリアルタイムで循環する<strong>双方向性</strong>、そしてギフトや案件を通じた<strong>収益化</strong>のしやすさを兼ね備え、
+                        新しい才能が最短距離で成長できるプラットフォームです。
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- 市場成長 -->
+                        <div class="card-biz">
+                            <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-line"></i></div>
+                            <h3 class="font-bold mb-2">市場が拡大</h3>
+                            <p class="text-sm mb-2">
+                                世界のライブ配信市場は<strong>2023年に約USD
+                                    87.6B</strong>、2024–2030年の年平均成長率は<strong>約23%</strong>と推計されています。
+                            </p>
+                            <p class="text-xs text-gray-500">出典：Grand View Research『Live Streaming Market』(2023年=USD
+                                87.55B、CAGR 23%)</p>
+                        </div>
+                        <!-- 視聴時間の拡大 -->
+                        <div class="card-biz">
+                            <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-clock"></i></div>
+                            <h3 class="font-bold mb-2">視聴時間が伸長</h3>
+                            <p class="text-sm mb-2">
+                                <strong>2020年</strong>、LIVE配信アプリの利用は<strong>4,800億時間以上</strong>。視聴習慣が定着。
+                            </p>
+                            <p class="text-xs text-gray-500">出典：TikTok社公式資料（引用元：Statista『Live Streaming Apps: Global
+                                Time
+                                Spent 2018–2021』）</p>
+                        </div>
+                        <!-- TikTok LIVEの特性 -->
+                        <div class="card-biz">
+                            <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-bolt"></i></div>
+                            <h3 class="font-bold mb-2">TikTokならでは</h3>
+                            <ul class="text-sm space-y-1 text-left list-disc list-outside pl-5">
+                                <li>短尺動画との連携で<strong>発見性</strong>が高い</li>
+                                <li>コメント・ギフトが続く<strong>双方向性</strong></li>
+                                <li>ギフト/案件で<strong>収益化</strong>しやすい導線</li>
+                            </ul>
+                            <p class="text-xs text-gray-500 mt-2">出典：TikTok社公式資料</p>
+                        </div>
+                    </div>
+                    <!-- 日本市場のポイント -->
+                    <div class="mt-10">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-6">日本市場での注目ポイント</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <!-- 国内の伸び -->
+                            <div class="card-biz">
+                                <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-simple"></i></div>
+                                <h4 class="font-bold mb-2">国内市場の拡大</h4>
+                                <p class="text-sm mb-2">日本でもLIVE配信の視聴時間・課金額が右肩上がり。Z世代を中心に視聴習慣が定着。</p>
+                            </div>
+                            <!-- 収益化機会の拡大 -->
+                            <div class="card-biz">
+                                <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-coins"></i></div>
+                                <h4 class="font-bold mb-2">収益化機会が拡大</h4>
+                                <p class="text-sm mb-2">ギフト（投げ銭）文化が浸透し、ブランド案件の連携も増加。継続的なマネタイズが可能。</p>
+                            </div>
+                            <!-- 参入しやすさ＆成長速度 -->
+                            <div class="card-biz">
+                                <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-mobile-screen"></i></div>
+                                <h4 class="font-bold mb-2">参入しやすく、伸びが早い</h4>
+                                <p class="text-sm mb-2">スマホと基本機材で始められ、アルゴリズムの発見性により新人でも短期で伸ばしやすい。</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            出典：各種業界レポートおよび公式資料の要約
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="growth-vision" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold">Flairの成長ビジョン</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-4 text-base md:text-lg sec__lead">一般的な成長ステージ「初期 → 成長期 → 成熟期 → 多角化」を、私たちの計画として明示します。</p>
+                </div>
+                <div class="grid md:grid-cols-4 gap-6 px-4 text-center">
+                    <div class="card-biz">
+                        <div class="text-4xl mb-2"><i class="fas fa-seedling text-sky-600"></i></div>
+                        <h3 class="font-bold">初期</h3>
+                        <p class="text-sm text-gray-700 mt-1">厳選スカウトと基盤整備。運用ルール・安全ガイドを整備。</p>
+                    </div>
+                    <div class="card-biz">
+                        <div class="text-4xl mb-2"><i class="fas fa-chart-line text-sky-600"></i></div>
+                        <h3 class="font-bold">成長期</h3>
+                        <p class="text-sm text-gray-700 mt-1">KPI管理の徹底と教育プログラム拡充。ケース共有で底上げ。</p>
+                    </div>
+                    <div class="card-biz">
+                        <div class="text-4xl mb-2"><i class="fas fa-trophy text-sky-600"></i></div>
+                        <h3 class="font-bold">成熟期</h3>
+                        <p class="text-sm text-gray-700 mt-1">トップクリエイターのブランディング。外部タイアップ強化。</p>
+                    </div>
+                    <div class="card-biz">
+                        <div class="text-4xl mb-2"><i class="fas fa-sitemap text-sky-600"></i></div>
+                        <h3 class="font-bold">多角化</h3>
+                        <p class="text-sm text-gray-700 mt-1">イベント、EC、コンテンツ制作など周辺事業へ展開。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact-business" class="section biz-band biz-band--cool">
+            <div class="biz-wrap">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">企業・メディア・提携のご相談</h2>
+                    <div class="sec-underline sec-underline--cool"></div>
+                    <p class="mt-4 text-gray-600 text-base md:text-lg">案件・取材・タイアップのご相談は、下記窓口よりお寄せください。</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 px-4">
+                    <!-- メール窓口 -->
+                    <div class="card-biz text-center md:col-span-2">
+                        <div class="mv-chip mv-chip--accent mb-3 inline-block">Business</div>
+                        <div class="text-4xl text-blue-600 mb-3"><i class="fas fa-envelope"></i></div>
+                        <h3 class="text-xl font-bold mb-2">メールでお問い合わせ</h3>
+                        <p class="text-sm text-gray-700 mb-4">社名・ご担当者名・目的・希望時期・ご予算感（あれば）をご記載ください。</p>
+                        <a class="mv-btn"
+                            href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8"
+                            onclick="gtag('event','contact_business_email',{event_category:'engagement',event_label:'cta_contact_business_email'});">メールで問い合わせる</a>
+                        <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
+                        <p class="text-xs text-gray-500 mt-2">
+                            ※「振込先の変更」連絡は当社ドメイン（@flair-agency.biz）のメールでのみ行います。不審な案内を受け取った場合は、本サイト記載の連絡先へコールバック確認をお願いします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+        <nav aria-label="サイト内ナビゲーション" class="footer-site-nav">
+            <ul class="site-nav">
+                <li><a class="site-link" href="index.html">クリエイターの方へ</a></li>
+                <li><a class="site-link is-current" href="business.html" aria-current="page">企業のご担当者さまへ</a></li>
+                <li><a class="site-link" href="company.html">私たちについて</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2025 Flair LLC</p>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const open = navMenu.style.display === 'flex';
+                navMenu.style.display = open ? 'none' : 'flex';
+                navMenu.style.flexWrap = 'wrap';
+                navToggle.setAttribute('aria-expanded', String(!open));
+            });
+        }
+        // Active link highlight on scroll
+        const links = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+        const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+        const linkMap = new Map(targets.map((el, i) => [el.id, links[i]]));
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const link = linkMap.get(entry.target.id);
+                if (!link) return;
+                if (entry.isIntersecting) {
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+        targets.forEach(t => io.observe(t));
+        // FAQ accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const btn = item.querySelector('.faq-q');
+            btn.addEventListener('click', () => {
+                item.classList.toggle('open');
+                const ans = item.querySelector('.faq-a');
+                const isOpen = item.classList.contains('open');
+                ans.classList.toggle('hidden', !isOpen);
+            });
+        });
+    </script>
+
+    <script>
+        // === Growth chart data (replace with real values when確定) ===
+        const growthData = [
+            { year: 2020, value: 54 }, // 2023=100を基準に後方推計
+            { year: 2021, value: 66 },
+            { year: 2022, value: 81 },
+            { year: 2023, value: 100 }, // 実数アンカー: 2023年 世界のLive Streaming市場 USD 87.55B (GVR)
+            { year: 2024, value: 123 }, // CAGR 23%で前方推計
+            { year: 2025, value: 151 }
+        ];
+
+        (function renderGrowthChart() {
+            const svg = document.getElementById('growthChart');
+            if (!svg) return;
+            const W = 600, H = 320;
+            const pad = { left: 48, right: 40, top: 40, bottom: 60 };
+            const plotW = W - pad.left - pad.right;
+            const plotH = 260 - pad.top + 20; // top axis at y=40, bottom at y=260
+
+            const years = growthData.map(d => d.year);
+            const vals = growthData.map(d => d.value);
+            const minY = Math.min(...vals);
+            const maxY = Math.max(...vals);
+
+            // scales
+            const x = (i) => pad.left + (plotW) * (i / (growthData.length - 1));
+            const y = (v) => {
+                // invert: higher value -> smaller y
+                const t = (v - minY) / (maxY - minY || 1);
+                return 260 - t * (220); // 40..260 area
+            };
+
+            // polyline points
+            const pts = growthData.map((d, i) => `${x(i)},${y(d.value)}`).join(' ');
+            svg.querySelector('#growthLine').setAttribute('points', pts);
+
+            // area path
+            const areaTop = `M${x(0)},260 L${x(0)},${y(growthData[0].value)} ` +
+                growthData.map((d, i) => `${x(i)},${y(d.value)}`).join(' ') + ` L${x(growthData.length - 1)},260 Z`;
+            svg.querySelector('#growthArea').setAttribute('d', areaTop);
+
+            // x labels
+            const labels = svg.querySelector('#xlabels');
+            labels.innerHTML = '';
+            years.forEach((yr, i) => {
+                const tx = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                tx.setAttribute('x', x(i));
+                tx.setAttribute('y', 280);
+                tx.setAttribute('text-anchor', 'middle');
+                tx.textContent = yr;
+                labels.appendChild(tx);
+            });
+        })();
+    </script>
+</body>
+
+</html>
