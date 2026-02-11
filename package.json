@@ -1,0 +1,24 @@
+{
+  "name": "corporate-site",
+  "version": "1.0.0",
+  "description": "Flair Corporate Site",
+  "private": true,
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --minify",
+    "build": "npm run build:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flair-agency/corporate-site.git"
+  },
+  "author": "Naoki KIMURA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flair-agency/corporate-site/issues"
+  },
+  "homepage": "https://github.com/flair-agency/corporate-site#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}

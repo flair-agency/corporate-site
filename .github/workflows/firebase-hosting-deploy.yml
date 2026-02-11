@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: "20"
 
+      - run: npm ci && npm run build
+
       - id: auth
         uses: google-github-actions/auth@v2
         with:
