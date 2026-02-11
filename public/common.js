@@ -2,12 +2,22 @@
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 if (navToggle && navMenu) {
+  const syncMenuForViewport = () => {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      navMenu.classList.remove('is-open');
+      navMenu.style.display = '';
+      navMenu.style.flexWrap = '';
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  };
+
   navToggle.addEventListener('click', () => {
-    const open = navMenu.style.display === 'flex';
-    navMenu.style.display = open ? 'none' : 'flex';
-    navMenu.style.flexWrap = 'wrap';
-    navToggle.setAttribute('aria-expanded', String(!open));
+    const open = navMenu.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(open));
   });
+
+  window.addEventListener('resize', syncMenuForViewport);
+  syncMenuForViewport();
 }
 
 // Active link highlight on scroll

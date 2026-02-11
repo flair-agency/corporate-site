@@ -1,6 +1,8 @@
-@import url('../common.css');
-
 /* ===== Business Page Specific Styles ===== */
 .hero-section {
-  background-image: url('./background-image.png');
+  background-image: image-set(
+    url('./background-image.avif?v=20260211') type('image/avif') 1x,
+    url('./background-image.webp?v=20260211') type('image/webp') 1x,
+    url('./background-image.png?v=20260211') type('image/png') 1x
+  );
 }
