@@ -42,6 +42,24 @@ main {
     color: #111827;
     font-weight: 600;
   }
+
+  td.is-check {
+    position: relative;
+    padding-left: 2rem;
+    vertical-align: top;
+    line-height: 1.6;
+
+    &::before {
+      content: "✓";
+      position: absolute;
+      left: .72rem;
+      top: 1.72em;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-weight: 800;
+      line-height: 1;
+    }
+  }
 }
 
 .compare-pill {
@@ -54,13 +72,6 @@ main {
   font-size: .72rem;
   font-weight: 700;
   vertical-align: middle;
-}
-
-.compare-check {
-  display: inline-block;
-  margin-right: .45rem;
-  color: var(--accent);
-  font-weight: 800;
 }
 
 .flow-list {
@@ -198,6 +209,14 @@ main {
   .compare-pill {
     font-size: .65rem;
     margin-left: .25rem;
+  }
+
+  .compare-table td.is-check {
+    padding-left: 1.65rem;
+  }
+
+  .compare-table td.is-check::before {
+    left: .52rem;
   }
 
   .flow-list {
