@@ -1,4 +1,5 @@
 @import url('./common.css');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido:wght@400;600;700&display=swap');
 
 /* ===== Index Page Specific Styles ===== */
@@ -14,6 +15,10 @@
   --step-4: #ffeded;
   --step-5: #fee7e7;
   --step-6: #fee2e2;
+}
+
+main {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .compare-kicker {
