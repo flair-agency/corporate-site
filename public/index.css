@@ -15,7 +15,6 @@
 
 main {
   font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size-adjust: 0.55;
 }
 
 .compare-kicker {
@@ -256,6 +255,5 @@ main {
 
   &>h2 {
     font-family: 'Zen Kurenaido', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-size-adjust: 0.57;
   }
 }
