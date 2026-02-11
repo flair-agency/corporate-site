@@ -2,1005 +2,401 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合同会社Flair</title>
-    <meta name="description" content="TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。">
-    <meta name="keywords" content="合同会社Flair, Flair, TikTok LIVE, ライブ配信, マネジメント, エージェンシー, クリエイター支援">
-    <meta name="author" content="合同会社Flair">
-    <meta property="og:title" content="合同会社Flair">
-    <meta property="og:description" content="TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.flair-agency.biz/">
-    <meta property="og:image" content="https://www.flair-agency.biz/logo.png">
-    <meta property="og:site_name" content="合同会社Flair">
-    <meta property="og:locale" content="ja_JP">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="合同会社Flair">
-    <meta name="twitter:description" content="TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。">
-    <meta name="twitter:image" content="https://www.flair-agency.biz/logo.png">
-    <!-- ファビコン設定 -->
-    <link rel="icon" href="./favicon-192.png" onerror="this.href='favicon-192.png';">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-        :root {
-            --brand: #ff5a3c;
-            --brand-accent-bg: #fff3ef;
-            --brand-accent-border: #ffb9a7;
-            --brand-chip-border: #ffd0c5;
-            --brand-chip-bg: #fff7f5;
-        }
-
-        /* バンド表示用（フルブリード） */
-        .full-bleed {
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-        }
-
-        .biz-wrap {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-
-        :root {
-            --biz-band-bg: #F1F5F9;
-            --biz-head: #0F172A;
-            --biz-body: #334155;
-        }
-
-        .biz-band {
-            background: var(--biz-band-bg);
-            padding: 4rem 0;
-            margin: 2rem 0;
-            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(15, 23, 42, 0.03));
-        }
-
-        /* === Cool tone variant for business contact band === */
-        .biz-band--cool {
-            /* override only the variables & subtle bg tint */
-            --biz-band-bg: #EAF2FF;
-            /* light blue */
-            background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(37, 99, 235, 0.06));
-        }
-
-        .biz-band--cool .mv-btn {
-            background: #2563eb;
-            /* blue-600 */
-        }
-
-        .biz-band--cool .mv-btn:hover {
-            box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
-        }
-
-        .biz-band--cool .mv-chip {
-            color: #1D4ED8;
-            /* blue-700 */
-            border-color: #BFDBFE;
-            /* blue-200 */
-            background: #EFF6FF;
-            /* blue-50 */
-        }
-
-        .biz-band h2,
-        .biz-band .sec__head h2 {
-            color: var(--biz-head);
-        }
-
-        .biz-band,
-        .biz-band p,
-        .biz-band li,
-        .biz-band h3,
-        .biz-band h4 {
-            color: var(--biz-body);
-        }
-
-        .biz-card {
-            background: #fff;
-            border: 1px solid #E5E7EB;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .04);
-        }
-
-        .biz-muted {
-            color: #475569;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-            background-color: #f7f7f7;
-            line-height: 1.8;
-        }
-
-        .header {
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .section {
-            padding: 4rem 1rem;
-            margin: 2rem 1rem;
-        }
-
-        .hero-section {
-            position: relative;
-            z-index: 1;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 600px;
-            background-size: cover;
-            background-position: center;
-            background-color: #1a202c;
-            /* Fallback background color */
-            transition: background-image 0.5s ease-in-out;
-            background-image: url('./background-image.png');
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* 文字を見やすくするためのオーバーレイ */
-            z-index: -1;
-            border-radius: 0.5rem;
-        }
-
-        /* ===== Mission & Vision ===== */
-        .mv-chip {
-            /* 置換前の色指定だけ変更 */
-            /* color: #ff5a3c; */
-            color: var(--brand);
-            /* border: 1px solid #ffd0c5; */
-            border: 1px solid var(--brand-chip-border);
-            /* background: #fff7f5; */
-            background: var(--brand-chip-bg);
-        }
-
-        .mv-chip--accent {
-            /* background: #fff3ef; */
-            background: var(--brand-accent-bg);
-            /* border-color: #ffb9a7; */
-            border-color: var(--brand-accent-border);
-        }
-
-        .mv-btn {
-            /* background: #ff5a3c; */
-            background: var(--brand);
-        }
-
-        .mv-section {
-            padding: clamp(48px, 6vw, 80px) 16px;
-            background: #fff;
-        }
-
-        .statement {
-            position: relative;
-            margin: 28px 0 10px;
-            padding: 16px 0 0 18px;
-        }
-
-        .statement::before {
-            content: "STATEMENT";
-            display: block;
-            margin: 0 0 10px;
-            font-size: 12px;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: rgba(0, 0, 0, .45);
-        }
-
-        .statement::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(0, 0, 0, .12);
-        }
-
-        .statement p {
-            margin: 0;
-            font-size: 1.04em;
-            line-height: 1.95;
-            letter-spacing: .01em;
-            color: rgba(0, 0, 0, .78);
-        }
-
-        .statement strong {
-            color: rgba(0, 0, 0, .92);
-            font-weight: 700;
-        }
-
-        @media (max-width: 480px) {
-            .statement {
-                margin: 22px 0 8px;
-                padding-left: 14px;
-            }
-
-            .statement::before {
-                font-size: 11px;
-                letter-spacing: .14em;
-            }
-
-            .statement p {
-                font-size: 1em;
-            }
-        }
-
-        .mv-wrap {
-            max-width: 1080px;
-            margin: 0 auto;
-        }
-
-        .mv-head {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-        .mv-title {
-            font-size: clamp(20px, 2.6vw, 28px);
-            letter-spacing: .06em;
-            margin: 0;
-        }
-
-        .mv-subtitle {
-            color: #666;
-            margin: 8px 0 0;
-        }
-
-        .mv-grid {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 960px) {
-            .mv-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
-            }
-        }
-
-        .mv-card {
-            border: 1px solid #eee;
-            border-radius: 16px;
-            padding: clamp(16px, 2vw, 24px);
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .02);
-        }
-
-        .mv-chip {
-            display: inline-block;
-            font-size: 12px;
-            letter-spacing: .12em;
-            color: var(--brand);
-            border: 1px solid var(--brand-chip-border);
-            background: var(--brand-chip-bg);
-            padding: 6px 10px;
-            border-radius: 999px;
-            margin-bottom: 10px;
-        }
-
-        .mv-chip--accent {
-            background: var(--brand-accent-bg);
-            border-color: var(--brand-accent-border);
-        }
-
-        .mv-catch {
-            font-size: clamp(18px, 2.2vw, 22px);
-            line-height: 1.6;
-            font-weight: 700;
-            margin: 0 0 8px;
-        }
-
-        .mv-body {
-            color: #444;
-            line-height: 1.9;
-            margin: 0;
-        }
-
-        .mv-bullets {
-            margin: 14px 0 0;
-            padding-left: 1.2em;
-            color: #444;
-        }
-
-        .mv-bullets li {
-            margin: 6px 0;
-        }
-
-        .mv-img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-top: 14px;
-            display: block;
-        }
-
-        .mv-cta {
-            text-align: center;
-            margin-top: clamp(20px, 5vw, 36px);
-        }
-
-        .mv-btn {
-            display: inline-block;
-            background: var(--brand);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            padding: 12px 20px;
-            border-radius: 999px;
-            transition: transform .08s ease, box-shadow .2s ease;
-        }
-
-        .mv-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(255, 90, 60, .25);
-        }
-
-        .mv-cta-note {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        .mv-cta-note a {
-            color: var(--brand);
-            text-decoration: underline;
-        }
-
-        .badge-accent {
-            background: var(--brand-accent-bg);
-            color: var(--brand);
-            border: 1px solid var(--brand-accent-border);
-        }
-
-        .title-text {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        /* ===== Sticky Nav ===== */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: saturate(180%) blur(10px);
-            border-bottom: 1px solid #eee;
-        }
-
-        .nav-wrap {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        nav[aria-label="主要ナビゲーション"] {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-            justify-content: flex-end;
-        }
-
-        .nav-list {
-            display: none;
-            gap: 10px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 6px 0;
-            flex: 1;
-        }
-
-        .nav-list::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .nav-list::-webkit-scrollbar-thumb {
-            background: #E5E7EB;
-            border-radius: 999px;
-        }
-
-        .nav-link {
-            font-size: 13px;
-            padding: 8px 10px;
-            border-radius: 999px;
-            color: #374151;
-        }
-
-        .nav-link:hover {
-            background: #fff1ee;
-            color: #111827;
-        }
-
-        .nav-link.active {
-            background: #ff5a3c;
-            color: #fff;
-        }
-
-        .footer-site-nav {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .site-nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: #6B7280;
-            white-space: nowrap;
-        }
-
-        .site-link {
-            padding: 6px 10px;
-            border-radius: 999px;
-            color: #E5E7EB;
-            border: 1px solid transparent;
-        }
-
-        .site-link:hover {
-            background: #374151;
-            color: #fff;
-        }
-
-        .site-nav .site-link {
-            color: #E5E7EB;
-        }
-
-        .site-link.is-current {
-            color: #111827;
-            background: #fff;
-            border-color: #E5E7EB;
-        }
-
-        .nav-toggle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-        }
-
-        @media (min-width: 1024px) {
-            .nav-list {
-                display: flex;
-            }
-
-            .nav-toggle {
-                display: none;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Offset anchor jump under sticky header */
-        section {
-            scroll-margin-top: 88px;
-        }
-
-        /* ===== FAQ accordion ===== */
-        .faq-q {
-            cursor: pointer;
-        }
-
-        .faq-item.open .faq-a {
-            display: block;
-        }
-
-        .faq-item .fa-chevron-down {
-            transition: transform .2s ease;
-        }
-
-        .faq-item.open .fa-chevron-down {
-            transform: rotate(180deg);
-        }
-
-        /* ===== List indentation normalization ===== */
-        ul,
-        ol {
-            list-style-position: outside;
-            padding-left: 1.25rem;
-            margin-left: 0;
-        }
-
-        ul ul,
-        ul ol,
-        ol ul,
-        ol ol {
-            padding-left: 1.25rem;
-        }
-
-        /* ===== Visual helpers for growth section ===== */
-        .growth-card h3 {
-            letter-spacing: .02em;
-        }
-
-        .growth-kicker {
-            font-size: 12px;
-            letter-spacing: .12em;
-            color: #9CA3AF;
-        }
-
-        /* === Unified business card style (match #certification) === */
-        .card-biz {
-            background: #ffffff;
-            /* bg-white */
-            border: 1px solid #BFDBFE;
-            /* ≒ border-blue-100 の視認性確保 */
-            border-radius: 0.5rem;
-            /* rounded-lg */
-            box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-            /* shadow-sm */
-            padding: 1.5rem;
-            /* p-6 */
-        }
-
-        .card-biz:hover {
-            box-shadow: 0 6px 18px rgba(37, 99, 235, .08);
-        }
-
-        /* === Unified section title underline === */
-        .sec-underline {
-            width: 5rem;
-            /* w-20 */
-            height: 0.25rem;
-            /* h-1 */
-            margin: 0.5rem auto 0;
-            /* mt-2 + center */
-            border-radius: 9999px;
-            /* rounded-full */
-            background-image: linear-gradient(to right, #3B82F6, #22D3EE);
-            /* from-blue-500 to-cyan-400 */
-        }
-
-        /* === Section title underline variants === */
-        .sec-underline--cool {
-            background-image: linear-gradient(to right, #3B82F6, #22D3EE);
-            /* blue-500 -> cyan-400 */
-        }
-
-        .sec-underline--warm {
-            background-image: linear-gradient(to right, var(--brand), #F59E0B);
-            /* brand(red) -> amber-500 */
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-Z85HL3MPJH');
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合同会社Flair</title>
+  <meta name="description" content="TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。">
+  <meta name="keywords" content="合同会社Flair, Flair, TikTok LIVE, ライブ配信, マネジメント, エージェンシー, クリエイター支援">
+  <meta name="author" content="合同会社Flair">
+  <meta property="og:title" content="合同会社Flair">
+  <meta property="og:description" content="TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.flair-agency.biz/">
+  <meta property="og:image" content="https://www.flair-agency.biz/logo.png">
+  <meta property="og:site_name" content="合同会社Flair">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="合同会社Flair">
+  <meta name="twitter:description" content="TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。">
+  <meta name="twitter:image" content="https://www.flair-agency.biz/logo.png">
+  <!-- ファビコン設定 -->
+  <link rel="icon" href="./favicon-192.png" onerror="this.href='favicon-192.png';">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z85HL3MPJH');
+  </script>
 </head>
 
 <body>
-    <header class="header sticky-nav">
-        <div class="nav-wrap px-4">
-            <div class="nav-inner py-3">
-                <a href="#top" class="flex items-center gap-3">
-                    <img src="./logo.png" alt="合同会社Flair ロゴ" class="logo h-12 md:h-14 rounded-lg"
-                        style="object-fit:contain">
-                </a>
-                <nav aria-label="主要ナビゲーション">
-                    <button id="navToggle" class="nav-toggle rounded md:hidden" aria-expanded="false"
-                        aria-controls="navMenu">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                    <ul id="navMenu" class="nav-list page-nav" aria-label="ページ内ナビゲーション">
-                        <li><a class="nav-link" href="#top">トップ</a></li>
-                        <li><a class="nav-link" href="#benefits">できること</a></li>
-                        <li><a class="nav-link" href="#compare">ひとりとの違い</a></li>
-                        <li><a class="nav-link" href="#how-to-start">はじめ方</a></li>
-                        <li><a class="nav-link" href="#trust">大切にしていること</a></li>
-                        <li><a class="nav-link" href="#faq">FAQ</a></li>
-                        <li><a class="nav-link" href="#contact-creators">お問合せ</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto max-w-6xl">
-
-        <section id="top" class="hero-section text-center section rounded-lg mt-8 mx-4">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 title-text">そのままのあなたで、はじめてみよう。</h2>
-            <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
-                初期費用ゼロ・ノルマなしで配信を伴走支援。<br />機材の進呈と初期設定、週次フィードバックで迷わず続けられます。</p>
-            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
-                    onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">お申し込みフォームへ</a>
-            </div>
-        </section>
-
-        <section id="benefits" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairでできること</h2>
-                <div class="sec-underline sec-underline--warm"></div>
-                <p class="mt-4 text-gray-600 text-base md:text-lg">数字ではなく“続けやすさ”。はじめやすく、続けやすい環境を用意しています。</p>
-            </div>
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-4 text-center">
-                <div class="col-span-full text-left">
-                    <span class="mv-chip">成長サポート</span>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <div class="text-3xl mb-2"><i class="fas fa-circle-check text-red-500"></i></div>
-                    <h3 class="font-bold">初期費用ゼロ・ノルマなし</h3>
-                    <p class="text-sm text-gray-700">自分のペースでOK。生活や学業と両立しやすい運用設計。</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <div class="text-3xl mb-2"><i class="fas fa-microphone-lines text-red-500"></i></div>
-                    <h3 class="font-bold">機材進呈＆初期設定</h3>
-                    <p class="text-sm text-gray-700">到着後すぐ使えるセットと導入サポートでスタートを後押し。</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <div class="text-3xl mb-2"><i class="fas fa-rotate text-red-500"></i></div>
-                    <h3 class="font-bold">週次フィードバック</h3>
-                    <p class="text-sm text-gray-700">振り返りと改善で、続けやすさを支えます。</p>
-                </div>
-                <div class="col-span-full text-left">
-                    <span class="mv-chip mv-chip--accent">安心サポート</span>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <div class="text-3xl mb-2"><i class="fas fa-calendar-check text-red-500"></i></div>
-                    <h3 class="font-bold">6ヶ月からの契約</h3>
-                    <p class="text-sm text-gray-700">お試ししながら適切な頻度・スタイルを一緒に設計。</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <div class="text-3xl mb-2"><i class="fas fa-calculator text-red-500"></i></div>
-                    <h3 class="font-bold">税務相談の窓口</h3>
-                    <p class="text-sm text-gray-700">確定申告と経費の基本を税理士監修でサポート。</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="compare" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">ひとり vs Flair</h2>
-                <div class="sec-underline sec-underline--warm"></div>
-                <p class="mt-4 text-gray-600 text-base md:text-lg">同じスタートでも、「ひとりで抱えるか」「誰かと並走するか」で、続けやすさは変わります。</p>
-            </div>
-            <div class="overflow-x-auto px-4">
-                <table class="min-w-full text-sm text-left border border-gray-200 rounded-lg overflow-hidden">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="p-3 border-b">項目</th>
-                            <th class="p-3 border-b">ひとりで始めた場合</th>
-                            <th class="p-3 border-b">Flairが並走する場合</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="odd:bg-white even:bg-gray-50">
-                            <td class="p-3 border-b font-medium">初期コスト</td>
-                            <td class="p-3 border-b">機材選定・購入の負担</td>
-                            <td class="p-3 border-b">機材進呈＆初期設定サポート</td>
-                        </tr>
-                        <tr class="odd:bg-white even:bg-gray-50">
-                            <td class="p-3 border-b font-medium">運用設計</td>
-                            <td class="p-3 border-b">手探りで遠回りになりがち</td>
-                            <td class="p-3 border-b">週次フィードバックとKPI設計</td>
-                        </tr>
-                        <tr class="odd:bg-white even:bg-gray-50">
-                            <td class="p-3 border-b font-medium">継続・モチベ</td>
-                            <td class="p-3 border-b">孤独になりやすい</td>
-                            <td class="p-3 border-b">伴走と相談窓口で継続</td>
-                        </tr>
-                        <tr class="odd:bg-white even:bg-gray-50">
-                            <td class="p-3 border-b font-medium">収益の安定</td>
-                            <td class="p-3 border-b">波が大きい</td>
-                            <td class="p-3 border-b">収益設計の相談（条件により固定報酬）</td>
-                        </tr>
-                        <tr class="odd:bg-white even:bg-gray-50">
-                            <td class="p-3 border-b font-medium">安全・ルール</td>
-                            <td class="p-3 border-b">自己解決で不安</td>
-                            <td class="p-3 border-b">最新ガイドライン共有と一次対応</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="text-center mt-8">
-                <a class="mv-btn" href="#contact-creators"
-                    onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});">まずは相談する</a>
-            </div>
-        </section>
-
-        <section id="how-to-start" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">はじめる流れ</h2>
-                <div class="sec-underline sec-underline--warm"></div>
-                <p class="mt-4 text-gray-600 text-base md:text-lg">相談からスタートして、最初の2〜3週間で「次に何をすればいいか分かる状態」を一緒につくります。</p>
-            </div>
-            <ol class="grid md:grid-cols-3 gap-6 px-4 list-decimal list-outside">
-                <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-2">まずはご相談</h3>
-                    <p class="text-sm text-gray-700">希望スタイル・活動ペース・不安点をヒアリング。</p>
-                </li>
-                <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-2">オンライン面談（20–30分）</h3>
-                    <p class="text-sm text-gray-700">配信の方向性とサポート内容をすり合わせ。</p>
-                </li>
-                <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-2">お試し配信 &amp; フィードバック</h3>
-                    <p class="text-sm text-gray-700">タイトル・時間帯・ネタ出し等を伴走。</p>
-                </li>
-                <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-2">契約（6ヶ月）＆機材進呈</h3>
-                    <p class="text-sm text-gray-700">到着後すぐ使えるセットで環境を整備。</p>
-                </li>
-                <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-2">初月プラン作成</h3>
-                    <p class="text-sm text-gray-700">頻度・時間帯・目標を決め、KPIを設計。</p>
-                </li>
-                <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-2">スタート &amp; 週次改善</h3>
-                    <p class="text-sm text-gray-700">継続と伸びにフォーカスした伴走支援。</p>
-                </li>
-            </ol>
-            <div class="text-center mt-8">
-                <a class="mv-btn" href="#contact-creators"
-                    onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});">まずは相談する</a>
-            </div>
-        </section>
-
-        <section id="trust" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">大切にしていること</h2>
-                <div class="sec-underline sec-underline--warm"></div>
-                <p class="mt-4 text-gray-600 text-base md:text-lg">誠実であることを、運営の基準にしています。</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 px-4">
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-3 flex items-center gap-2">
-                        <i class="fas fa-handshake text-red-500"></i>
-                        透明性
-                    </h3>
-                    <p class="text-sm text-gray-700">報酬の流れ、サポート内容、連絡体制を明確にし、曖昧さを残しません。</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-3 flex items-center gap-2">
-                        <i class="fas fa-user-heart text-red-500"></i>
-                        クリエイターファースト
-                    </h3>
-                    <p class="text-sm text-gray-700">短期の数字より、無理なく続けられる設計を優先します。</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-3 flex items-center gap-2">
-                        <i class="fas fa-comments text-red-500"></i>
-                        相談しやすさ
-                    </h3>
-                    <p class="text-sm text-gray-700">小さな不安や方向転換の相談も、遠慮なくできる距離感を大切にします。</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                    <h3 class="font-bold mb-3 flex items-center gap-2">
-                        <i class="fas fa-calendar-day text-red-500"></i>
-                        無理をさせない
-                    </h3>
-                    <p class="text-sm text-gray-700">生活に合わせたペース設計で、長く続けられる形を一緒に作ります。</p>
-                </div>
-            </div>
-            <div class="statement mt-8 mx-4">
-                <p class="text-sm md:text-base text-gray-700">
-                    私たちは、クリエイターの挑戦に対して「誠実であること」を最優先にしています。
-                    <span class="font-semibold text-gray-900">安心して続けられる環境と、納得して進める関係</span>をつくることが、Flairの責任です。
-                </p>
-            </div>
-        </section>
-
-        <section id="faq" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">よくあるご質問</h2>
-                <div class="sec-underline sec-underline--warm"></div>
-                <p class="mt-4 text-gray-600 text-base md:text-lg">最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
-            </div>
-            <div class="px-4">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <details class="group rounded-xl bg-gray-50 p-4">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            エージェンシーって事務所と何が違うんですか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700">一般的な配信者事務所のように、活動を管理・拘束する立場ではありません。
-                            Flairは、配信の自由度を保ったまま、必要な部分だけを支援する“伴走型”のエージェンシーです。</p>
-                    </details>
-                    <details class="group rounded-xl bg-gray-50 p-4">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            ノルマや罰金はありますか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700">ありません。生活や学業との両立を前提に、自分のペースで続けられる運用を一緒に設計します。</p>
-                    </details>
-                    <details class="group rounded-xl bg-gray-50 p-4">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            初期費用はかかりますか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700">初期費用はゼロです。機材は進呈し、初期設定までサポートします。</p>
-                    </details>
-                    <details class="group rounded-xl bg-gray-50 p-4">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            マージンは取られますか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700">クリエイターから直接マージンをいただきません。報酬の流れは事前に丁寧に説明します。</p>
-                    </details>
-                    <details class="group rounded-xl bg-gray-50 p-4">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            途中でやめられますか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700">可能です。条件はありますが、事情に応じて柔軟に対応します。無理な引き止めはしません。</p>
-                    </details>
-                    <details class="group rounded-xl bg-gray-50 p-4">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            怪しくないですか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <p class="mt-3 text-gray-700">
-                            Flairは<strong>TikTok社と業務委託契約を締結しているLIVEエージェンシー</strong>です。運営の透明性を大切にしています。
-                        </p>
-                    </details>
-                    <details class="group rounded-xl bg-white p-4 shadow-sm">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            報酬の流れを教えてください
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <div class="mt-3 text-gray-700">
-                            <ol class="list-decimal list-outside pl-6 space-y-1">
-                                <li>視聴者がLIVE配信でギフトを送る → ダイヤモンドとして加算</li>
-                                <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
-                                <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
-                            </ol>
-                            <p class="text-xs text-gray-500 mt-2">※
-                                クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</p>
-                        </div>
-                    </details>
-                    <details class="group rounded-xl bg-white p-4 shadow-sm">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            振込タイミングはいつですか？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <div class="mt-3 text-gray-700">
-                            <p><strong>TikTokからの分配</strong>：プラットフォームの清算サイクルに沿って支払われます（詳細は最新の公式ポリシーをご確認ください）。</p>
-                            <p class="mt-2"><strong>当社からの追加特典（月次）</strong>：当社の規定・個別契約に基づき、月次でお支払いする場合があります。</p>
-                        </div>
-                    </details>
-                    <details class="group rounded-xl bg-white p-4 shadow-sm">
-                        <summary
-                            class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
-                            LIVEエージェンシーの収益源は？
-                            <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
-                        </summary>
-                        <div class="mt-3 text-gray-700">
-                            <p>
-                                Flairの収益は、TikTok社との業務委託契約に基づく報酬（成果に応じたインセンティブを含む）です。クリエイターから直接マージンを取ることはありません。
-                            </p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact-creators" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">お問い合わせ</h2>
-                <div class="sec-underline sec-underline--warm"></div>
-                <p class="mt-4 text-gray-600 text-base md:text-lg">お申し込み前に、相談だけで大丈夫です。</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 px-4">
-                <!-- 応募（フォーム導線） -->
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="text-4xl text-red-500 mb-3"><i class="fas fa-file-pen"></i></div>
-                    <h3 class="text-xl font-bold mb-2">応募する</h3>
-                    <p class="text-sm text-gray-700 mb-4">お申し込みページから必要事項をご入力ください。</p>
-                    <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
-                        onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
-                        お申し込みフォームへ
-                    </a>
-                </div>
-                <!-- お問い合わせ（DM導線） -->
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
-                    <div class="text-4xl text-red-500 mb-3"><i class="fab fa-tiktok"></i></div>
-                    <h3 class="text-xl font-bold mb-2">相談する</h3>
-                    <p class="text-sm text-gray-700 mb-4">ちょっとした質問だけでも歓迎です。</p>
-                    <a class="inline-block px-4 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100"
-                        href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
-                        onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
-                        DMで問い合わせる
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-    <!-- フッター -->
-    <footer class="bg-gray-800 text-white text-center p-4">
-        <nav aria-label="サイト内ナビゲーション" class="footer-site-nav">
-            <ul class="site-nav">
-                <li><a class="site-link is-current" href="index.html" aria-current="page">クリエイターの方へ</a></li>
-                <li><a class="site-link" href="business.html">企業のご担当者さまへ</a></li>
-                <li><a class="site-link" href="company.html">私たちについて</a></li>
-            </ul>
+  <header class="header sticky-nav">
+    <div class="nav-wrap px-4">
+      <div class="nav-inner py-3">
+        <a href="#top" class="flex items-center gap-3">
+          <img src="./logo.png" alt="合同会社Flair ロゴ" class="logo h-12 md:h-14 rounded-lg" style="object-fit:contain">
+        </a>
+        <nav aria-label="主要ナビゲーション">
+          <button id="navToggle" class="nav-toggle rounded md:hidden" aria-expanded="false" aria-controls="navMenu">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+          <ul id="navMenu" class="nav-list page-nav" aria-label="ページ内ナビゲーション">
+            <li><a class="nav-link" href="#top">トップ</a></li>
+            <li><a class="nav-link" href="#benefits">できること</a></li>
+            <li><a class="nav-link" href="#compare">ひとりとの違い</a></li>
+            <li><a class="nav-link" href="#how-to-start">はじめ方</a></li>
+            <li><a class="nav-link" href="#trust">大切にしていること</a></li>
+            <li><a class="nav-link" href="#faq">FAQ</a></li>
+            <li><a class="nav-link" href="#contact-creators">お問合せ</a></li>
+          </ul>
         </nav>
-        <p>&copy; 2025 Flair LLC</p>
-    </footer>
+      </div>
+    </div>
+  </header>
 
-    <script>
-        // Mobile nav toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
-                const open = navMenu.style.display === 'flex';
-                navMenu.style.display = open ? 'none' : 'flex';
-                navMenu.style.flexWrap = 'wrap';
-                navToggle.setAttribute('aria-expanded', String(!open));
-            });
-        }
-        // Active link highlight on scroll
-        const links = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
-        const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-        const linkMap = new Map(targets.map((el, i) => [el.id, links[i]]));
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const link = linkMap.get(entry.target.id);
-                if (!link) return;
-                if (entry.isIntersecting) {
-                    links.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                }
-            });
-        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
-        targets.forEach(t => io.observe(t));
-        // FAQ accordion
-        document.querySelectorAll('.faq-item').forEach(item => {
-            const btn = item.querySelector('.faq-q');
-            btn.addEventListener('click', () => {
-                item.classList.toggle('open');
-                const ans = item.querySelector('.faq-a');
-                const isOpen = item.classList.contains('open');
-                ans.classList.toggle('hidden', !isOpen);
-            });
-        });
-    </script>
+  <main class="container mx-auto max-w-6xl">
+
+    <section id="top" class="hero-section text-center section rounded-lg mt-8 mx-4">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4 title-text">そのままのあなたで、<br />はじめてみよう。</h2>
+      <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
+        初期費用ゼロ・ノルマなしで配信を伴走支援。<br />機材の進呈と初期設定、週次フィードバックで迷わず続けられます。</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+          onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">お申し込みフォームへ</a>
+      </div>
+    </section>
+
+    <section id="benefits" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairでできること</h2>
+        <div class="sec-underline sec-underline--warm"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">数字ではなく“続けやすさ”。はじめやすく、続けやすい環境を用意しています。</p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-4 text-center">
+        <div class="col-span-full text-left">
+          <span class="mv-chip">成長サポート</span>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <div class="text-3xl mb-2"><i class="fas fa-circle-check text-red-500"></i></div>
+          <h3 class="font-bold">初期費用ゼロ・ノルマなし</h3>
+          <p class="text-sm text-gray-700">自分のペースでOK。生活や学業と両立しやすい運用設計。</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <div class="text-3xl mb-2"><i class="fas fa-microphone-lines text-red-500"></i></div>
+          <h3 class="font-bold">機材進呈＆初期設定</h3>
+          <p class="text-sm text-gray-700">到着後すぐ使えるセットと導入サポートでスタートを後押し。</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <div class="text-3xl mb-2"><i class="fas fa-rotate text-red-500"></i></div>
+          <h3 class="font-bold">週次フィードバック</h3>
+          <p class="text-sm text-gray-700">振り返りと改善で、続けやすさを支えます。</p>
+        </div>
+        <div class="col-span-full text-left">
+          <span class="mv-chip mv-chip--accent">安心サポート</span>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <div class="text-3xl mb-2"><i class="fas fa-calendar-check text-red-500"></i></div>
+          <h3 class="font-bold">6ヶ月からの契約</h3>
+          <p class="text-sm text-gray-700">お試ししながら適切な頻度・スタイルを一緒に設計。</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <div class="text-3xl mb-2"><i class="fas fa-calculator text-red-500"></i></div>
+          <h3 class="font-bold">税務相談の窓口</h3>
+          <p class="text-sm text-gray-700">確定申告と経費の基本を税理士監修でサポート。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">ひとり vs Flair</h2>
+        <div class="sec-underline sec-underline--warm"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">同じスタートでも、「ひとりで抱えるか」「誰かと並走するか」で、続けやすさは変わります。</p>
+      </div>
+      <div class="overflow-x-auto px-4">
+        <table class="min-w-full text-sm text-left border border-gray-200 rounded-lg overflow-hidden">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="p-3 border-b">項目</th>
+              <th class="p-3 border-b">ひとりで始めた場合</th>
+              <th class="p-3 border-b">Flairが並走する場合</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd:bg-white even:bg-gray-50">
+              <td class="p-3 border-b font-medium">初期コスト</td>
+              <td class="p-3 border-b">機材選定・購入の負担</td>
+              <td class="p-3 border-b">機材進呈＆初期設定サポート</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-gray-50">
+              <td class="p-3 border-b font-medium">運用設計</td>
+              <td class="p-3 border-b">手探りで遠回りになりがち</td>
+              <td class="p-3 border-b">週次フィードバックとKPI設計</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-gray-50">
+              <td class="p-3 border-b font-medium">継続・モチベ</td>
+              <td class="p-3 border-b">孤独になりやすい</td>
+              <td class="p-3 border-b">伴走と相談窓口で継続</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-gray-50">
+              <td class="p-3 border-b font-medium">収益の安定</td>
+              <td class="p-3 border-b">波が大きい</td>
+              <td class="p-3 border-b">収益設計の相談（条件により固定報酬）</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-gray-50">
+              <td class="p-3 border-b font-medium">安全・ルール</td>
+              <td class="p-3 border-b">自己解決で不安</td>
+              <td class="p-3 border-b">最新ガイドライン共有と一次対応</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-8">
+        <a class="mv-btn" href="#contact-creators"
+          onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});">まずは相談する</a>
+      </div>
+    </section>
+
+    <section id="how-to-start" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">はじめる流れ</h2>
+        <div class="sec-underline sec-underline--warm"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">相談からスタートして、最初の2〜3週間で「次に何をすればいいか分かる状態」を一緒につくります。</p>
+      </div>
+      <ol class="grid md:grid-cols-3 gap-6 px-4 list-decimal list-outside">
+        <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-2">まずはご相談</h3>
+          <p class="text-sm text-gray-700">希望スタイル・活動ペース・不安点をヒアリング。</p>
+        </li>
+        <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-2">オンライン面談（20–30分）</h3>
+          <p class="text-sm text-gray-700">配信の方向性とサポート内容をすり合わせ。</p>
+        </li>
+        <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-2">お試し配信 &amp; フィードバック</h3>
+          <p class="text-sm text-gray-700">タイトル・時間帯・ネタ出し等を伴走。</p>
+        </li>
+        <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-2">契約（6ヶ月）＆機材進呈</h3>
+          <p class="text-sm text-gray-700">到着後すぐ使えるセットで環境を整備。</p>
+        </li>
+        <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-2">初月プラン作成</h3>
+          <p class="text-sm text-gray-700">頻度・時間帯・目標を決め、KPIを設計。</p>
+        </li>
+        <li class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-2">スタート &amp; 週次改善</h3>
+          <p class="text-sm text-gray-700">継続と伸びにフォーカスした伴走支援。</p>
+        </li>
+      </ol>
+      <div class="text-center mt-8">
+        <a class="mv-btn" href="#contact-creators"
+          onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});">まずは相談する</a>
+      </div>
+    </section>
+
+    <section id="trust" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">大切にしていること</h2>
+        <div class="sec-underline sec-underline--warm"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">誠実であることを、運営の基準にしています。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 px-4">
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-3 flex items-center gap-2">
+            <i class="fas fa-handshake text-red-500"></i>
+            透明性
+          </h3>
+          <p class="text-sm text-gray-700">報酬の流れ、サポート内容、連絡体制を明確にし、曖昧さを残しません。</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-3 flex items-center gap-2">
+            <i class="fas fa-user-heart text-red-500"></i>
+            クリエイターファースト
+          </h3>
+          <p class="text-sm text-gray-700">短期の数字より、無理なく続けられる設計を優先します。</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-3 flex items-center gap-2">
+            <i class="fas fa-comments text-red-500"></i>
+            相談しやすさ
+          </h3>
+          <p class="text-sm text-gray-700">小さな不安や方向転換の相談も、遠慮なくできる距離感を大切にします。</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-bold mb-3 flex items-center gap-2">
+            <i class="fas fa-calendar-day text-red-500"></i>
+            無理をさせない
+          </h3>
+          <p class="text-sm text-gray-700">生活に合わせたペース設計で、長く続けられる形を一緒に作ります。</p>
+        </div>
+      </div>
+      <div class="statement mt-8 mx-4">
+        <p class="text-sm md:text-base text-gray-700">
+          私たちは、クリエイターの挑戦に対して「誠実であること」を最優先にしています。
+          <span class="font-semibold text-gray-900">安心して続けられる環境と、納得して進める関係</span>をつくることが、Flairの責任です。
+        </p>
+      </div>
+    </section>
+
+    <section id="faq" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">よくあるご質問</h2>
+        <div class="sec-underline sec-underline--warm"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
+      </div>
+      <div class="px-4">
+        <div class="grid md:grid-cols-2 gap-6">
+          <details class="group rounded-xl bg-gray-50 p-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              エージェンシーって事務所と何が違うんですか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <p class="mt-3 text-gray-700">一般的な配信者事務所のように、活動を管理・拘束する立場ではありません。
+              Flairは、配信の自由度を保ったまま、必要な部分だけを支援する“伴走型”のエージェンシーです。</p>
+          </details>
+          <details class="group rounded-xl bg-gray-50 p-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              ノルマや罰金はありますか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <p class="mt-3 text-gray-700">ありません。生活や学業との両立を前提に、自分のペースで続けられる運用を一緒に設計します。</p>
+          </details>
+          <details class="group rounded-xl bg-gray-50 p-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              初期費用はかかりますか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <p class="mt-3 text-gray-700">初期費用はゼロです。機材は進呈し、初期設定までサポートします。</p>
+          </details>
+          <details class="group rounded-xl bg-gray-50 p-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              マージンは取られますか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <p class="mt-3 text-gray-700">クリエイターから直接マージンをいただきません。報酬の流れは事前に丁寧に説明します。</p>
+          </details>
+          <details class="group rounded-xl bg-gray-50 p-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              途中でやめられますか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <p class="mt-3 text-gray-700">可能です。条件はありますが、事情に応じて柔軟に対応します。無理な引き止めはしません。</p>
+          </details>
+          <details class="group rounded-xl bg-gray-50 p-4">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              怪しくないですか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <p class="mt-3 text-gray-700">
+              Flairは<strong>TikTok社と業務委託契約を締結しているLIVEエージェンシー</strong>です。運営の透明性を大切にしています。
+            </p>
+          </details>
+          <details class="group rounded-xl bg-white p-4 shadow-sm">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              報酬の流れを教えてください
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <div class="mt-3 text-gray-700">
+              <ol class="list-decimal list-outside pl-6 space-y-1">
+                <li>視聴者がLIVE配信でギフトを送る → ダイヤモンドとして加算</li>
+                <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
+                <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
+              </ol>
+              <p class="text-xs text-gray-500 mt-2">※
+                クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</p>
+            </div>
+          </details>
+          <details class="group rounded-xl bg-white p-4 shadow-sm">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              振込タイミングはいつですか？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <div class="mt-3 text-gray-700">
+              <p><strong>TikTokからの分配</strong>：プラットフォームの清算サイクルに沿って支払われます（詳細は最新の公式ポリシーをご確認ください）。</p>
+              <p class="mt-2"><strong>当社からの追加特典（月次）</strong>：当社の規定・個別契約に基づき、月次でお支払いする場合があります。</p>
+            </div>
+          </details>
+          <details class="group rounded-xl bg-white p-4 shadow-sm">
+            <summary class="list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+              LIVEエージェンシーの収益源は？
+              <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <div class="mt-3 text-gray-700">
+              <p>
+                Flairの収益は、TikTok社との業務委託契約に基づく報酬（成果に応じたインセンティブを含む）です。クリエイターから直接マージンを取ることはありません。
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-creators" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">お問い合わせ</h2>
+        <div class="sec-underline sec-underline--warm"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">お申し込み前に、相談だけで大丈夫です。</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 px-4">
+        <!-- 応募（フォーム導線） -->
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
+          <div class="text-4xl text-red-500 mb-3"><i class="fas fa-file-pen"></i></div>
+          <h3 class="text-xl font-bold mb-2">応募する</h3>
+          <p class="text-sm text-gray-700 mb-4">お申し込みページから必要事項をご入力ください。</p>
+          <a class="mv-btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+            onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
+            お申し込みフォームへ
+          </a>
+        </div>
+        <!-- お問い合わせ（DM導線） -->
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
+          <div class="text-4xl text-red-500 mb-3"><i class="fab fa-tiktok"></i></div>
+          <h3 class="text-xl font-bold mb-2">相談する</h3>
+          <p class="text-sm text-gray-700 mb-4">ちょっとした質問だけでも歓迎です。</p>
+          <a class="inline-block px-4 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100"
+            href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
+            onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
+            DMで問い合わせる
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- フッター -->
+  <footer class="bg-gray-800 text-white text-center p-4">
+    <nav aria-label="サイト内ナビゲーション" class="footer-site-nav">
+      <ul class="site-nav">
+        <li><a class="site-link is-current" href="#" aria-current="page">クリエイターの方へ</a></li>
+        <li><a class="site-link" href="business/">企業のご担当者さまへ</a></li>
+        <li><a class="site-link" href="company/">私たちについて</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2025 Flair LLC</p>
+  </footer>
+
+  <script src="./common.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const btn = item.querySelector('.faq-q');
+      btn.addEventListener('click', () => {
+        item.classList.toggle('open');
+        const ans = item.querySelector('.faq-a');
+        const isOpen = item.classList.contains('open');
+        ans.classList.toggle('hidden', !isOpen);
+      });
+    });
+  </script>
 </body>
 
 </html>

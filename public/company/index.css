@@ -1,0 +1,6 @@
+@import url('../common.css');
+
+/* ===== Company Page Specific Styles ===== */
+.hero-section {
+    background-image: url('./background-image.png');
+}
