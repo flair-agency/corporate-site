@@ -211,8 +211,6 @@ ol.flow {
       padding-left: 2.9rem;
 
       &::before {
-        left: .25rem;
-        top: .25rem;
         width: 1.35rem;
         height: 1.35rem;
         font-size: .72rem;
