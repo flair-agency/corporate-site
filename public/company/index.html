@@ -31,8 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Fonts -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-    as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <!-- Font Awesome -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style"
@@ -60,9 +59,9 @@
 </head>
 
 <body>
-  <header class="header sticky-nav">
-    <div class="nav-wrap px-4">
-      <div class="nav-inner py-3">
+  <header class="header">
+    <div class="wrap px-4">
+      <div class="inner py-3">
         <a href="../" class="flex items-center gap-3">
           <picture>
             <source srcset="../logo-70.avif" type="image/avif">
@@ -70,15 +69,16 @@
             <img src="../logo.png" alt="合同会社Flair ロゴ" class="logo rounded-lg" width="70" height="50">
           </picture>
         </a>
-        <nav aria-label="主要ナビゲーション">
-          <button id="navToggle" class="nav-toggle rounded" aria-expanded="false" aria-controls="navMenu" aria-label="メニュー">
+        <nav class="on-page" aria-label="主要ナビゲーション">
+          <button id="navToggle" class="toggle rounded" aria-expanded="false" aria-controls="navMenu"
+            aria-label="メニュー">
             <span class="sr-only">メニュー</span>
             <i class="fas fa-bars text-xl"></i>
           </button>
-          <ul id="navMenu" class="nav-list page-nav" aria-label="ページ内ナビゲーション">
-            <li><a class="nav-link" href="#top">トップ</a></li>
-            <li><a class="nav-link" href="#mission-vision">理念</a></li>
-            <li><a class="nav-link" href="#company">会社概要</a></li>
+          <ul id="navMenu" class="menu" aria-label="ページ内ナビゲーション">
+            <li><a href="#top">トップ</a></li>
+            <li><a href="#mission-vision">理念</a></li>
+            <li><a href="#company">会社概要</a></li>
           </ul>
         </nav>
       </div>
@@ -87,136 +87,133 @@
 
   <main class="container mx-auto max-w-6xl">
 
-    <section id="top" class="hero-section text-center section rounded-lg mt-8 mx-4">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4 title-text">私たちについて</h2>
+    <section id="top" class="section hero-section text-center rounded-lg mt-8 mx-4">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">私たちについて</h2>
       <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
         LIVE配信を通じて、誰もが自分らしく挑戦できる社会を。</p>
     </section>
-    <section id="mission-vision" class="mv-section sec sec--creator full-bleed" aria-labelledby="mv-heading">
-      <div class="mv-wrap">
-        <header class="mv-head sec__head">
-          <h2 id="mv-heading" class="mv-title sec__title">MISSION &amp; VISION</h2>
-          <p class="mv-subtitle sec__lead">私たちが目指す社会と、Flairの役割</p>
-        </header>
-        <div class="mv-grid">
-          <!-- MISSION -->
-          <article class="mv-card" aria-labelledby="mv-mission-h">
-            <div class="mv-chip">MISSION</div>
-            <h3 id="mv-mission-h" class="mv-catch">
-              誰もが、LIVEで自分を解き放てる社会をつくる。
-            </h3>
-            <p class="mv-body">
-              LIVE配信という表現手段を通じて、年齢や経験に関係なく、
-              誰もが自分らしく輝き、人生を切り開いていける未来を目指します。
-            </p>
-            <img src="./mission-image.png" alt="多様な配信者がそれぞれ異なる場所から配信している様子" class="mv-img" width="1536" height="1024">
-          </article>
-          <!-- VISION -->
-          <article class="mv-card" aria-labelledby="mv-vision-h">
-            <div class="mv-chip mv-chip--accent">VISION</div>
-            <h3 id="mv-vision-h" class="mv-catch">
-              若手クリエイターの挑戦と成長を支え、最も信頼されるLIVEパートナーとなる。
-            </h3>
-            <p class="mv-body">
-              Flairは、安心感と成長機会、そして才能を価値に変える仕組みで、
-              一人ひとりが自分らしく活動を続けられるよう伴走します。
-            </p>
-            <img src="./vision-image.png" alt="若手クリエイターがそれぞれ異なる環境で成長に向けて配信している様子" class="mv-img" width="1536"
-              height="1024">
-          </article>
-        </div>
-      </div>
-    </section>
-    <section id="company" class="section biz-band">
-      <div class="biz-wrap">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800">会社概要</h2>
-          <div class="sec-underline sec-underline--cool"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 px-4">
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">商号</h3>
-            <p class="pl-4"><ruby>合<rt>ごう</rt></ruby><ruby>同<rt>どう</rt></ruby><ruby>会<rt>がい</rt>
-              </ruby><ruby>社
-                <rt>しゃ</rt>
-              </ruby><ruby>Flair<rt>フレア</rt></ruby></p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">本店所在地</h3>
-            <p class="pl-4">東京都練馬区関町南４丁目１８番２－４０５号</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">法人番号</h3>
-            <p class="pl-4">7011603004768</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">資本金</h3>
-            <p class="pl-4">10万円</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">会社成立の年月日</h3>
-            <p class="pl-4">令和7年7月7日</p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">人員体制</h3>
-            <ul class="pl-6 list-disc text-gray-700">
-              <li>業務執行社員：1名</li>
-              <li>雇用従業員：0名</li>
-              <li>外部パートナー：複数名（専門領域別に連携）</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">主要取引金融機関</h3>
-            <ul class="pl-6 list-disc text-gray-700">
-              <li>三井住友銀行 トランクNORTH支店</li>
-            </ul>
-          </div>
-          <!-- 公式SNS -->
-          <div class="md:col-span-2">
-            <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">公式アカウント</h3>
-            <nav aria-label="Flairの公式アカウント一覧">
-              <ul class="pl-4 flex flex-wrap items-center gap-3">
-                <!-- TikTok（公開中） -->
-                <li>
-                  <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="me noopener noreferrer"
-                    aria-label="TikTokの公式アカウント"
-                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
-                    <i class="fab fa-tiktok"></i>
-                    <span>TikTok</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/company/flair-agency-biz" target="_blank"
-                    rel="me noopener noreferrer" aria-label="LinkedInの公式アカウント"
-                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.facebook.com/flair.agency.biz" target="_blank" rel="me noopener noreferrer"
-                    aria-label="Facebookの公式アカウント"
-                    class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
-                    <i class="fab fa-facebook"></i>
-                    <span>Facebook</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <!-- 追加方法：上の <li> をコピペし、アイコン（<i>）のクラスとリンク先URLを変更すれば新しいSNSを簡単に追加できます -->
-          </div>
-        </div>
+
+    <section id="mission-vision" class="section">
+      <header>
+        <h2>MISSION &amp; VISION</h2>
+        <p>私たちが目指す社会と、Flairの役割</p>
+      </header>
+      <div class="grid">
+        <!-- MISSION -->
+        <article>
+          <div class="chip">MISSION</div>
+          <h3>
+            誰もが、LIVEで自分を解き放てる社会をつくる。
+          </h3>
+          <p>
+            LIVE配信という表現手段を通じて、年齢や経験に関係なく、
+            誰もが自分らしく輝き、人生を切り開いていける未来を目指します。
+          </p>
+          <img src="./mission-image.png" alt="多様な配信者がそれぞれ異なる場所から配信している様子" width="1536" height="1024">
+        </article>
+        <!-- VISION -->
+        <article>
+          <div class="chip accent">VISION</div>
+          <h3>
+            若手クリエイターの挑戦と成長を支え、最も信頼されるLIVEパートナーとなる。
+          </h3>
+          <p>
+            Flairは、安心感と成長機会、そして才能を価値に変える仕組みで、
+            一人ひとりが自分らしく活動を続けられるよう伴走します。
+          </p>
+          <img src="./vision-image.png" alt="若手クリエイターがそれぞれ異なる環境で成長に向けて配信している様子" width="1536"
+            height="1024">
+        </article>
       </div>
     </section>
 
+    <section id="company" class="section biz band cool">
+      <header class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">会社概要</h2>
+        <div class="underline"></div>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 px-4">
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">商号</h3>
+          <p class="pl-4"><ruby>合<rt>ごう</rt></ruby><ruby>同<rt>どう</rt></ruby><ruby>会<rt>がい</rt>
+            </ruby><ruby>社
+              <rt>しゃ</rt>
+            </ruby><ruby>Flair<rt>フレア</rt></ruby></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">本店所在地</h3>
+          <p class="pl-4">東京都練馬区関町南４丁目１８番２－４０５号</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">法人番号</h3>
+          <p class="pl-4">7011603004768</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">資本金</h3>
+          <p class="pl-4">10万円</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">会社成立の年月日</h3>
+          <p class="pl-4">令和7年7月7日</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">人員体制</h3>
+          <ul class="pl-6 list-disc text-gray-700">
+            <li>業務執行社員：1名</li>
+            <li>雇用従業員：0名</li>
+            <li>外部パートナー：複数名（専門領域別に連携）</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">主要取引金融機関</h3>
+          <ul class="pl-6 list-disc text-gray-700">
+            <li>三井住友銀行 トランクNORTH支店</li>
+          </ul>
+        </div>
+        <!-- 公式SNS -->
+        <div class="md:col-span-2">
+          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">公式アカウント</h3>
+          <nav aria-label="Flairの公式アカウント一覧">
+            <ul class="pl-4 flex flex-wrap items-center gap-3">
+              <!-- TikTok（公開中） -->
+              <li>
+                <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="me noopener noreferrer"
+                  aria-label="TikTokの公式アカウント"
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                  <i class="fab fa-tiktok"></i>
+                  <span>TikTok</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/flair-agency-biz" target="_blank" rel="me noopener noreferrer"
+                  aria-label="LinkedInの公式アカウント"
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                  <i class="fab fa-linkedin"></i>
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/flair.agency.biz" target="_blank" rel="me noopener noreferrer"
+                  aria-label="Facebookの公式アカウント"
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                  <i class="fab fa-facebook"></i>
+                  <span>Facebook</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- 追加方法：上の <li> をコピペし、アイコン（<i>）のクラスとリンク先URLを変更すれば新しいSNSを簡単に追加できます -->
+        </div>
+      </div>
+    </section>
   </main>
   <!-- フッター -->
   <footer class="bg-gray-800 text-white text-center p-4">
-    <nav aria-label="サイト内ナビゲーション" class="footer-site-nav">
-      <ul class="site-nav">
-        <li><a class="site-link" href="../">クリエイターの方へ</a></li>
-        <li><a class="site-link" href="../business/">企業のご担当者さまへ</a></li>
-        <li><a class="site-link is-current" href="#" aria-current="page">私たちについて</a></li>
+    <nav aria-label="サイト内ナビゲーション" class="on-site">
+      <ul class="menu flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
+        <li><a href="../">クリエイターの方へ</a></li>
+        <li><a href="../business/">企業のご担当者さまへ</a></li>
+        <li><a class="is-current" href="#" aria-current="page">私たちについて</a></li>
       </ul>
     </nav>
     <p>&copy; 2025 Flair LLC</p>

@@ -1,8 +1,102 @@
 /* ===== Business Page Specific Styles ===== */
 .hero-section {
-  background-image: image-set(
-    url('./background-image.avif?v=20260211r1') type('image/avif') 1x,
-    url('./background-image.webp?v=20260211r1') type('image/webp') 1x,
-    url('./background-image.png?v=20260211r1') type('image/png') 1x
-  );
+  background-image: image-set(url('./background-image.avif?v=20260211r1') type('image/avif') 1x,
+      url('./background-image.webp?v=20260211r1') type('image/webp') 1x,
+      url('./background-image.png?v=20260211r1') type('image/png') 1x);
+}
+
+
+.biz.section {
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &.band {
+    background: var(--biz-band-bg);
+    padding: 4rem 0;
+    margin: 2rem 0;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(15, 23, 42, 0.03));
+
+    & h2 {
+      color: var(--biz-head);
+    }
+
+    &,
+    & p,
+    & li,
+    & h3,
+    & h4 {
+      color: var(--biz-body);
+    }
+
+    /* === Cool tone variant for business contact band === */
+    &.cool {
+      /* override only the variables & subtle bg tint */
+      --biz-band-bg: #EAF2FF;
+      /* light blue */
+      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(37, 99, 235, 0.06));
+
+      .chip {
+        color: #1D4ED8;
+        /* blue-700 */
+        border-color: #BFDBFE;
+        /* blue-200 */
+        background: #EFF6FF;
+        /* blue-50 */
+      }
+
+      .cta.btn {
+        background: #2563eb;
+        /* blue-600 */
+
+        &:hover {
+          box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
+        }
+      }
+
+      /* === Section title underline variants === */
+      h2+.underline {
+        background-image: linear-gradient(to right, #3B82F6, #22D3EE);
+        /* blue-500 -> cyan-400 */
+      }
+    }
+  }
+
+  /* === Unified business card style (match #certification) === */
+  .card {
+    background: #fff;
+    /* bg-white */
+    border: 1px solid #BFDBFE;
+    /* ≒ border-blue-100 の視認性確保 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    /* shadow-sm */
+    padding: 1.5rem;
+    /* p-6 */
+
+    &:hover {
+      box-shadow: 0 6px 18px rgba(37, 99, 235, .08);
+    }
+
+    /* ===== Visual helpers for growth section ===== */
+    &.growth {
+      h3 {
+        letter-spacing: .02em;
+      }
+
+      .kicker {
+        font-size: 12px;
+        letter-spacing: .12em;
+        color: #9CA3AF;
+      }
+    }
+
+  }
+
+  .muted {
+    color: #475569;
+  }
 }

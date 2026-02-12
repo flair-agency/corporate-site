@@ -1,8 +1,100 @@
 /* ===== Company Page Specific Styles ===== */
 .hero-section {
-  background-image: image-set(
-    url('./background-image.avif?v=20260211r1') type('image/avif') 1x,
-    url('./background-image.webp?v=20260211r1') type('image/webp') 1x,
-    url('./background-image.png?v=20260211r1') type('image/png') 1x
-  );
+  background-image: image-set(url('./background-image.avif?v=20260211r1') type('image/avif') 1x,
+      url('./background-image.webp?v=20260211r1') type('image/webp') 1x,
+      url('./background-image.png?v=20260211r1') type('image/png') 1x);
+}
+
+/* ===== Mission & Vision ===== */
+#mission-vision.section {
+  padding: clamp(48px, 6vw, 80px) 16px;
+  background: #fff;
+  background: #fffaf7;
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+
+    h2 {
+      font-size: clamp(20px, 2.6vw, 28px);
+      letter-spacing: .06em;
+      margin: 0;
+      text-align: center;
+      color: #1f2937;
+    }
+
+    p {
+      color: #666;
+      color: #6b7280;
+      margin: 8px 0 0;
+    }
+  }
+
+  .grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  article {
+    background: #fff;
+    background: #ffffff;
+    border: 1px solid #f2e7df;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .02);
+    box-shadow: 0 1px 8px rgba(124, 45, 18, 0.05);
+    padding: clamp(16px, 2vw, 24px);
+  }
+
+  .catch {
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.6;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #111827;
+  }
+
+  p {
+    color: #444;
+    color: #374151;
+    line-height: 1.9;
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    border-radius: 12px;
+    margin-top: 14px;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #f2e7df;
+  }
+}
+
+@media (min-width: 960px) {
+  #mission-vision.section .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  #founder.section {
+    h2 {
+      margin-bottom: 2.4rem;
+    }
+
+    h3 {
+      margin-bottom: 1.1rem;
+    }
+
+    .photo {
+      width: 220px;
+      margin: 0;
+      flex: 0 0 auto;
+    }
+  }
 }

@@ -21,7 +21,7 @@ if (navToggle && navMenu) {
 }
 
 // Active link highlight on scroll
-const links = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+const links = Array.from(document.querySelectorAll('nav.on-page ul.menu li a[href^="#"]'));
 const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 const linkMap = new Map(targets.map((el, i) => [el.id, links[i]]));
 const io = new IntersectionObserver((entries) => {

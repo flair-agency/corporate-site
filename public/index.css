@@ -17,15 +17,7 @@ main {
   font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-.compare-kicker {
-  display: inline-block;
-  color: var(--accent-strong);
-  font-size: .95rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-}
-
-.compare-table {
+table.compare {
   border-collapse: separate;
   border-spacing: 0;
 
@@ -56,97 +48,97 @@ main {
       line-height: 1;
     }
   }
-}
 
-.compare-pill {
-  display: inline-block;
-  margin-left: .45rem;
-  padding: .2rem .5rem;
-  border-radius: 999px;
-  background: #fee2e2;
-  color: var(--accent-strong);
-  font-size: .72rem;
-  font-weight: 700;
-  vertical-align: middle;
-}
-
-.flow-list {
-  counter-reset: step;
-}
-
-.flow-step {
-  position: relative;
-  padding-left: 3.1rem;
-  transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
-
-  &::before {
-    content: attr(data-step);
-    position: absolute;
-    left: .25rem;
-    top: .25rem;
-    width: 1.5rem;
-    height: 1.5rem;
+  .pill {
+    display: inline-block;
+    margin-left: .45rem;
+    padding: .2rem .5rem;
     border-radius: 999px;
-    display: grid;
-    place-items: center;
-    font-size: .78rem;
+    background: #fee2e2;
+    color: var(--accent-strong);
+    font-size: .72rem;
     font-weight: 700;
-    color: #fff;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px #fff;
+    vertical-align: middle;
   }
+}
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(15, 23, 42, .08);
-  }
+ol.flow {
+  counter-reset: step;
 
-  &:nth-child(1) {
-    background: var(--step-1);
-  }
+  li {
+    position: relative;
+    padding-left: 3.1rem;
+    transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
 
-  &:nth-child(2) {
-    background: var(--step-2);
-  }
+    &::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px #fff;
+    }
 
-  &:nth-child(3) {
-    background: var(--step-3);
-  }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(15, 23, 42, .08);
+    }
 
-  &:nth-child(4) {
-    background: var(--step-4);
-  }
+    &:nth-child(1) {
+      background: var(--step-1);
+    }
 
-  &:nth-child(5) {
-    background: var(--step-5);
-  }
+    &:nth-child(2) {
+      background: var(--step-2);
+    }
 
-  &:nth-child(6) {
-    background: var(--step-6);
-  }
+    &:nth-child(3) {
+      background: var(--step-3);
+    }
 
-  &:nth-child(1)::before {
-    background: #f87171;
-  }
+    &:nth-child(4) {
+      background: var(--step-4);
+    }
 
-  &:nth-child(2)::before {
-    background: #ef4444;
-  }
+    &:nth-child(5) {
+      background: var(--step-5);
+    }
 
-  &:nth-child(3)::before {
-    background: #dc2626;
-  }
+    &:nth-child(6) {
+      background: var(--step-6);
+    }
 
-  &:nth-child(4)::before {
-    background: #b91c1c;
-  }
+    &:nth-child(1)::before {
+      background: #f87171;
+    }
 
-  &:nth-child(5)::before {
-    background: #991b1b;
-  }
+    &:nth-child(2)::before {
+      background: #ef4444;
+    }
 
-  &:nth-child(6)::before {
-    background: #7f1d1d;
+    &:nth-child(3)::before {
+      background: #dc2626;
+    }
+
+    &:nth-child(4)::before {
+      background: #b91c1c;
+    }
+
+    &:nth-child(5)::before {
+      background: #991b1b;
+    }
+
+    &:nth-child(6)::before {
+      background: #7f1d1d;
+    }
   }
 }
 
@@ -191,44 +183,41 @@ main {
 }
 
 @media (max-width: 480px) {
-  .compare-kicker {
-    font-size: .88rem;
-  }
 
-  .compare-table th,
-  .compare-table td {
+  table.compare th,
+  table.compare td {
     font-size: .82rem;
     line-height: 1.55;
     white-space: normal;
   }
 
-  .compare-pill {
+  table.compare .pill {
     font-size: .65rem;
     margin-left: .25rem;
   }
 
-  .compare-table td.is-check {
+  table.compare td.is-check {
     padding-left: 1.65rem;
   }
 
-  .compare-table td.is-check::before {
+  table.compare td.is-check::before {
     left: .52rem;
   }
 
-  .flow-list {
+  ol.flow {
     gap: .9rem;
-  }
 
-  .flow-step {
-    padding-left: 2.9rem;
-  }
+    li {
+      padding-left: 2.9rem;
 
-  .flow-step::before {
-    left: .25rem;
-    top: .25rem;
-    width: 1.35rem;
-    height: 1.35rem;
-    font-size: .72rem;
+      &::before {
+        left: .25rem;
+        top: .25rem;
+        width: 1.35rem;
+        height: 1.35rem;
+        font-size: .72rem;
+      }
+    }
   }
 
   .statement {
@@ -247,11 +236,9 @@ main {
 }
 
 .hero-section {
-  background-image: image-set(
-    url('./background-image.avif?v=20260211r1') type('image/avif') 1x,
-    url('./background-image.webp?v=20260211r1') type('image/webp') 1x,
-    url('./background-image.png?v=20260211r1') type('image/png') 1x
-  );
+  background-image: image-set(url('./background-image.avif?v=20260211r1') type('image/avif') 1x,
+      url('./background-image.webp?v=20260211r1') type('image/webp') 1x,
+      url('./background-image.png?v=20260211r1') type('image/png') 1x);
 
   &>h2 {
     font-family: 'Zen Kurenaido', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
