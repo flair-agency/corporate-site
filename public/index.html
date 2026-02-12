@@ -104,7 +104,8 @@
       </div>
     </section>
 
-    <section id="benefits" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+    <section id="benefits" data-animate="left"
+      class="section bg-white rounded-lg shadow-lg mt-8 mx-4 opacity-0 -translate-x-6">
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairでできること</h2>
         <div class="underline warm"></div>
@@ -145,7 +146,8 @@
       </div>
     </section>
 
-    <section id="compare" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+    <section id="compare" data-animate="right"
+      class="section bg-white rounded-lg shadow-lg mt-8 mx-4 opacity-0 translate-x-6">
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">ひとり vs Flair</h2>
         <div class="underline warm"></div>
@@ -195,7 +197,8 @@
       </div>
     </section>
 
-    <section id="how-to-start" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+    <section id="how-to-start" data-animate="left"
+      class="section bg-white rounded-lg shadow-lg mt-8 mx-4 opacity-0 -translate-x-6">
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">はじめる流れ</h2>
         <div class="underline warm"></div>
@@ -233,7 +236,8 @@
       </div>
     </section>
 
-    <section id="trust" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+    <section id="trust" data-animate="right"
+      class="section bg-white rounded-lg shadow-lg mt-8 mx-4 opacity-0 translate-x-6">
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">大切にしていること</h2>
         <div class="underline warm"></div>
@@ -277,7 +281,8 @@
       </div>
     </section>
 
-    <section id="faq" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+    <section id="faq" data-animate="left"
+      class="section bg-white rounded-lg shadow-lg mt-8 mx-4 opacity-0 -translate-x-6">
       <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">よくあるご質問</h2>
         <div class="underline warm"></div>
@@ -370,7 +375,8 @@
       </div>
     </section>
 
-    <section id="contact-creators" class="section bg-white rounded-lg shadow-lg mt-8 mx-4">
+    <section id="contact-creators" data-animate="up"
+      class="section bg-white rounded-lg shadow-lg mt-8 mx-4 opacity-0 translate-y-4">
       <div class="text-center mb-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800">お問い合わせ</h2>
         <div class="underline warm"></div>
@@ -415,18 +421,7 @@
   </footer>
 
   <script src="./common.js?v=20260212r11" defer></script>
-  <script>
-    // FAQ accordion
-    document.querySelectorAll('.faq-item').forEach(item => {
-      const btn = item.querySelector('.faq-q');
-      btn.addEventListener('click', () => {
-        item.classList.toggle('open');
-        const ans = item.querySelector('.faq-a');
-        const isOpen = item.classList.contains('open');
-        ans.classList.toggle('hidden', !isOpen);
-      });
-    });
-  </script>
+  <script src="./index.js?v=20260212r11" defer></script>
 </body>
 
 </html>
