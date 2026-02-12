@@ -242,10 +242,82 @@ ol.flow {
   }
 }
 
+@keyframes stickerFloat {
+  0% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-3px) rotate(.8deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+
+.hero.section .stickers {
+  position: absolute;
+  top: clamp(1rem, 5.5vw, 2.2rem);
+  right: clamp(.75rem, 4.4vw, 2.4rem);
+  z-index: 10;
+  display: grid;
+  justify-items: end;
+  gap: .45rem;
+  pointer-events: none;
+
+  .sticker {
+    display: inline-block;
+    padding: .42rem .82rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .46);
+    background: rgba(255, 255, 255, .28);
+    color: #111827;
+    font-size: clamp(.72rem, 2.6vw, .82rem);
+    font-weight: 800;
+    letter-spacing: .02em;
+    line-height: 1;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, .1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: stickerFloat 2.7s ease-in-out infinite;
+    will-change: transform;
+
+    &.s1 {
+      animation-delay: 0s;
+    }
+
+    &.s2 {
+      animation-delay: .45s;
+    }
+
+    &.s3 {
+      animation-delay: .9s;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .hero.section .stickers {
+    top: .85rem;
+    right: .6rem;
+    gap: .32rem;
+
+    .sticker {
+      padding: .33rem .64rem;
+      font-size: .67rem;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-animate] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .hero.section .stickers .sticker {
+    animation: none !important;
   }
 }
