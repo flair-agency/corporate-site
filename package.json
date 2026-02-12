@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build:css": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --minify",
+    "build:css:watch": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --watch",
     "build": "npm run build:css"
   },
   "repository": {
