@@ -1,5 +1,5 @@
 /* ===== Company Page Specific Styles ===== */
-.hero-section {
+.hero.section {
   background-image: image-set(url("./background-image.avif?v=20260212r11") type("image/avif") 1x,
       url("./background-image.webp?v=20260212r11") type("image/webp") 1x,
       url("./background-image.png?v=20260212r11") type("image/png") 1x);
@@ -18,6 +18,5 @@
 }
 
 #founder.section article blockquote {
-  font-family: "Zen Kurenaido", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-    "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Zen Kurenaido", var(--font-fallback-sans);
 }
