@@ -1,10 +1,10 @@
 // FAQ accordion
 (() => {
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const btn = item.querySelector('.faq-q');
+  document.querySelectorAll('#faq.section .faq-item').forEach(item => {
+    const btn = item.querySelector('.q');
     btn.addEventListener('click', () => {
       item.classList.toggle('open');
-      const ans = item.querySelector('.faq-a');
+      const ans = item.querySelector('.a');
       const isOpen = item.classList.contains('open');
       ans.classList.toggle('hidden', !isOpen);
     });
@@ -35,6 +35,18 @@
       const el = entry.target;
       el.classList.remove(...hiddenClasses);
       el.classList.add(...shownClasses, 'translate-x-0', 'translate-y-0');
+      const icons = el.querySelectorAll('[data-icon-anim]');
+      icons.forEach((i, idx) => {
+        const delay = 500 + idx * 100;
+        setTimeout(() => {
+          i.classList.add('icon-pop');
+          i.addEventListener(
+            'animationend',
+            () => i.classList.remove('icon-pop'),
+            { once: true }
+          );
+        }, delay);
+      });
       obs.unobserve(el);
     });
   }, {

@@ -343,24 +343,3 @@ ol ol {
     /* brand(red) -> amber-500 */
   }
 }
-
-/* ===== FAQ accordion ===== */
-.faq-q {
-  cursor: pointer;
-}
-
-.faq-item {
-  &.open {
-    .faq-a {
-      display: block;
-    }
-
-    .fa-chevron-down {
-      transform: rotate(180deg);
-    }
-  }
-
-  & .fa-chevron-down {
-    transition: transform .2s ease;
-  }
-}
