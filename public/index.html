@@ -23,8 +23,8 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="./favicon-192.png" onerror="this.href='favicon-192.png';" />
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260212r03"
-    imagesrcset="./background-image.avif?v=20260212r03 1x, ./background-image.webp?v=20260212r03 1x, ./background-image.png?v=20260212r03 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260212r04"
+    imagesrcset="./background-image.avif?v=20260212r04 1x, ./background-image.webp?v=20260212r04 1x, ./background-image.png?v=20260212r04 1x"
     imagesizes="100vw" />
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
@@ -41,11 +41,11 @@
     crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin />
   <!-- Local CSS -->
-  <link rel="preload" href="./common.css?v=20260212r03" as="style" />
-  <link rel="preload" href="./index.css?v=20260212r03" as="style" />
-  <link rel="stylesheet" href="./common.css?v=20260212r03" />
-  <link rel="stylesheet" href="/assets/app.css?v=20260212r03" />
-  <link rel="stylesheet" href="./index.css?v=20260212r03" />
+  <link rel="preload" href="./common.css?v=20260212r04" as="style" />
+  <link rel="preload" href="./index.css?v=20260212r04" as="style" />
+  <link rel="stylesheet" href="./common.css?v=20260212r04" />
+  <link rel="stylesheet" href="/assets/app.css?v=20260212r04" />
+  <link rel="stylesheet" href="./index.css?v=20260212r04" />
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;600;700&family=Zen+Kurenaido&display=swap" />
@@ -94,13 +94,18 @@
 
   <main class="container mx-auto max-w-6xl">
 
-    <section id="top" class="hero-section text-center section rounded-lg mt-8 mx-4">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4">そのままのあなたで、<br />はじめてみよう。</h2>
-      <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
-        初期費用ゼロ・ノルマなしで配信を伴走支援。<br />機材の進呈と初期設定、週次フィードバックで迷わず続けられます。</p>
+    <section id="top" class="hero-section text-center section rounded-lg mt-8 mx-4 relative isolate overflow-hidden">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">いま配信をがんばっているあなたへ。</h2>
+      <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">無理なく続けられる形を、一緒につくります。</p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
         <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
-          onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">お申し込みフォームへ</a>
+          onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">まずは話してみる</a>
+      </div>
+      <div class="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-slate-500">
+        <div class="flex flex-col items-center gap-2">
+          <span class="text-[11px] tracking-[0.2em]">SCROLL</span>
+          <span class="h-8 w-8 animate-bounce rounded-full border border-slate-300 grid place-items-center">↓</span>
+        </div>
       </div>
     </section>
 
@@ -414,7 +419,7 @@
     <p>&copy; 2025 Flair LLC</p>
   </footer>
 
-  <script src="./common.js?v=20260212r03" defer></script>
+  <script src="./common.js?v=20260212r04" defer></script>
   <script>
     // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(item => {
