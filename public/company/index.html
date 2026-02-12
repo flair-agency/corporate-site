@@ -23,8 +23,8 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="../favicon-192.png" onerror="this.href='favicon-192.png';">
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260212r08"
-    imagesrcset="./background-image.avif?v=20260212r08 1x, ./background-image.webp?v=20260212r08 1x, ./background-image.png?v=20260212r08 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260212r09"
+    imagesrcset="./background-image.avif?v=20260212r09 1x, ./background-image.webp?v=20260212r09 1x, ./background-image.png?v=20260212r09 1x"
     imagesizes="100vw">
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -41,11 +41,11 @@
     crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin>
   <!-- Local CSS -->
-  <link rel="preload" href="../common.css?v=20260212r08" as="style">
-  <link rel="preload" href="./index.css?v=20260212r08" as="style">
-  <link rel="stylesheet" href="../common.css?v=20260212r08">
-  <link rel="stylesheet" href="/assets/app.css?v=20260212r08" />
-  <link rel="stylesheet" href="./index.css?v=20260212r08">
+  <link rel="preload" href="../common.css?v=20260212r09" as="style">
+  <link rel="preload" href="./index.css?v=20260212r09" as="style">
+  <link rel="stylesheet" href="../common.css?v=20260212r09">
+  <link rel="stylesheet" href="/assets/app.css?v=20260212r09" />
+  <link rel="stylesheet" href="./index.css?v=20260212r09">
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Zen+Kurenaido:wght@400;700&display=swap">
@@ -101,45 +101,45 @@
     </section>
 
     <section id="mission-vision" class="section">
-      <header>
-        <h2>MISSION &amp; VISION</h2>
-        <p>私たちが目指す社会と、Flairの役割</p>
+      <header class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">MISSION &amp; VISION</h2>
+        <p class="mt-2 text-gray-500">私たちが目指す社会と、Flairの役割</p>
       </header>
-      <div class="grid">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         <!-- MISSION -->
-        <article>
+        <article class="rounded-2xl border border-orange-100 bg-white p-4 shadow-sm md:p-6">
           <div class="chip">MISSION</div>
-          <h3>
+          <h3 class="mb-2 text-xl leading-relaxed font-bold text-gray-900 md:text-2xl">
             誰もが、LIVEで自分を解き放てる社会をつくる。
           </h3>
-          <p>
+          <p class="text-gray-700 leading-8">
             LIVE配信という表現手段を通じて、年齢や経験に関係なく、
             誰もが自分らしく輝き、人生を切り開いていける未来を目指します。
           </p>
-          <img src="./mission-image.png" alt="多様な配信者がそれぞれ異なる場所から配信している様子" width="1536" height="1024">
+          <img class="mt-3.5 block w-full rounded-xl border border-orange-100 object-cover" src="./mission-image.png" alt="多様な配信者がそれぞれ異なる場所から配信している様子" width="1536" height="1024">
         </article>
         <!-- VISION -->
-        <article>
+        <article class="rounded-2xl border border-orange-100 bg-white p-4 shadow-sm md:p-6">
           <div class="chip accent">VISION</div>
-          <h3>
+          <h3 class="mb-2 text-xl leading-relaxed font-bold text-gray-900 md:text-2xl">
             若手クリエイターの挑戦と成長を支え、最も信頼されるLIVEパートナーとなる。
           </h3>
-          <p>
+          <p class="text-gray-700 leading-8">
             Flairは、安心感と成長機会、そして才能を価値に変える仕組みで、
             一人ひとりが自分らしく活動を続けられるよう伴走します。
           </p>
-          <img src="./vision-image.png" alt="若手クリエイターがそれぞれ異なる環境で成長に向けて配信している様子" width="1536" height="1024">
+          <img class="mt-3.5 block w-full rounded-xl border border-orange-100 object-cover" src="./vision-image.png" alt="若手クリエイターがそれぞれ異なる環境で成長に向けて配信している様子" width="1536" height="1024">
         </article>
       </div>
     </section>
 
     <section id="founder" class="section">
-      <header>
-        <h2>Flairの出発点</h2>
+      <header class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairの出発点</h2>
       </header>
       <article class="message mt-8">
-        <h3>代表からのメッセージ</h3>
-        <blockquote class="bg-amber-50/70 border border-amber-100 p-8 sm:p-10 shadow-sm eading-relaxed">
+        <h3 class="mb-4 text-xl font-bold text-gray-800">代表からのメッセージ</h3>
+        <blockquote class="bg-amber-50/70 border border-amber-100 p-8 sm:p-10 shadow-sm leading-8 text-gray-700">
           <p>
             私たちは、数字だけで配信者の価値を判断しません。
             成果が出にくい時期も含めて、挑戦を止めないために本気で伴走します。
@@ -165,17 +165,17 @@
           </p>
         </blockquote>
       </article>
-      <article class="profile mt-8 flow-root">
-        <h3>代表のプロフィール</h3>
-        <figure class="photo">
-          <img class="float-none sm:float-left w-28 sm:w-36 sm:mr-6 sm:mb-4" src="./representative-photo.jpg"
+      <article class="profile flow-root mt-8">
+        <h3 class="mb-4 text-xl font-bold text-gray-800">代表のプロフィール</h3>
+        <figure class="photo mb-4 w-40 float-none sm:float-left sm:mr-6 sm:mb-4">
+          <img class="block w-full rounded-xl shadow-sm" src="./representative-photo.jpg"
             alt="緑の木々を背景に立つ合同会社Flair代表社員のプロフィール写真" width="960" height="1200" loading="lazy">
         </figure>
         <div>
-          <p class="full-name text-xl tracking-wide">
+          <p class="full-name text-xl tracking-wide text-gray-700 leading-8">
             <ruby>木村<rt>きむら</rt></ruby><ruby>直樹<rt>なおき</rt></ruby>
           </p>
-          <p>
+          <p class="text-gray-700 leading-8">
             ソフトウェアエンジニアとしてWeb・業務システム・Fintech領域に従事。
             限られた体制でも成果が出る設計と運用に向き合ってきました。
             現在はその経験を活かし、配信者が安心して挑戦できる環境づくりに取り組んでいます。
@@ -183,14 +183,14 @@
         </div>
       </article>
       <article class="background mt-8">
-        <h3>創業の背景</h3>
-        <p>
+        <h3 class="mb-4 text-xl font-bold text-gray-800">創業の背景</h3>
+        <p class="text-gray-700 leading-8">
           私自身、10年以上にわたり、身近な存在が働き方を模索する過程に寄り添ってきました。
           能力や意欲があっても、環境や役割によって選択肢が狭まっていく現実を、すぐそばで見てきました。</p>
-        <p>
+        <p class="mt-4 text-gray-700 leading-8">
           とくに女性が働き方を再設計する局面では、挑戦が後回しにされてしまうことも少なくありません。
           それを個人の事情として片付けるのではなく、構造の問題として向き合いたいと考えました。</p>
-        <p>
+        <p class="mt-4 text-gray-700 leading-8">
           <strong>挑戦を偶然や自己責任に委ねない。続けられる仕組みに変えること</strong>が、Flairの出発点です。
         </p>
       </article>
@@ -285,7 +285,7 @@
     <p>&copy; 2025 Flair LLC</p>
   </footer>
 
-  <script src="../common.js?v=20260212r08" defer></script>
+  <script src="../common.js?v=20260212r09" defer></script>
 </body>
 
 </html>
