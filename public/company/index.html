@@ -23,8 +23,8 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="../favicon-192.png" onerror="this.href='favicon-192.png';">
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260212r04"
-    imagesrcset="./background-image.avif?v=20260212r04 1x, ./background-image.webp?v=20260212r04 1x, ./background-image.png?v=20260212r04 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260212r07"
+    imagesrcset="./background-image.avif?v=20260212r07 1x, ./background-image.webp?v=20260212r07 1x, ./background-image.png?v=20260212r07 1x"
     imagesizes="100vw">
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -41,11 +41,11 @@
     crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin>
   <!-- Local CSS -->
-  <link rel="preload" href="../common.css?v=20260212r04" as="style">
-  <link rel="preload" href="./index.css?v=20260212r04" as="style">
-  <link rel="stylesheet" href="../common.css?v=20260212r04">
-  <link rel="stylesheet" href="/assets/app.css?v=20260212r04" />
-  <link rel="stylesheet" href="./index.css?v=20260212r04">
+  <link rel="preload" href="../common.css?v=20260212r07" as="style">
+  <link rel="preload" href="./index.css?v=20260212r07" as="style">
+  <link rel="stylesheet" href="../common.css?v=20260212r07">
+  <link rel="stylesheet" href="/assets/app.css?v=20260212r07" />
+  <link rel="stylesheet" href="./index.css?v=20260212r07">
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Zen+Kurenaido:wght@400;700&display=swap">
@@ -91,10 +91,17 @@
 
   <main class="container mx-auto max-w-6xl">
 
-    <section id="top" class="section hero-section text-center rounded-lg mt-8 mx-4">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4">私たちについて</h2>
+    <section id="top" class="section hero-section text-center rounded-lg mt-8 mx-4 relative isolate overflow-hidden">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">自分らしく、前へ。</h2>
       <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
-        LIVE配信を通じて、誰もが自分らしく挑戦できる社会を。</p>
+        挑戦し続けられる仕組みを、<br/>LIVEという表現の場から。
+      </p>
+      <div class="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-slate-500">
+        <div class="flex flex-col items-center gap-2">
+          <span class="text-[11px] tracking-[0.2em]">SCROLL</span>
+          <span class="h-8 w-8 animate-bounce rounded-full border border-slate-300 grid place-items-center">↓</span>
+        </div>
+      </div>
     </section>
 
     <section id="mission-vision" class="section">
@@ -282,7 +289,7 @@
     <p>&copy; 2025 Flair LLC</p>
   </footer>
 
-  <script src="../common.js?v=20260212r04" defer></script>
+  <script src="../common.js?v=20260212r07" defer></script>
 </body>
 
 </html>
