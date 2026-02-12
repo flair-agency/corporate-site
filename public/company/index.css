@@ -81,6 +81,75 @@
   }
 }
 
+/* ===== Founder Message ===== */
+#founder.section {
+  background: #fff9f5;
+
+  h2 {
+    margin: 0 0 2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111827;
+    text-align: center;
+  }
+
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  blockquote {
+    line-height: 1.9;
+    font-family: 'Zen Kurenaido', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  p {
+    margin: 0;
+    color: #374151;
+    line-height: 1.95;
+  }
+
+  p+p {
+    margin-top: 1rem;
+  }
+
+  ul {
+    margin: 1rem 0 0;
+    padding-left: 1.35rem;
+    list-style: disc;
+    list-style-position: outside;
+    color: #374151;
+    line-height: 1.9;
+
+    li {
+      &::marker {
+        color: #c2410c;
+      }
+
+      &+li {
+        margin-top: 0.35rem;
+      }
+    }
+  }
+
+  article.profile {
+    .photo {
+      margin: 0 0 1rem;
+      width: 160px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(17, 24, 39, 0.07);
+      }
+    }
+  }
+}
+
 @media (min-width: 768px) {
   #founder.section {
     h2 {
