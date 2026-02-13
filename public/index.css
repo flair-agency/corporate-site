@@ -239,22 +239,23 @@ ol.flow {
     background-position: center;
     background-color: #1a202c;
     transition: background-image 0.5s ease-in-out;
-    background-image: image-set(url('./background-image.avif?v=20260213r06') type('image/avif') 1x,
-        url('./background-image.webp?v=20260213r06') type('image/webp') 1x,
-        url('./background-image.png?v=20260213r06') type('image/png') 1x);
+    background-image: image-set(url('./background-image.avif?v=20260213r07') type('image/avif') 1x,
+        url('./background-image.webp?v=20260213r07') type('image/webp') 1x,
+        url('./background-image.png?v=20260213r07') type('image/png') 1x);
     transform: scale(1.08);
     inset: -16px;
     filter: blur(6px) brightness(0.54) saturate(0.9) contrast(0.7);
   }
 
   .media-card {
+    height: 100%;
+    max-height: none;
+    align-self: stretch;
     width: 80%;
     max-width: 380px;
     overflow: hidden;
-    border-radius: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     background: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     pointer-events: none;
 
     video {
@@ -262,13 +263,17 @@ ol.flow {
       object-position: 50% 20%;
       filter: brightness(0.9) saturate(0.95) contrast(0.6) sepia(0.08);
       opacity: 0.9;
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
 
   .catchphrases {
+    /* Prefer legibility without adding more visible rectangles */
     text-shadow:
-      0 2px 8px rgba(0, 0, 0, 0.4),
-      0 0 2px rgba(0, 0, 0, 0.6);
+      0 2px 10px rgba(0, 0, 0, 0.45),
+      0 0 2px rgba(0, 0, 0, 0.65);
     background: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(2px) saturate(110%);
     border-radius: .3rem;
@@ -276,21 +281,15 @@ ol.flow {
 
   h2 {
     font-family: 'Zen Kurenaido', var(--font-fallback-sans);
-  }
-}
-
-@media (min-width: 640px) {
-  .hero.section .media-card {
-    height: 46vh;
-    max-height: 520px;
+    text-wrap: balance;
+    max-width: 22em;
+    margin-inline: auto;
   }
 }
 
 @media (min-width: 1024px) {
   .hero.section .media-card {
     max-width: 520px;
-    height: 46vh;
-    max-height: 480px;
     aspect-ratio: 9 / 16;
 
     video {
@@ -399,15 +398,22 @@ ol.flow {
 }
 
 @media (max-width: 640px) {
-  .hero.section .stickers {
-    top: .85rem;
-    right: .6rem;
-    gap: .32rem;
+  .hero.section {
+    .stickers {
+      top: .85rem;
+      right: .6rem;
+      gap: .32rem;
 
-    .sticker {
-      padding: .33rem .64rem;
-      font-size: .67rem;
+      .sticker {
+        padding: .33rem .64rem;
+        font-size: .67rem;
+      }
     }
+  }
+
+  .hero.section .media-card {
+    width: min(92%, 420px);
+    max-width: 420px;
   }
 }
 

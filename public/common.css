@@ -8,6 +8,7 @@
   --biz-head: #0F172A;
   --biz-body: #334155;
   --font-fallback-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hero-height: clamp(520px, 70vh, 680px);
 }
 
 /* バンド表示用（フルブリード） */
@@ -63,7 +64,7 @@ img[width][height] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  min-height: var(--hero-height);
   background-size: cover;
   background-position: center;
   background-color: #1a202c;
