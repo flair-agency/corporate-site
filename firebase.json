@@ -25,6 +25,19 @@
           }
         ]
       }
+    ],
+    "redirects": [
+      {
+        "source": "/creator{,/}",
+        "destination": "/",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/creator/index.html"
+      }
     ]
   }
 }
