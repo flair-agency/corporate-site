@@ -27,7 +27,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("/logo.svg");
+    background-image: url("/assets/logo.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 420px auto;

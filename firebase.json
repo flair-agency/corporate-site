@@ -28,15 +28,9 @@
     ],
     "redirects": [
       {
-        "source": "/creator{,/}",
-        "destination": "/",
+        "source": "{,/}",
+        "destination": "/creator/",
         "type": 301
-      }
-    ],
-    "rewrites": [
-      {
-        "source": "/",
-        "destination": "/creator/index.html"
       }
     ]
   }
