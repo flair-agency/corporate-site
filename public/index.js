@@ -56,3 +56,47 @@
 
   targets.forEach((el) => observer.observe(el));
 })();
+
+// Hero video lazy-load
+(() => {
+  const heroVideo = document.querySelector('[data-hero-video]');
+  if (!heroVideo) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const loadAndPlay = () => {
+    if (heroVideo.dataset.loaded === 'true') return;
+    const webmSource = document.createElement('source');
+    webmSource.src = './hero.webm';
+    webmSource.type = 'video/webm';
+    heroVideo.appendChild(webmSource);
+
+    const mp4Source = document.createElement('source');
+    mp4Source.src = './hero.mp4';
+    mp4Source.type = 'video/mp4';
+    heroVideo.appendChild(mp4Source);
+
+    heroVideo.load();
+    heroVideo.dataset.loaded = 'true';
+    const playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
+    }
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    loadAndPlay();
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      loadAndPlay();
+      obs.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  observer.observe(heroVideo);
+})();
