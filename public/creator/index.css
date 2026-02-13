@@ -239,9 +239,9 @@ ol.flow {
     background-position: center;
     background-color: #1a202c;
     transition: background-image 0.5s ease-in-out;
-    background-image: image-set(url('./background-image.avif?v=20260213r07') type('image/avif') 1x,
-        url('./background-image.webp?v=20260213r07') type('image/webp') 1x,
-        url('./background-image.png?v=20260213r07') type('image/png') 1x);
+    background-image: image-set(url('./background-image.avif?v=20260213r08') type('image/avif') 1x,
+        url('./background-image.webp?v=20260213r08') type('image/webp') 1x,
+        url('./background-image.png?v=20260213r08') type('image/png') 1x);
     transform: scale(1.08);
     inset: -16px;
     filter: blur(6px) brightness(0.54) saturate(0.9) contrast(0.7);
