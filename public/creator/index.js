@@ -110,46 +110,28 @@
   targets.forEach((el) => observer.observe(el));
 })();
 
-// Hero video lazy-load
+// Hero video (no lazy-load; sources are in HTML)
 (() => {
   const heroVideo = document.querySelector('[data-hero-video]');
   if (!heroVideo) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const loadAndPlay = () => {
-    if (heroVideo.dataset.loaded === 'true') return;
-    const webmSource = document.createElement('source');
-    webmSource.src = './hero.webm';
-    webmSource.type = 'video/webm';
-    heroVideo.appendChild(webmSource);
-
-    const mp4Source = document.createElement('source');
-    mp4Source.src = './hero.mp4';
-    mp4Source.type = 'video/mp4';
-    heroVideo.appendChild(mp4Source);
-
-    heroVideo.load();
-    heroVideo.dataset.loaded = 'true';
-    const playPromise = heroVideo.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => {});
-    }
-  };
-
-  if (!('IntersectionObserver' in window)) {
-    loadAndPlay();
+  // Respect reduced motion: don't autoplay and don't preload.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVideo.pause();
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.setAttribute('preload', 'none');
     return;
   }
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      loadAndPlay();
-      obs.unobserve(entry.target);
-    });
-  }, {
-    threshold: 0.2
-  });
+  // Autoplay can be flaky depending on timing; try once when ready.
+  const tryPlay = () => {
+    const p = heroVideo.play();
+    if (p && typeof p.catch === 'function') p.catch(() => {});
+  };
 
-  observer.observe(heroVideo);
+  if (heroVideo.readyState >= 2) {
+    tryPlay();
+  } else {
+    heroVideo.addEventListener('canplay', tryPlay, { once: true });
+  }
 })();

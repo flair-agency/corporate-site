@@ -26,16 +26,17 @@
   <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260213r09"
     imagesrcset="./background-image.avif?v=20260213r09 1x, ./background-image.webp?v=20260213r09 1x, ./background-image.png?v=20260213r09 1x"
     imagesizes="100vw" />
+  <link rel="preload" as="image" fetchpriority="high" href="./hero.webp" imagesizes="100vw" />
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Fonts -->
   <link rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;600;700&family=Zen+Kurenaido&display=swap"
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap"
     as="style" />
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;600;700&family=Zen+Kurenaido&display=swap" />
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap" />
   <!-- Font Awesome -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style"
     crossorigin />
@@ -48,7 +49,7 @@
   <link rel="stylesheet" href="./index.css?v=20260213r09" />
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=M+PLUS+Rounded+1c:wght@400;600;700&family=Zen+Kurenaido&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   </noscript>
   <!-- Google tag (gtag.js) -->
@@ -90,8 +91,14 @@
   <main class="container mx-auto max-w-6xl">
     <section id="top" class="text-center hero section rounded-lg mt-8 mx-4 relative isolate overflow-hidden">
       <div class="media-card absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
-        <video class="h-full w-full" muted loop playsinline autoplay preload="none" poster="./hero.webp"
-          data-hero-video></video>
+        <video class="h-full w-full" muted loop playsinline autoplay preload="metadata" poster="./hero.webp" data-hero-video>
+          <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
+          <source src="./hero-mobile.webm" type="video/webm" media="(max-width: 640px)">
+          <source src="./hero-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+          <!-- Default sources -->
+          <source src="./hero.webm" type="video/webm">
+          <source src="./hero.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="catchphrases relative z-20">
         <h2 class="text-3xl md:text-5xl font-bold mb-4">いま配信を<span class="whitespace-nowrap">がんばっている、</span><span
@@ -311,7 +318,7 @@
       <div class="statement mt-8 mx-4">
         <p class="text-sm md:text-base text-gray-700">
           私たちは、クリエイターの挑戦に対して「誠実であること」を最優先にしています。
-          <span class="font-semibold text-gray-900">安心して続けられる環境と、納得して進める関係</span>をつくることが、Flairの責任です。
+          <span class="font-bold text-gray-900">安心して続けられる環境と、納得して進める関係</span>をつくることが、Flairの責任です。
         </p>
       </div>
     </section>
@@ -326,7 +333,7 @@
       <div class="px-4">
         <div class="grid md:grid-cols-2 gap-6">
           <details class="faq-item group rounded-xl bg-gray-50 p-4">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               エージェンシーって事務所と何が違うんですか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
@@ -334,35 +341,35 @@
               Flairは、配信の自由度を保ったまま、必要な部分だけを支援する“伴走型”のエージェンシーです。</p>
           </details>
           <details class="faq-item group rounded-xl bg-gray-50 p-4">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               ノルマや罰金はありますか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
             <p class="a mt-3 text-gray-700">ありません。生活や学業との両立を前提に、自分のペースで続けられる運用を一緒に設計します。</p>
           </details>
           <details class="faq-item group rounded-xl bg-gray-50 p-4">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               初期費用はかかりますか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
             <p class="a mt-3 text-gray-700">初期費用はゼロです。機材は進呈し、初期設定までサポートします。</p>
           </details>
           <details class="faq-item group rounded-xl bg-gray-50 p-4">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               マージンは取られますか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
             <p class="a mt-3 text-gray-700">クリエイターから直接マージンをいただきません。報酬の流れは事前に丁寧に説明します。</p>
           </details>
           <details class="faq-item group rounded-xl bg-gray-50 p-4">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               途中でやめられますか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
             <p class="a mt-3 text-gray-700">可能です。条件はありますが、事情に応じて柔軟に対応します。無理な引き止めはしません。</p>
           </details>
           <details class="faq-item group rounded-xl bg-gray-50 p-4">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               怪しくないですか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
@@ -371,7 +378,7 @@
             </p>
           </details>
           <details class="faq-item group rounded-xl bg-white p-4 shadow-sm">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               報酬の流れを教えてください
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
@@ -386,7 +393,7 @@
             </div>
           </details>
           <details class="faq-item group rounded-xl bg-white p-4 shadow-sm">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               振込タイミングはいつですか？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
@@ -396,7 +403,7 @@
             </div>
           </details>
           <details class="faq-item group rounded-xl bg-white p-4 shadow-sm">
-            <summary class="q list-none cursor-pointer flex items-center justify-between font-semibold text-gray-800">
+            <summary class="q list-none cursor-pointer flex items-center justify-between font-bold text-gray-800">
               LIVEエージェンシーの収益源は？
               <span class="text-gray-400 transition-transform group-open:rotate-180">▾</span>
             </summary>
