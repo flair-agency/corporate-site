@@ -1,8 +1,8 @@
 /* ===== Business Page Specific Styles ===== */
 .hero.section {
-  background-image: image-set(url('./background-image.avif?v=20260213r09') type('image/avif') 1x,
-      url('./background-image.webp?v=20260213r09') type('image/webp') 1x,
-      url('./background-image.png?v=20260213r09') type('image/png') 1x);
+  background-image: image-set(url('./background-image.avif?v=20260214r01') type('image/avif') 1x,
+      url('./background-image.webp?v=20260214r01') type('image/webp') 1x,
+      url('./background-image.png?v=20260214r01') type('image/png') 1x);
 }
 
 .biz.section {

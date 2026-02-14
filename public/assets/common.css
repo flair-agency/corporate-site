@@ -149,6 +149,17 @@ img[width][height] {
       transform: translateY(-1px);
       box-shadow: 0 6px 18px rgba(255, 90, 60, .25);
     }
+
+    &.secondary {
+      background: inherit;
+      color: var(--color-gray-700);
+      font-weight: inherit;
+      border: 1px solid var(--color-gray-300);
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
   }
 }
 

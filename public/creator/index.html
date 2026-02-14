@@ -24,8 +24,8 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';" />
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260213r09"
-    imagesrcset="./background-image.avif?v=20260213r09 1x, ./background-image.webp?v=20260213r09 1x, ./background-image.png?v=20260213r09 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260214r01"
+    imagesrcset="./background-image.avif?v=20260214r01 1x, ./background-image.webp?v=20260214r01 1x, ./background-image.png?v=20260214r01 1x"
     imagesizes="100vw" />
   <link rel="preload" as="image" fetchpriority="high" href="./hero.webp" imagesizes="100vw" />
   <!-- Preconnect -->
@@ -43,11 +43,11 @@
     crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin />
   <!-- Local CSS -->
-  <link rel="preload" href="/assets/common.css?v=20260213r09" as="style" />
-  <link rel="preload" href="./index.css?v=20260213r09" as="style" />
-  <link rel="stylesheet" href="/assets/common.css?v=20260213r09" />
-  <link rel="stylesheet" href="/assets/app.css?v=20260213r09" />
-  <link rel="stylesheet" href="./index.css?v=20260213r09" />
+  <link rel="preload" href="/assets/common.css?v=20260214r01" as="style" />
+  <link rel="preload" href="./index.css?v=20260214r01" as="style" />
+  <link rel="stylesheet" href="/assets/common.css?v=20260214r01" />
+  <link rel="stylesheet" href="/assets/app.css?v=20260214r01" />
+  <link rel="stylesheet" href="./index.css?v=20260214r01" />
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap" />
@@ -113,8 +113,7 @@
         <span class="sticker s3">#配信機材進呈</span>
       </div>
       <div class="relative z-20 flex flex-col sm:flex-row gap-3 justify-center">
-        <a class="cta btn transition-transform duration-150 hover:scale-[1.01] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-black/30"
-          href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+        <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
           onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">まずは話してみる</a>
       </div>
       <div class="absolute z-30 bottom-6 left-1/2 -translate-x-1/2 text-white/80 drop-shadow-lg">
@@ -224,8 +223,7 @@
         </table>
       </div>
       <div class="text-center mt-8">
-        <a class="cta btn transition-transform duration-150 hover:scale-[1.01] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-black/30"
-          href="#contact"
+        <a class="cta btn" href="#contact"
           onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});">まずは相談する</a>
       </div>
     </section>
@@ -278,8 +276,7 @@
         </li>
       </ol>
       <div class="text-center mt-8">
-        <a class="cta btn transition-transform duration-150 hover:scale-[1.01] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-black/30"
-          href="#contact"
+        <a class="cta btn" href="#contact"
           onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});">まずは相談する</a>
       </div>
     </section>
@@ -439,27 +436,24 @@
       </div>
       <div class="grid md:grid-cols-2 gap-6 px-4">
         <!-- 応募（フォーム導線） -->
-        <div
-          class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center transition-transform duration-150 hover:-translate-y-1">
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center flex flex-col">
           <div class="text-4xl text-red-500 mb-3"><i class="fas fa-file-pen" data-icon-anim></i></div>
           <h3 class="text-xl font-bold mb-2">応募する</h3>
           <p class="text-sm text-gray-700 mb-4">お申し込みフォームに必要事項をご入力ください。</p>
-          <a class="cta btn transition-transform duration-150 hover:scale-[1.01] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-black/30"
-            href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+          <a class="cta btn !mt-auto" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
             onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
             申し込む
           </a>
         </div>
         <!-- お問い合わせ（DM導線） -->
-        <div
-          class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center transition-transform duration-150 hover:-translate-y-1">
+        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center flex flex-col">
           <div class="text-4xl text-red-500 mb-3"><i class="fab fa-tiktok" data-icon-anim></i></div>
           <h3 class="text-xl font-bold mb-2">相談する</h3>
           <p class="text-sm text-gray-700 mb-4">ちょっとした質問だけでも歓迎です。</p>
-          <a class="inline-block px-4 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-transform duration-150 hover:scale-[1.01] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-black/20"
-            href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="noopener"
+          <a class="cta btn secondary !mt-auto" href="https://www.tiktok.com/@flair.agency.biz" target="_blank"
+            rel="noopener"
             onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
-            DMで問い合わせる
+            DMで問合せる
           </a>
         </div>
       </div>
@@ -477,8 +471,8 @@
     <p>&copy; 2025 Flair LLC</p>
   </footer>
 
-  <script src="/assets/common.js?v=20260213r09" defer></script>
-  <script src="./index.js?v=20260213r09" defer></script>
+  <script src="/assets/common.js?v=20260214r01" defer></script>
+  <script src="./index.js?v=20260214r01" defer></script>
 </body>
 
 </html>
