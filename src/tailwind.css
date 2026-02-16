@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@import "./common.css";
+
+@import "./business.css";
+@import "./company.css";
+@import "./creator.css";
