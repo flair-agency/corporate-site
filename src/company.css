@@ -1,45 +1,106 @@
 /* ===== Company Page Specific Styles ===== */
 body.company {
-  .hero.section {
-    background-image: image-set(url("/company/background-image.avif?v=20260215") type("image/avif") 1x,
-        url("/company/background-image.webp?v=20260215") type("image/webp") 1x,
-        url("/company/background-image.png?v=20260215") type("image/png") 1x);
-  }
+  --section-surface: #fafbfc;
+  --section-surface-alt: #f6f8fb;
 
-  .section {
-    background-color: #fafbfc;
+  &>main>section {
+    @apply bg-(--section-surface);
 
     &:nth-of-type(even) {
-      background-color: #f6f8fb;
+      @apply bg-(--section-surface-alt);
+    }
+
+    &.hero {
+      --avif-option: url("/company/background-image.avif?v=20260216r04") type("image/avif") 1x;
+      --webp-option: url("/company/background-image.webp?v=20260216r04") type("image/webp") 1x;
+      --png-option: url("/company/background-image.png?v=20260216r04") type("image/png") 1x;
+      @apply bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))];
+    }
+
+    &#mission-vision article {
+      @apply rounded-2xl border border-orange-100 bg-white p-4 shadow-sm md:p-6;
+
+      h3 {
+        @apply mb-2 text-xl leading-relaxed font-bold text-gray-900 md:text-2xl;
+      }
+
+      p {
+        @apply text-gray-700 leading-8;
+      }
+
+      img {
+        @apply mt-3.5 block w-full rounded-xl border border-orange-100 object-cover aspect-3/2;
+      }
+    }
+
+    &#founder article {
+      h3 {
+        @apply mb-4 text-xl font-bold text-gray-800;
+      }
+
+      p {
+        @apply text-gray-700 leading-8;
+      }
+
+      &.profile {
+        figure.photo {
+          @apply w-40;
+
+          img {
+            @apply block w-full rounded-xl shadow-sm;
+          }
+        }
+
+        .full-name {
+          @apply text-xl tracking-wide;
+        }
+      }
+    }
+
+    &#company .def {
+      h3 {
+        @apply text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2;
+      }
+
+      p {
+        @apply pl-4;
+      }
+
+      &>ul {
+        @apply pl-6 list-disc text-gray-700;
+      }
+
+      nav>ul.accounts {
+        @apply flex flex-wrap items-center gap-3 pl-0;
+
+        &>li a {
+          @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition;
+        }
+      }
     }
   }
 
-  #mission-vision.section article img {
-    aspect-ratio: 3 / 2;
+  a.hyperlink {
+    @apply underline underline-offset-4 decoration-slate-300 decoration-1 hover:decoration-slate-500 active:decoration-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300;
   }
 
-  #founder.section article.message blockquote.letter {
-    font-family: "Zen Kurenaido", var(--font-fallback-sans);
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+  blockquote.letter {
+    @apply bg-amber-50/70 border border-amber-100 p-8 sm:p-10 shadow-sm text-gray-700 relative isolate overflow-hidden font-[Zen_Kurenaido,var(--font-fallback-sans)];
 
     &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("/assets/logo.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 420px auto;
-      opacity: .06;
-      z-index: 0;
-      pointer-events: none;
+      @apply absolute inset-0 content-[""] z-0 bg-no-repeat bg-center opacity-5 pointer-events-none bg-[url("/assets/logo.svg")] bg-size-[420px_auto];
     }
 
     &>* {
-      position: relative;
-      z-index: 1;
+      @apply relative z-10;
+    }
+
+    p {
+      @apply my-3;
+
+      &.signature {
+        @apply mt-8 text-right;
+      }
     }
   }
 }

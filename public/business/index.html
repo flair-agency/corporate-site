@@ -24,8 +24,8 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';">
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260215"
-    imagesrcset="./background-image.avif?v=20260215 1x, ./background-image.webp?v=20260215 1x, ./background-image.png?v=20260215 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260216r04"
+    imagesrcset="./background-image.avif?v=20260216r04 1x, ./background-image.webp?v=20260216r04 1x, ./background-image.png?v=20260216r04 1x"
     imagesizes="100vw">
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -39,8 +39,8 @@
     crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin>
   <!-- Local CSS -->
-  <link rel="preload" href="/assets/app.css?v=20260215" as="style">
-  <link rel="stylesheet" href="/assets/app.css?v=20260215" />
+  <link rel="preload" href="/assets/app.css?v=20260216r04" as="style">
+  <link rel="stylesheet" href="/assets/app.css?v=20260216r04" />
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -48,386 +48,367 @@
 </head>
 
 <body class="business">
-  <header class="header">
-    <div class="wrap px-4">
-      <div class="inner py-3">
-        <a href="/" class="flex items-center gap-3">
-          <img src="/assets/logo.svg" alt="合同会社Flair ロゴ" class="logo rounded-lg" width="70" height="50">
-        </a>
-        <nav class="on-page" aria-label="主要ナビゲーション">
-          <button id="navToggle" class="toggle rounded" aria-expanded="false" aria-controls="navMenu" aria-label="メニュー">
-            <span class="sr-only">メニュー</span>
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-          <ul id="navMenu" class="menu" aria-label="ページ内ナビゲーション">
-            <li><a href="#top">トップ</a></li>
-            <li><a href="#services">事業</a></li>
-            <li><a href="#trust-foundation">信頼・基盤</a></li>
-            <li><a href="#certification">認定</a></li>
-            <li><a href="#growth">市場</a></li>
-            <li><a href="#why-tiktok-live">特化理由</a></li>
-            <li><a href="#growth-vision">成長</a></li>
-            <li><a href="#contact">企業窓口</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+  <header>
+    <a href="/">
+      <img src="/assets/logo.svg" alt="合同会社Flair ロゴ" class="logo" width="70" height="50">
+    </a>
+    <nav class="on-page" aria-label="ページ内ナビゲーション">
+      <button class="toggle" aria-expanded="false" aria-label="トグル">
+        <span class="sr-only">メニュー</span>
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+      <ul class="menu" aria-label="メニュー">
+        <li><a href="#top">トップ</a></li>
+        <li><a href="#services">事業</a></li>
+        <li><a href="#trust-foundation">信頼・基盤</a></li>
+        <li><a href="#certification">認定</a></li>
+        <li><a href="#growth">市場</a></li>
+        <li><a href="#why-tiktok-live">特化理由</a></li>
+        <li><a href="#growth-vision">成長</a></li>
+        <li><a href="#contact">企業窓口</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="container mx-auto max-w-6xl">
+  <main>
 
-    <section id="top" class="hero section text-center rounded-lg mt-8 mx-4">
+    <section id="top" class="hero text-center rounded-lg mt-8 mx-4">
       <h2 class="text-3xl md:text-5xl font-bold mb-4">LIVE配信の現場に、運営という視点を。</h2>
-      <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
+      <p class="hero-lead">
         安全性・継続性・パフォーマンスを前提に、配信者とプラットフォームの運営を支えています。</p>
     </section>
 
-    <section id="services" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold">事業内容</h2>
-          <div class="underline"></div>
+    <section id="services" class="band cool">
+      <header class="section-heading">
+        <h2 class="text-2xl md:text-3xl font-bold">事業内容</h2>
+        <div class="accentline"></div>
+      </header>
+      <div class="text-lg md:text-xl text-center px-4">
+        <p class="mt-4 font-semibold text-slate-700 flex items-center justify-center space-x-2">
+          <span>ライブ配信者のマネジメント業</span>
+        </p>
+      </div>
+      <!-- 事業内容詳細を4カラムカードで表示 -->
+      <div class="grid md:grid-cols-4 gap-6 mt-12 text-center">
+        <!-- カードA: クリエイターのスカウトと契約（①） -->
+        <div class="card">
+          <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-file-signature"></i></div>
+          <h3 class="card-title">スカウトと契約</h3>
+          <p class="text-sm text-gray-600">適正に合う人材の発掘、条件調整から契約手続きまで一貫対応</p>
         </div>
-        <div class="text-lg md:text-xl text-center px-4">
-          <p class="mt-4 font-semibold text-slate-700 flex items-center justify-center space-x-2">
-            <span>ライブ配信者のマネジメント業</span>
-          </p>
+        <!-- カードB: 機材提供・環境構築（②） -->
+        <div class="card">
+          <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-microphone"></i></div>
+          <h3 class="card-title">機材提供・環境構築</h3>
+          <p class="text-sm text-gray-600">マイクやスタンドなど配信機材を進呈</p>
         </div>
-        <!-- 事業内容詳細を4カラムカードで表示 -->
-        <div class="grid md:grid-cols-4 gap-6 mt-12 text-center">
-          <!-- カードA: クリエイターのスカウトと契約（①） -->
-          <div class="card">
-            <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-file-signature"></i></div>
-            <h3 class="text-xl font-bold mb-2">スカウトと契約</h3>
-            <p class="text-sm text-gray-600">適正に合う人材の発掘、条件調整から契約手続きまで一貫対応</p>
+        <!-- カードC: 配信戦略の設計（③） -->
+        <div class="card">
+          <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-chart-line"></i></div>
+          <h3 class="card-title">配信戦略の設計</h3>
+          <p class="text-sm text-gray-600">ファン層拡大と収益最大化のための企画提案</p>
+        </div>
+        <!-- カードD: 配信活動サポート（④） -->
+        <div class="card">
+          <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-headset"></i></div>
+          <h3 class="card-title">配信活動サポート</h3>
+          <p class="text-sm text-gray-600">トラブル対応・ガイド提供・交流機会</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust-foundation" class="band cool">
+      <header class="section-heading">
+        <h2 class="section-title">Flairの信頼性と事業基盤</h2>
+        <div class="accentline"></div>
+        <p class="mt-3 text-gray-600 text-base md:text-lg">数値の羅列ではなく、運営の思想と仕組みを分かりやすく。</p>
+      </header>
+      <!-- 運営基準（画像ではなくHTMLで明瞭に） -->
+      <div class="grid md:grid-cols-3 gap-6 px-4">
+        <article class="card">
+          <div class="growth-kicker mb-2">OPERATIONS</div>
+          <h3 class="text-lg font-bold mb-2">安全な運営体制</h3>
+          <ul class="bullet-list">
+            <li>最新ガイドラインの共有と注意喚起の運用</li>
+            <li>配信中トラブルの一次対応窓口</li>
+            <li>透明な報酬・分配ルールの提示</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="growth-kicker mb-2">PERFORMANCE</div>
+          <h3 class="text-lg font-bold mb-2">パフォーマンス基準</h3>
+          <ul class="bullet-list">
+            <li>継続的な活動を支える伴走体制</li>
+            <li>視聴者エンゲージメントを高める施策</li>
+            <li>週次フィードバックによる改善サイクル</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="growth-kicker mb-2">ENABLEMENT</div>
+          <h3 class="text-lg font-bold mb-2">成長サポート</h3>
+          <ul class="bullet-list">
+            <li>機材・環境の最適化サポート</li>
+            <li>企画・台本テンプレ／タイトル添削</li>
+            <li>小規模コミュニティでの事例共有</li>
+          </ul>
+        </article>
+      </div>
+      <!-- 企業・団体向けCTA（任意） -->
+      <div class="text-center mt-8">
+        <a class="cta btn" href="#contact">企業・提携のご相談はこちら</a>
+      </div>
+    </section>
+
+    <section id="certification" class="band cool">
+      <header class="section-heading">
+        <h2 class="section-title">TikTokとの契約</h2>
+        <div class="accentline"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">
+          当社は<strong>TikTok社と業務委託契約</strong>を締結し、公式の枠組みでLIVEエージェンシー運営を行っています。</p>
+      </header>
+      <div class="grid md:grid-cols-3 gap-6 px-4">
+        <!-- 契約の位置づけ -->
+        <article class="card">
+          <div class="chip accent mb-2 inline-block">Contract</div>
+          <h3 class="text-lg font-bold mb-2">契約の位置づけ</h3>
+          <ul class="bullet-list">
+            <li>TikTok LIVEエージェンシーとしての業務委託契約</li>
+            <li>最新の方針・運用基準に基づくサポート提供</li>
+            <li>安全・コンプライアンスを重視した運営体制</li>
+          </ul>
+        </article>
+        <!-- 企業向けの提供価値 -->
+        <article class="card">
+          <div class="chip accent mb-2 inline-block">For Business</div>
+          <h3 class="text-lg font-bold mb-2">企業向けの提供価値</h3>
+          <ul class="bullet-list">
+            <li>タイアップや番組企画における出演・進行のプロデュース</li>
+            <li>ブランドセーフティに配慮した配信設計とチェック</li>
+            <li>案件要件に応じたクリエイターのキャスティング</li>
+          </ul>
+        </article>
+        <!-- 確認方法 -->
+        <article class="card">
+          <div class="chip accent mb-2 inline-block">Verification</div>
+          <h3 class="text-lg font-bold mb-2">確認方法</h3>
+          <ul class="bullet-list">
+            <li>契約の詳細は機密保持の観点から公開していません</li>
+            <li>企業・メディアの皆さまには、必要に応じて確認資料をご提示可能</li>
+            <li>まずは案件概要とともにご連絡ください</li>
+          </ul>
+        </article>
+      </div>
+      <div class="text-center mt-8">
+        <a class="cta btn" href="#contact">企業のご相談へ</a>
+        <p class="text-xs text-gray-500 mt-3">※ご要望に応じて、登記事項証明書・定款の写し等もご用意できます（NDA可）。</p>
+      </div>
+    </section>
+
+    <section id="growth" class="band cool">
+      <header class="section-heading">
+        <h2 class="section-title">市場の伸びとFlairの着眼点</h2>
+        <div class="accentline"></div>
+        <p class="mt-3 text-gray-600 text-base md:text-lg">右肩上がりのLIVE市場。新人でも伸ばしやすい設計と収益導線に注目しています。</p>
+      </header>
+      <div class="grid md:grid-cols-2 gap-6 px-4 items-center">
+        <!-- 左：力強いトレンドのビジュアル（SVGエリアチャート） -->
+        <figure class="card p-4">
+          <svg id="growthChart" viewBox="0 0 600 320" class="w-full h-auto" role="img" aria-label="市場の伸びを示す概念図">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#2563eb" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#2563eb" stop-opacity="0.05" />
+              </linearGradient>
+            </defs>
+            <!-- 軸（控えめ） -->
+            <line x1="48" y1="260" x2="560" y2="260" stroke="#E5E7EB" stroke-width="2" />
+            <line x1="48" y1="40" x2="48" y2="260" stroke="#E5E7EB" stroke-width="2" />
+            <!-- 描画レイヤ（JSで上書き） -->
+            <path id="growthArea" d="" fill="url(#g1)" />
+            <polyline id="growthLine" points="" fill="none" stroke="#2563eb" stroke-width="4" />
+            <!-- 年代の目盛り（JSで生成） -->
+            <g id="xlabels" fill="#9CA3AF" font-size="12"></g>
+            <!-- タイトル -->
+            <g fill="#111827" font-size="16" font-weight="700">
+              <text x="64" y="72">右肩上がりのトレンド</text>
+            </g>
+            <!-- 削除: 概念図注釈 -->
+          </svg>
+          <figcaption class="text-xs text-gray-500 mt-2">
+            数値は公開情報に基づく<strong>指数化グラフ</strong>です（2023年=100として年次補間）。主な出典：
+            <a class="underline" href="https://www.grandviewresearch.com/industry-analysis/live-streaming-market-report"
+              target="_blank" rel="noopener">Grand View Research『Live Streaming Market』(世界：2023年 USD
+              87.55B、2024–2030 CAGR 23%)</a>、
+            <a class="underline" href="https://www.grandviewresearch.com/horizon/outlook/video-streaming-market/japan"
+              target="_blank" rel="noopener">Grand View Research『Japan Video Streaming Market
+              Outlook』(日本：2024年 USD 7,813.9M、2025–2030 CAGR 22.2%、ライブが最大セグメント)</a>、
+            <a class="underline" href="https://www.grandviewresearch.com/horizon/outlook/live-streaming-market/japan"
+              target="_blank" rel="noopener">Grand View Research『Japan Live Streaming Market
+              Outlook』(日本ライブ配信：2023年 USD 3,563.0M、2024–2030 CAGR 24.7%)</a>。
+          </figcaption>
+        </figure>
+        <!-- 右：3つの強み（カード） -->
+        <div class="grid gap-4">
+          <div class="growth card">
+            <div class="kicker mb-1">DISCOVERABILITY</div>
+            <h3 class="text-xl font-bold mb-1">発見されやすい設計</h3>
+            <p class="copy-sm">短尺動画とLIVEの連動で、新人でも視聴が伸びやすい環境。</p>
           </div>
-          <!-- カードB: 機材提供・環境構築（②） -->
-          <div class="card">
-            <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-microphone"></i></div>
-            <h3 class="text-xl font-bold mb-2">機材提供・環境構築</h3>
-            <p class="text-sm text-gray-600">マイクやスタンドなど配信機材を進呈</p>
+          <div class="growth card">
+            <div class="kicker mb-1">INTERACTION</div>
+            <h3 class="text-xl font-bold mb-1">双方向性と熱量</h3>
+            <p class="copy-sm">コメント・ギフトが循環し、ファンとの距離が近い。</p>
           </div>
-          <!-- カードC: 配信戦略の設計（③） -->
-          <div class="card">
-            <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-chart-line"></i></div>
-            <h3 class="text-xl font-bold mb-2">配信戦略の設計</h3>
-            <p class="text-sm text-gray-600">ファン層拡大と収益最大化のための企画提案</p>
-          </div>
-          <!-- カードD: 配信活動サポート（④） -->
-          <div class="card">
-            <div class="text-4xl text-sky-600 mb-4"><i class="fas fa-headset"></i></div>
-            <h3 class="text-xl font-bold mb-2">配信活動サポート</h3>
-            <p class="text-sm text-gray-600">トラブル対応・ガイド提供・交流機会</p>
+          <div class="growth card">
+            <div class="kicker mb-1">MONETIZATION</div>
+            <h3 class="text-xl font-bold mb-1">多様な収益導線</h3>
+            <p class="copy-sm">ギフト／提携／ECなど、活動段階に応じた選択肢。</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="trust-foundation" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairの信頼性と事業基盤</h2>
-          <div class="underline"></div>
-          <p class="mt-3 text-gray-600 text-base md:text-lg">数値の羅列ではなく、運営の思想と仕組みを分かりやすく。</p>
-        </div>
-        <!-- 運営基準（画像ではなくHTMLで明瞭に） -->
-        <div class="grid md:grid-cols-3 gap-6 px-4">
-          <article class="card">
-            <div class="growth-kicker mb-2">OPERATIONS</div>
-            <h3 class="text-lg font-bold mb-2">安全な運営体制</h3>
-            <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
-              <li>最新ガイドラインの共有と注意喚起の運用</li>
-              <li>配信中トラブルの一次対応窓口</li>
-              <li>透明な報酬・分配ルールの提示</li>
-            </ul>
-          </article>
-          <article class="card">
-            <div class="growth-kicker mb-2">PERFORMANCE</div>
-            <h3 class="text-lg font-bold mb-2">パフォーマンス基準</h3>
-            <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
-              <li>継続的な活動を支える伴走体制</li>
-              <li>視聴者エンゲージメントを高める施策</li>
-              <li>週次フィードバックによる改善サイクル</li>
-            </ul>
-          </article>
-          <article class="card">
-            <div class="growth-kicker mb-2">ENABLEMENT</div>
-            <h3 class="text-lg font-bold mb-2">成長サポート</h3>
-            <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
-              <li>機材・環境の最適化サポート</li>
-              <li>企画・台本テンプレ／タイトル添削</li>
-              <li>小規模コミュニティでの事例共有</li>
-            </ul>
-          </article>
-        </div>
-        <!-- 企業・団体向けCTA（任意） -->
-        <div class="text-center mt-8">
-          <a class="cta btn" href="#contact">企業・提携のご相談はこちら</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="certification" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800">TikTokとの契約</h2>
-          <div class="underline"></div>
-          <p class="mt-4 text-gray-600 text-base md:text-lg">
-            当社は<strong>TikTok社と業務委託契約</strong>を締結し、公式の枠組みでLIVEエージェンシー運営を行っています。</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6 px-4">
-          <!-- 契約の位置づけ -->
-          <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-            <div class="chip accent mb-2 inline-block">Contract</div>
-            <h3 class="text-lg font-bold mb-2">契約の位置づけ</h3>
-            <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
-              <li>TikTok LIVEエージェンシーとしての業務委託契約</li>
-              <li>最新の方針・運用基準に基づくサポート提供</li>
-              <li>安全・コンプライアンスを重視した運営体制</li>
-            </ul>
-          </article>
-          <!-- 企業向けの提供価値 -->
-          <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-            <div class="chip accent mb-2 inline-block">For Business</div>
-            <h3 class="text-lg font-bold mb-2">企業向けの提供価値</h3>
-            <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
-              <li>タイアップや番組企画における出演・進行のプロデュース</li>
-              <li>ブランドセーフティに配慮した配信設計とチェック</li>
-              <li>案件要件に応じたクリエイターのキャスティング</li>
-            </ul>
-          </article>
-          <!-- 確認方法 -->
-          <article class="bg-white p-6 rounded-lg border border-blue-100 shadow-sm">
-            <div class="chip accent mb-2 inline-block">Verification</div>
-            <h3 class="text-lg font-bold mb-2">確認方法</h3>
-            <ul class="list-disc list-outside pl-5 text-gray-700 space-y-1">
-              <li>契約の詳細は機密保持の観点から公開していません</li>
-              <li>企業・メディアの皆さまには、必要に応じて確認資料をご提示可能</li>
-              <li>まずは案件概要とともにご連絡ください</li>
-            </ul>
-          </article>
-        </div>
-        <div class="text-center mt-8">
-          <a class="cta btn" href="#contact">企業のご相談へ</a>
-          <p class="text-xs text-gray-500 mt-3">※ご要望に応じて、登記事項証明書・定款の写し等もご用意できます（NDA可）。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="growth" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800">市場の伸びとFlairの着眼点</h2>
-          <div class="underline"></div>
-          <p class="mt-3 text-gray-600 text-base md:text-lg">右肩上がりのLIVE市場。新人でも伸ばしやすい設計と収益導線に注目しています。</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 px-4 items-center">
-          <!-- 左：力強いトレンドのビジュアル（SVGエリアチャート） -->
-          <figure class="card p-4">
-            <svg id="growthChart" viewBox="0 0 600 320" class="w-full h-auto" role="img" aria-label="市場の伸びを示す概念図">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#2563eb" stop-opacity="0.85" />
-                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0.05" />
-                </linearGradient>
-              </defs>
-              <!-- 軸（控えめ） -->
-              <line x1="48" y1="260" x2="560" y2="260" stroke="#E5E7EB" stroke-width="2" />
-              <line x1="48" y1="40" x2="48" y2="260" stroke="#E5E7EB" stroke-width="2" />
-              <!-- 描画レイヤ（JSで上書き） -->
-              <path id="growthArea" d="" fill="url(#g1)" />
-              <polyline id="growthLine" points="" fill="none" stroke="#2563eb" stroke-width="4" />
-              <!-- 年代の目盛り（JSで生成） -->
-              <g id="xlabels" fill="#9CA3AF" font-size="12"></g>
-              <!-- タイトル -->
-              <g fill="#111827" font-size="16" font-weight="700">
-                <text x="64" y="72">右肩上がりのトレンド</text>
-              </g>
-              <!-- 削除: 概念図注釈 -->
-            </svg>
-            <figcaption class="text-xs text-gray-500 mt-2">
-              数値は公開情報に基づく<strong>指数化グラフ</strong>です（2023年=100として年次補間）。主な出典：
-              <a class="underline"
-                href="https://www.grandviewresearch.com/industry-analysis/live-streaming-market-report" target="_blank"
-                rel="noopener">Grand View Research『Live Streaming Market』(世界：2023年 USD
-                87.55B、2024–2030 CAGR 23%)</a>、
-              <a class="underline" href="https://www.grandviewresearch.com/horizon/outlook/video-streaming-market/japan"
-                target="_blank" rel="noopener">Grand View Research『Japan Video Streaming Market
-                Outlook』(日本：2024年 USD 7,813.9M、2025–2030 CAGR 22.2%、ライブが最大セグメント)</a>、
-              <a class="underline" href="https://www.grandviewresearch.com/horizon/outlook/live-streaming-market/japan"
-                target="_blank" rel="noopener">Grand View Research『Japan Live Streaming Market
-                Outlook』(日本ライブ配信：2023年 USD 3,563.0M、2024–2030 CAGR 24.7%)</a>。
-            </figcaption>
-          </figure>
-          <!-- 右：3つの強み（カード） -->
-          <div class="grid gap-4">
-            <div class="growth card">
-              <div class="kicker mb-1">DISCOVERABILITY</div>
-              <h3 class="text-xl font-bold mb-1">発見されやすい設計</h3>
-              <p class="text-sm text-gray-700">短尺動画とLIVEの連動で、新人でも視聴が伸びやすい環境。</p>
-            </div>
-            <div class="growth card">
-              <div class="kicker mb-1">INTERACTION</div>
-              <h3 class="text-xl font-bold mb-1">双方向性と熱量</h3>
-              <p class="text-sm text-gray-700">コメント・ギフトが循環し、ファンとの距離が近い。</p>
-            </div>
-            <div class="growth card">
-              <div class="kicker mb-1">MONETIZATION</div>
-              <h3 class="text-xl font-bold mb-1">多様な収益導線</h3>
-              <p class="text-sm text-gray-700">ギフト／提携／ECなど、活動段階に応じた選択肢。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="why-tiktok-live" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold">なぜFlairはTikTok LIVEに特化するのか</h2>
-          <div class="underline"></div>
-          <p class="mt-4 text-base md:text-lg sec__lead">市場の拡大、視聴時間の伸長、そしてTikTokならではの発見性と収益導線</p>
-        </div>
-        <div class="max-w-4xl mx-auto text-gray-700 leading-relaxed text-lg">
-          <p class="mb-8">
-            LIVE配信市場は世界的に拡大を続けています。TikTok LIVEは、短尺動画との連携による<strong>発見性</strong>、
-            コメントやギフトがリアルタイムで循環する<strong>双方向性</strong>、そしてギフトや案件を通じた<strong>収益化</strong>のしやすさを兼ね備え、
-            新しい才能が最短距離で成長できるプラットフォームです。
-          </p>
-          <div class="grid md:grid-cols-3 gap-6">
-            <!-- 市場成長 -->
-            <div class="card">
-              <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-line"></i></div>
-              <h3 class="font-bold mb-2">市場が拡大</h3>
-              <p class="text-sm mb-2">
-                世界のライブ配信市場は<strong>2023年に約USD
-                  87.6B</strong>、2024–2030年の年平均成長率は<strong>約23%</strong>と推計されています。
-              </p>
-              <p class="text-xs text-gray-500">出典：Grand View Research『Live Streaming Market』(2023年=USD
-                87.55B、CAGR 23%)</p>
-            </div>
-            <!-- 視聴時間の拡大 -->
-            <div class="card">
-              <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-clock"></i></div>
-              <h3 class="font-bold mb-2">視聴時間が伸長</h3>
-              <p class="text-sm mb-2">
-                <strong>2020年</strong>、LIVE配信アプリの利用は<strong>4,800億時間以上</strong>。視聴習慣が定着。
-              </p>
-              <p class="text-xs text-gray-500">出典：Statista『Live Streaming Apps: Global Time Spent 2018–2021』</p>
-            </div>
-            <!-- TikTok LIVEの特性 -->
-            <div class="card">
-              <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-bolt"></i></div>
-              <h3 class="font-bold mb-2">TikTokならでは</h3>
-              <ul class="text-sm space-y-1 text-left list-disc list-outside pl-5">
-                <li>短尺動画との連携で<strong>発見性</strong>が高い</li>
-                <li>コメント・ギフトが続く<strong>双方向性</strong></li>
-                <li>ギフト/案件で<strong>収益化</strong>しやすい導線</li>
-              </ul>
-            </div>
-          </div>
-          <!-- 日本市場のポイント -->
-          <div class="mt-10">
-            <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-6">日本市場での注目ポイント</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-              <!-- 国内の伸び -->
-              <div class="card">
-                <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-simple"></i></div>
-                <h4 class="font-bold mb-2">国内市場の拡大</h4>
-                <p class="text-sm mb-2">日本でもLIVE配信の視聴時間・課金額が右肩上がり。Z世代を中心に視聴習慣が定着。</p>
-              </div>
-              <!-- 収益化機会の拡大 -->
-              <div class="card">
-                <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-coins"></i></div>
-                <h4 class="font-bold mb-2">収益化機会が拡大</h4>
-                <p class="text-sm mb-2">ギフト（投げ銭）文化が浸透し、ブランド案件の連携も増加。継続的なマネタイズが可能。</p>
-              </div>
-              <!-- 参入しやすさ＆成長速度 -->
-              <div class="card">
-                <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-mobile-screen"></i></div>
-                <h4 class="font-bold mb-2">参入しやすく、伸びが早い</h4>
-                <p class="text-sm mb-2">スマホと基本機材で始められ、アルゴリズムの発見性により新人でも短期で伸ばしやすい。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="growth-vision" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold">Flairの成長ビジョン</h2>
-          <div class="underline"></div>
-          <p class="mt-4 text-base md:text-lg sec__lead">一般的な成長ステージ「初期 → 成長期 → 成熟期 → 多角化」を、私たちの計画として明示します。</p>
-        </div>
-        <div class="grid md:grid-cols-4 gap-6 px-4 text-center">
+    <section id="why-tiktok-live" class="band cool">
+      <header class="section-heading">
+        <h2 class="text-2xl md:text-3xl font-bold">なぜFlairはTikTok LIVEに特化するのか</h2>
+        <div class="accentline"></div>
+        <p class="mt-4 text-base md:text-lg sec__lead">市場の拡大、視聴時間の伸長、そしてTikTokならではの発見性と収益導線</p>
+      </header>
+      <div class="max-w-4xl mx-auto text-gray-700 leading-relaxed text-lg">
+        <p class="mb-8">
+          LIVE配信市場は世界的に拡大を続けています。TikTok LIVEは、短尺動画との連携による<strong>発見性</strong>、
+          コメントやギフトがリアルタイムで循環する<strong>双方向性</strong>、そしてギフトや案件を通じた<strong>収益化</strong>のしやすさを兼ね備え、
+          新しい才能が最短距離で成長できるプラットフォームです。
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- 市場成長 -->
           <div class="card">
-            <div class="text-4xl mb-2"><i class="fas fa-seedling text-sky-600"></i></div>
-            <h3 class="font-bold">初期</h3>
-            <p class="text-sm text-gray-700 mt-1">厳選スカウトと基盤整備。運用ルール・安全ガイドを整備。</p>
-          </div>
-          <div class="card">
-            <div class="text-4xl mb-2"><i class="fas fa-chart-line text-sky-600"></i></div>
-            <h3 class="font-bold">成長期</h3>
-            <p class="text-sm text-gray-700 mt-1">KPI管理の徹底と教育プログラム拡充。ケース共有で底上げ。</p>
-          </div>
-          <div class="card">
-            <div class="text-4xl mb-2"><i class="fas fa-trophy text-sky-600"></i></div>
-            <h3 class="font-bold">成熟期</h3>
-            <p class="text-sm text-gray-700 mt-1">トップクリエイターのブランディング。外部タイアップ強化。</p>
-          </div>
-          <div class="card">
-            <div class="text-4xl mb-2"><i class="fas fa-sitemap text-sky-600"></i></div>
-            <h3 class="font-bold">多角化</h3>
-            <p class="text-sm text-gray-700 mt-1">イベント、EC、コンテンツ制作など周辺事業へ展開。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section biz band cool">
-      <div class="wrap">
-        <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800">企業・メディア・提携のご相談</h2>
-          <div class="underline"></div>
-          <p class="mt-4 text-gray-600 text-base md:text-lg">案件・取材・タイアップのご相談は、下記窓口よりお寄せください。</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 px-4">
-          <!-- メール窓口 -->
-          <div class="card text-center md:col-span-2">
-            <div class="chip chip--accent mb-3 inline-block">Business</div>
-            <div class="text-4xl text-blue-600 mb-3"><i class="fas fa-envelope"></i></div>
-            <h3 class="text-xl font-bold mb-2">メールでお問い合わせ</h3>
-            <p class="text-sm text-gray-700 mb-4">社名・ご担当者名・目的・希望時期・ご予算感（あれば）をご記載ください。</p>
-            <a class="cta btn"
-              href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8">
-              メールで問い合わせる
-            </a>
-            <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
-            <p class="text-xs text-gray-500 mt-2">
-              ※「振込先の変更」連絡は当社ドメイン（@flair-agency.biz）のメールでのみ行います。不審な案内を受け取った場合は、本サイト記載の連絡先へコールバック確認をお願いします。
+            <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-line"></i></div>
+            <h3 class="font-bold mb-2">市場が拡大</h3>
+            <p class="text-sm mb-2">
+              世界のライブ配信市場は<strong>2023年に約USD
+                87.6B</strong>、2024–2030年の年平均成長率は<strong>約23%</strong>と推計されています。
             </p>
+            <p class="text-xs text-gray-500">出典：Grand View Research『Live Streaming Market』(2023年=USD
+              87.55B、CAGR 23%)</p>
           </div>
+          <!-- 視聴時間の拡大 -->
+          <div class="card">
+            <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-clock"></i></div>
+            <h3 class="font-bold mb-2">視聴時間が伸長</h3>
+            <p class="text-sm mb-2">
+              <strong>2020年</strong>、LIVE配信アプリの利用は<strong>4,800億時間以上</strong>。視聴習慣が定着。
+            </p>
+            <p class="text-xs text-gray-500">出典：Statista『Live Streaming Apps: Global Time Spent 2018–2021』</p>
+          </div>
+          <!-- TikTok LIVEの特性 -->
+          <div class="card">
+            <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-bolt"></i></div>
+            <h3 class="font-bold mb-2">TikTokならでは</h3>
+            <ul class="text-sm space-y-1 text-left list-disc list-outside pl-5">
+              <li>短尺動画との連携で<strong>発見性</strong>が高い</li>
+              <li>コメント・ギフトが続く<strong>双方向性</strong></li>
+              <li>ギフト/案件で<strong>収益化</strong>しやすい導線</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 日本市場のポイント -->
+        <div class="mt-10">
+          <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-6">日本市場での注目ポイント</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- 国内の伸び -->
+            <div class="card">
+              <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-chart-simple"></i></div>
+              <h4 class="font-bold mb-2">国内市場の拡大</h4>
+              <p class="text-sm mb-2">日本でもLIVE配信の視聴時間・課金額が右肩上がり。Z世代を中心に視聴習慣が定着。</p>
+            </div>
+            <!-- 収益化機会の拡大 -->
+            <div class="card">
+              <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-coins"></i></div>
+              <h4 class="font-bold mb-2">収益化機会が拡大</h4>
+              <p class="text-sm mb-2">ギフト（投げ銭）文化が浸透し、ブランド案件の連携も増加。継続的なマネタイズが可能。</p>
+            </div>
+            <!-- 参入しやすさ＆成長速度 -->
+            <div class="card">
+              <div class="text-4xl text-sky-600 mb-3"><i class="fas fa-mobile-screen"></i></div>
+              <h4 class="font-bold mb-2">参入しやすく、伸びが早い</h4>
+              <p class="text-sm mb-2">スマホと基本機材で始められ、アルゴリズムの発見性により新人でも短期で伸ばしやすい。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="growth-vision" class="band cool">
+      <header class="section-heading">
+        <h2 class="text-2xl md:text-3xl font-bold">Flairの成長ビジョン</h2>
+        <div class="accentline"></div>
+        <p class="mt-4 text-base md:text-lg sec__lead">一般的な成長ステージ「初期 → 成長期 → 成熟期 → 多角化」を、私たちの計画として明示します。</p>
+      </header>
+      <div class="grid md:grid-cols-4 gap-6 px-4 text-center">
+        <div class="card">
+          <div class="text-4xl mb-2"><i class="fas fa-seedling text-sky-600"></i></div>
+          <h3 class="font-bold">初期</h3>
+          <p class="text-sm text-gray-700 mt-1">厳選スカウトと基盤整備。運用ルール・安全ガイドを整備。</p>
+        </div>
+        <div class="card">
+          <div class="text-4xl mb-2"><i class="fas fa-chart-line text-sky-600"></i></div>
+          <h3 class="font-bold">成長期</h3>
+          <p class="text-sm text-gray-700 mt-1">KPI管理の徹底と教育プログラム拡充。ケース共有で底上げ。</p>
+        </div>
+        <div class="card">
+          <div class="text-4xl mb-2"><i class="fas fa-trophy text-sky-600"></i></div>
+          <h3 class="font-bold">成熟期</h3>
+          <p class="text-sm text-gray-700 mt-1">トップクリエイターのブランディング。外部タイアップ強化。</p>
+        </div>
+        <div class="card">
+          <div class="text-4xl mb-2"><i class="fas fa-sitemap text-sky-600"></i></div>
+          <h3 class="font-bold">多角化</h3>
+          <p class="text-sm text-gray-700 mt-1">イベント、EC、コンテンツ制作など周辺事業へ展開。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="band cool">
+      <header class="section-heading">
+        <h2 class="section-title">企業・メディア・提携のご相談</h2>
+        <div class="accentline"></div>
+        <p class="mt-4 text-gray-600 text-base md:text-lg">案件・取材・タイアップのご相談は、下記窓口よりお寄せください。</p>
+      </header>
+      <div class="grid md:grid-cols-2 gap-6 px-4">
+        <!-- メール窓口 -->
+        <div class="card text-center md:col-span-2">
+          <div class="chip chip--accent mb-3 inline-block">Business</div>
+          <div class="text-4xl text-blue-600 mb-3"><i class="fas fa-envelope"></i></div>
+          <h3 class="card-title">メールでお問い合わせ</h3>
+          <p class="text-sm text-gray-700 mb-4">社名・ご担当者名・目的・希望時期・ご予算感（あれば）をご記載ください。</p>
+          <a class="cta btn"
+            href="mailto:contact@flair-agency.biz?subject=%E3%80%90%E4%BC%81%E6%A5%AD%E3%83%BB%E6%8F%90%E6%90%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87%E3%80%91Flair%E3%81%B8">
+            メールで問い合わせる
+          </a>
+          <p class="text-xs text-gray-500 mt-3">宛先：contact@flair-agency.biz</p>
+          <p class="text-xs text-gray-500 mt-2">
+            ※「振込先の変更」連絡は当社ドメイン（@flair-agency.biz）のメールでのみ行います。不審な案内を受け取った場合は、本サイト記載の連絡先へコールバック確認をお願いします。
+          </p>
         </div>
       </div>
     </section>
 
   </main>
   <!-- フッター -->
-  <footer class="bg-gray-800 text-white text-center p-4">
-    <nav aria-label="サイト内ナビゲーション" class="on-site">
-      <ul class="menu flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
-        <li><a href="/creator/">クリエイターの方へ</a></li>
-        <li><a class="is-current" href="#" aria-current="page">企業のご担当者さまへ</a></li>
+  <footer>
+    <nav class="on-site" aria-label="サイト内ナビゲーション">
+      <ul class="menu">
+        <li><a href="/creator">クリエイターの方へ</a></li>
+        <li><a href="#" aria-current="page">企業のご担当者さまへ</a></li>
         <li><a href="/company/">私たちについて</a></li>
       </ul>
     </nav>
-    <p>&copy; 2025 Flair LLC</p>
+    <p class="copyright">&copy; 2025 Flair LLC</p>
   </footer>
 
-  <script src="/assets/common.js?v=20260215" defer></script>
-  <script src="./index.js?v=20260215"></script>
+  <script src="/assets/common.js?v=20260216r04" defer></script>
+  <script src="./index.js?v=20260216r04"></script>
 </body>
 
 </html>

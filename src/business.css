@@ -1,103 +1,46 @@
 /* ===== Business Page Specific Styles ===== */
 body.business {
-  .hero.section {
-    background-image: image-set(url('/business/background-image.avif?v=20260215') type('image/avif') 1x,
-        url('/business/background-image.webp?v=20260215') type('image/webp') 1x,
-        url('/business/background-image.png?v=20260215') type('image/png') 1x);
-  }
+  main>section {
 
-  .biz.section {
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 16px;
+    &.hero {
+      --avif-option: url("/business/background-image.avif?v=20260216r04") type("image/avif") 1x;
+      --webp-option: url("/business/background-image.webp?v=20260216r04") type("image/webp") 1x;
+      --png-option: url("/business/background-image.png?v=20260216r04") type("image/png") 1x;
+      @apply bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))];
     }
 
     &.band {
-      background: var(--biz-band-bg);
-      padding: 4rem 0;
-      margin: 2rem 0;
-      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(15, 23, 42, 0.03));
-
-      & h2 {
-        color: var(--biz-head);
-      }
-
-      &,
-      & p,
-      & li,
-      & h3,
-      & h4 {
-        color: var(--biz-body);
-      }
-
-      /* === Cool tone variant for business contact band === */
-      &.cool {
-        /* override only the variables & subtle bg tint */
-        --biz-band-bg: #EAF2FF;
-        /* light blue */
-        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(37, 99, 235, 0.06));
-
-        .chip {
-          color: #1D4ED8;
-          /* blue-700 */
-          border-color: #BFDBFE;
-          /* blue-200 */
-          background: #EFF6FF;
-          /* blue-50 */
-        }
-
-        .cta.btn {
-          background: #2563eb;
-          /* blue-600 */
-
-          &:hover {
-            box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
-          }
-        }
-
-        /* === Section title underline variants === */
-        h2+.underline {
-          background-image: linear-gradient(to right, #3B82F6, #22D3EE);
-          /* blue-500 -> cyan-400 */
-        }
-      }
+      @apply max-w-275 py-16 px-4 my-8 mx-auto;
     }
 
-    /* === Unified business card style (match #certification) === */
-    .card {
-      background: #fff;
-      /* bg-white */
-      border: 1px solid #BFDBFE;
-      /* ≒ border-blue-100 の視認性確保 */
-      border-radius: 0.5rem;
-      /* rounded-lg */
-      box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-      /* shadow-sm */
-      padding: 1.5rem;
-      /* p-6 */
-
-      &:hover {
-        box-shadow: 0 6px 18px rgba(37, 99, 235, .08);
+    .growth.card {
+      h3 {
+        @apply tracking-wide;
       }
 
-      /* ===== Visual helpers for growth section ===== */
-      &.growth {
-        h3 {
-          letter-spacing: .02em;
-        }
-
-        .kicker {
-          font-size: 12px;
-          letter-spacing: .12em;
-          color: #9CA3AF;
-        }
+      .kicker {
+        @apply tracking-[0.12em] text-xs text-gray-500;
       }
-
     }
+  }
 
-    .muted {
-      color: #475569;
+  .bullet-list {
+    @apply list-disc list-outside pl-5 text-gray-700 space-y-1;
+  }
+
+  .card {
+    @apply bg-(--section-bg) border border-[#bfdbfe] rounded-(--radius-base) shadow-sm p-6;
+
+    &:hover {
+      @apply shadow-[0_6px_18px_rgba(37,99,235,0.08)];
     }
+  }
+
+  .card-title {
+    @apply text-xl font-bold mb-2;
+  }
+
+  .copy-sm {
+    @apply text-sm text-gray-700;
   }
 }

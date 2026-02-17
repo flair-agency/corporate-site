@@ -24,8 +24,8 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';">
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260215"
-    imagesrcset="./background-image.avif?v=20260215 1x, ./background-image.webp?v=20260215 1x, ./background-image.png?v=20260215 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260216r04"
+    imagesrcset="./background-image.avif?v=20260216r04 1x, ./background-image.webp?v=20260216r04 1x, ./background-image.png?v=20260216r04 1x"
     imagesizes="100vw">
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -42,8 +42,8 @@
     crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin>
   <!-- Local CSS -->
-  <link rel="preload" href="/assets/app.css?v=20260215" as="style">
-  <link rel="stylesheet" href="/assets/app.css?v=20260215" />
+  <link rel="preload" href="/assets/app.css?v=20260216r04" as="style">
+  <link rel="stylesheet" href="/assets/app.css?v=20260216r04" />
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Zen+Kurenaido:wght@400;700&display=swap">
@@ -52,226 +52,207 @@
 </head>
 
 <body class="company">
-  <header class="header">
-    <div class="wrap px-4">
-      <div class="inner py-3">
-        <a href="/" class="flex items-center gap-3">
-          <img src="/assets/logo.svg" alt="合同会社Flair ロゴ" class="logo rounded-lg" width="70" height="50">
-        </a>
-        <nav class="on-page" aria-label="主要ナビゲーション">
-          <button id="navToggle" class="toggle rounded" aria-expanded="false" aria-controls="navMenu" aria-label="メニュー">
-            <span class="sr-only">メニュー</span>
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-          <ul id="navMenu" class="menu" aria-label="ページ内ナビゲーション">
-            <li><a href="#top">トップ</a></li>
-            <li><a href="#mission-vision">理念</a></li>
-            <li><a href="#founder">出発点</a></li>
-            <li><a href="#company">会社概要</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+  <header>
+    <a href="/">
+      <img src="/assets/logo.svg" alt="合同会社Flair ロゴ" class="logo" width="70" height="50">
+    </a>
+    <nav class="on-page" aria-label="ページ内ナビゲーション">
+      <button class="toggle" aria-expanded="false" aria-label="トグル">
+        <span class="sr-only">メニュー</span>
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+      <ul class="menu" aria-label="メニュー">
+        <li><a href="#top">トップ</a></li>
+        <li><a href="#mission-vision">理念</a></li>
+        <li><a href="#founder">出発点</a></li>
+        <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="container mx-auto max-w-6xl">
-    <section id="top" class="hero section text-center rounded-lg mt-8 mx-4 relative isolate overflow-hidden">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4">自分らしく、前へ。</h2>
-      <p class="max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6">
-        挑戦し続けられる仕組みを、<br />LIVEという表現の場から。
-      </p>
-      <div class="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 text-slate-500">
-        <div class="flex flex-col items-center gap-2">
-          <span class="text-[11px] tracking-[0.2em]">SCROLL</span>
-          <span class="h-8 w-8 animate-bounce rounded-full border border-slate-300 grid place-items-center">↓</span>
-        </div>
+  <main>
+    <section id="top" class="hero">
+      <h2>自分らしく、前へ。</h2>
+      <p class="lead">挑戦し続けられる仕組みを、<br />LIVEという表現の場から。</p>
+      <div class="indicator">
+        <span class="label">SCROLL</span>
+        <span class="icon">↓</span>
       </div>
     </section>
 
-    <section id="mission-vision" class="section">
-      <header class="text-center mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">MISSION &amp; VISION</h2>
-        <p class="mt-2 text-gray-500">私たちが目指す社会と、Flairの役割</p>
+    <section id="mission-vision">
+      <header>
+        <h2>MISSION &amp; VISION</h2>
+        <p>私たちが目指す社会と、Flairの役割</p>
       </header>
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         <!-- MISSION -->
-        <article class="rounded-2xl border border-orange-100 bg-white p-4 shadow-sm md:p-6">
+        <article>
           <div class="chip">MISSION</div>
-          <h3 class="mb-2 text-xl leading-relaxed font-bold text-gray-900 md:text-2xl">
+          <h3>
             誰もが、LIVEで自分を解き放てる社会をつくる。
           </h3>
-          <p class="text-gray-700 leading-8">
+          <p>
             LIVE配信という表現手段を通じて、年齢や経験に関係なく、
             誰もが自分らしく輝き、人生を切り開いていける未来を目指します。
           </p>
-          <img class="mt-3.5 block w-full rounded-xl border border-orange-100 object-cover" src="./mission-image.avif"
+          <img src="./mission-image.avif"
             srcset="./mission-image.avif 1x, ./mission-image.webp 1x, ./mission-image.png 1x" sizes="100vw"
             alt="多様な配信者がそれぞれ異なる場所から配信している様子" width="1536" height="1024">
         </article>
         <!-- VISION -->
-        <article class="rounded-2xl border border-orange-100 bg-white p-4 shadow-sm md:p-6">
+        <article>
           <div class="chip accent">VISION</div>
-          <h3 class="mb-2 text-xl leading-relaxed font-bold text-gray-900 md:text-2xl">
+          <h3>
             若手クリエイターの挑戦と成長を支え、最も信頼されるLIVEパートナーとなる。
           </h3>
-          <p class="text-gray-700 leading-8">
+          <p>
             Flairは、安心感と成長機会、そして才能を価値に変える仕組みで、
             一人ひとりが自分らしく活動を続けられるよう伴走します。
           </p>
-          <img class="mt-3.5 block w-full rounded-xl border border-orange-100 object-cover" src="./vision-image.avif"
-            srcset="./vision-image.avif 1x, ./vision-image.webp 1x, ./vision-image.png 1x" sizes="100vw"
-            alt="若手クリエイターがそれぞれ異なる環境で成長に向けて配信している様子" width="1536" height="1024">
+          <img src="./vision-image.avif" srcset="./vision-image.avif 1x, ./vision-image.webp 1x, ./vision-image.png 1x"
+            sizes="100vw" alt="若手クリエイターがそれぞれ異なる環境で成長に向けて配信している様子" width="1536" height="1024">
         </article>
       </div>
     </section>
 
-    <section id="founder" class="section">
-      <header class="text-center mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Flairの出発点</h2>
-        <div class="underline warm"></div>
+    <section id="founder">
+      <header>
+        <h2>Flairの出発点</h2>
+        <div class="accentline"></div>
       </header>
       <article class="message mt-8">
-        <h3 class="mb-4 text-xl font-bold text-gray-800">代表からのメッセージ</h3>
-        <blockquote class="letter bg-amber-50/70 border border-amber-100 p-8 sm:p-10 shadow-sm text-gray-700">
-          <p class="my-3">
+        <h3>代表からのメッセージ</h3>
+        <blockquote class="letter">
+          <p>
             私たちは、数字だけで配信者の価値を判断しません。
             成果が出にくい時期も含めて、挑戦を止めないために本気で伴走します。
           </p>
-          <p class="my-3">LIVE配信は、自分らしさを解き放ち、可能性を広げる舞台です。</p>
-          <p class="my-3">
+          <p>LIVE配信は、自分らしさを解き放ち、可能性を広げる舞台です。</p>
+          <p>
             ワクワクする挑戦を、自分の意思で選ぶこと。
             昨日より一歩でも前に進むこと。
             その高揚が、人を想像以上に成長させると信じています。
           </p>
-          <p class="my-3">
+          <p>
             だからこそ、守るだけの支援はしません。
             不安を減らすだけでなく、挑戦を後押しします。
           </p>
-          <p class="my-3">
+          <p>
             <strong>配信を楽しむこと。
               そして、自分の人生をもっと主体的に楽しむこと。</strong>
             そのエネルギーを、ともに生み出していきます。
           </p>
-          <p class="mt-8 text-right font-semibold">
+          <p class="signature">
             合同会社Flair<br>
             代表社員 木村 直樹
           </p>
         </blockquote>
       </article>
       <article class="profile flow-root mt-8">
-        <h3 class="mb-4 text-xl font-bold text-gray-800">代表のプロフィール</h3>
-        <figure class="photo mb-4 w-40 float-none sm:float-left sm:mr-6 sm:mb-4">
-          <img class="block w-full rounded-xl shadow-sm" src="./representative-photo.avif"
+        <h3>代表のプロフィール</h3>
+        <figure class="photo mb-4 float-none sm:float-left sm:mr-6 sm:mb-4">
+          <img src="./representative-photo.avif"
             srcset="./representative-photo.avif 1x, ./representative-photo.webp 1x, ./representative-photo.jpg 1x"
-            sizes="160px"
-            alt="緑の木々を背景に立つ合同会社Flair代表社員のプロフィール写真" width="960" height="1200" loading="lazy">
+            sizes="160px" alt="緑の木々を背景に立つ合同会社Flair代表社員のプロフィール写真" width="960" height="1200" loading="lazy">
         </figure>
-        <div>
-          <p class="full-name text-xl tracking-wide text-gray-700 leading-8">
-            <ruby>木村<rt>きむら</rt></ruby><ruby>直樹<rt>なおき</rt></ruby>
-          </p>
-          <p class="text-gray-700 leading-8">
-            ソフトウェアエンジニアとしてWeb・業務システム・Fintech領域に従事。
-            限られた体制でも成果が出る設計と運用に向き合ってきました。
-            現在はその経験を活かし、配信者が安心して挑戦できる環境づくりに取り組んでいます。
-          </p>
-        </div>
+        <p class="full-name">
+          <ruby>木村<rt>きむら</rt></ruby><ruby>直樹<rt>なおき</rt></ruby>
+        </p>
+        <p>
+          ソフトウェアエンジニアとしてWeb・業務システム・Fintech領域に従事。
+          限られた体制でも成果が出る設計と運用に向き合ってきました。
+          現在はその経験を活かし、配信者が安心して挑戦できる環境づくりに取り組んでいます。
+        </p>
       </article>
       <article class="background mt-8">
-        <h3 class="mb-4 text-xl font-bold text-gray-800">創業の背景</h3>
-        <p class="text-gray-700 leading-8">
+        <h3>創業の背景</h3>
+        <p>
           私自身、10年以上にわたり、身近な存在が働き方を模索する過程に寄り添ってきました。
           能力や意欲があっても、環境や役割によって選択肢が狭まっていく現実を、すぐそばで見てきました。</p>
-        <p class="mt-4 text-gray-700 leading-8">
+        <p class="mt-4">
           とくに女性が働き方を再設計する局面では、挑戦が後回しにされてしまうことも少なくありません。
           それを個人の事情として片付けるのではなく、構造の問題として向き合いたいと考えました。</p>
-        <p class="mt-4 text-gray-700 leading-8">
+        <p class="mt-4">
           <strong>挑戦を偶然や自己責任に委ねない。続けられる仕組みに変えること</strong>が、Flairの出発点です。
         </p>
       </article>
     </section>
 
-    <section id="company" class="section biz band cool">
-      <header class="text-center mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">会社概要</h2>
-        <div class="underline"></div>
+    <section id="company" class="cool">
+      <header>
+        <h2>会社概要</h2>
+        <div class="accentline"></div>
       </header>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 px-4">
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">商号</h3>
-          <p class="pl-4">合同会社<ruby>Flair<rt>フレア</rt></ruby></p>
+        <div class="def">
+          <h3>商号</h3>
+          <p>合同会社<ruby>Flair<rt>フレア</rt></ruby></p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">本店所在地</h3>
-          <p class="pl-4">東京都練馬区関町南４丁目１８番２－４０５号</p>
+        <div class="def">
+          <h3>本店所在地</h3>
+          <p>東京都練馬区関町南４丁目１８番２－４０５号</p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">法人番号</h3>
-          <p class="pl-4">7011603004768</p>
+        <div class="def">
+          <h3>法人番号</h3>
+          <p>7011603004768</p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">資本金</h3>
-          <p class="pl-4">10万円</p>
+        <div class="def">
+          <h3>資本金</h3>
+          <p>10万円</p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">会社成立の年月日</h3>
-          <p class="pl-4">令和7年7月7日</p>
+        <div class="def">
+          <h3>会社成立の年月日</h3>
+          <p>令和7年7月7日</p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">事業内容</h3>
-          <ul class="pl-6 list-disc text-gray-700">
+        <div class="def">
+          <h3>事業内容</h3>
+          <ul>
             <li>
-              <a href="/business/"
-                class="inline-block font-medium text-current underline underline-offset-4 decoration-slate-300 decoration-1 hover:decoration-slate-500 active:decoration-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 rounded-sm">
-                LIVEクリエイター・マネジメント事業
-              </a>
+              <a href="/business/" class="hyperlink">LIVEクリエイター・マネジメント事業</a>
             </li>
           </ul>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">代表者</h3>
+        <div class="def">
+          <h3>代表者</h3>
           <p class="pl-4">木村 直樹</p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">人員体制</h3>
-          <ul class="pl-6 list-disc text-gray-700">
+        <div class="def">
+          <h3>人員体制</h3>
+          <ul>
             <li>業務執行社員：1名</li>
             <li>雇用従業員：0名</li>
             <li>外部パートナー：複数名（専門領域別に連携）</li>
           </ul>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">主要取引金融機関</h3>
-          <ul class="pl-6 list-disc text-gray-700">
+        <div class="def">
+          <h3>主要取引金融機関</h3>
+          <ul>
             <li>三井住友銀行 トランクNORTH支店</li>
           </ul>
         </div>
         <!-- 公式SNS -->
-        <div class="md:col-span-2">
-          <h3 class="text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2">公式アカウント</h3>
+        <div class="def md:col-span-2">
+          <h3>公式アカウント</h3>
           <nav aria-label="Flairの公式アカウント一覧">
-            <ul class="pl-4 flex flex-wrap items-center gap-3">
-              <!-- TikTok（公開中） -->
+            <ul class="accounts">
               <li>
                 <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="me noopener noreferrer"
-                  aria-label="TikTokの公式アカウント"
-                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                  aria-label="TikTokの公式アカウント">
                   <i class="fab fa-tiktok"></i>
                   <span>TikTok</span>
                 </a>
               </li>
               <li>
                 <a href="https://www.linkedin.com/company/flair-agency-biz" target="_blank" rel="me noopener noreferrer"
-                  aria-label="LinkedInの公式アカウント"
-                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                  aria-label="LinkedInの公式アカウント">
                   <i class="fab fa-linkedin"></i>
                   <span>LinkedIn</span>
                 </a>
               </li>
               <li>
                 <a href="https://www.facebook.com/flair.agency.biz" target="_blank" rel="me noopener noreferrer"
-                  aria-label="Facebookの公式アカウント"
-                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                  aria-label="Facebookの公式アカウント">
                   <i class="fab fa-facebook"></i>
                   <span>Facebook</span>
                 </a>
@@ -284,18 +265,18 @@
     </section>
   </main>
   <!-- フッター -->
-  <footer class="bg-gray-800 text-white text-center p-4">
-    <nav aria-label="サイト内ナビゲーション" class="on-site">
-      <ul class="menu flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
+  <footer>
+    <nav class="on-site" aria-label="サイト内ナビゲーション">
+      <ul class="menu">
         <li><a href="/creator">クリエイターの方へ</a></li>
         <li><a href="/business/">企業のご担当者さまへ</a></li>
-        <li><a class="is-current" href="#" aria-current="page">私たちについて</a></li>
+        <li><a href="#" aria-current="page">私たちについて</a></li>
       </ul>
     </nav>
-    <p>&copy; 2025 Flair LLC</p>
+    <p class="copyright">&copy; 2025 Flair LLC</p>
   </footer>
 
-  <script src="/assets/common.js?v=20260215" defer></script>
+  <script src="/assets/common.js?v=20260216r04" defer></script>
 </body>
 
 </html>
