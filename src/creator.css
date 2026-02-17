@@ -210,9 +210,9 @@ body.creator {
 
   section.hero {
     &::before {
-      --avif-option: url("/creator/background-image.avif?v=20260217r01r04") type("image/avif") 1x;
-      --webp-option: url("/creator/background-image.webp?v=20260217r01r04") type("image/webp") 1x;
-      --png-option: url("/creator/background-image.png?v=20260217r01r04") type("image/png") 1x;
+      --avif-option: url("/creator/background-image.avif?v=20260217r03r01r04") type("image/avif") 1x;
+      --webp-option: url("/creator/background-image.webp?v=20260217r03r01r04") type("image/webp") 1x;
+      --png-option: url("/creator/background-image.png?v=20260217r03r01r04") type("image/png") 1x;
       @apply 
         bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center bg-[#1a202c]
         transition-[background-image] duration-500 ease-in-out
