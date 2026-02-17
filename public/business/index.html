@@ -57,7 +57,7 @@
         <span class="sr-only">メニュー</span>
         <i class="fas fa-bars text-xl"></i>
       </button>
-      <ul class="menu" aria-label="メニュー">
+      <menu>
         <li><a href="#top">トップ</a></li>
         <li><a href="#services">事業</a></li>
         <li><a href="#trust-foundation">信頼・基盤</a></li>
@@ -66,24 +66,29 @@
         <li><a href="#why-tiktok-live">特化理由</a></li>
         <li><a href="#growth-vision">成長</a></li>
         <li><a href="#contact">企業窓口</a></li>
-      </ul>
+      </menu>
     </nav>
   </header>
 
   <main>
 
     <section id="top" class="hero text-center rounded-lg mt-8 mx-4">
-      <h2>LIVE配信の現場に、運営という視点を。</h2>
-      <p class="lead">
-        安全性・継続性・パフォーマンスを前提に、配信者とプラットフォームの運営を支えています。
-      </p>
+      <hgroup>
+        <h2>
+          <span class="whitespace-nowrap">LIVE配信の現場</span>に
+          <span class="whitespace-nowrap">運営という視点</span>を
+        </h2>
+        <p>
+          安全性・継続性・パフォーマンスを前提に、配信者とプラットフォームの運営を支えています。
+        </p>
+      </hgroup>
     </section>
 
     <section id="services" class="band cool">
-      <header>
+      <hgroup>
         <h2>事業内容</h2>
-        <div class="accentline"></div>
-      </header>
+        <div class="accentline" role="presentation"></div>
+      </hgroup>
       <h3 class="text-center">ライブ配信者のマネジメント業</h3>
       <div class="grid md:grid-cols-4 gap-6 mt-12">
         <article class="text-center">
@@ -110,15 +115,15 @@
     </section>
 
     <section id="trust-foundation" class="band cool">
-      <header>
+      <hgroup>
         <h2>Flairの信頼性と事業基盤</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p>数値の羅列ではなく、運営の思想と仕組みを分かりやすく。</p>
-      </header>
+      </hgroup>
       <!-- 運営基準（画像ではなくHTMLで明瞭に） -->
       <div class="grid md:grid-cols-3 gap-6 px-4">
         <article>
-          <div class="kicker">OPERATIONS</div>
+          <div class="kicker" role="presentation">OPERATIONS</div>
           <h4>安全な運営体制</h4>
           <ul>
             <li>最新ガイドラインの共有と注意喚起の運用</li>
@@ -127,7 +132,7 @@
           </ul>
         </article>
         <article>
-          <div class="kicker">PERFORMANCE</div>
+          <div class="kicker" role="presentation">PERFORMANCE</div>
           <h4>パフォーマンス基準</h4>
           <ul>
             <li>継続的な活動を支える伴走体制</li>
@@ -136,7 +141,7 @@
           </ul>
         </article>
         <article>
-          <div class="kicker">ENABLEMENT</div>
+          <div class="kicker" role="presentation">ENABLEMENT</div>
           <h4>成長サポート</h4>
           <ul>
             <li>機材・環境の最適化サポート</li>
@@ -151,16 +156,16 @@
     </section>
 
     <section id="certification" class="band cool">
-      <header>
+      <hgroup>
         <h2>TikTokとの契約</h2>
         <div class="accentline"></div>
         <p>
           当社は<strong>TikTok社と業務委託契約</strong>を締結し、公式の枠組みでLIVEエージェンシー運営を行っています。
         </p>
-      </header>
+      </hgroup>
       <div class="grid md:grid-cols-3 gap-6 px-4">
         <article>
-          <div class="chip accent">Contract</div>
+          <div class="chip accent" role="presentation">Contract</div>
           <h4>契約の位置づけ</h4>
           <ul>
             <li>TikTok LIVEエージェンシーとしての業務委託契約</li>
@@ -169,7 +174,7 @@
           </ul>
         </article>
         <article>
-          <div class="chip accent">For Business</div>
+          <div class="chip accent" role="presentation">For Business</div>
           <h4>企業向けの提供価値</h4>
           <ul>
             <li>タイアップや番組企画における出演・進行のプロデュース</li>
@@ -178,7 +183,7 @@
           </ul>
         </article>
         <article>
-          <div class="chip accent">Verification</div>
+          <div class="chip accent" role="presentation">Verification</div>
           <h4>確認方法</h4>
           <ul>
             <li>契約の詳細は機密保持の観点から公開していません</li>
@@ -196,11 +201,11 @@
     </section>
 
     <section id="growth" class="band cool">
-      <header>
+      <hgroup>
         <h2>市場の伸びとFlairの着眼点</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p>右肩上がりのLIVE市場。新人でも伸ばしやすい設計と収益導線に注目しています。</p>
-      </header>
+      </hgroup>
       <div class="grid md:grid-cols-2 gap-6 px-4 items-center">
         <!-- 左：力強いトレンドのビジュアル（SVGエリアチャート） -->
         <article class="p-4">
@@ -248,17 +253,17 @@
         <!-- 右：3つの強み（カード） -->
         <div class="grid gap-4">
           <article class="growth">
-            <div class="kicker">DISCOVERABILITY</div>
+            <div class="kicker" role="presentation">DISCOVERABILITY</div>
             <h4>発見されやすい設計</h4>
             <p>短尺動画とLIVEの連動で、新人でも視聴が伸びやすい環境。</p>
           </article>
           <article class="growth">
-            <div class="kicker">INTERACTION</div>
+            <div class="kicker" role="presentation">INTERACTION</div>
             <h4>双方向性と熱量</h4>
             <p>コメント・ギフトが循環し、ファンとの距離が近い。</p>
           </article>
           <article class="growth">
-            <div class="kicker">MONETIZATION</div>
+            <div class="kicker" role="presentation">MONETIZATION</div>
             <h4>多様な収益導線</h4>
             <p>ギフト／提携／ECなど、活動段階に応じた選択肢。</p>
           </article>
@@ -267,12 +272,12 @@
     </section>
 
     <section id="why-tiktok-live" class="band cool">
-      <header>
+      <hgroup>
         <h2>なぜFlairはTikTok LIVEに特化するのか</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p>市場の拡大、視聴時間の伸長、そしてTikTokならではの発見性と収益導線</p>
-      </header>
-      <p class="text-lg! leading-relaxed! text-gray-700! mb-8">
+      </hgroup>
+      <p class="mb-8">
         LIVE配信市場は世界的に拡大を続けています。TikTok LIVEは、短尺動画との連携による<strong>発見性</strong>、
         コメントやギフトがリアルタイムで循環する<strong>双方向性</strong>、そしてギフトや案件を通じた<strong>収益化</strong>のしやすさを兼ね備え、
         新しい才能が最短距離で成長できるプラットフォームです。
@@ -282,13 +287,13 @@
         <article>
           <i class="icon fas fa-chart-line"></i>
           <h4>市場が拡大</h4>
-          <p>
+          <blockquote>
             世界のライブ配信市場は<strong>2023年に約USD 87.6B</strong>、
             2024–2030年の年平均成長率は<strong>約23%</strong>と推計されています。
-          </p>
+          </blockquote>
           <p>
             <cite>
-              出典：Grand View Research『Live Streaming Market』(2023年=USD 87.55B、CAGR 23%)
+              出典：Grand View Research『Live Streaming Market』
             </cite>
           </p>
         </article>
@@ -296,9 +301,9 @@
         <article>
           <i class="icon fas fa-clock"></i>
           <h4>視聴時間が伸長</h4>
-          <p>
+          <blockquote>
             <strong>2020年</strong>、LIVE配信アプリの利用は<strong>4,800億時間以上</strong>。視聴習慣が定着。
-          </p>
+          </blockquote>
           <p>
             <cite>出典：Statista『Live Streaming Apps: Global Time Spent 2018–2021』</cite>
           </p>
@@ -339,11 +344,11 @@
     </section>
 
     <section id="growth-vision" class="band cool">
-      <header>
+      <hgroup>
         <h2>Flairの成長ビジョン</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p>一般的な成長ステージ「初期 → 成長期 → 成熟期 → 多角化」を、私たちの計画として明示します。</p>
-      </header>
+      </hgroup>
       <div class="grid md:grid-cols-4 gap-6 px-4">
         <article class="text-center">
           <div class="text-4xl mb-2"><i class="fas fa-seedling text-sky-600"></i></div>
@@ -369,11 +374,11 @@
     </section>
 
     <section id="contact" class="band cool">
-      <header>
+      <hgroup>
         <h2>企業・メディア・提携のご相談</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p>案件・取材・タイアップのご相談は、下記窓口よりお寄せください。</p>
-      </header>
+      </hgroup>
       <article class="text-center max-w-full md:max-w-1/2 mx-auto">
         <i class="icon fas fa-envelope"></i>
         <h4>メールでお問い合わせ</h4>
@@ -395,11 +400,11 @@
   <!-- フッター -->
   <footer>
     <nav class="on-site" aria-label="サイト内ナビゲーション">
-      <ul class="menu">
+      <menu>
         <li><a href="/creator">クリエイターの方へ</a></li>
         <li><a href="#" aria-current="page">企業のご担当者さまへ</a></li>
         <li><a href="/company/">私たちについて</a></li>
-      </ul>
+      </menu>
     </nav>
     <p class="copyright"><small>&copy; 2025 Flair LLC</small></p>
   </footer>

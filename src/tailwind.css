@@ -132,7 +132,7 @@
     &>button.toggle {
       @apply hidden items-center justify-center w-10 h-10;
 
-      &+ul.menu {
+      &+menu {
         @apply flex gap-2.5 flex-nowrap overflow-x-auto whitespace-nowrap py-1.5 px-0 flex-1;
 
         &::-webkit-scrollbar {
@@ -166,7 +166,7 @@
     html.js nav.on-page>button.toggle {
       @apply inline-flex;
 
-      &+ul.menu {
+      &+menu {
         @apply hidden absolute top-16 right-4 flex-col p-2.5 rounded-xl shadow-[0_14px_36px_rgba(0,0,0,0.12)] z-60 min-w-55 flex-nowrap bg-[rgba(255,255,255,0.96)];
 
         li a {
@@ -174,7 +174,7 @@
         }
       }
 
-      &[aria-expanded="true"]+ul.menu {
+      &[aria-expanded="true"]+menu {
         @apply flex flex-wrap;
       }
     }
@@ -206,7 +206,7 @@
   }
 
   main>section {
-    &>header {
+    &>hgroup {
       @apply text-center mb-10;
 
       &>h2 {
@@ -225,7 +225,7 @@
     &.cool {
       @apply bg-linear-[180deg] from-[rgba(255,255,255,0)] to-[rgba(37,99,235,0.06)];
 
-      &>header>h2 {
+      &>hgroup>h2 {
         @apply text-(--cool-head);
 
         &+.accentline {
@@ -261,11 +261,13 @@
         @apply content-[""] absolute inset-0 -z-10 rounded-(--radius-base) bg-(--hero-overlay-bg);
       }
 
-      &>h2 {
-        @apply mb-4 text-3xl md:text-5xl font-bold leading-[1.3] text-shadow-(--hero-title-shadow);
+      &>hgroup {
+        &>h2 {
+          @apply text-inherit text-3xl md:text-5xl font-bold leading-[1.3] text-shadow-(--hero-title-shadow) mb-4;
 
-        &+.lead {
-          @apply max-w-2xl mx-auto text-base md:text-lg opacity-90 mb-6;
+          &+p {
+            @apply text-inherit text-base md:text-lg opacity-90 mb-6 mx-auto max-w-2xl;
+          }
         }
       }
 
@@ -321,7 +323,7 @@
   nav.on-site {
     @apply mb-2.5 flex justify-center;
 
-    &>ul.menu {
+    &>menu {
       @apply flex flex-col items-center gap-4 whitespace-nowrap text-xs text-(--on-site-text) sm:flex-row sm:items-start sm:gap-8;
 
       li a {

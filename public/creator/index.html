@@ -70,7 +70,7 @@
         <span class="sr-only">メニュー</span>
         <i class="fas fa-bars text-xl"></i>
       </button>
-      <ul class="menu" aria-label="メニュー">
+      <menu>
         <li><a href="#top">トップ</a></li>
         <li><a href="#benefits">理由</a></li>
         <li><a href="#compare">ひとりとの違い</a></li>
@@ -78,7 +78,7 @@
         <li><a href="#trust">大切にしていること</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">お問合せ</a></li>
-      </ul>
+      </menu>
     </nav>
   </header>
 
@@ -95,14 +95,14 @@
           <source src="./hero.mp4?v=20260217r03r01r04" type="video/mp4">
         </video>
       </div>
-      <div class="catchphrases relative z-20">
+      <hgroup class="catchphrases relative z-20">
         <h2 class="text-3xl md:text-5xl font-bold mb-4">
-          いま配信を<span class="whitespace-nowrap">がんばっている、</span>
-          <span class="whitespace-nowrap">あなたへ。</span>
+          いま配信を<span class="whitespace-nowrap">がんばっている</span>
+          <span class="whitespace-nowrap">あなたへ</span>
         </h2>
         <p class="hero-lead">無理なく続けられる形を、一緒につくります。</p>
-      </div>
-      <div class="stickers" aria-hidden="true">
+      </hgroup>
+      <div class="stickers" role="presentation" aria-hidden="true">
         <span class="sticker s1">#ノルマなし</span>
         <span class="sticker s2">#初期費用0</span>
         <span class="sticker s3">#配信機材進呈</span>
@@ -111,23 +111,21 @@
         <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
           onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">まずは話してみる</a>
       </div>
-      <div class="absolute z-30 bottom-6 left-1/2 -translate-x-1/2 text-white/80 drop-shadow-lg">
-        <div class="flex flex-col items-center gap-2">
-          <span class="text-[11px] tracking-[0.2em]">SCROLL</span>
-          <span class="h-8 w-8 animate-bounce rounded-full border border-slate-300 grid place-items-center">↓</span>
-        </div>
+      <div class="indicator" role="presentation" aria-hidden="true">
+        <span class="label">SCROLL</span>
+        <span class="icon">↓</span>
       </div>
     </section>
 
     <section id="benefits" class="panel opacity-0 -translate-x-6" data-animate="left">
-      <header class="section-heading">
+      <hgroup class="section-heading">
         <h2 class="section-title">無理なく続けられる理由</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p class="section-lead">
           <span class="whitespace-nowrap">がんばりすぎなくていい。</span>
           <span class="whitespace-nowrap">負担と不安を減らす仕組み</span>があります。
         </p>
-      </header>
+      </hgroup>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-4 text-center">
         <div class="col-span-full text-left">
           <span class="chip">成長サポート</span>
@@ -164,14 +162,14 @@
     </section>
 
     <section id="compare" class="panel opacity-0 translate-x-6" data-animate="right">
-      <header class="section-heading">
+      <hgroup class="section-heading">
         <h2 class="section-title">ひとり vs Flair</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p class="section-lead">
           同じスタートでも、<span class="whitespace-nowrap">「ひとりで抱えるか」</span>
           <span class="whitespace-nowrap">「誰かと並走するか」</span>で、続けやすさは変わります。
         </p>
-      </header>
+      </hgroup>
       <div class="overflow-x-auto px-4">
         <table class="compare min-w-full text-sm text-left border-collapse rounded-lg overflow-hidden">
           <thead class="bg-gray-50">
@@ -220,13 +218,13 @@
     </section>
 
     <section id="how-to-start" class="panel opacity-0 -translate-x-6" data-animate="left">
-      <header class="section-heading">
+      <hgroup class="section-heading">
         <h2 class="section-title">はじめる流れ</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p class="section-lead">
           相談からスタートして、最初の2〜3週間で<span class="whitespace-nowrap">「次に何をすればいいか分かる状態」</span>を一緒につくります。
         </p>
-      </header>
+      </hgroup>
       <ol class="flow grid md:grid-cols-3 gap-6 px-4 list-none">
         <li class="surface-card" data-step="1">
           <h3 class="card-title">まずはご相談</h3>
@@ -260,11 +258,11 @@
     </section>
 
     <section id="trust" class="panel opacity-0 translate-x-6" data-animate="right">
-      <header class="section-heading">
+      <hgroup class="section-heading">
         <h2 class="section-title">大切にしていること</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p class="section-lead">誠実であることを、運営の基準にしています。</p>
-      </header>
+      </hgroup>
       <div class="grid md:grid-cols-2 gap-6 px-4">
         <div class="surface-card">
           <h3 class="font-bold mb-3 flex items-center gap-2">
@@ -307,11 +305,11 @@
     </section>
 
     <section id="faq" class="panel opacity-0 -translate-x-6" data-animate="left">
-      <header class="section-heading">
+      <hgroup class="section-heading">
         <h2 class="section-title">よくあるご質問</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p class="section-lead">最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
-      </header>
+      </hgroup>
       <div class="px-4">
         <div class="grid md:grid-cols-2 gap-6">
           <details class="faq-item group faq-card">
@@ -400,11 +398,11 @@
     </section>
 
     <section id="contact" class="panel opacity-0 translate-y-4" data-animate="up">
-      <header class="section-heading">
+      <hgroup class="section-heading">
         <h2 class="section-title">お問い合わせ</h2>
-        <div class="accentline"></div>
+        <div class="accentline" role="presentation"></div>
         <p class="section-lead">お申し込み前に、相談だけで大丈夫です。</p>
-      </header>
+      </hgroup>
       <div class="grid md:grid-cols-2 gap-6 px-4">
         <!-- 応募（フォーム導線） -->
         <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center flex flex-col">
@@ -433,11 +431,11 @@
   <!-- フッター -->
   <footer>
     <nav class="on-site" aria-label="サイト内ナビゲーション">
-      <ul class="menu">
+      <menu>
         <li><a href="#" aria-current="page">クリエイターの方へ</a></li>
         <li><a href="/business/">企業のご担当者さまへ</a></li>
         <li><a href="/company/">私たちについて</a></li>
-      </ul>
+      </menu>
     </nav>
     <p class="copyright"><small>&copy; 2025 Flair LLC</small></p>
   </footer>

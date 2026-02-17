@@ -57,26 +57,26 @@ body.company {
       }
     }
 
-    &#company .def {
-      h3 {
+    &#company dl {
+      dt {
         @apply text-xl font-semibold border-b-2 border-gray-200 pb-2 mb-2;
       }
 
-      p {
+      dd {
         @apply pl-4;
-      }
 
-      &>ul {
-        @apply pl-6 list-disc text-gray-700;
-      }
-
-      nav>ul.accounts {
-        @apply flex flex-wrap items-center gap-3 pl-0;
-
-        &>li a {
-          @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition;
+        &>ul {
+          @apply pl-6 list-disc text-gray-700;
         }
       }
+    }
+  }
+
+  nav>ul.accounts {
+    @apply flex flex-wrap items-center gap-3 pl-0;
+
+    &>li a {
+      @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition;
     }
   }
 

@@ -61,30 +61,38 @@
         <span class="sr-only">メニュー</span>
         <i class="fas fa-bars text-xl"></i>
       </button>
-      <ul class="menu" aria-label="メニュー">
+      <menu>
         <li><a href="#top">トップ</a></li>
         <li><a href="#mission-vision">理念</a></li>
         <li><a href="#founder">出発点</a></li>
         <li><a href="#company">会社概要</a></li>
-      </ul>
+      </menu>
     </nav>
   </header>
 
   <main>
     <section id="top" class="hero">
-      <h2>自分らしく、前へ。</h2>
-      <p class="lead">挑戦し続けられる仕組みを、<br />LIVEという表現の場から。</p>
-      <div class="indicator">
+      <hgroup>
+        <h2>
+          <span class="whitespace-nowrap">自分らしく</span>
+          <span class="whitespace-nowrap">前へ</span>
+        </h2>
+        <p class="lead">
+          <span class="whitespace-nowrap">挑戦し続けられる仕組み</span>を
+          <span class="whitespace-nowrap">LIVEという表現の場</span>から。
+        </p>
+      </hgroup>
+      <div class="indicator" role="presentation" aria-hidden="true">
         <span class="label">SCROLL</span>
         <span class="icon">↓</span>
       </div>
     </section>
 
     <section id="mission-vision">
-      <header>
+      <hgroup>
         <h2>MISSION &amp; VISION</h2>
         <p>私たちが目指す社会と、Flairの役割</p>
-      </header>
+      </hgroup>
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         <!-- MISSION -->
         <article>
@@ -117,10 +125,10 @@
     </section>
 
     <section id="founder">
-      <header>
+      <hgroup>
         <h2>Flairの出発点</h2>
-        <div class="accentline"></div>
-      </header>
+        <div class="accentline" role="presentation"></div>
+      </hgroup>
       <article class="message mt-8">
         <h3>代表からのメッセージ</h3>
         <blockquote class="letter">
@@ -180,98 +188,104 @@
     </section>
 
     <section id="company" class="cool">
-      <header>
+      <hgroup>
         <h2>会社概要</h2>
-        <div class="accentline"></div>
-      </header>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 px-4">
-        <div class="def">
-          <h3>商号</h3>
-          <p>合同会社<ruby>Flair<rt>フレア</rt></ruby></p>
+        <div class="accentline" role="presentation"></div>
+      </hgroup>
+      <dl class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 px-4">
+        <div>
+          <dt>商号</dt>
+          <dd>合同会社<ruby>Flair<rt>フレア</rt></ruby></dd>
         </div>
-        <div class="def">
-          <h3>本店所在地</h3>
-          <p>東京都練馬区関町南４丁目１８番２－４０５号</p>
+        <div>
+          <dt>本店所在地</dt>
+          <dd>東京都練馬区関町南４丁目１８番２－４０５号</dd>
         </div>
-        <div class="def">
-          <h3>法人番号</h3>
-          <p>7011603004768</p>
+        <div>
+          <dt>法人番号</dt>
+          <dd>7011603004768</dd>
         </div>
-        <div class="def">
-          <h3>資本金</h3>
-          <p>10万円</p>
+        <div>
+          <dt>資本金</dt>
+          <dd>10万円</dd>
         </div>
-        <div class="def">
-          <h3>会社成立の年月日</h3>
-          <p>令和7年7月7日</p>
+        <div>
+          <dt>会社成立の年月日</dt>
+          <dd>令和7年7月7日</dd>
         </div>
-        <div class="def">
-          <h3>事業内容</h3>
-          <ul>
-            <li>
-              <a href="/business/" class="hyperlink">LIVEクリエイター・マネジメント事業</a>
-            </li>
-          </ul>
-        </div>
-        <div class="def">
-          <h3>代表者</h3>
-          <p class="pl-4">木村 直樹</p>
-        </div>
-        <div class="def">
-          <h3>人員体制</h3>
-          <ul>
-            <li>業務執行社員：1名</li>
-            <li>雇用従業員：0名</li>
-            <li>外部パートナー：複数名（専門領域別に連携）</li>
-          </ul>
-        </div>
-        <div class="def">
-          <h3>主要取引金融機関</h3>
-          <ul>
-            <li>三井住友銀行 トランクNORTH支店</li>
-          </ul>
-        </div>
-        <!-- 公式SNS -->
-        <div class="def md:col-span-2">
-          <h3>公式アカウント</h3>
-          <nav aria-label="Flairの公式アカウント一覧">
-            <ul class="accounts">
+        <div>
+          <dt>事業内容</dt>
+          <dd>
+            <ul>
               <li>
-                <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="me noopener noreferrer"
-                  aria-label="TikTokの公式アカウント">
-                  <i class="fab fa-tiktok"></i>
-                  <span>TikTok</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/company/flair-agency-biz" target="_blank" rel="me noopener noreferrer"
-                  aria-label="LinkedInの公式アカウント">
-                  <i class="fab fa-linkedin"></i>
-                  <span>LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/flair.agency.biz" target="_blank" rel="me noopener noreferrer"
-                  aria-label="Facebookの公式アカウント">
-                  <i class="fab fa-facebook"></i>
-                  <span>Facebook</span>
-                </a>
+                <a href="/business/" class="hyperlink">LIVEクリエイター・マネジメント事業</a>
               </li>
             </ul>
-          </nav>
-          <!-- 追加方法：上の <li> をコピペし、アイコン（<i>）のクラスとリンク先URLを変更すれば新しいSNSを簡単に追加できます -->
+          </dd>
         </div>
-      </div>
+        <div>
+          <dt>代表者</dt>
+          <dd>木村 直樹</dd>
+        </div>
+        <div>
+          <dt>人員体制</dt>
+          <dd>
+            <ul>
+              <li>業務執行社員：1名</li>
+              <li>雇用従業員：0名</li>
+              <li>外部パートナー：複数名（専門領域別に連携）</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>主要取引金融機関</dt>
+          <dd>
+            <ul>
+              <li>三井住友銀行 トランクNORTH支店</li>
+            </ul>
+          </dd>
+        </div>
+        <div class="md:col-span-2">
+          <dt>公式アカウント</dt>
+          <dd>
+            <nav aria-label="Flairの公式アカウント一覧">
+              <ul class="accounts">
+                <li>
+                  <a href="https://www.tiktok.com/@flair.agency.biz" target="_blank" rel="me noopener noreferrer"
+                    aria-label="TikTokの公式アカウント">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/company/flair-agency-biz" target="_blank"
+                    rel="me noopener noreferrer" aria-label="LinkedInの公式アカウント">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/flair.agency.biz" target="_blank" rel="me noopener noreferrer"
+                    aria-label="Facebookの公式アカウント">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </dd>
+        </div>
+      </dl>
     </section>
   </main>
   <!-- フッター -->
   <footer>
     <nav class="on-site" aria-label="サイト内ナビゲーション">
-      <ul class="menu">
+      <menu>
         <li><a href="/creator">クリエイターの方へ</a></li>
         <li><a href="/business/">企業のご担当者さまへ</a></li>
         <li><a href="#" aria-current="page">私たちについて</a></li>
-      </ul>
+      </menu>
     </nav>
     <p class="copyright"><small>&copy; 2025 Flair LLC</small></p>
   </footer>

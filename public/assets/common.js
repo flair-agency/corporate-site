@@ -10,7 +10,7 @@
 
 // Active link highlight on scroll
 (() => {
-  const links = Array.from(document.querySelectorAll('nav.on-page ul.menu li a[href^="#"]'));
+  const links = Array.from(document.querySelectorAll('nav.on-page menu li a[href^="#"]'));
   const targets = links.map(l => { try { return document.querySelector(l.getAttribute('href')) } catch (e) { return null } }).filter(Boolean);
   const linkMap = new Map(targets.map((el, i) => [el.id, links[i]]));
   const io = new IntersectionObserver((entries) => {
