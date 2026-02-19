@@ -53,17 +53,39 @@ body.creator {
   }
 
   details.faq {
-    @apply rounded-xl bg-[#f9fafb] p-4;
+    @apply rounded-xl bg-[#f9fafb] p-4 border border-gray-200/70 shadow-[0_1px_0_rgba(15,23,42,0.02)] transition-[transform,box-shadow,border-color,background-color] duration-200;
+
+    &:hover {
+      @apply shadow-[0_10px_22px_rgba(15,23,42,0.06)] -translate-y-0.5;
+    }
+
+    &.open {
+      @apply border-(--accent-line) bg-[rgba(220,38,38,0.03)];
+    }
 
     &.light {
-      @apply rounded-xl bg-white p-4 shadow-sm;
+      @apply bg-white shadow-sm;
+
+      &.open {
+        @apply bg-white border-(--accent-line);
+      }
     }
 
     summary {
-      @apply list-none flex items-center justify-between font-bold text-gray-800 cursor-pointer;
+      @apply relative list-none flex items-start justify-between gap-3 font-bold text-gray-800 cursor-pointer pl-10;
 
+      /* Q badge */
+      &::before {
+        @apply content-["Q"] absolute left-0 top-0.5 w-7 h-7 rounded-full grid place-items-center text-[0.72rem] font-extrabold bg-(--accent-weak) text-(--accent-strong) border border-(--accent-line);
+      }
+
+      /* Chevron */
       &::after {
-        @apply content-["▾"] text-gray-400 transition-transform duration-200 group-open:rotate-180;
+        @apply content-["▾"] text-gray-400 transition-transform duration-200 mt-0.5;
+      }
+
+      &:focus-visible {
+        @apply outline-none ring-2 ring-(--accent-line) ring-offset-2;
       }
     }
 
@@ -71,8 +93,13 @@ body.creator {
       @apply transform-[rotate(180deg)];
     }
 
+    /* Answer */
     p {
-      @apply mt-3 text-gray-700;
+      @apply relative mt-3 text-gray-700 leading-7 pl-10;
+
+      &::before {
+        @apply content-["A"] absolute left-0 top-0.5 w-7 h-7 rounded-full grid place-items-center text-[0.72rem] font-extrabold bg-white text-(--accent-strong) border border-(--accent-line);
+      }
     }
   }
 
