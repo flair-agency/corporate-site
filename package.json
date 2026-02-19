@@ -6,7 +6,10 @@
   "scripts": {
     "build:css": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --minify",
     "build:css:watch": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --watch",
-    "build": "npm run build:css"
+    "build": "npm run build:css",
+    "test:lighthouse": "lighthouse ${npm_config_lighthouse_opts}",
+    "test:lighthouse-gate": "node ./lighthouse-gate.mjs",
+    "test": "npm -s run test:lighthouse ${npm_config_url:-http://127.0.0.1:5002/creator/} | npm -s run test:lighthouse-gate"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,8 @@
   "homepage": "https://github.com/flair-agency/corporate-site#readme",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",
+    "firebase-tools": "^15.6.0",
+    "lighthouse": "^13.0.3",
     "tailwindcss": "^4.1.18"
   }
 }
