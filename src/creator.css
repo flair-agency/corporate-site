@@ -10,32 +10,70 @@ body.creator {
     @apply text-(--muted-text);
   }
 
-  .surface-card {
+  section#benefits article {
+    @apply text-center;
+
+    .icon::before {
+      @apply block text-3xl mb-2;
+    }
+  }
+
+  section#trust article {
+    h4 {
+      @apply mb-3 flex items-center gap-2;
+    }
+  }
+
+  section#contact article {
+    @apply text-center flex flex-col;
+
+    h4 {
+      @apply text-xl mb-2;
+    }
+
+    .icon::before {
+      @apply block text-4xl mb-3;
+    }    
+  }
+
+  article {
     @apply bg-gray-50 p-6 rounded-lg border border-gray-200 transition-transform duration-150 hover:-translate-y-1;
+
+    h3, h4 {
+      @apply font-bold;
+    }
+
+    .icon::before {
+      @apply text-red-500;
+    }
+
+    p {
+      @apply text-sm text-gray-700;
+    }
   }
 
-  .copy-sm {
-    @apply text-sm text-gray-700;
-  }
-
-  .faq-card {
+  details.faq {
     @apply rounded-xl bg-[#f9fafb] p-4;
-  }
 
-  .faq-card-light {
-    @apply rounded-xl bg-white p-4 shadow-sm;
-  }
+    &.light {
+      @apply rounded-xl bg-white p-4 shadow-sm;
+    }
 
-  .faq-q {
-    @apply list-none flex items-center justify-between font-bold text-gray-800 cursor-pointer;
-  }
+    summary {
+      @apply list-none flex items-center justify-between font-bold text-gray-800 cursor-pointer;
 
-  .faq-a {
-    @apply mt-3 text-gray-700;
-  }
+      &::after {
+        @apply content-["▾"] text-gray-400 transition-transform duration-200 group-open:rotate-180;
+      }
+    }
 
-  .faq-chevron {
-    @apply text-gray-400 transition-transform group-open:rotate-180;
+    &.open summary::after {
+      @apply transform-[rotate(180deg)];
+    }
+
+    p {
+      @apply mt-3 text-gray-700;
+    }
   }
 
   &>main {
@@ -43,31 +81,51 @@ body.creator {
   }
 
   table.compare {
-    @apply border-separate border-spacing-0;
+    @apply border-separate border-spacing-0 text-sm text-left rounded-lg overflow-hidden;
+
+    thead {
+      @apply bg-gray-50;
+
+      th {
+        @apply p-3 border-gray-200 text-center align-bottom;
+
+        &:first-child {
+          @apply text-right;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        @apply odd:bg-white even:bg-gray-50;
+
+        td {
+          @apply p-3 border-gray-100 text-center;
+
+          &:first-child {
+            @apply font-medium text-right;
+          }
+        }
+      }
+    }
 
     th:nth-child(2),
     td:nth-child(2) {
       @apply text-(--muted-text)
     }
 
-    td:nth-child(3) {
-      @apply text-[#111827] font-bold;
-    }
-
     td.is-check {
-      @apply relative pl-8 align-top leading-6;
-
-      &::before {
-        @apply content-["✓"] absolute left-3 top-1/2 transform -translate-y-1/2 text-(--accent) font-bold leading-none;
-      }
+      @apply text-[#111827] leading-6;
     }
 
-    .pill {
-      @apply inline-block ml-1 px-2 py-0.5 rounded-full bg-[#fee2e2] text-(--accent-strong) text-xs font-bold align-middle;
+    .chip {
+      @apply ml-1 mb-0 px-2 py-0.5 bg-[#fee2e2] text-(--accent-strong) text-xs;
     }
   }
 
   ol.flow {
+    @apply px-4 list-none;
+
     --step-1: #ffffff;
     --step-2: #fff8f8;
     --step-3: #fff2f2;
@@ -77,7 +135,10 @@ body.creator {
     counter-reset: step;
 
     li {
-      @apply relative pl-12 transition-[background-color,box-shadow,transform] duration-200;
+      @apply
+        relative pl-12 bg-gray-50 p-6 rounded-lg border border-gray-200
+        transition-[background-color,box-shadow,transform] duration-200
+        hover:-translate-y-1 flex flex-col justify-between;
 
       &::before {
         @apply
@@ -141,11 +202,19 @@ body.creator {
           @apply bg-[#7f1d1d];
         }
       }
+
+      h4 {
+        @apply font-bold;
+      }
+
+      p {
+        @apply mt-3 text-sm text-gray-700;
+      }
     }
   }
 
   .statement {
-    @apply relative mt-7 mb-2.5 mx-0 pt-4 pr-0 pb-0 pl-4.5;
+    @apply relative pt-4 pr-0 pb-0 pl-4.5 font-[Zen_Kurenaido,var(--font-fallback-sans)];
 
     &::before {
       @apply content-["STATEMENT"] block mt-0 mx-0 mb-2.5 text-xs tracking-[0.12em] uppercase text-[rgba(0,0,0,0.45)];
@@ -156,7 +225,7 @@ body.creator {
     }
 
     p {
-      @apply m-0 font-[Zen_Kurenaido,var(--font-fallback-sans)] text-[1.04em] leading-[1.95] tracking-[.01em] text-[rgba(0,0,0,.78)];
+      @apply m-0 text-[1.04em] leading-[1.95] tracking-[.01em] text-[rgba(0,0,0,.78)];
     }
 
     strong {
@@ -171,16 +240,8 @@ body.creator {
       @apply text-[.82rem] leading-[1.55] whitespace-normal;
     }
 
-    table.compare .pill {
+    table.compare .chip {
       @apply text-[.65rem] ml-1;
-    }
-
-    table.compare td.is-check {
-      @apply pl-[1.65rem];
-    }
-
-    table.compare td.is-check::before {
-      @apply left-[.52rem];
     }
 
     ol.flow {
@@ -209,10 +270,12 @@ body.creator {
   }
 
   section.hero {
+    @apply relative text-center rounded-lg mt-8 mx-4 isolate overflow-hidden;
+
     &::before {
-      --avif-option: url("/creator/background-image.avif?v=20260218r01r03r01r04") type("image/avif") 1x;
-      --webp-option: url("/creator/background-image.webp?v=20260218r01r03r01r04") type("image/webp") 1x;
-      --png-option: url("/creator/background-image.png?v=20260218r01r03r01r04") type("image/png") 1x;
+      --avif-option: url("/creator/background-image.avif?v=20260219r01") type("image/avif") 1x;
+      --webp-option: url("/creator/background-image.webp?v=20260219r01") type("image/webp") 1x;
+      --png-option: url("/creator/background-image.png?v=20260219r01") type("image/png") 1x;
       @apply 
         bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center bg-[#1a202c]
         transition-[background-image] duration-500 ease-in-out
@@ -222,6 +285,7 @@ body.creator {
 
     .media-card {
       @apply
+        absolute left-1/2 top-1/2 z-10
         w-4/5 max-w-95 lg:max-w-130
         h-full max-h-none
         aspect-9/16 lg:aspect-9/16
@@ -229,70 +293,47 @@ body.creator {
       bg-[rgba(0,0,0,0.05)] shadow-[0_20px_40px_rgba(0,0,0,.25)]
         pointer-events-none
         contain-layout contain-size
-        transform-[translateZ(0)] will-change-transform;
+        transform-[translateZ(0)] will-change-transform
+        -translate-x-1/2 -translate-y-1/2;
 
       video {
-        @apply block w-full h-full object-cover object-[50%_20%] lg:object-center filter-[brightness(0.85)] opacity-90;
+        @apply
+          block w-full h-full object-cover object-[50%_20%] lg:object-center filter-[brightness(0.85)] opacity-90;
       }
     }
 
-    .catchphrases {
+    hgroup {
       /* Prefer legibility without adding more visible rectangles */
-      @apply rounded-[.3rem] text-shadow-[0_2px_10px_rgba(0,0,0,.45),0_0_2px_rgba(0,0,0,.65)] bg-[rgba(255,255,255,.01)] backdrop-filter-[blur(2px)_saturate(110%)];
-    }
+      @apply relative z-20 rounded-[.3rem] text-shadow-[0_2px_10px_rgba(0,0,0,.45),0_0_2px_rgba(0,0,0,.65)] bg-[rgba(255,255,255,.01)] backdrop-filter-[blur(2px)_saturate(110%)];
 
-    h2 {
-      @apply mx-auto max-w-[22em] font-[Zen_Kurenaido,var(--font-fallback-sans)] text-balance;
-    }
-  }
-
-  /* ===== FAQ accordion ===== */
-  section#faq .faq-item {
-    &.open {
-      .a {
-        @apply block;
-      }
-
-      .fa-chevron-down {
-        @apply transform-[rotate(180deg)]
+      h2 {
+        @apply mx-auto max-w-[22em] font-[Zen_Kurenaido,var(--font-fallback-sans)] text-balance text-3xl md:text-5xl font-bold mb-4;
       }
     }
 
-    & .fa-chevron-down {
-      @apply transition-transform duration-200;
-    }
+    .stickers {
+      @apply absolute top-[clamp(1rem,5.5vw,2.2rem)] right-[clamp(.75rem,4.4vw,2.4rem)] z-20 grid justify-items-end gap-[.45rem] pointer-events-none;
 
-    .q {
-      @apply cursor-pointer;
-    }
-  }
+      .sticker {
+        @apply
+          inline-block
+          py-[.42rem] px-[.82rem]
+          rounded-full border border-[rgba(255,255,255,.46)]
+        text-[#111827] text-[clamp(.72rem,2.6vw,.82rem)] font-bold tracking-[.02em] leading-none
+          shadow-[0_4px_14px_rgba(15,23,42,.1)] backdrop-blur-[6px]
+          will-change-transform;
 
-  .icon-pop {
-    @apply animate-[iconPop_600ms_cubic-bezier(.2,.8,.2,1)_both] origin-[50%_50%];
-  }
+        &.s1 {
+          @apply animate-[stickerFloat_2.7s_0s_ease-in-out_infinite];
+        }
 
-  section.hero .stickers {
-    @apply absolute top-[clamp(1rem,5.5vw,2.2rem)] right-[clamp(.75rem,4.4vw,2.4rem)] z-20 grid justify-items-end gap-[.45rem] pointer-events-none;
+        &.s2 {
+          @apply animate-[stickerFloat_2.7s_.45s_ease-in-out_infinite];
+        }
 
-    .sticker {
-      @apply
-        inline-block
-        py-[.42rem] px-[.82rem]
-        rounded-full border border-[rgba(255,255,255,.46)]
-      text-[#111827] text-[clamp(.72rem,2.6vw,.82rem)] font-bold tracking-[.02em] leading-none
-        shadow-[0_4px_14px_rgba(15,23,42,.1)] backdrop-blur-[6px]
-        will-change-transform;
-
-      &.s1 {
-        @apply animate-[stickerFloat_2.7s_0s_ease-in-out_infinite];
-      }
-
-      &.s2 {
-        @apply animate-[stickerFloat_2.7s_.45s_ease-in-out_infinite];
-      }
-
-      &.s3 {
-        @apply animate-[stickerFloat_2.7s_.9s_ease-in-out_infinite];
+        &.s3 {
+          @apply animate-[stickerFloat_2.7s_.9s_ease-in-out_infinite];
+        }
       }
     }
   }
@@ -315,6 +356,10 @@ body.creator {
         }
       }
     }
+  }
+
+  .icon-pop::before {
+    @apply animate-[iconPop_600ms_cubic-bezier(.2,.8,.2,1)_both] origin-[50%_50%];
   }
 
   @media (prefers-reduced-motion: reduce) {

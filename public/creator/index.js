@@ -1,10 +1,10 @@
 // FAQ accordion
 (() => {
-  document.querySelectorAll('#faq.section .faq-item').forEach(item => {
-    const btn = item.querySelector('.q');
+  document.querySelectorAll('details.faq').forEach(item => {
+    const btn = item.querySelector('summary');
     btn.addEventListener('click', () => {
       item.classList.toggle('open');
-      const ans = item.querySelector('.a');
+      const ans = item.querySelector('p');
       const isOpen = item.classList.contains('open');
       ans.classList.toggle('hidden', !isOpen);
     });

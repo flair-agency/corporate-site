@@ -24,10 +24,10 @@
   <!-- ファビコン設定 -->
   <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';" />
   <!-- LCP hero image preload -->
-  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260218r01r03r01r04"
-    imagesrcset="./background-image.avif?v=20260218r01r03r01r04 1x, ./background-image.webp?v=20260218r01r03r01r04 1x, ./background-image.png?v=20260218r01r03r01r04 1x"
+  <link rel="preload" as="image" fetchpriority="high" href="./background-image.avif?v=20260219r01"
+    imagesrcset="./background-image.avif?v=20260219r01 1x, ./background-image.webp?v=20260219r01 1x, ./background-image.png?v=20260219r01 1x"
     imagesizes="100vw" />
-  <link rel="preload" as="image" fetchpriority="high" href="./hero.webp?v=20260218r01r03r01r04" imagesizes="100vw" />
+  <link rel="preload" as="image" fetchpriority="high" href="./hero.webp?v=20260219r01" imagesizes="100vw" />
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,8 +43,8 @@
     crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin />
   <!-- Local CSS -->
-  <link rel="preload" href="/assets/app.css?v=20260218r01r03r01r04" as="style">
-  <link rel="stylesheet" href="/assets/app.css?v=20260218r01r03r01r04" />
+  <link rel="preload" href="/assets/app.css?v=20260219r01" as="style">
+  <link rel="stylesheet" href="/assets/app.css?v=20260219r01" />
   <noscript>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap" />
@@ -83,348 +83,309 @@
   </header>
 
   <main>
-    <section id="top" class="text-center hero rounded-lg mt-8 mx-4 relative isolate overflow-hidden">
-      <div class="media-card absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
-        <video class="h-full w-full" muted loop playsinline autoplay preload="metadata" poster="./hero.webp?v=20260218r01r03r01r04"
-          data-hero-video>
-          <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
-          <source src="./hero-mobile.webm?v=20260218r01r03r01r04" type="video/webm" media="(max-width: 640px)">
-          <source src="./hero-mobile.mp4?v=20260218r01r03r01r04" type="video/mp4" media="(max-width: 640px)">
-          <!-- Default sources -->
-          <source src="./hero.webm?v=20260218r01r03r01r04" type="video/webm">
-          <source src="./hero.mp4?v=20260218r01r03r01r04" type="video/mp4">
-        </video>
-      </div>
-      <hgroup class="catchphrases relative z-20">
-        <h2 class="text-3xl md:text-5xl font-bold mb-4">
+    <section id="top" class="hero">
+      <hgroup>
+        <h2>
           いま配信を<span class="whitespace-nowrap">がんばっている</span>
           <span class="whitespace-nowrap">あなたへ</span>
         </h2>
-        <p class="hero-lead">無理なく続けられる形を、一緒につくります。</p>
+        <p>無理なく続けられる形を、一緒につくります。</p>
       </hgroup>
+      <div class="media-card" role="presentation" aria-hidden="true">
+        <video muted loop playsinline autoplay preload="metadata" poster="./hero.webp?v=20260219r01" data-hero-video>
+          <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
+          <source src="./hero-mobile.webm?v=20260219r01" type="video/webm" media="(max-width: 640px)">
+          <source src="./hero-mobile.mp4?v=20260219r01" type="video/mp4" media="(max-width: 640px)">
+          <!-- Default sources -->
+          <source src="./hero.webm?v=20260219r01" type="video/webm">
+          <source src="./hero.mp4?v=20260219r01" type="video/mp4">
+        </video>
+      </div>
       <div class="stickers" role="presentation" aria-hidden="true">
         <span class="sticker s1">#ノルマなし</span>
         <span class="sticker s2">#初期費用0</span>
         <span class="sticker s3">#配信機材進呈</span>
       </div>
-      <div class="relative z-20 flex flex-col sm:flex-row gap-3 justify-center">
-        <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
-          onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">まずは話してみる</a>
-      </div>
       <div class="indicator" role="presentation" aria-hidden="true">
         <span class="label">SCROLL</span>
         <span class="icon">↓</span>
       </div>
+      <footer class="relative z-20 text-center">
+        <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+          onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">まずは話してみる</a>
+      </footer>
     </section>
 
     <section id="benefits" class="panel opacity-0 -translate-x-6" data-animate="left">
-      <hgroup class="section-heading">
-        <h2 class="section-title">無理なく続けられる理由</h2>
+      <hgroup>
+        <h2>無理なく続けられる理由</h2>
         <div class="accentline" role="presentation"></div>
-        <p class="section-lead">
+        <p>
           <span class="whitespace-nowrap">がんばりすぎなくていい。</span>
           <span class="whitespace-nowrap">負担と不安を減らす仕組み</span>があります。
         </p>
       </hgroup>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 px-4 text-center">
-        <div class="col-span-full text-left">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 px-4">
+        <h3 class="col-span-full">
           <span class="chip">成長サポート</span>
-        </div>
-        <div class="surface-card">
-          <div class="text-3xl mb-2"><i class="fas fa-circle-check text-red-500" data-icon-anim></i></div>
-          <h3 class="font-bold">初期費用ゼロ・ノルマなし</h3>
-          <p class="copy-sm">自分のペースでOK。生活や学業と両立しやすい運用設計。</p>
-        </div>
-        <div class="surface-card">
-          <div class="text-3xl mb-2"><i class="fas fa-microphone-lines text-red-500" data-icon-anim></i></div>
-          <h3 class="font-bold">機材進呈＆初期設定</h3>
-          <p class="copy-sm">到着後すぐ使えるセットと導入サポートでスタートを後押し。</p>
-        </div>
-        <div class="surface-card">
-          <div class="text-3xl mb-2"><i class="fas fa-rotate text-red-500" data-icon-anim></i></div>
-          <h3 class="font-bold">週次フィードバック</h3>
-          <p class="copy-sm">振り返りと改善で、続けやすさを支えます。</p>
-        </div>
-        <div class="col-span-full text-left">
+        </h3>
+        <article>
+          <h4 class="icon fas fa-circle-check" data-icon-anim>初期費用ゼロ・ノルマなし</h4>
+          <p>自分のペースでOK。生活や学業と両立しやすい運用設計。</p>
+        </article>
+        <article>
+          <h4 class="icon fas fa-microphone-lines" data-icon-anim>機材進呈＆初期設定</h4>
+          <p>到着後すぐ使えるセットと導入サポートでスタートを後押し。</p>
+        </article>
+        <article>
+          <h4 class="icon fas fa-rotate" data-icon-anim>週次フィードバック</h4>
+          <p>振り返りと改善で、続けやすさを支えます。</p>
+        </article>
+        <h3 class="col-span-full">
           <span class="chip accent">安心サポート</span>
-        </div>
-        <div class="surface-card">
-          <div class="text-3xl mb-2"><i class="fas fa-calendar-check text-red-500" data-icon-anim></i></div>
-          <h3 class="font-bold">6ヶ月からの契約</h3>
-          <p class="copy-sm">お試ししながら適切な頻度・スタイルを一緒に設計。</p>
-        </div>
-        <div class="surface-card">
-          <div class="text-3xl mb-2"><i class="fas fa-calculator text-red-500" data-icon-anim></i></div>
-          <h3 class="font-bold">税務相談の窓口</h3>
-          <p class="copy-sm">確定申告と経費の基本を税理士監修でサポート。</p>
-        </div>
+        </h3>
+        <article>
+          <h4 class="icon fas fa-calendar-check" data-icon-anim>6ヶ月からの契約</h4>
+          <p>お試ししながら適切な頻度・スタイルを一緒に設計。</p>
+        </article>
+        <article>
+          <h4 class="icon fas fa-calculator" data-icon-anim>税務相談の窓口</h4>
+          <p>確定申告と経費の基本を税理士監修でサポート。</p>
+        </article>
       </div>
     </section>
 
     <section id="compare" class="panel opacity-0 translate-x-6" data-animate="right">
-      <hgroup class="section-heading">
-        <h2 class="section-title">ひとり vs Flair</h2>
+      <hgroup>
+        <h2>ひとり vs Flair</h2>
         <div class="accentline" role="presentation"></div>
-        <p class="section-lead">
+        <p>
           同じスタートでも、<span class="whitespace-nowrap">「ひとりで抱えるか」</span>
           <span class="whitespace-nowrap">「誰かと並走するか」</span>で、続けやすさは変わります。
         </p>
       </hgroup>
       <div class="overflow-x-auto px-4">
-        <table class="compare min-w-full text-sm text-left border-collapse rounded-lg overflow-hidden">
-          <thead class="bg-gray-50">
+        <table class="compare min-w-full ">
+          <thead>
             <tr>
-              <th class="p-3 border-gray-200 text-center align-bottom">項目</th>
-              <th class="p-3 border-gray-200 text-center align-bottom">ひとり</th>
-              <th class="p-3 border-gray-200 text-center align-bottom">
-                <span class="pill">おすすめ</span>
+              <th>項目</th>
+              <th>ひとり</th>
+              <th>
+                <span class="chip">おすすめ</span>
                 <span class="whitespace-nowrap">Flairが並走</span>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr class="odd:bg-white even:bg-gray-50">
-              <td class="p-3 border-gray-100 font-medium">初期コスト</td>
-              <td class="p-3 border-gray-100">機材選定・購入の負担</td>
-              <td class="p-3 border-gray-100 is-check">機材進呈＆初期設定サポート</td>
+              <td>初期コスト</td>
+              <td>機材選定・購入の負担</td>
+              <td class="is-check">機材進呈＆初期設定サポート</td>
             </tr>
-            <tr class="odd:bg-white even:bg-gray-50">
-              <td class="p-3 border-gray-100 font-medium">運用設計</td>
-              <td class="p-3 border-gray-100">手探りで遠回りになりがち</td>
-              <td class="p-3 border-gray-100 is-check">週次フィードバックとKPI設計</td>
+            <tr>
+              <td>運用設計</td>
+              <td>手探りで遠回りになりがち</td>
+              <td class="is-check">週次フィードバックとKPI設計</td>
             </tr>
-            <tr class="odd:bg-white even:bg-gray-50">
-              <td class="p-3 border-gray-100 font-medium">継続・モチベ</td>
-              <td class="p-3 border-gray-100">孤独になりやすい</td>
-              <td class="p-3 border-gray-100 is-check">伴走と相談窓口で継続</td>
+            <tr>
+              <td>継続・モチベ</td>
+              <td>孤独になりやすい</td>
+              <td class="is-check">伴走と相談窓口で継続</td>
             </tr>
-            <tr class="odd:bg-white even:bg-gray-50">
-              <td class="p-3 border-gray-100 font-medium">収益の安定</td>
-              <td class="p-3 border-gray-100">波が大きい</td>
-              <td class="p-3 border-gray-100 is-check">収益設計の相談（条件により固定報酬）</td>
+            <tr>
+              <td>収益の安定</td>
+              <td>波が大きい</td>
+              <td class="is-check">収益設計の相談（条件により固定報酬）</td>
             </tr>
-            <tr class="odd:bg-white even:bg-gray-50">
-              <td class="p-3 border-gray-100 font-medium">安全・ルール</td>
-              <td class="p-3 border-gray-100">自己解決で不安</td>
-              <td class="p-3 border-gray-100 is-check">最新ガイドライン共有と一次対応</td>
+            <tr>
+              <td>安全・ルール</td>
+              <td>自己解決で不安</td>
+              <td class="is-check">最新ガイドライン共有と一次対応</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="text-center mt-8">
+      <footer class="text-center">
         <a class="cta btn" href="#contact"
           onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});">まずは相談する</a>
-      </div>
+      </footer>
     </section>
 
     <section id="how-to-start" class="panel opacity-0 -translate-x-6" data-animate="left">
-      <hgroup class="section-heading">
-        <h2 class="section-title">はじめる流れ</h2>
+      <hgroup>
+        <h2>はじめる流れ</h2>
         <div class="accentline" role="presentation"></div>
-        <p class="section-lead">
+        <p>
           相談からスタートして、最初の2〜3週間で<span class="whitespace-nowrap">「次に何をすればいいか分かる状態」</span>を一緒につくります。
         </p>
       </hgroup>
-      <ol class="flow grid md:grid-cols-3 gap-6 px-4 list-none">
-        <li class="surface-card" data-step="1">
-          <h3 class="card-title">まずはご相談</h3>
-          <p class="copy-sm">希望スタイル・活動ペース・不安点をヒアリング。</p>
+      <ol class="flow grid md:grid-cols-3 gap-6">
+        <li data-step="1">
+          <h4>まずはご相談</h4>
+          <p>希望スタイル・活動ペース・不安点をヒアリング。</p>
         </li>
-        <li class="surface-card" data-step="2">
-          <h3 class="card-title">オンライン面談（20–30分）</h3>
-          <p class="copy-sm">配信の方向性とサポート内容をすり合わせ。</p>
+        <li data-step="2">
+          <h4>オンライン面談（20–30分）</h4>
+          <p>配信の方向性とサポート内容をすり合わせ。</p>
         </li>
-        <li class="surface-card" data-step="3">
-          <h3 class="card-title">お試し配信 &amp; フィードバック</h3>
-          <p class="copy-sm">タイトル・時間帯・ネタ出し等を伴走。</p>
+        <li data-step="3">
+          <h4>お試し配信 &amp; フィードバック</h4>
+          <p>タイトル・時間帯・ネタ出し等を伴走。</p>
         </li>
-        <li class="surface-card" data-step="4">
-          <h3 class="card-title">契約（6ヶ月）＆機材進呈</h3>
-          <p class="copy-sm">到着後すぐ使えるセットで環境を整備。</p>
+        <li data-step="4">
+          <h4>契約（6ヶ月）＆機材進呈</h4>
+          <p>到着後すぐ使えるセットで環境を整備。</p>
         </li>
-        <li class="surface-card" data-step="5">
-          <h3 class="card-title">初月プラン作成</h3>
-          <p class="copy-sm">頻度・時間帯・目標を決め、KPIを設計。</p>
+        <li data-step="5">
+          <h4>初月プラン作成</h4>
+          <p>頻度・時間帯・目標を決め、KPIを設計。</p>
         </li>
-        <li class="surface-card" data-step="6">
-          <h3 class="card-title">スタート &amp; 週次改善</h3>
-          <p class="copy-sm">継続と伸びにフォーカスした伴走支援。</p>
+        <li data-step="6">
+          <h4>スタート &amp; 週次改善</h4>
+          <p>継続と伸びにフォーカスした伴走支援。</p>
         </li>
       </ol>
-      <div class="text-center mt-8">
+      <footer class="text-center">
         <a class="cta btn" href="#contact"
           onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});">まずは相談する</a>
-      </div>
+      </footer>
     </section>
 
     <section id="trust" class="panel opacity-0 translate-x-6" data-animate="right">
-      <hgroup class="section-heading">
-        <h2 class="section-title">大切にしていること</h2>
+      <hgroup>
+        <h2>大切にしていること</h2>
         <div class="accentline" role="presentation"></div>
-        <p class="section-lead">誠実であることを、運営の基準にしています。</p>
+        <p>誠実であることを、運営の基準にしています。</p>
       </hgroup>
       <div class="grid md:grid-cols-2 gap-6 px-4">
-        <div class="surface-card">
-          <h3 class="font-bold mb-3 flex items-center gap-2">
-            <i class="fas fa-handshake text-red-500" data-icon-anim></i>
+        <article>
+          <h4 class="icon fas fa-handshake" data-icon-anim>
             透明性
-          </h3>
-          <p class="copy-sm">報酬の流れ、サポート内容、連絡体制を明確にし、曖昧さを残しません。</p>
-        </div>
-        <div class="surface-card">
-          <h3 class="font-bold mb-3 flex items-center gap-2">
-            <i class="fas fa-person-rays text-red-500" data-icon-anim></i>
+          </h4>
+          <p>報酬の流れ、サポート内容、連絡体制を明確にし、曖昧さを残しません。</p>
+        </article>
+        <article>
+          <h4 class="icon fas fa-person-rays" data-icon-anim>
             クリエイターファースト
-          </h3>
-          <p class="copy-sm">短期の数字より、無理なく続けられる設計を優先します。</p>
-        </div>
-        <div class="surface-card">
-          <h3 class="font-bold mb-3 flex items-center gap-2">
-            <i class="fas fa-comments text-red-500" data-icon-anim></i>
+          </h4>
+          <p>短期の数字より、無理なく続けられる設計を優先します。</p>
+        </article>
+        <article>
+          <h4 class="icon fas fa-comments" data-icon-anim>
             相談しやすさ
-          </h3>
-          <p class="copy-sm">小さな不安や方向転換の相談も、遠慮なくできる距離感を大切にします。</p>
-        </div>
-        <div class="surface-card">
-          <h3 class="font-bold mb-3 flex items-center gap-2">
-            <i class="fas fa-calendar-day text-red-500" data-icon-anim></i>
+          </h4>
+          <p>小さな不安や方向転換の相談も、遠慮なくできる距離感を大切にします。</p>
+        </article>
+        <article>
+          <h4 class="icon fas fa-calendar-day" data-icon-anim>
             無理をさせない
-          </h3>
-          <p class="copy-sm">生活に合わせたペース設計で、長く続けられる形を一緒に作ります。</p>
-        </div>
+          </h4>
+          <p>生活に合わせたペース設計で、長く続けられる形を一緒に作ります。</p>
+        </article>
       </div>
-      <div class="statement mt-8 mx-4">
-        <p class="text-sm md:text-base text-gray-700">
+      <blockquote class="statement mt-8 mx-4">
+        <p>
           私たちは、クリエイターの挑戦に対して<span class="whitespace-nowrap">「誠実であること」</span>を最優先にしています。
-          <span class="font-bold text-gray-900">
-            <span class="whitespace-nowrap">安心して続けられる環境</span>と<span class="whitespace-nowrap">納得して進める関係</span>
-          </span>
+          <strong>
+            <span class="whitespace-nowrap">安心して続けられる環境</span>と
+            <span class="whitespace-nowrap">納得して進める関係</span>
+          </strong>
           をつくることが、Flairの責任です。
         </p>
-      </div>
+      </blockquote>
     </section>
 
     <section id="faq" class="panel opacity-0 -translate-x-6" data-animate="left">
-      <hgroup class="section-heading">
-        <h2 class="section-title">よくあるご質問</h2>
+      <hgroup>
+        <h2>よくあるご質問</h2>
         <div class="accentline" role="presentation"></div>
-        <p class="section-lead">最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
+        <p>最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
       </hgroup>
-      <div class="px-4">
-        <div class="grid md:grid-cols-2 gap-6">
-          <details class="faq-item group faq-card">
-            <summary class="q faq-q">
-              エージェンシーって事務所と何が違うんですか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <p class="a faq-a">一般的な配信者事務所のように、活動を管理・拘束する立場ではありません。
-              Flairは、配信の自由度を保ったまま、必要な部分だけを支援する“伴走型”のエージェンシーです。</p>
-          </details>
-          <details class="faq-item group faq-card">
-            <summary class="q faq-q">
-              ノルマや罰金はありますか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <p class="a faq-a">ありません。生活や学業との両立を前提に、自分のペースで続けられる運用を一緒に設計します。</p>
-          </details>
-          <details class="faq-item group faq-card">
-            <summary class="q faq-q">
-              初期費用はかかりますか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <p class="a faq-a">初期費用はゼロです。機材は進呈し、初期設定までサポートします。</p>
-          </details>
-          <details class="faq-item group faq-card">
-            <summary class="q faq-q">
-              マージンは取られますか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <p class="a faq-a">クリエイターから直接マージンをいただきません。報酬の流れは事前に丁寧に説明します。</p>
-          </details>
-          <details class="faq-item group faq-card">
-            <summary class="q faq-q">
-              途中でやめられますか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <p class="a faq-a">可能です。条件はありますが、事情に応じて柔軟に対応します。無理な引き止めはしません。</p>
-          </details>
-          <details class="faq-item group faq-card">
-            <summary class="q faq-q">
-              怪しくないですか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <p class="a faq-a">
-              Flairは<strong>TikTok社と業務委託契約を締結しているLIVEエージェンシー</strong>です。運営の透明性を大切にしています。
-            </p>
-          </details>
-          <details class="faq-item group faq-card-light">
-            <summary class="q faq-q">
-              報酬の流れを教えてください
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <div class="a faq-a">
-              <ol class="list-decimal list-outside pl-6 space-y-1">
-                <li>視聴者がLIVE配信でギフトを送る → ダイヤモンドとして加算</li>
-                <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
-                <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
-              </ol>
-              <p class="text-xs text-gray-500 mt-2">※
-                クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</p>
-            </div>
-          </details>
-          <details class="faq-item group faq-card-light">
-            <summary class="q faq-q">
-              振込タイミングはいつですか？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <div class="a faq-a">
-              <p><strong>TikTokからの分配</strong>：プラットフォームの清算サイクルに沿って支払われます（詳細は最新の公式ポリシーをご確認ください）。</p>
-              <p class="mt-2"><strong>当社からの追加特典（月次）</strong>：当社の規定・個別契約に基づき、月次でお支払いする場合があります。</p>
-            </div>
-          </details>
-          <details class="faq-item group faq-card-light">
-            <summary class="q faq-q">
-              LIVEエージェンシーの収益源は？
-              <span class="faq-chevron">▾</span>
-            </summary>
-            <div class="a faq-a">
-              <p>
-                Flairの収益は、TikTok社との業務委託契約に基づく報酬（成果に応じたインセンティブを含む）です。クリエイターから直接マージンを取ることはありません。
-              </p>
-            </div>
-          </details>
-        </div>
+      <div class="grid md:grid-cols-2 gap-6 items-start">
+        <details class="faq group">
+          <summary>エージェンシーって事務所と何が違うんですか？</summary>
+          <p>
+            一般的な配信者事務所のように、活動を管理・拘束する立場ではありません。
+            Flairは、配信の自由度を保ったまま、必要な部分だけを支援する“伴走型”のエージェンシーです。
+          </p>
+        </details>
+        <details class="faq group">
+          <summary>ノルマや罰金はありますか？</summary>
+          <p>
+            ありません。生活や学業との両立を前提に、自分のペースで続けられる運用を一緒に設計します。
+          </p>
+        </details>
+        <details class="faq group">
+          <summary>初期費用はかかりますか？</summary>
+          <p>初期費用はゼロです。機材は進呈し、初期設定までサポートします。</p>
+        </details>
+        <details class="faq group">
+          <summary>マージンは取られますか？</summary>
+          <p>クリエイターから直接マージンをいただきません。報酬の流れは事前に丁寧に説明します。</p>
+        </details>
+        <details class="faq group">
+          <summary>途中でやめられますか？</summary>
+          <p>可能です。条件はありますが、事情に応じて柔軟に対応します。無理な引き止めはしません。</p>
+        </details>
+        <details class="faq group">
+          <summary>怪しくないですか？</summary>
+          <p>
+            Flairは<strong>TikTok社と業務委託契約を締結しているLIVEエージェンシー</strong>です。
+            運営の透明性を大切にしています。
+          </p>
+        </details>
+        <details class="faq light group">
+          <summary>報酬の流れを教えてください</summary>
+          <div>
+            <ol class="list-decimal list-outside pl-6 space-y-1">
+              <li>視聴者がLIVE配信でギフトを送る → ダイヤモンドとして加算</li>
+              <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
+              <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
+            </ol>
+            <p class="text-xs text-gray-500 mt-2">※
+              クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</p>
+          </div>
+        </details>
+        <details class="faq light group">
+          <summary>振込タイミングはいつですか？</summary>
+          <p><strong>TikTokからの分配</strong>：プラットフォームの清算サイクルに沿って支払われます（詳細は最新の公式ポリシーをご確認ください）。</p>
+          <p class="mt-2"><strong>当社からの追加特典（月次）</strong>：当社の規定・個別契約に基づき、月次でお支払いする場合があります。</p>
+        </details>
+        <details class="faq light group">
+          <summary>LIVEエージェンシーの収益源は？</summary>
+          <p>
+            Flairの収益は、TikTok社との業務委託契約に基づく報酬（成果に応じたインセンティブを含む）です。クリエイターから直接マージンを取ることはありません。
+          </p>
+        </details>
       </div>
     </section>
 
     <section id="contact" class="panel opacity-0 translate-y-4" data-animate="up">
-      <hgroup class="section-heading">
-        <h2 class="section-title">お問い合わせ</h2>
+      <hgroup>
+        <h2>お問い合わせ</h2>
         <div class="accentline" role="presentation"></div>
-        <p class="section-lead">お申し込み前に、相談だけで大丈夫です。</p>
+        <p>お申し込み前に、相談だけで大丈夫です。</p>
       </hgroup>
       <div class="grid md:grid-cols-2 gap-6 px-4">
         <!-- 応募（フォーム導線） -->
-        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center flex flex-col">
-          <div class="text-4xl text-red-500 mb-3"><i class="fas fa-file-pen" data-icon-anim></i></div>
-          <h3 class="text-xl font-bold mb-2">応募する</h3>
-          <p class="text-sm text-gray-700 mb-4">お申し込みフォームに必要事項をご入力ください。</p>
+        <article>
+          <h4 class="icon fas fa-file-pen" data-icon-anim>応募する</h4>
+          <p class="mb-4">お申し込みフォームに必要事項をご入力ください。</p>
           <a class="cta btn mt-auto!" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
             onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
             申し込む
           </a>
-        </div>
+        </article>
         <!-- お問い合わせ（DM導線） -->
-        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center flex flex-col">
-          <div class="text-4xl text-red-500 mb-3"><i class="fab fa-tiktok" data-icon-anim></i></div>
-          <h3 class="text-xl font-bold mb-2">相談する</h3>
-          <p class="text-sm text-gray-700 mb-4">ちょっとした質問だけでも歓迎です。</p>
+        <article>
+          <h4 class="icon fab fa-tiktok" data-icon-anim>相談する</h4>
+          <p class="mb-4">ちょっとした質問だけでも歓迎です。</p>
           <a class="cta btn secondary mt-auto!" href="https://www.tiktok.com/@flair.agency.biz" target="_blank"
             rel="noopener"
             onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
             DMで問合せる
           </a>
-        </div>
+        </article>
       </div>
     </section>
   </main>
@@ -440,8 +401,8 @@
     <p class="copyright"><small>&copy; 2025 Flair LLC</small></p>
   </footer>
 
-  <script src="/assets/common.js?v=20260218r01r03r01r04" defer></script>
-  <script src="./index.js?v=20260218r01r03r01r04" defer></script>
+  <script src="/assets/common.js?v=20260219r01" defer></script>
+  <script src="./index.js?v=20260219r01" defer></script>
 </body>
 
 </html>
