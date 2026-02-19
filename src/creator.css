@@ -92,6 +92,10 @@ body.creator {
         &:first-child {
           @apply text-right;
         }
+
+        &:nth-child(3) {
+          @apply bg-[rgba(220,38,38,0.06)];
+        }
       }
     }
 
@@ -106,16 +110,20 @@ body.creator {
             @apply font-medium text-right;
           }
         }
+
+        &:nth-child(odd) td:nth-child(3) {
+          @apply bg-[rgba(220,38,38,0.015)];
+        }
+
+        &:nth-child(even) td:nth-child(3) {
+          @apply bg-[rgba(220,38,38,0.03)];
+        }
       }
     }
 
     th:nth-child(2),
     td:nth-child(2) {
       @apply text-(--muted-text)
-    }
-
-    td.is-check {
-      @apply text-[#111827] leading-6;
     }
 
     .chip {
