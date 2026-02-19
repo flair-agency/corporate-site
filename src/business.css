@@ -41,7 +41,7 @@ body.business {
         @apply text-sm my-2;
       }
 
-      ul {
+      &>ul {
         @apply list-disc list-outside pl-5 text-gray-700 space-y-1;
       }
 
