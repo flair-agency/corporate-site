@@ -51,7 +51,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   </noscript>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -94,11 +95,11 @@
       <div class="media-card" role="presentation" aria-hidden="true">
         <video muted loop playsinline autoplay preload="metadata" poster="./hero.webp?v=20260219r02" data-hero-video>
           <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
-          <source src="./hero-mobile.webm?v=20260219r02" type="video/webm" media="(max-width: 640px)">
-          <source src="./hero-mobile.mp4?v=20260219r02" type="video/mp4" media="(max-width: 640px)">
+          <source src="./hero-mobile.webm?v=20260219r02" type="video/webm" width="480" height="854" media="(max-width: 640px)">
+          <source src="./hero-mobile.mp4?v=20260219r02" type="video/mp4" width="480" height="854" media="(max-width: 640px)">
           <!-- Default sources -->
-          <source src="./hero.webm?v=20260219r02" type="video/webm">
-          <source src="./hero.mp4?v=20260219r02" type="video/mp4">
+          <source src="./hero.webm?v=20260219r02" type="video/webm" width="1080" height="1920">
+          <source src="./hero.mp4?v=20260219r02" type="video/mp4" width="1080" height="1920">
         </video>
       </div>
       <div class="stickers" role="presentation" aria-hidden="true">
