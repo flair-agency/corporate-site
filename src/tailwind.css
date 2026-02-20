@@ -119,7 +119,7 @@
 
 @layer components {
   body>header {
-    @apply sticky top-0 z-50 px-4 py-3 flex items-center justify-between gap-3 bg-(--header-bg) backdrop-filter-(--header-blur) shadow-sm border-b border-(--header-border);
+    @apply sticky top-0 z-50 px-4 sm:pt-3 pt-[env(safe-area-inset-top)] pb-3 flex items-center justify-between gap-3 bg-linear-to-b from-0% from-(--page-bg) via-40% via-[rgba(255,255,255,.9)] to-100% to-(--header-bg) backdrop-filter-(--header-blur) shadow-sm border-b border-(--header-border);
   }
 
   body>footer {
