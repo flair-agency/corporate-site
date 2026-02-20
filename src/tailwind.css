@@ -118,11 +118,11 @@
 
 @layer components {
   body > header {
-    @apply sticky top-0 z-50 flex items-center justify-between gap-3 border-b border-(--header-border) bg-linear-to-b from-(--page-bg) from-0% via-[rgba(255,255,255,.9)] via-40% to-(--header-bg) to-100% px-4 pt-[env(safe-area-inset-top)] pb-3 shadow-sm backdrop-filter-(--header-blur) sm:pt-3;
+    @apply sticky top-0 z-50 flex items-center justify-between gap-3 border-b border-(--header-border) bg-linear-to-b from-(--page-bg) from-0% via-[rgba(255,255,255,.9)] via-40% to-(--header-bg) to-100% px-4 pt-[calc(env(safe-area-inset-top)+.5rem)] pb-3 shadow-sm backdrop-filter-(--header-blur);
   }
 
   body > footer {
-    @apply bg-linear-to-b from-[rgba(15,23,42,.04)] from-0% via-[rgba(15,23,42,.02)] via-35% to-(--page-bg) to-100% px-6 pt-6 pb-[env(safe-area-inset-bottom)] text-center text-[#4b5563] sm:pb-6;
+    @apply bg-linear-to-b from-[rgba(15,23,42,.04)] from-0% via-[rgba(15,23,42,.02)] via-35% to-(--page-bg) to-100% px-6 pt-6 pb-[calc(env(safe-area-inset-bottom)+.5rem)] text-center text-[#4b5563];
   }
 
   nav.on-page {
@@ -156,7 +156,7 @@
           @apply inline-flex;
 
           & + menu {
-            @apply absolute top-16 right-4 z-60 hidden min-w-55 flex-col flex-nowrap rounded-xl bg-[rgba(255,255,255,0.96)] p-2.5 shadow-[0_14px_36px_rgba(0,0,0,0.12)];
+            @apply absolute top-[calc(env(safe-area-inset-top)+3rem)] right-4 z-60 hidden min-w-55 flex-col flex-nowrap rounded-xl bg-[rgba(255,255,255,0.96)] p-2.5 shadow-[0_14px_36px_rgba(0,0,0,0.12)];
 
             li a {
               @apply block px-3 py-2.5;
