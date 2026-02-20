@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/flair-agency/corporate-site#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "firebase-tools": "^15.6.0",
+    "@tailwindcss/cli": "^4.2.0",
+    "firebase-tools": "^15.7.0",
     "lighthouse": "^13.0.3",
-    "tailwindcss": "^4.1.18"
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.0"
   }
 }
