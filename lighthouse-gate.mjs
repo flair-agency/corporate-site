@@ -23,22 +23,26 @@ import { text } from 'node:stream/consumers';
 await text(process.stdin).then(JSON.parse).then(({ categories = {} }) => {
   const exitCode = [
     {
-      name: "PERFORMANCE",
+      id: "PERFORMANCE",
+      label: "Performance",
       bit: 1 << 0,
       score: () => categories?.performance?.score,
     },
     {
-      name: "ACCESSIBILITY",
+      id: "ACCESSIBILITY",
+      label: "Accessibility",
       bit: 1 << 1,
       score: () => categories?.accessibility?.score,
     },
     {
-      name: "BEST_PRACTICES",
+      id: "BEST_PRACTICES",
+      label: "Best practices",
       bit: 1 << 2,
       score: () => categories?.["best-practices"]?.score,
     },
     {
-      name: "SEO",
+      id: "SEO",
+      label: "SEO",
       bit: 1 << 3,
       score: () => categories?.seo?.score,
     },
@@ -46,14 +50,14 @@ await text(process.stdin).then(JSON.parse).then(({ categories = {} }) => {
     const score = metric.score();
     const min = ((defaultMinScore) => {
       const fallback = metric.fallback ?? defaultMinScore;
-      const v = process.env[`${metric.name}_MIN_SCORE`];
+      const v = process.env[`${metric.id}_MIN_SCORE`];
       if (v == null || v === "") return fallback;
       const n = Number(v);
       return Number.isFinite(n) ? n : fallback;
     })(.9);
     const failed = score == null || Number.isNaN(score) || score < min;
 
-    process.stdout.write(`${metric.name}\t${Number.isFinite(score) ? score.toFixed(2) : "N/A"}\t${failed ? "FAIL" : "PASS"}\n`);
+    process.stdout.write(`${metric.label}\t${Number.isFinite(score) ? score.toFixed(2) : "N/A"}\t${failed ? "FAIL" : "PASS"}\n`);
 
     return failed ? exitCode | metric.bit : exitCode;
   }, 0);
