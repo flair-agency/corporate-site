@@ -2,11 +2,11 @@
 body.business {
   main > section {
     &.hero {
-      --avif-option: url("/business/background-image.avif?v=20260220r06")
+      --avif-option: url("/business/background-image.avif?v=20260221r01")
         type("image/avif") 1x;
-      --webp-option: url("/business/background-image.webp?v=20260220r06")
+      --webp-option: url("/business/background-image.webp?v=20260221r01")
         type("image/webp") 1x;
-      --png-option: url("/business/background-image.png?v=20260220r06")
+      --png-option: url("/business/background-image.png?v=20260221r01")
         type("image/png") 1x;
       @apply bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))];
     }
