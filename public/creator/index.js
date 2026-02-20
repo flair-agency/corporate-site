@@ -1,16 +1,3 @@
-// FAQ accordion
-(() => {
-  document.querySelectorAll('details.faq').forEach(item => {
-    const btn = item.querySelector('summary');
-    btn.addEventListener('click', () => {
-      item.classList.toggle('open');
-      const ans = item.querySelector('p');
-      const isOpen = item.classList.contains('open');
-      ans.classList.toggle('hidden', !isOpen);
-    });
-  });
-})();
-
 // Scroll-triggered animations
 (() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

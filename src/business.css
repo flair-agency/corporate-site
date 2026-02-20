@@ -1,23 +1,22 @@
 /* ===== Business Page Specific Styles ===== */
 body.business {
-  main>section {
+  main > section {
     &.hero {
-      --avif-option: url("/business/background-image.avif?v=20260220r06") type("image/avif") 1x;
-      --webp-option: url("/business/background-image.webp?v=20260220r06") type("image/webp") 1x;
-      --png-option: url("/business/background-image.png?v=20260220r06") type("image/png") 1x;
+      --avif-option: url("/business/background-image.avif?v=20260220r06")
+        type("image/avif") 1x;
+      --webp-option: url("/business/background-image.webp?v=20260220r06")
+        type("image/webp") 1x;
+      --png-option: url("/business/background-image.png?v=20260220r06")
+        type("image/png") 1x;
       @apply bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))];
     }
 
-    &.band {
-      @apply max-w-275 py-16 px-4 my-8 mx-auto;
-    }
-
     h3 {
-      @apply text-2xl font-bold my-2;
+      @apply my-2 text-2xl font-bold;
     }
 
     h4 {
-      @apply text-xl font-bold my-2;
+      @apply my-2 text-xl font-bold;
     }
 
     cite {
@@ -29,35 +28,29 @@ body.business {
     }
 
     article {
-      @apply
-        text-sm
-        bg-(--section-bg)
-        border border-[#bfdbfe] rounded-(--radius-base)
-        shadow-sm
-        p-6
-        hover:shadow-[0_6px_18px_rgba(37,99,235,0.08)];
+      @apply rounded-(--radius-base) border border-[#bfdbfe] bg-(--section-bg) p-6 text-sm shadow-sm hover:shadow-[0_6px_18px_rgba(37,99,235,0.08)];
 
       p {
-        @apply text-sm my-2;
+        @apply my-2 text-sm;
       }
 
-      &>ul {
-        @apply list-disc list-outside pl-5 text-gray-700 space-y-1;
+      & > ul {
+        @apply list-outside list-disc space-y-1 pl-5 text-gray-700;
       }
 
       .icon {
-        @apply inline-block text-4xl text-sky-600 mb-3;
+        @apply mb-3 inline-block text-4xl text-sky-600;
       }
 
       .chip {
-        @apply inline-block mb-2 ;
+        @apply mb-2 inline-block;
       }
 
       .kicker {
-        @apply text-xs text-gray-500 tracking-[0.12em] mb-1;
+        @apply mb-1 text-xs tracking-[0.12em] text-gray-500;
       }
 
-      &.growth {
+      &[data-variant~="growth"] {
         h4 {
           @apply tracking-wide;
         }

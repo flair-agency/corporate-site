@@ -7,7 +7,6 @@
 @import "./creator.css";
 
 @layer base {
-
   /* TOKENS */
   :root {
     --brand: #ff5a3c;
@@ -22,7 +21,9 @@
     --cool-head: #0f172a;
     --cool-body: #334155;
 
-    --font-fallback-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-fallback-sans:
+      "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo",
+      system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-family-sans: "Inter", var(--font-fallback-sans);
 
     --text-body: #333;
@@ -78,17 +79,15 @@
   }
 
   body {
-    @apply text-(--text-body) bg-(--page-bg) leading-[1.8] font-(--font-family-sans);
+    @apply bg-(--page-bg) leading-[1.8] font-(--font-family-sans) text-(--text-body) [text-rendering:optimizeLegibility];
 
-    text-rendering: optimizeLegibility;
-
-    &>header,
-    &>footer {
-      @apply max-w-275 mx-auto;
+    & > header,
+    & > footer {
+      @apply mx-auto max-w-275;
     }
-  
-    &>main {
-      @apply w-full max-w-6xl mx-auto px-4;
+
+    & > main {
+      @apply mx-auto w-full max-w-6xl px-4;
     }
   }
 
@@ -100,13 +99,13 @@
     @apply scroll-mt-22;
   }
 
-  main>section {
-    @apply py-(--section-pad-y) px-(--section-pad-x) mx-(--section-margin-x) my-(--section-margin-y);
+  main > section {
+    @apply mx-(--section-margin-x) my-(--section-margin-y) px-(--section-pad-x) py-(--section-pad-y);
   }
 
   ul,
   ol {
-    @apply list-outside pl-5 ml-0;
+    @apply ml-0 list-outside pl-5;
   }
 
   ul ul,
@@ -118,124 +117,112 @@
 }
 
 @layer components {
-  body>header {
-    @apply
-      sticky top-0 z-50
-      px-4 sm:pt-3 pt-[env(safe-area-inset-top)] pb-3
-      flex items-center justify-between gap-3 
-      bg-linear-to-b from-0% from-(--page-bg) via-40% via-[rgba(255,255,255,.9)] to-100% to-(--header-bg)
-      backdrop-filter-(--header-blur) shadow-sm border-b border-(--header-border);
+  body > header {
+    @apply sticky top-0 z-50 flex items-center justify-between gap-3 border-b border-(--header-border) bg-linear-to-b from-(--page-bg) from-0% via-[rgba(255,255,255,.9)] via-40% to-(--header-bg) to-100% px-4 pt-[env(safe-area-inset-top)] pb-3 shadow-sm backdrop-filter-(--header-blur) sm:pt-3;
   }
 
-  body>footer {
-    @apply
-      text-[#4b5563] text-center px-6 pt-6 sm:pb-6 pb-[env(safe-area-inset-bottom)]
-      bg-linear-to-b from-0% from-[rgba(15,23,42,.04)] via-35% via-[rgba(15,23,42,.02)] to-100% to-(--page-bg);
+  body > footer {
+    @apply bg-linear-to-b from-[rgba(15,23,42,.04)] from-0% via-[rgba(15,23,42,.02)] via-35% to-(--page-bg) to-100% px-6 pt-6 pb-[env(safe-area-inset-bottom)] text-center text-[#4b5563] sm:pb-6;
   }
 
   nav.on-page {
-    @apply flex items-center gap-3 flex-1 justify-end;
+    @apply flex flex-1 items-center justify-end gap-3;
 
-    &>button.toggle {
-      @apply hidden items-center justify-center w-10 h-10;
+    & > button.toggle {
+      @apply hidden h-10 w-10 items-center justify-center;
 
-      &+menu {
-        @apply flex gap-2.5 flex-nowrap overflow-x-auto whitespace-nowrap py-1.5 px-0 flex-1;
+      & + menu {
+        @apply flex flex-1 flex-nowrap gap-2.5 overflow-x-auto px-0 py-1.5 whitespace-nowrap;
 
         &::-webkit-scrollbar {
           @apply h-1.5;
         }
 
         &::-webkit-scrollbar-thumb {
-          @apply bg-(--on-page-scrollbar-thumb) rounded-full;
+          @apply rounded-full bg-(--on-page-scrollbar-thumb);
         }
 
         li a {
-          @apply
-            text-[13px] text-(--on-page-link)
-            rounded-full
-            py-2 px-2.5
-            hover:bg-(--on-page-link-hover-bg) hover:text-(--on-page-link-hover-text);
+          @apply rounded-full px-2.5 py-2 text-[13px] text-(--on-page-link) hover:bg-(--on-page-link-hover-bg) hover:text-(--on-page-link-hover-text);
 
           &.active {
             @apply bg-(--on-page-link-active-bg) text-(--on-page-link-active-text);
           }
         }
       }
-    }
 
-    .sr-only {
-      @apply sr-only;
-    }
-  }
+      @media (max-width: 767px) {
+        html.js & {
+          @apply inline-flex;
 
-  @media (max-width: 767px) {
-    html.js nav.on-page>button.toggle {
-      @apply inline-flex;
+          & + menu {
+            @apply absolute top-16 right-4 z-60 hidden min-w-55 flex-col flex-nowrap rounded-xl bg-[rgba(255,255,255,0.96)] p-2.5 shadow-[0_14px_36px_rgba(0,0,0,0.12)];
 
-      &+menu {
-        @apply hidden absolute top-16 right-4 flex-col p-2.5 rounded-xl shadow-[0_14px_36px_rgba(0,0,0,0.12)] z-60 min-w-55 flex-nowrap bg-[rgba(255,255,255,0.96)];
+            li a {
+              @apply block px-3 py-2.5;
+            }
+          }
 
-        li a {
-          @apply block py-2.5 px-3;
+          &[aria-expanded="true"] + menu {
+            @apply flex flex-wrap;
+          }
+        }
+
+        html.no-js & {
+          @apply hidden!;
         }
       }
-
-      &[aria-expanded="true"]+menu {
-        @apply flex flex-wrap;
-      }
-    }
-
-    html.no-js nav.on-page button.toggle {
-      @apply hidden!;
     }
   }
 
   .indicator {
-    @apply -translate-x-1/2 text-slate-500 flex flex-col items-center gap-2;
+    @apply flex -translate-x-1/2 flex-col items-center gap-2 text-slate-500;
 
     .label {
       @apply text-[11px] tracking-[0.2em];
     }
 
     .icon {
-      @apply h-8 w-8 animate-bounce rounded-full border border-slate-300 grid place-items-center;
+      @apply grid h-8 w-8 animate-bounce place-items-center rounded-full border border-slate-300;
     }
   }
 
-  /* Section primitives */
-  .panel {
-    @apply bg-white rounded-lg shadow-lg mt-8 mx-4;
+  section.panel {
+    @apply mx-4 mt-8 rounded-lg bg-white shadow-lg;
+  }
+
+  section.band {
+    @apply mx-auto my-8 max-w-275 px-4 py-16;
   }
 
   .accentline {
-    @apply h-1 mt-2 mx-auto mb-0 rounded-(--radius-pill) bg-linear-to-r from-(--underline-warm-from) to-(--underline-warm-to);
+    @apply mx-auto mt-2 mb-0 h-1 rounded-full bg-linear-to-r from-(--underline-warm-from) to-(--underline-warm-to);
   }
 
-  main>section {
-    &>hgroup {
-      @apply text-center mb-10;
+  main > section {
+    & > hgroup {
+      @apply mb-10 text-center;
 
-      &>h2 {
-        @apply text-2xl md:text-3xl font-bold text-gray-800;
+      & > h2 {
+        @apply text-2xl font-bold text-gray-800 md:text-3xl;
 
-        &+.accentline {
+        & + .accentline {
           @apply w-20;
         }
 
-        &~p {
-          @apply mt-4 text-gray-500 text-base md:text-lg;
+        & ~ p {
+          @apply mt-4 text-base text-gray-500 md:text-lg;
         }
       }
     }
 
-    &.cool {
+    &[data-variant~="cool"] {
       @apply bg-linear-[180deg] from-[rgba(255,255,255,0)] to-[rgba(37,99,235,0.06)];
 
-      &>hgroup>h2 {
+      & > hgroup > h2 {
         @apply text-(--cool-head);
 
-        &+.accentline {
+        & + .accentline {
           @apply bg-linear-to-r from-(--underline-cool-from) to-(--underline-cool-to);
         }
       }
@@ -249,52 +236,52 @@
       }
 
       .chip {
-        @apply text-blue-700 border-blue-200 bg-blue-50;
+        @apply border-blue-200 bg-blue-50 text-blue-700;
       }
 
       .cta.btn {
         @apply bg-blue-600 hover:shadow-[0_6px_18px_rgba(37,99,235,0.25)];
       }
     }
-  
+
     &.hero {
-      @apply relative z-1 isolate mt-8 mx-4 mb-2 flex flex-col justify-center overflow-hidden rounded-lg text-center text-(--white) bg-cover bg-center bg-(--hero-fallback-bg) min-h-(--hero-height) transition-[background-image_0.5s_ease-in-out];
+      @apply relative isolate z-1 mx-4 mt-8 mb-2 flex min-h-(--hero-height) flex-col justify-center overflow-hidden rounded-lg bg-(--hero-fallback-bg) bg-cover bg-center text-center text-(--white) transition-[background-image_0.5s_ease-in-out];
 
       &::before {
-        @apply content-[""] absolute inset-0 -z-10 rounded-(--radius-base) bg-(--hero-overlay-bg);
+        @apply absolute inset-0 -z-10 rounded-(--radius-base) bg-(--hero-overlay-bg) content-[""];
       }
 
-      &>hgroup {
-        &>h2 {
-          @apply text-inherit text-3xl md:text-5xl font-bold leading-[1.3] text-shadow-(--hero-title-shadow) mb-4;
+      & > hgroup {
+        & > h2 {
+          @apply mb-4 text-3xl leading-[1.3] font-bold text-inherit text-shadow-(--hero-title-shadow) md:text-5xl;
 
-          &+p {
-            @apply text-inherit text-base md:text-lg opacity-90 mb-6 mx-auto max-w-2xl;
+          & + p {
+            @apply mx-auto mb-6 max-w-2xl text-base text-inherit opacity-90 md:text-lg;
           }
         }
       }
 
-      &>.indicator {
+      & > .indicator {
         @apply absolute bottom-6 left-1/2 z-20;
       }
     }
   }
 
   .logo {
-    @apply block w-17.5 max-w-full h-auto rounded-(--radius-base) aspect-7/5 object-contain;
+    @apply block aspect-7/5 h-auto w-17.5 max-w-full rounded-(--radius-base) object-contain;
   }
 
   /* Small primitives */
   .chip {
-    @apply inline-block mb-2.5 border border-(--brand-chip-border) rounded-(--radius-pill) bg-(--brand-chip-bg) py-1.5 px-2.5 text-xs tracking-[0.12em] text-(--brand-chip-text);
+    @apply mb-2.5 inline-block rounded-(--radius-pill) border border-(--brand-chip-border) bg-(--brand-chip-bg) px-2.5 py-1.5 text-xs tracking-[0.12em] text-(--brand-chip-text);
 
-    &.accent {
+    &[data-variant~="accent"] {
       @apply border-(--brand-chip-accent-border) bg-(--brand-chip-accent-bg);
     }
   }
 
   .cta {
-    @apply text-center mt-[clamp(20px,5vw,36px)];
+    @apply mt-[clamp(20px,5vw,36px)] text-center;
 
     &.note {
       @apply mt-2.5 text-sm text-[#666];
@@ -305,17 +292,10 @@
     }
 
     &.btn {
-      @apply
-        inline-block rounded-full bg-(--brand)
-        py-3 px-5
-        font-bold text-white no-underline
-        transition-[transform_.08s_ease,box-shadow_.2s_ease]
-        hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(255,90,60,0.25)];
+      @apply inline-block rounded-full bg-(--brand) px-5 py-3 font-bold text-white no-underline transition-[transform_.08s_ease,box-shadow_.2s_ease] hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(255,90,60,0.25)];
 
       &.secondary {
-        @apply bg-inherit text-gray-700 border border-gray-300 hover:shadow-none;
-
-        font-weight: inherit;
+        @apply border border-gray-300 bg-inherit font-[weight:inherit] text-gray-700 hover:shadow-none;
       }
     }
   }
@@ -323,24 +303,24 @@
   nav.on-site {
     @apply mb-2.5 flex justify-center;
 
-    &>menu {
-      @apply flex flex-col items-center gap-4 whitespace-nowrap text-xs text-(--on-site-text) sm:flex-row sm:items-start sm:gap-8;
+    & > menu {
+      @apply flex flex-col items-center gap-4 text-xs whitespace-nowrap text-(--on-site-text) sm:flex-row sm:items-start sm:gap-8;
 
       li a {
-        @apply py-1.5 px-2.5 rounded-(--radius-pill) border border-transparent hover:bg-[rgba(15,23,42,0.06)];
+        @apply rounded-(--radius-pill) border border-transparent px-2.5 py-1.5 hover:bg-[rgba(15,23,42,0.06)];
 
         &[aria-current="page"] {
-          @apply text-[#0f172a] bg-[rgba(15,23,42,0.08)] border-[rgba(15,23,42,0.12)];
+          @apply border-[rgba(15,23,42,0.12)] bg-[rgba(15,23,42,0.08)] text-[#0f172a];
         }
       }
     }
   }
 
   footer ul.note {
-    @apply list-["※"] w-fit pl-4;
+    @apply w-fit list-["※"] pl-4;
 
     li {
-      @apply text-xs text-gray-600 pl-1 marker:text-[.5rem];
+      @apply pl-1 text-xs text-gray-600 marker:text-[.5rem];
 
       small {
         @apply text-[size:inherit];
@@ -351,7 +331,7 @@
 
 @layer utilities {
   .full-bleed {
-    @apply relative left-1/2 right-1/2 -mx-[50vw] w-screen;
+    @apply relative right-1/2 left-1/2 -mx-[50vw] w-screen;
   }
 
   .fas,
@@ -360,6 +340,6 @@
   .fa-solid,
   .fa-regular,
   .fa-brands {
-    @apply inline-block text-center leading-none min-w-[1.25em];
+    @apply inline-block min-w-[1.25em] text-center leading-none;
   }
 }
