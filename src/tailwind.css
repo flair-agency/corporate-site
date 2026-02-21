@@ -444,7 +444,7 @@
     @apply flex flex-wrap items-center gap-3 pl-0;
 
     & > li a {
-      @apply rounded-lg border border-gray-200 px-3 py-2 transition hover:bg-gray-100 *:hidden;
+      @apply rounded-lg border border-gray-200 px-3 py-2 transition *:hidden hover:bg-gray-100;
     }
   }
 
@@ -563,14 +563,6 @@
       }
     }
   }
-
-  .icon-pop {
-    @apply motion-reduce:animate-none!;
-
-    &::before {
-      @apply origin-[50%_50%] animate-[iconPop_600ms_cubic-bezier(.2,.8,.2,1)_both];
-    }
-  }
 }
 
 @layer utilities {
@@ -578,9 +570,35 @@
     @apply relative right-1/2 left-1/2 -mx-[50vw] w-screen;
   }
 
-  [data-animate] {
+  :is(.fab, .far, .fas)[data-animate="true"] {
+    @apply motion-reduce:animate-none!;
+
+    &::before {
+      @apply origin-[50%_50%] animate-[iconPop_600ms_cubic-bezier(.2,.8,.2,1)_both];
+    }
+  }
+
+  [data-animate][data-direction] {
+    @apply opacity-0;
+
     @media (prefers-reduced-motion: reduce) {
       @apply transform-none! animate-none! opacity-1! transition-none!;
+    }
+
+    &[data-animate="true"] {
+      @apply translate-x-0 translate-y-0 opacity-100 transition-all duration-300 ease-out;
+    }
+
+    &:where(&[data-direction="left"]) {
+      @apply -translate-x-6;
+    }
+
+    &:where([data-direction="right"]) {
+      @apply translate-x-6;
+    }
+
+    &:where([data-direction="up"]) {
+      @apply translate-y-4;
     }
   }
 }
