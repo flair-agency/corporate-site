@@ -145,7 +145,7 @@
         li a {
           @apply rounded-full px-2.5 py-2 text-[13px] text-(--on-page-link) hover:bg-(--on-page-link-hover-bg) hover:text-(--on-page-link-hover-text);
 
-          &:active {
+          &[data-state~="active"] {
             @apply bg-(--on-page-link-active-bg) text-(--on-page-link-active-text);
           }
         }
