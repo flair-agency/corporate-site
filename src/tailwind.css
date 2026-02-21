@@ -333,13 +333,4 @@
   .full-bleed {
     @apply relative right-1/2 left-1/2 -mx-[50vw] w-screen;
   }
-
-  .fas,
-  .far,
-  .fab,
-  .fa-solid,
-  .fa-regular,
-  .fa-brands {
-    @apply inline-block min-w-[1.25em] text-center leading-none;
-  }
 }

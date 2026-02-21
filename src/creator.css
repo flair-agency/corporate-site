@@ -13,8 +13,8 @@ body.creator {
   section#benefits article {
     @apply text-center;
 
-    .icon::before {
-      @apply mb-2 block text-3xl;
+    & :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)::before {
+      @apply block;
     }
   }
 
@@ -31,7 +31,7 @@ body.creator {
       @apply mb-2 text-xl;
     }
 
-    .icon::before {
+    & :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)::before {
       @apply mb-3 block text-4xl;
     }
   }
@@ -44,8 +44,8 @@ body.creator {
       @apply font-bold;
     }
 
-    .icon::before {
-      @apply text-red-500;
+    & :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)::before {
+      @apply mb-2 inline-block text-3xl text-red-500;
     }
 
     p {
@@ -95,12 +95,12 @@ body.creator {
     }
 
     ol {
-      @apply list-decimal list-outside pl-10 space-y-1;
+      @apply list-outside list-decimal space-y-1 pl-10;
     }
 
     /* Answer */
     summary + * {
-      @apply relative mt-3 pl-10 [ol]:pl-15 leading-7 text-gray-700;
+      @apply relative mt-3 pl-10 leading-7 text-gray-700 [ol]:pl-15;
 
       &::before {
         @apply absolute top-0.5 left-0 grid h-7 w-7 place-items-center rounded-full border border-(--accent-line) bg-white text-[0.72rem] font-extrabold text-(--accent-strong) content-["A"];

@@ -38,8 +38,12 @@ body.business {
         @apply list-outside list-disc space-y-1 pl-5 text-gray-700;
       }
 
-      .icon {
-        @apply mb-3 inline-block text-4xl text-sky-600;
+      & :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands) {
+        @apply font-[inherit];
+
+        &::before {
+          @apply mb-3 block font-["Font_Awesome_6_Free"] text-4xl text-sky-600;
+        }
       }
 
       .chip {
