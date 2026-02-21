@@ -74,36 +74,4 @@ body.company {
       }
     }
   }
-
-  nav > ul.accounts {
-    @apply flex flex-wrap items-center gap-3 pl-0;
-
-    & > li a {
-      @apply inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 transition hover:bg-gray-100;
-    }
-  }
-
-  a.hyperlink {
-    @apply underline decoration-slate-300 decoration-1 underline-offset-4 hover:decoration-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 active:decoration-slate-700;
-  }
-
-  blockquote.letter {
-    @apply relative isolate overflow-hidden border border-amber-100 bg-amber-50/70 p-8 font-[Zen_Kurenaido,var(--font-fallback-sans)] text-gray-700 shadow-sm sm:p-10;
-
-    &::before {
-      @apply pointer-events-none absolute inset-0 z-0 bg-[url("/assets/logo.svg")] bg-size-[420px_auto] bg-center bg-no-repeat opacity-5 content-[""];
-    }
-
-    & > * {
-      @apply relative z-10;
-    }
-
-    p {
-      @apply my-3;
-
-      &.signature {
-        @apply mt-8 text-right;
-      }
-    }
-  }
 }

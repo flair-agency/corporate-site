@@ -92,7 +92,7 @@
         </h2>
         <p>無理なく続けられる形を、一緒につくります。</p>
       </hgroup>
-      <div class="media-card" role="presentation" aria-hidden="true">
+      <div class="card" data-variant="media" data-aspect="9/16" role="presentation" aria-hidden="true">
         <video muted loop playsinline autoplay preload="metadata" poster="./hero.webp?v=20260221r04" data-hero-video>
           <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
           <source src="./hero-mobile.webm?v=20260221r04" type="video/webm" width="480" height="854" media="(max-width: 640px)">
@@ -111,13 +111,13 @@
         <span class="label">SCROLL</span>
         <span class="icon">↓</span>
       </div>
-      <footer class="relative z-20 text-center">
+      <footer>
         <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
           onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});">まずは話してみる</a>
       </footer>
     </section>
 
-    <section id="benefits" class="panel opacity-0 -translate-x-6" data-animate="left">
+    <section id="benefits" class="panel -translate-x-6 opacity-0" data-animate="left">
       <hgroup>
         <h2>無理なく続けられる理由</h2>
         <div class="accentline" role="presentation"></div>
@@ -126,8 +126,8 @@
           <span class="whitespace-nowrap">負担と不安を減らす仕組み</span>があります。
         </p>
       </hgroup>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 px-4">
-        <h3 class="col-span-full">
+      <div>
+        <h3>
           <span class="chip">成長サポート</span>
         </h3>
         <article>
@@ -142,7 +142,7 @@
           <h4 class="fas fa-rotate" data-icon-anim>週次フィードバック</h4>
           <p>振り返りと改善で、続けやすさを支えます。</p>
         </article>
-        <h3 class="col-span-full">
+        <h3>
           <span class="chip" data-variant="accent">安心サポート</span>
         </h3>
         <article>
@@ -156,7 +156,7 @@
       </div>
     </section>
 
-    <section id="compare" class="panel opacity-0 translate-x-6" data-animate="right">
+    <section id="compare" class="panel translate-x-6 opacity-0" data-animate="right">
       <hgroup>
         <h2>ひとり vs Flair</h2>
         <div class="accentline" role="presentation"></div>
@@ -165,8 +165,8 @@
           <span class="whitespace-nowrap">「誰かと並走するか」</span>で、続けやすさは変わります。
         </p>
       </hgroup>
-      <div class="overflow-x-auto px-4">
-        <table class="compare min-w-full">
+      <div>
+        <table class="compare">
           <thead>
             <tr>
               <th>項目</th>
@@ -181,38 +181,38 @@
             <tr>
               <td>初期コスト</td>
               <td>機材選定・購入の負担</td>
-              <td class="is-check">機材進呈＆初期設定サポート</td>
+              <td>機材進呈＆初期設定サポート</td>
             </tr>
             <tr>
               <td>運用設計</td>
               <td>手探りで遠回りになりがち</td>
-              <td class="is-check">週次フィードバックとKPI設計</td>
+              <td>週次フィードバックとKPI設計</td>
             </tr>
             <tr>
               <td>継続・モチベ</td>
               <td>孤独になりやすい</td>
-              <td class="is-check">伴走と相談窓口で継続</td>
+              <td>伴走と相談窓口で継続</td>
             </tr>
             <tr>
               <td>収益の安定</td>
               <td>波が大きい</td>
-              <td class="is-check">収益設計の相談（条件により固定報酬）</td>
+              <td>収益設計の相談（条件により固定報酬）</td>
             </tr>
             <tr>
               <td>安全・ルール</td>
               <td>自己解決で不安</td>
-              <td class="is-check">最新ガイドライン共有と一次対応</td>
+              <td>最新ガイドライン共有と一次対応</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <footer class="text-center">
+      <footer>
         <a class="cta btn" href="#contact"
           onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});">まずは相談する</a>
       </footer>
     </section>
 
-    <section id="how-to-start" class="panel opacity-0 -translate-x-6" data-animate="left">
+    <section id="how-to-start" class="panel -translate-x-6 opacity-0" data-animate="left">
       <hgroup>
         <h2>はじめる流れ</h2>
         <div class="accentline" role="presentation"></div>
@@ -220,7 +220,7 @@
           相談からスタートして、最初の2〜3週間で<span class="whitespace-nowrap">「次に何をすればいいか分かる状態」</span>を一緒につくります。
         </p>
       </hgroup>
-      <ol class="flow grid md:grid-cols-3 gap-6">
+      <ol class="flow">
         <li data-step="1">
           <h4>まずはご相談</h4>
           <p>希望スタイル・活動ペース・不安点をヒアリング。</p>
@@ -246,19 +246,19 @@
           <p>継続と伸びにフォーカスした伴走支援。</p>
         </li>
       </ol>
-      <footer class="text-center">
+      <footer>
         <a class="cta btn" href="#contact"
           onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});">まずは相談する</a>
       </footer>
     </section>
 
-    <section id="trust" class="panel opacity-0 translate-x-6" data-animate="right">
+    <section id="trust" class="panel translate-x-6 opacity-0" data-animate="right">
       <hgroup>
         <h2>大切にしていること</h2>
         <div class="accentline" role="presentation"></div>
         <p>誠実であることを、運営の基準にしています。</p>
       </hgroup>
-      <div class="grid md:grid-cols-2 gap-6 px-4">
+      <div>
         <article>
           <h4 class="fas fa-handshake" data-icon-anim>
             透明性
@@ -285,7 +285,7 @@
         </article>
       </div>
       <footer>
-        <blockquote class="statement mt-8 mx-4">
+        <blockquote class="statement">
           <p>
             私たちは、クリエイターの挑戦に対して<span class="whitespace-nowrap">「誠実であること」</span>を最優先にしています。
             <strong>
@@ -304,7 +304,7 @@
         <div class="accentline" role="presentation"></div>
         <p>最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
       </hgroup>
-      <div class="grid md:grid-cols-2 gap-6 items-start">
+      <div>
         <details class="faq group">
           <summary>エージェンシーって事務所と何が違うんですか？</summary>
           <p>
@@ -344,7 +344,7 @@
             <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
             <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
           </ol>
-          <footer class="mt-2">
+          <footer>
             <ul class="note">
               <li>
                 <small>クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</small>
@@ -374,12 +374,12 @@
         <div class="accentline" role="presentation"></div>
         <p>お申し込み前に、相談だけで大丈夫です。</p>
       </hgroup>
-      <div class="grid md:grid-cols-2 gap-6 px-4">
+      <div>
         <!-- 応募（フォーム導線） -->
         <article>
           <h4 class="fas fa-file-pen" data-icon-anim>応募する</h4>
-          <p class="mb-4">お申し込みフォームに必要事項をご入力ください。</p>
-          <a class="cta btn mt-auto!" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
+          <p>お申し込みフォームに必要事項をご入力ください。</p>
+          <a class="cta btn" href="https://www.tiktok.com/t/ZSBnHHQmx/" target="_blank" rel="noopener"
             onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});">
             申し込む
           </a>
@@ -387,8 +387,8 @@
         <!-- お問い合わせ（DM導線） -->
         <article>
           <h4 class="fab fa-tiktok" data-icon-anim>相談する</h4>
-          <p class="mb-4">ちょっとした質問だけでも歓迎です。</p>
-          <a class="cta btn secondary mt-auto!" href="https://www.tiktok.com/@flair.agency.biz" target="_blank"
+          <p>ちょっとした質問だけでも歓迎です。</p>
+          <a class="cta btn" data-variant="secondary" href="https://www.tiktok.com/@flair.agency.biz" target="_blank"
             rel="noopener"
             onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});">
             DMで問合せる
