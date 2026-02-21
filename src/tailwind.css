@@ -439,11 +439,12 @@
       }
     }
   }
+
   nav > ul.accounts {
     @apply flex flex-wrap items-center gap-3 pl-0;
 
     & > li a {
-      @apply inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 transition hover:bg-gray-100;
+      @apply rounded-lg border border-gray-200 px-3 py-2 transition hover:bg-gray-100 *:hidden;
     }
   }
 
