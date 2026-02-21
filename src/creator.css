@@ -8,11 +8,11 @@ body.creator {
 
   section.hero {
     &::before {
-      --avif-option: url("/creator/background-image.avif?v=20260221r05")
+      --avif-option: url("/creator/background-image.avif?v=20260221r06")
         type("image/avif") 1x;
-      --webp-option: url("/creator/background-image.webp?v=20260221r05")
+      --webp-option: url("/creator/background-image.webp?v=20260221r06")
         type("image/webp") 1x;
-      --png-option: url("/creator/background-image.png?v=20260221r05")
+      --png-option: url("/creator/background-image.png?v=20260221r06")
         type("image/png") 1x;
       @apply transform-[scale(1.08)] bg-[#1a202c] bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center filter-[blur(6px)_brightness(0.74)_saturate(0.9)_contrast(0.7)] transition-[background-image] duration-500 ease-in-out;
     }
