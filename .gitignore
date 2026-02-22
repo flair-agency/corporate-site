@@ -71,5 +71,11 @@ node_modules/
 .dataconnect
 
 public/assets/app.css
-public/assets/index.js
-public/assets/index.js.map
+public/**/*.js
+public/**/*.js.map
+public/**/*.html
+public/**/*.css
+public/404.html
+!public/assets/**/*.html
+!public/assets/**/*.css
+!public/assets/**/*.js

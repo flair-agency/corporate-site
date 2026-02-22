@@ -3,7 +3,7 @@
   "compilerOptions": {
     /* Paths */
     "rootDir": "./src",
-    "outDir": "./public/assets",
+    "outDir": "./public",
 
     /* Output for modern browsers (load via <script type=\"module\">) */
     "target": "ES2022",

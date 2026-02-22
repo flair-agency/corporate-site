@@ -2,11 +2,11 @@
 
 @import "tailwindcss";
 
-@import "./business.css";
-@import "./company.css";
-@import "./creator.css";
-@import "./privacy-policy.css";
-@import "./terms.css";
+@import "./business/index.css";
+@import "./company/index.css";
+@import "./creator/index.css";
+@import "./privacy-policy/index.css";
+@import "./terms/index.css";
 
 @layer base {
   /* TOKENS */
