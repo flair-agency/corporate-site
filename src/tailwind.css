@@ -6,6 +6,7 @@
 @import "./company.css";
 @import "./creator.css";
 @import "./privacy-policy.css";
+@import "./terms.css";
 
 @layer base {
   /* TOKENS */
