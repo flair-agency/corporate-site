@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /* Paths */
+    "rootDir": "./src",
+    "outDir": "./public/assets",
+
+    /* Output for modern browsers (load via <script type=\"module\">) */
+    "target": "ES2022",
+    "module": "es2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+
+    /* Interop / emit */
+    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false,
+    "removeComments": false,
+    "newLine": "lf",
+
+    /* Type checking */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* Runtime safety / correctness */
+    "useDefineForClassFields": true,
+    "noUncheckedSideEffectImports": true,
+
+    /* Project ergonomics */
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "public", "public/assets"]
+}

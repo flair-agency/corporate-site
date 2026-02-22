@@ -21,9 +21,6 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - id: auth
         uses: google-github-actions/auth@v2
         with:
@@ -53,9 +50,6 @@ jobs:
 
       - name: Install
         run: npm ci
-
-      - name: Build
-        run: npm run build
 
       - name: Test
         run: |
@@ -100,9 +94,6 @@ jobs:
 
       - name: Install
         run: npm ci
-
-      - name: Build
-        run: npm run build
 
       - id: auth
         uses: google-github-actions/auth@v2

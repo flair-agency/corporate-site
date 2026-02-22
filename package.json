@@ -4,12 +4,15 @@
   "description": "Flair Corporate Site",
   "private": true,
   "scripts": {
+    "build:tsc":"tsc",
+    "build:tsc:watch":"tsc --watch",
     "build:css": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --minify",
     "build:css:watch": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./public/assets/app.css --watch",
-    "build": "npm run build:css",
+    "build": "npm -s run build:tsc && npm -s run build:css",
     "test:lighthouse": "lighthouse ${npm_config_lighthouse_opts}",
     "test:lighthouse-gate": "node ./lighthouse-gate.mjs",
-    "test": "npm -s run test:lighthouse ${npm_config_url:-http://127.0.0.1:5002/creator/} | npm -s run test:lighthouse-gate"
+    "test": "npm -s run test:lighthouse ${npm_config_url:-http://127.0.0.1:5002/creator/} | npm -s run test:lighthouse-gate",
+    "postinstall": "npm -s run build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "lighthouse": "^13.0.3",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.2.0"
+    "tailwindcss": "^4.2.0",
+    "typescript": "^5.9.3"
   }
 }
