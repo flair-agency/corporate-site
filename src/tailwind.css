@@ -5,6 +5,7 @@
 @import "./business.css";
 @import "./company.css";
 @import "./creator.css";
+@import "./privacy-policy.css";
 
 @layer base {
   /* TOKENS */
@@ -79,7 +80,7 @@
   }
 
   body {
-    @apply bg-(--page-bg) leading-[1.8] font-(--font-family-sans) text-(--text-body) [text-rendering:optimizeLegibility];
+    @apply bg-(--page-bg) leading-[1.8] font-(family-name:--font-family-sans) text-(--text-body) [text-rendering:optimizeLegibility];
 
     & > header,
     & > footer {
@@ -95,7 +96,7 @@
     @apply h-auto;
   }
 
-  section {
+  [id] {
     @apply scroll-mt-22;
   }
 
