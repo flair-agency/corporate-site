@@ -11,11 +11,11 @@ body.company {
     }
 
     &.hero {
-      --avif-option: url("/company/background-image.avif?v=20260222r02")
+      --avif-option: url("/company/background-image.avif?v=20260222r03")
         type("image/avif") 1x;
-      --webp-option: url("/company/background-image.webp?v=20260222r02")
+      --webp-option: url("/company/background-image.webp?v=20260222r03")
         type("image/webp") 1x;
-      --png-option: url("/company/background-image.png?v=20260222r02")
+      --png-option: url("/company/background-image.png?v=20260222r03")
         type("image/png") 1x;
       @apply bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))];
     }
