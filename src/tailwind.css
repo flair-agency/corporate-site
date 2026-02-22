@@ -80,7 +80,7 @@
   }
 
   body {
-    @apply bg-(--page-bg) leading-[1.8] font-(family-name:--font-family-sans) text-(--text-body) [text-rendering:optimizeLegibility];
+    @apply bg-(--page-bg) font-(family-name:--font-family-sans) leading-[1.8] text-(--text-body) [text-rendering:optimizeLegibility];
 
     & > header,
     & > footer {
@@ -100,10 +100,6 @@
     @apply scroll-mt-22;
   }
 
-  main > section {
-    @apply mx-(--section-margin-x) my-(--section-margin-y) px-(--section-pad-x) py-(--section-pad-y);
-  }
-
   ul,
   ol {
     @apply ml-0 list-outside pl-5;
@@ -115,9 +111,7 @@
   ol ol {
     @apply pl-5;
   }
-}
 
-@layer components {
   body > header {
     @apply sticky top-0 z-50 flex items-center justify-between gap-3 border-b border-(--header-border) bg-linear-to-b from-(--page-bg) from-0% via-[rgba(255,255,255,.9)] via-40% to-(--header-bg) to-100% px-4 pt-[calc(env(safe-area-inset-top)+.5rem)] pb-3 shadow-sm backdrop-filter-(--header-blur);
   }
@@ -137,8 +131,12 @@
       }
     }
   }
+}
 
+@layer components {
   body > main > section {
+    @apply mx-(--section-margin-x) my-(--section-margin-y) px-(--section-pad-x) py-(--section-pad-y);
+
     & {
       & > hgroup {
         @apply mb-10 text-center;
@@ -533,6 +531,7 @@
       @apply grid h-8 w-8 animate-bounce place-items-center rounded-full border border-slate-300;
     }
   }
+
   .statement {
     @apply relative pt-4 pr-0 pb-0 pl-4.5 font-[Zen_Kurenaido,var(--font-fallback-sans)];
 
@@ -562,6 +561,53 @@
       p {
         @apply text-[1em];
       }
+    }
+  }
+
+  main[data-vadata-variant~="document"] {
+    h1 {
+      @apply mt-6 text-3xl leading-tight font-bold md:text-4xl;
+    }
+
+    h2 {
+      @apply mt-14 pb-3 text-2xl font-semibold;
+
+      &::after {
+        content: "";
+        @apply block mt-3 border-b border-gray-200;
+      }
+    }
+
+    h3 {
+      @apply mt-8 text-xl font-semibold;
+    }
+
+    ul {
+      @apply mt-4 list-disc space-y-2 pl-6 leading-7 text-gray-700;
+    }
+
+    ol {
+      @apply mt-4 list-decimal space-y-2 pl-6 leading-7 text-gray-700;
+    }
+
+    p {
+      @apply mt-5 leading-7 text-gray-700;
+
+      & + h2 {
+        @apply mt-16;
+      }
+    }
+
+    hr {
+      @apply border-gray-300;
+    }
+
+    a[href] {
+      @apply underline hover:no-underline;
+    }
+
+    section.signature {
+      @apply text-right;
     }
   }
 }
