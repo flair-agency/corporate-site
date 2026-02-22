@@ -1,0 +1,48 @@
+{
+  "description": "TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。",
+  "google": {
+    "fonts": {
+      "query": "family=Inter:wght@400;600;700&family=Zen+Kurenaido:wght@400;700&display=swap"
+    }
+  },
+  "id": "company",
+  "image": {
+    "path": "/company/og.png"
+  },
+  "keywords": "合同会社Flair, Flair, TikTok LIVE, ライブ配信, マネジメント, エージェンシー, クリエイター支援",
+  "layout": "base.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./background-image.avif?v=20260222r03",
+      "imagesizes": "100vw",
+      "imagesrcset": "./background-image.avif?v=20260222r03 1x, ./background-image.webp?v=20260222r03 1x, ./background-image.png?v=20260222r03 1x",
+      "rel": "preload"
+    }
+  ],
+  "nav": {
+    "menu": [
+      {
+        "anchor": "#top",
+        "label": "トップ"
+      },
+      {
+        "anchor": "#mission-vision",
+        "label": "理念"
+      },
+      {
+        "anchor": "#founder",
+        "label": "出発点"
+      },
+      {
+        "anchor": "#company",
+        "label": "会社概要"
+      }
+    ]
+  },
+  "page": {
+    "path": "/company/"
+  },
+  "title": "私たちについて | 合同会社Flair"
+}

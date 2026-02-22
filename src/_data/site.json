@@ -1,0 +1,37 @@
+{
+  "name": "合同会社Flair",
+  "asset": {
+    "version": "20260222r03"
+  },
+  "font_awesome": {
+    "version": "6.5.2"
+  },
+  "google": {
+    "tagmanager": {
+      "tag_id": "G-Z85HL3MPJH"
+    }
+  },
+  "origin": "https://www.flair-agency.biz",
+  "pages": [
+    {
+      "label": "クリエイターの方へ",
+      "path": "/creator/"
+    },
+    {
+      "label": "企業のご担当者さまへ",
+      "path": "/business/"
+    },
+    {
+      "label": "私たちについて",
+      "path": "/company/"
+    },
+    {
+      "label": "プライバシーポリシー",
+      "path": "/privacy-policy/"
+    },
+    {
+      "label": "利用規約",
+      "path": "/terms/"
+    }
+  ]
+}

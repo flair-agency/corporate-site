@@ -1,0 +1,358 @@
+<main>
+  <section id="top" class="hero">
+    <hgroup>
+      <h2>
+        いま配信を<span class="whitespace-nowrap">がんばっている</span>
+        <span class="whitespace-nowrap">あなたへ</span>
+      </h2>
+      <p>無理なく続けられる形を、一緒につくります。</p>
+    </hgroup>
+    <div class="card" data-variant="media" data-aspect="9/16" role="presentation" aria-hidden="true">
+      <video
+        muted
+        loop
+        playsinline
+        autoplay
+        preload="metadata"
+        poster="./hero.webp?v={{ site.asset.version }}"
+        data-hero-video
+      >
+        <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
+        <source
+          src="./hero-mobile.webm?v={{ site.asset.version }}"
+          type="video/webm"
+          width="480"
+          height="854"
+          media="(max-width: 640px)"
+        >
+        <source
+          src="./hero-mobile.mp4?v={{ site.asset.version }}"
+          type="video/mp4"
+          width="480"
+          height="854"
+          media="(max-width: 640px)"
+        >
+        <!-- Default sources -->
+        <source src="./hero.webm?v={{ site.asset.version }}" type="video/webm" width="1080" height="1920">
+        <source src="./hero.mp4?v={{ site.asset.version }}" type="video/mp4" width="1080" height="1920">
+      </video>
+    </div>
+    <div class="stickers" role="presentation" aria-hidden="true">
+      <span class="sticker s1">#ノルマなし</span>
+      <span class="sticker s2">#初期費用0</span>
+      <span class="sticker s3">#配信機材進呈</span>
+    </div>
+    <div class="indicator" role="presentation" aria-hidden="true">
+      <span class="label">SCROLL</span>
+      <span class="icon">↓</span>
+    </div>
+    <footer>
+      <a
+        class="cta btn"
+        href="https://www.tiktok.com/t/ZSBnHHQmx/"
+        target="_blank"
+        rel="noopener"
+        onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});"
+        >まずは話してみる</a
+      >
+    </footer>
+  </section>
+
+  <section id="benefits" class="panel" data-animate data-direction="left">
+    <hgroup>
+      <h2>無理なく続けられる理由</h2>
+      <div class="accentline" role="presentation"></div>
+      <p>
+        <span class="whitespace-nowrap">がんばりすぎなくていい。</span>
+        <span class="whitespace-nowrap">負担と不安を減らす仕組み</span>があります。
+      </p>
+    </hgroup>
+    <div>
+      <h3>
+        <span class="chip">成長サポート</span>
+      </h3>
+      <article>
+        <h4 class="fas fa-circle-check" data-animate>初期費用ゼロ・ノルマなし</h4>
+        <p>自分のペースでOK。生活や学業と両立しやすい運用設計。</p>
+      </article>
+      <article>
+        <h4 class="fas fa-microphone-lines" data-animate>機材進呈＆初期設定</h4>
+        <p>到着後すぐ使えるセットと導入サポートでスタートを後押し。</p>
+      </article>
+      <article>
+        <h4 class="fas fa-rotate" data-animate>週次フィードバック</h4>
+        <p>振り返りと改善で、続けやすさを支えます。</p>
+      </article>
+      <h3>
+        <span class="chip" data-variant="accent">安心サポート</span>
+      </h3>
+      <article>
+        <h4 class="fas fa-calendar-check" data-animate>6ヶ月からの契約</h4>
+        <p>お試ししながら適切な頻度・スタイルを一緒に設計。</p>
+      </article>
+      <article>
+        <h4 class="fas fa-calculator" data-animate>税務相談の窓口</h4>
+        <p>確定申告と経費の基本を税理士監修でサポート。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="compare" class="panel" data-animate data-direction="right">
+    <hgroup>
+      <h2>ひとり vs Flair</h2>
+      <div class="accentline" role="presentation"></div>
+      <p>
+        同じスタートでも、<span class="whitespace-nowrap">「ひとりで抱えるか」</span>
+        <span class="whitespace-nowrap">「誰かと並走するか」</span>で、続けやすさは変わります。
+      </p>
+    </hgroup>
+    <div>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>ひとり</th>
+            <th>
+              <span class="chip">おすすめ</span>
+              <span class="whitespace-nowrap">Flairが並走</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>初期コスト</td>
+            <td>機材選定・購入の負担</td>
+            <td>機材進呈＆初期設定サポート</td>
+          </tr>
+          <tr>
+            <td>運用設計</td>
+            <td>手探りで遠回りになりがち</td>
+            <td>週次フィードバックとKPI設計</td>
+          </tr>
+          <tr>
+            <td>継続・モチベ</td>
+            <td>孤独になりやすい</td>
+            <td>伴走と相談窓口で継続</td>
+          </tr>
+          <tr>
+            <td>収益の安定</td>
+            <td>波が大きい</td>
+            <td>収益設計の相談（条件により固定報酬）</td>
+          </tr>
+          <tr>
+            <td>安全・ルール</td>
+            <td>自己解決で不安</td>
+            <td>最新ガイドライン共有と一次対応</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer>
+      <a
+        class="cta btn"
+        href="#contact"
+        onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});"
+        >まずは相談する</a
+      >
+    </footer>
+  </section>
+
+  <section id="how-to-start" class="panel" data-animate data-direction="left">
+    <hgroup>
+      <h2>はじめる流れ</h2>
+      <div class="accentline" role="presentation"></div>
+      <p>
+        相談からスタートして、最初の2〜3週間で<span class="whitespace-nowrap">「次に何をすればいいか分かる状態」</span
+        >を一緒につくります。
+      </p>
+    </hgroup>
+    <ol class="flow">
+      <li data-step="1">
+        <h4>まずはご相談</h4>
+        <p>希望スタイル・活動ペース・不安点をヒアリング。</p>
+      </li>
+      <li data-step="2">
+        <h4>オンライン面談（20–30分）</h4>
+        <p>配信の方向性とサポート内容をすり合わせ。</p>
+      </li>
+      <li data-step="3">
+        <h4>お試し配信 &amp; フィードバック</h4>
+        <p>タイトル・時間帯・ネタ出し等を伴走。</p>
+      </li>
+      <li data-step="4">
+        <h4>契約（6ヶ月）＆機材進呈</h4>
+        <p>到着後すぐ使えるセットで環境を整備。</p>
+      </li>
+      <li data-step="5">
+        <h4>初月プラン作成</h4>
+        <p>頻度・時間帯・目標を決め、KPIを設計。</p>
+      </li>
+      <li data-step="6">
+        <h4>スタート &amp; 週次改善</h4>
+        <p>継続と伸びにフォーカスした伴走支援。</p>
+      </li>
+    </ol>
+    <footer>
+      <a
+        class="cta btn"
+        href="#contact"
+        onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});"
+        >まずは相談する</a
+      >
+    </footer>
+  </section>
+
+  <section id="trust" class="panel" data-animate data-direction="right">
+    <hgroup>
+      <h2>大切にしていること</h2>
+      <div class="accentline" role="presentation"></div>
+      <p>誠実であることを、運営の基準にしています。</p>
+    </hgroup>
+    <div>
+      <article>
+        <h4 class="fas fa-handshake" data-animate>透明性</h4>
+        <p>報酬の流れ、サポート内容、連絡体制を明確にし、曖昧さを残しません。</p>
+      </article>
+      <article>
+        <h4 class="fas fa-person-rays" data-animate>クリエイターファースト</h4>
+        <p>短期の数字より、無理なく続けられる設計を優先します。</p>
+      </article>
+      <article>
+        <h4 class="fas fa-comments" data-animate>相談しやすさ</h4>
+        <p>小さな不安や方向転換の相談も、遠慮なくできる距離感を大切にします。</p>
+      </article>
+      <article>
+        <h4 class="fas fa-calendar-day" data-animate>無理をさせない</h4>
+        <p>生活に合わせたペース設計で、長く続けられる形を一緒に作ります。</p>
+      </article>
+    </div>
+    <footer>
+      <blockquote class="statement">
+        <p>
+          私たちは、クリエイターの挑戦に対して<span class="whitespace-nowrap">「誠実であること」</span
+          >を最優先にしています。
+          <strong>
+            <span class="whitespace-nowrap">安心して続けられる環境</span>と
+            <span class="whitespace-nowrap">納得して進める関係</span>
+          </strong>
+          をつくることが、Flairの責任です。
+        </p>
+      </blockquote>
+    </footer>
+  </section>
+
+  <section id="faq" class="panel" data-animate data-direction="left">
+    <hgroup>
+      <h2>よくあるご質問</h2>
+      <div class="accentline" role="presentation"></div>
+      <p>最後に不安をまとめて解消できるよう、よくあるご質問に短く答えます。</p>
+    </hgroup>
+    <div>
+      <details class="faq group">
+        <summary>エージェンシーって事務所と何が違うんですか？</summary>
+        <p>
+          一般的な配信者事務所のように、活動を管理・拘束する立場ではありません。
+          Flairは、配信の自由度を保ったまま、必要な部分だけを支援する“伴走型”のエージェンシーです。
+        </p>
+      </details>
+      <details class="faq group">
+        <summary>ノルマや罰金はありますか？</summary>
+        <p>ありません。生活や学業との両立を前提に、自分のペースで続けられる運用を一緒に設計します。</p>
+      </details>
+      <details class="faq group">
+        <summary>初期費用はかかりますか？</summary>
+        <p>初期費用はゼロです。機材は進呈し、初期設定までサポートします。</p>
+      </details>
+      <details class="faq group">
+        <summary>マージンは取られますか？</summary>
+        <p>クリエイターから直接マージンをいただきません。報酬の流れは事前に丁寧に説明します。</p>
+      </details>
+      <details class="faq group">
+        <summary>途中でやめられますか？</summary>
+        <p>可能です。条件はありますが、事情に応じて柔軟に対応します。無理な引き止めはしません。</p>
+      </details>
+      <details class="faq group">
+        <summary>怪しくないですか？</summary>
+        <p>
+          Flairは<strong>TikTok社と業務委託契約を締結しているLIVEエージェンシー</strong>です。
+          運営の透明性を大切にしています。
+        </p>
+      </details>
+      <details class="faq light group">
+        <summary>報酬の流れを教えてください</summary>
+        <ol>
+          <li>視聴者がLIVE配信でギフトを送る → ダイヤモンドとして加算</li>
+          <li>TikTokがダイヤモンドを清算し、<strong>報酬率に応じて分配</strong></li>
+          <li>（任意）当社が定める<strong>追加特典（固定の月次支払い等）</strong>を、別途クリエイターへ支給</li>
+        </ol>
+        <footer>
+          <ul class="note">
+            <li>
+              <small
+                >クリエイターへの分配はTikTokの規定に基づきます。追加特典の有無・内容は当社ポリシーおよび個別契約により異なります。</small
+              >
+            </li>
+          </ul>
+        </footer>
+      </details>
+      <details class="faq light group">
+        <summary>振込タイミングはいつですか？</summary>
+        <ul>
+          <li>
+            <strong>TikTokからの分配</strong
+            >：プラットフォームの清算サイクルに沿って支払われます（詳細は最新の公式ポリシーをご確認ください）。
+          </li>
+          <li>
+            <strong>当社からの追加特典（月次）</strong
+            >：当社の規定・個別契約に基づき、月次でお支払いする場合があります。
+          </li>
+        </ul>
+      </details>
+      <details class="faq light group">
+        <summary>LIVEエージェンシーの収益源は？</summary>
+        <p>
+          Flairの収益は、TikTok社との業務委託契約に基づく報酬（成果に応じたインセンティブを含む）です。クリエイターから直接マージンを取ることはありません。
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="panel" data-animate data-direction="up">
+    <hgroup>
+      <h2>お問い合わせ</h2>
+      <div class="accentline" role="presentation"></div>
+      <p>お申し込み前に、相談だけで大丈夫です。</p>
+    </hgroup>
+    <div>
+      <!-- 応募（フォーム導線） -->
+      <article>
+        <h4 class="fas fa-file-pen" data-animate>応募する</h4>
+        <p>お申し込みフォームに必要事項をご入力ください。</p>
+        <a
+          class="cta btn"
+          href="https://www.tiktok.com/t/ZSBnHHQmx/"
+          target="_blank"
+          rel="noopener"
+          onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});"
+        >
+          申し込む
+        </a>
+      </article>
+      <!-- お問い合わせ（DM導線） -->
+      <article>
+        <h4 class="fab fa-tiktok" data-animate>相談する</h4>
+        <p>ちょっとした質問だけでも歓迎です。</p>
+        <a
+          class="cta btn"
+          data-variant="secondary"
+          href="https://www.tiktok.com/@flair.agency.biz"
+          target="_blank"
+          rel="noopener"
+          onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});"
+        >
+          DMで問合せる
+        </a>
+      </article>
+    </div>
+  </section>
+</main>

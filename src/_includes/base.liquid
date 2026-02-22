@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords }}">
+    <meta name="author" content="{{ site.name }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.path | prepend: site.origin }}">
+    <meta property="og:image" content="{{ image.path | prepend: site.origin }}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:url" content="{{ page.path | prepend: site.origin }}">
+    <meta name="twitter:image" content="{{ image.path | prepend: site.origin }}">
+    <!-- ファビコン設定 -->
+    <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';">
+    <!-- LCP image preload -->
+    {% for link in links %}
+      <link
+        rel="{{ link.rel }}"
+        as="{{ link.as }}"
+        fetchpriority="{{ link.fetchpriority }}"
+        href="{{ link.href }}"
+        imagesrcset="{{ link.imagesrcset }}"
+        imagesizes="{{ link.imagesizes }}"
+      >
+    {% endfor %}
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}">
+    <!-- Font Awesome -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ site.font_awesome.version }}/css/all.min.css"
+      as="style"
+      crossorigin
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ site.font_awesome.version }}/css/all.min.css"
+      crossorigin
+    >
+    <!-- Local CSS -->
+    <link rel="preload" href="/index.css?v={{ site.asset.version }}" as="style">
+    <link rel="stylesheet" href="/index.css?v={{ site.asset.version }}">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ site.font_awesome.version }}/css/all.min.css"
+      >
+    </noscript>
+    <script src="/index.js?v={{ site.asset.version }}" defer></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.tagmanager.tag_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', '{{ site.google.tagmanager.tag_id }}');
+    </script>
+  </head>
+  <body class="{{ id }}">
+    <header>
+      <a href="{% if id == "creator" %}#{% else %}/{% endif %}">
+        <img src="/assets/logo.svg" alt="{{ site.name }} ロゴ" class="logo" width="70" height="50">
+      </a>
+      <nav class="on-page" aria-label="ページ内ナビゲーション">
+        <button class="toggle" aria-expanded="false" aria-label="トグル">
+          <span class="sr-only">メニュー</span>
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <menu>
+          {% for a in nav.menu %}
+            <li>
+              <a href="{{ a.anchor }}">{{ a.label }}</a>
+            </li>
+          {% endfor %}
+        </menu>
+      </nav>
+    </header>
+    {{ content }}
+    <footer>
+      <nav class="on-site" aria-label="サイト内ナビゲーション">
+        <menu>
+          {% for p in site.pages %}
+            {% assign is_current = p.path == page.path %}
+            <li>
+              <a
+                href="{% if is_current %}#{% else %}{{ p.path }}{% endif %}"
+                {% if is_current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{ p.label }}
+              </a>
+            </li>
+          {% endfor %}
+        </menu>
+      </nav>
+      <p class="copyright"><small>&copy; 2025 Flair LLC</small></p>
+    </footer>
+  </body>
+</html>

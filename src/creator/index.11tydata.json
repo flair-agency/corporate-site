@@ -1,0 +1,67 @@
+{
+  "description": "TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。",
+  "google": {
+    "fonts": {
+      "query": "family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap"
+    }
+  },
+  "id": "creator",
+  "image": {
+    "path": "/creator/og.png"
+  },
+  "keywords": "合同会社Flair, Flair, TikTok LIVE, ライブ配信, マネジメント, エージェンシー, クリエイター支援",
+  "layout": "base.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./background-image.avif?v=20260222r03",
+      "imagesizes": "100vw",
+      "imagesrcset": "./background-image.avif?v=20260222r03 1x, ./background-image.webp?v=20260222r03 1x, ./background-image.png?v=20260222r03 1x",
+      "rel": "preload"
+    },
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./hero.webp?v=20260222r03",
+      "imagesizes": "100vw",
+      "rel": "preload"
+    }
+  ],
+  "nav": {
+    "menu": [
+      {
+        "anchor": "#top",
+        "label": "トップ"
+      },
+      {
+        "anchor": "#benefits",
+        "label": "理由"
+      },
+      {
+        "anchor": "#compare",
+        "label": "ひとりとの違い"
+      },
+      {
+        "anchor": "#how-to-start",
+        "label": "はじめ方"
+      },
+      {
+        "anchor": "#trust",
+        "label": "大切にしていること"
+      },
+      {
+        "anchor": "#faq",
+        "label": "FAQ"
+      },
+      {
+        "anchor": "#contact",
+        "label": "お問合せ"
+      }
+    ]
+  },
+  "page": {
+    "path": "/creator/"
+  },
+  "title": "合同会社Flair"
+}
