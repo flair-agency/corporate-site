@@ -1,7 +1,5 @@
 {
-  "classes": [
-    "privacy-policy"
-  ],
+  "classes": ["privacy-policy"],
   "description": "合同会社Flairのプライバシーポリシー。個人情報の取得・利用・管理方針について記載しています。",
   "google": {
     "fonts": {
@@ -15,18 +13,11 @@
   "keywords": "合同会社Flair, Flair, プライバシーポリシー, TikTok LIVE, エージェンシー",
   "layout": "document.liquid",
   "nav": {
-    "menu": [
-      {
-        "anchor": "#top",
-        "label": "トップ"
-      }
-    ]
+    "menu": []
   },
   "page": {
     "path": "/privacy-policy/"
   },
-  "tags": [
-    "privacy-policy"
-  ],
+  "tags": ["privacy-policy"],
   "title": "プライバシーポリシー"
 }

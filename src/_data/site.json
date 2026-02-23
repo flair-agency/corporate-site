@@ -1,5 +1,4 @@
 {
-  "name": "合同会社Flair",
   "asset": {
     "version": "20260222r03"
   },
@@ -9,6 +8,22 @@
   "google": {
     "tagmanager": {
       "tag_id": "G-Z85HL3MPJH"
+    }
+  },
+  "name": "合同会社Flair",
+  "default": {
+    "google": {
+      "fonts": {
+        "query": "family=Inter:wght@400;600;700&display=swap"
+      }
+    },
+    "nav": {
+      "menu": [
+        {
+          "anchor": "#top",
+          "label": "トップ"
+        }
+      ]
     }
   },
   "origin": "https://www.flair-agency.biz",

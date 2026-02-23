@@ -1,7 +1,5 @@
 {
-  "classes": [
-    "company"
-  ],
+  "classes": ["company"],
   "description": "TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。",
   "google": {
     "fonts": {
@@ -27,10 +25,6 @@
   "nav": {
     "menu": [
       {
-        "anchor": "#top",
-        "label": "トップ"
-      },
-      {
         "anchor": "#mission-vision",
         "label": "理念"
       },
@@ -47,8 +41,6 @@
   "page": {
     "path": "/company/"
   },
-  "tags": [
-    "company"
-  ],
+  "tags": ["company"],
   "title": "私たちについて"
 }

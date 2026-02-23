@@ -1,7 +1,5 @@
 {
-  "classes": [
-    "creator"
-  ],
+  "classes": ["creator"],
   "description": "TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。",
   "google": {
     "fonts": {
@@ -35,10 +33,6 @@
   "nav": {
     "menu": [
       {
-        "anchor": "#top",
-        "label": "トップ"
-      },
-      {
         "anchor": "#benefits",
         "label": "理由"
       },
@@ -67,8 +61,6 @@
   "page": {
     "path": "/creator/"
   },
-  "tags": [
-    "creator"
-  ],
+  "tags": ["creator"],
   "title": "トップ"
 }

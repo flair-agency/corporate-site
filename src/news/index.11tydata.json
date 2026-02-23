@@ -1,7 +1,5 @@
 {
-  "classes": [
-    "news"
-  ],
+  "classes": ["news"],
   "description": "合同会社Flairからのお知らせ、プレスリリース、サービス更新情報を掲載しています。",
   "google": {
     "fonts": {
@@ -17,20 +15,14 @@
   "nav": {
     "menu": [
       {
-        "anchor": "#top",
-        "label": "トップ"
-      },
-      {
         "anchor": "#news",
         "label": "お知らせ"
       }
     ]
   },
-   "page": {
+  "page": {
     "path": "/news/"
   },
-  "tags": [
-    "news"
-  ],
+  "tags": ["news"],
   "title": "ニュース"
 }
