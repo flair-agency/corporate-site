@@ -665,6 +665,48 @@
       @apply translate-y-4;
     }
   }
+
+  @view-transition {
+    navigation: auto;
+  }
+
+  [data-slug] {
+    @apply [view-transition-name:attr(data-slug)];
+  }
+
+  a[href]:has(.logo) {
+    @apply [view-transition-name:top];
+  }
+
+  nav.on-site a[href="/creator/"],
+  body.creator > main {
+    @apply [view-transition-name:creator];
+  }
+
+  nav.on-site a[href="/business/"],
+  body.business > main {
+    @apply [view-transition-name:business];
+  }
+
+  nav.on-site a[href="/company/"],
+  body.company > main {
+    @apply [view-transition-name:company];
+  }
+
+  nav.on-site a[href="/news/"],
+  body.news > main {
+    @apply [view-transition-name:news];
+  }
+
+  nav.on-site a[href="/privacy-policy/"],
+  body.privacy-policy > main {
+    @apply [view-transition-name:privacy-policy];
+  }
+
+  nav.on-site a[href="/terms/"],
+  body.terms > main {
+    @apply [view-transition-name:terms];
+  }
 }
 
 :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
