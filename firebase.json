@@ -8,7 +8,7 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(css|js|mjs|woff2|woff|ttf|otf|png|jpg|jpeg|webp|avif|svg|ico|json|webm|mp4|wasm)",
+        "source": "**/*.@(woff2|woff|ttf|otf|png|jpg|jpeg|webp|avif|svg|ico|json|webm|mp4|wasm)",
         "headers": [
           {
             "key": "Cache-Control",
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "source": "**/*.html",
+        "source": "**/*.@(html|css|js|mjs)",
         "headers": [
           {
             "key": "Cache-Control",
