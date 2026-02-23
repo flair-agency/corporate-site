@@ -1,0 +1,125 @@
+/* ===== News Page Specific Styles ===== */
+@layer components {
+  body.news {
+    /* Page background nuance (keeps overall layout intact) */
+    @apply bg-linear-to-b from-black/2 via-transparent to-transparent;
+
+    section.hero {
+      --avif-option: url("/news/background-image.avif?v=20260222r03")
+        type("image/avif") 1x;
+      --jpg-option: url("/news/background-image.jpg?v=20260222r03")
+        type("image/jpg") 1x;
+      --webp-option: url("/news/background-image.webp?v=20260222r03")
+        type("image/avif") 1x;
+      @apply bg-[image-set(var(--avif-option),var(--jpg-option),var(--webp-option))];
+    }
+
+    /* Container for the news list */
+    section#news > div {
+      @apply mt-6 grid gap-4 sm:gap-5;
+      /* make it feel less "one long list" on wider screens */
+      @apply md:grid-cols-2 md:items-stretch;
+    }
+
+    /* Card */
+    article {
+      /* stronger presence */
+      @apply relative overflow-hidden rounded-2xl;
+      @apply border border-black/10 bg-white/95;
+      @apply shadow-sm;
+      @apply backdrop-blur;
+      @apply px-4 py-5 sm:px-5 sm:py-6;
+      @apply transition duration-200 ease-out;
+
+      /* subtle top highlight */
+      &::before {
+        content: "";
+        @apply pointer-events-none absolute inset-x-0 top-0 h-px;
+        @apply bg-linear-to-r from-transparent via-black/15 to-transparent;
+      }
+
+      /* accent strip */
+      &::after {
+        content: "";
+        @apply pointer-events-none absolute top-0 left-0 h-full w-1;
+        @apply bg-linear-to-b from-[#FF4D3D] via-[#FFB800] to-transparent;
+        @apply opacity-70;
+      }
+
+      &:hover {
+        @apply -translate-y-0.5;
+        @apply border-black/15;
+        @apply shadow-[0_10px_24px_rgba(0,0,0,0.08)];
+        @apply bg-white;
+      }
+
+      &:focus-within {
+        @apply border-black/20;
+        @apply shadow-[0_10px_24px_rgba(0,0,0,0.08)];
+        @apply ring-2 ring-[#FF4D3D]/25 ring-offset-2 ring-offset-white;
+      }
+
+      /* Title block */
+      & > hgroup:first-child {
+        @apply grid gap-2;
+
+        /* Date */
+        time {
+          @apply inline-flex w-fit items-center gap-2;
+          @apply text-sm leading-none text-black/70;
+          @apply rounded-full border border-black/10 bg-black/5 px-3 py-1.5;
+        }
+
+        /* Title */
+        h3 {
+          @apply m-0;
+          @apply text-[1.15rem] leading-snug tracking-[0.01em];
+          @apply sm:text-xl;
+
+          a {
+            @apply text-inherit no-underline;
+            @apply hover:underline hover:underline-offset-4;
+            @apply focus-visible:ring-2 focus-visible:ring-[#FF4D3D]/60 focus-visible:ring-offset-2 focus-visible:outline-none;
+          }
+        }
+      }
+
+      /* Summary */
+      p {
+        @apply mt-3;
+        @apply line-clamp-3 leading-7 text-black/75;
+        @apply empty:hidden;
+      }
+    }
+
+    /* If there's only one column worth of content, keep cards from looking too stretched */
+    @media (min-width: 768px) {
+      article {
+        @apply min-h-34;
+      }
+    }
+  }
+}
+
+@layer utilities {
+  body.news {
+    @media (prefers-reduced-motion: reduce) {
+      @apply transition-none hover:translate-y-0;
+    }
+
+    .fas,
+    .far,
+    .fab,
+    .fa-solid,
+    .fa-regular,
+    .fa-brands {
+      &:is(time)::before {
+        @apply text-[#FF4D3D] opacity-80;
+      }
+
+      &:is(h3)::before {
+        @apply pr-2 text-[#FF4D3D] opacity-85;
+      }
+    }
+  }
+}

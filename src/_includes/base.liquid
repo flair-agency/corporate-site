@@ -6,7 +6,7 @@
     <script>
       document.documentElement.classList.add('js');
     </script>
-    <title>{{ title }}</title>
+    <title>{{ title | append: '|' | append: site.name | strip | split: '|' | compact | join: ' | ' }}</title>
     <meta name="description" content="{{ description }}">
     <meta name="keywords" content="{{ keywords }}">
     <meta name="author" content="{{ site.name }}">
@@ -24,17 +24,6 @@
     <meta name="twitter:image" content="{{ image.path | prepend: site.origin }}">
     <!-- ファビコン設定 -->
     <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';">
-    <!-- LCP image preload -->
-    {% for link in links %}
-      <link
-        rel="{{ link.rel }}"
-        as="{{ link.as }}"
-        fetchpriority="{{ link.fetchpriority }}"
-        href="{{ link.href }}"
-        imagesrcset="{{ link.imagesrcset }}"
-        imagesizes="{{ link.imagesizes }}"
-      >
-    {% endfor %}
     <!-- Preconnect -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +31,9 @@
     <!-- Fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}">
+    </noscript>
     <!-- Font Awesome -->
     <link
       rel="preload"
@@ -54,16 +46,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ site.font_awesome.version }}/css/all.min.css"
       crossorigin
     >
-    <!-- Local CSS -->
-    <link rel="preload" href="/index.css?v={{ site.asset.version }}" as="style">
-    <link rel="stylesheet" href="/index.css?v={{ site.asset.version }}">
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ google.fonts.query }}">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{ site.font_awesome.version }}/css/all.min.css"
       >
     </noscript>
+    <!-- LCP image preload -->
+    {% assign preload_image_links = links | where: "rel", "preload" | where: "as", "image" %}
+    {% for link in preload_image_links %}
+      <link
+        rel="{{ link.rel }}"
+        as="{{ link.as }}"
+        fetchpriority="{{ link.fetchpriority }}"
+        href="{{ link.href }}"
+        imagesrcset="{{ link.imagesrcset }}"
+        imagesizes="{{ link.imagesizes }}"
+      >
+    {% endfor %}
+    <!-- Local CSS -->
+    <link rel="preload" href="/index.css?v={{ site.asset.version }}" as="style">
+    <link rel="stylesheet" href="/index.css?v={{ site.asset.version }}">
+    <!-- Local JS -->
     <script src="/index.js?v={{ site.asset.version }}" defer></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.tagmanager.tag_id }}"></script>
@@ -77,7 +81,7 @@
       gtag('config', '{{ site.google.tagmanager.tag_id }}');
     </script>
   </head>
-  <body class="{{ id }}">
+  <body class="{{ classes | compact | join: " " }}">
     <header>
       <a href="{% if id == "creator" %}#{% else %}/{% endif %}">
         <img src="/assets/logo.svg" alt="{{ site.name }} ロゴ" class="logo" width="70" height="50">

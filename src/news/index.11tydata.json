@@ -1,0 +1,36 @@
+{
+  "classes": [
+    "news"
+  ],
+  "description": "合同会社Flairからのお知らせ、プレスリリース、サービス更新情報を掲載しています。",
+  "google": {
+    "fonts": {
+      "query": "family=Inter:wght@400;600;700&display=swap"
+    }
+  },
+  "id": "news",
+  "image": {
+    "path": "/company/og.png"
+  },
+  "keywords": "Flair, 合同会社Flair, ニュース, お知らせ, プレスリリース, TikTok LIVE, LIVE配信, エージェンシー, クリエイター支援",
+  "layout": "base.liquid",
+  "nav": {
+    "menu": [
+      {
+        "anchor": "#top",
+        "label": "トップ"
+      },
+      {
+        "anchor": "#news",
+        "label": "お知らせ"
+      }
+    ]
+  },
+   "page": {
+    "path": "/news/"
+  },
+  "tags": [
+    "news"
+  ],
+  "title": "ニュース"
+}

@@ -1,0 +1,42 @@
+<main>
+  <section id="top" class="hero">
+    <hgroup>
+      <h2>News</h2>
+      <p class="lead">お知らせ・プレスリリース・サービス更新情報を掲載しています。</p>
+    </hgroup>
+  </section>
+
+  <section id="news">
+    <hgroup>
+      <h2>お知らせ</h2>
+      <div class="accentline" role="presentation"></div>
+    </hgroup>
+    {% assign n = collections.news | where: 'url', page.url | size %}
+    {% if collections.news and collections.news.size > n %}
+      <div>
+        {% assign articles = collections.news | sort: "data.date" | reverse %}
+        {% for article in articles %}
+          {% unless article.url == page.url %}
+            <article>
+              <hgroup>
+                <time class="fas fa-calendar" datetime="{{ article.data.date | default: article.date | date: "%Y-%m-%dT%H:%M:%S" }}">
+                  {{ article.data.date | default: article.date | date: '%Y年%m月%d日' }}
+                </time>
+                <h3 class="far fa-newspaper">
+                  <a href="{{ article.url }}">
+                    {{ article.data.title | default: article.fileSlug }}
+                  </a>
+                </h3>
+              </hgroup>
+              <p>
+                {{ article.data.description }}
+              </p>
+            </article>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>現在、お知らせはありません。</p>
+    {% endif %}
+  </section>
+</main>

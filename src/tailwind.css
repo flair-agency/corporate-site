@@ -5,6 +5,7 @@
 @import "./business/index.css";
 @import "./company/index.css";
 @import "./creator/index.css";
+@import "./news/index.css";
 @import "./privacy-policy/index.css";
 @import "./terms/index.css";
 
@@ -267,7 +268,7 @@
     @apply mb-2.5 flex justify-center;
 
     & > menu {
-      @apply flex flex-col items-center gap-4 text-xs whitespace-nowrap text-(--on-site-text) sm:flex-row sm:items-start sm:gap-8;
+      @apply grid grid-cols-1 justify-items-center gap-4 text-xs whitespace-nowrap text-(--on-site-text) sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6;
 
       li a {
         @apply rounded-(--radius-pill) border border-transparent px-2.5 py-1.5 hover:bg-[rgba(15,23,42,0.06)];
@@ -453,7 +454,7 @@
   }
 
   blockquote.letter {
-    @apply relative isolate overflow-hidden border border-amber-100 bg-amber-50/70 p-8 font-[Zen_Kurenaido,var(--font-fallback-sans)] text-gray-700 shadow-sm sm:p-10;
+    @apply relative isolate overflow-hidden border border-amber-100 bg-amber-50/70 p-8 font-["Zen_Kurenaido",var(--font-fallback-sans)] text-gray-700 shadow-sm sm:p-10;
 
     &::before {
       @apply pointer-events-none absolute inset-0 z-0 bg-[url("/assets/logo.svg")] bg-size-[420px_auto] bg-center bg-no-repeat opacity-5 content-[""];
@@ -534,7 +535,7 @@
   }
 
   .statement {
-    @apply relative pt-4 pr-0 pb-0 pl-4.5 font-[Zen_Kurenaido,var(--font-fallback-sans)];
+    @apply relative pt-4 pr-0 pb-0 pl-4.5 font-["Zen_Kurenaido",var(--font-fallback-sans)];
 
     &::before {
       @apply mx-0 mt-0 mb-2.5 block text-xs tracking-[0.12em] text-[rgba(0,0,0,0.45)] uppercase content-["STATEMENT"];
@@ -565,7 +566,12 @@
     }
   }
 
-  main[data-vadata-variant~="document"] {
+  main[data-variant~="article"],
+  main[data-variant~="document"] {
+    & > section {
+      @apply first:py-0;
+    }
+
     h1 {
       @apply mt-6 text-3xl leading-tight font-bold md:text-4xl;
     }
@@ -575,7 +581,7 @@
 
       &::after {
         content: "";
-        @apply block mt-3 border-b border-gray-200;
+        @apply mt-3 block border-b border-gray-200;
       }
     }
 
@@ -606,9 +612,19 @@
     a[href] {
       @apply underline hover:no-underline;
     }
+  }
+
+  main[data-variant~="document"] {
+    h1 {
+      @apply text-center;
+    }
 
     section.signature {
-      @apply text-right;
+      @apply py-4 text-right;
+
+      hr + & {
+        @apply mt-0;
+      }
     }
   }
 }
@@ -648,6 +664,22 @@
     &:where([data-direction="up"]) {
       @apply translate-y-4;
     }
+  }
+}
+
+:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
+  @apply font-[revert] font-[weight:revert];
+
+  &::before {
+    @apply [font:var(--fa-font-regular)];
+  }
+
+  &:is(.fas, .fa-solid)::before {
+    @apply [font:var(--fa-font-solid)];
+  }
+
+  &:is(.fab, .fa-brands)::before {
+    @apply [font:var(--fa-font-brands)];
   }
 }
 

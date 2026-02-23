@@ -1,4 +1,7 @@
 {
+  "classes": [
+    "terms"
+  ],
   "description": "合同会社Flairの利用規約。ウェブサイトの利用条件、禁止事項、免責事項、準拠法などを記載しています。",
   "google": {
     "fonts": {
@@ -7,10 +10,10 @@
   },
   "id": "terms",
   "image": {
-    "path": "/terms/og.png"
+    "path": "/company/og.png"
   },
   "keywords": "合同会社Flair, Flair, 利用規約, サイト利用条件, TikTok LIVE, エージェンシー",
-  "layout": "base.liquid",
+  "layout": "document.liquid",
   "nav": {
     "menu": [
       {
@@ -22,5 +25,8 @@
   "page": {
     "path": "/terms/"
   },
-  "title": "利用規約 | 合同会社Flair"
+  "tags": [
+    "terms"
+  ],
+  "title": "利用規約"
 }

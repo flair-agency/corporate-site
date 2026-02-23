@@ -1,4 +1,7 @@
 {
+  "classes": [
+    "creator"
+  ],
   "description": "TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。",
   "google": {
     "fonts": {
@@ -25,6 +28,7 @@
       "fetchpriority": "high",
       "href": "./hero.webp?v=20260222r03",
       "imagesizes": "100vw",
+      "imagesrcset": "./hero.webp?v=20260222r03 1x",
       "rel": "preload"
     }
   ],
@@ -63,5 +67,8 @@
   "page": {
     "path": "/creator/"
   },
-  "title": "合同会社Flair"
+  "tags": [
+    "creator"
+  ],
+  "title": "トップ"
 }

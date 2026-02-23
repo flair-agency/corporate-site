@@ -1,4 +1,7 @@
 {
+  "classes": [
+    "business"
+  ],
   "description": "TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。",
   "google": {
     "fonts": {
@@ -60,5 +63,8 @@
   "page": {
     "path": "/business/"
   },
-  "title": "事業について | 合同会社Flair"
+  "tags": [
+    "business"
+  ],
+  "title": "事業について"
 }

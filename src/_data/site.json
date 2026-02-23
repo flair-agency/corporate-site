@@ -22,6 +22,10 @@
       "path": "/business/"
     },
     {
+      "label": "ニュース",
+      "path": "/news/"
+    },
+    {
       "label": "私たちについて",
       "path": "/company/"
     },
