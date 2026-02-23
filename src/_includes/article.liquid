@@ -2,8 +2,14 @@
 layout: base.liquid
 tags: article
 ---
-<main data-variant="article">
-  <section id="top">
+<main data-variant="article" data-slug="news-{{ page.fileSlug }}" style="view-transition-name: news-{{ page.fileSlug }}">
+  <section id="top" class="hero">
+    <hgroup>
+      <h2>{{ hero.subtitle | default: title }}</h2>
+      <p class="lead">{{ hero.subtitle | default: "" }}</p>
+    </hgroup>
+  </section>
+  <section>
     <article>{{ content }}</article>
   </section>
 </main>

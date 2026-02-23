@@ -17,7 +17,7 @@
         {% assign articles = collections.news | sort: "data.date" | reverse %}
         {% for article in articles %}
           {% unless article.url == page.url %}
-            <article>
+            <article class="card" data-slug="news-{{ article.fileSlug }}" style="view-transition-name: news-{{ article.fileSlug }}">
               <hgroup>
                 <time class="fas fa-calendar" datetime="{{ article.data.date | default: article.date | date: "%Y-%m-%dT%H:%M:%S" }}">
                   {{ article.data.date | default: article.date | date: '%Y年%m月%d日' }}

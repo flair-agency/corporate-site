@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@import "./_includes/article.css";
+@import "./_includes/document.css";
 @import "./business/index.css";
 @import "./company/index.css";
 @import "./creator/index.css";
@@ -562,68 +564,6 @@
 
       p {
         @apply text-[1em];
-      }
-    }
-  }
-
-  main[data-variant~="article"],
-  main[data-variant~="document"] {
-    & > section {
-      @apply first:py-0;
-    }
-
-    h1 {
-      @apply mt-6 text-3xl leading-tight font-bold md:text-4xl;
-    }
-
-    h2 {
-      @apply mt-14 pb-3 text-2xl font-semibold;
-
-      &::after {
-        content: "";
-        @apply mt-3 block border-b border-gray-200;
-      }
-    }
-
-    h3 {
-      @apply mt-8 text-xl font-semibold;
-    }
-
-    ul {
-      @apply mt-4 list-disc space-y-2 pl-6 leading-7 text-gray-700;
-    }
-
-    ol {
-      @apply mt-4 list-decimal space-y-2 pl-6 leading-7 text-gray-700;
-    }
-
-    p {
-      @apply mt-5 leading-7 text-gray-700;
-
-      & + h2 {
-        @apply mt-16;
-      }
-    }
-
-    hr {
-      @apply border-gray-300;
-    }
-
-    a[href] {
-      @apply underline hover:no-underline;
-    }
-  }
-
-  main[data-variant~="document"] {
-    h1 {
-      @apply text-center;
-    }
-
-    section.signature {
-      @apply py-4 text-right;
-
-      hr + & {
-        @apply mt-0;
       }
     }
   }

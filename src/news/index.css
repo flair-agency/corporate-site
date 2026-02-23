@@ -22,9 +22,9 @@
     }
 
     /* Card */
-    article {
+    article.card {
       /* stronger presence */
-      @apply relative overflow-hidden rounded-2xl;
+      @apply relative overflow-hidden rounded-lg;
       @apply border border-black/10 bg-white/95;
       @apply shadow-sm;
       @apply backdrop-blur;
@@ -41,7 +41,7 @@
       /* accent strip */
       &::after {
         content: "";
-        @apply pointer-events-none absolute top-0 left-0 h-full w-1;
+        @apply pointer-events-none absolute top-0 left-0 h-full w-1.5;
         @apply bg-linear-to-b from-[#FF4D3D] via-[#FFB800] to-transparent;
         @apply opacity-70;
       }
@@ -113,6 +113,8 @@
     .fa-solid,
     .fa-regular,
     .fa-brands {
+      @apply inline-flex! gap-1;
+
       &:is(time)::before {
         @apply text-[#FF4D3D] opacity-80;
       }
