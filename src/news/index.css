@@ -113,7 +113,7 @@
     .fa-solid,
     .fa-regular,
     .fa-brands {
-      @apply inline-flex! gap-1;
+      @apply inline-flex gap-1;
 
       &:is(time)::before {
         @apply text-[#FF4D3D] opacity-80;

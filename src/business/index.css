@@ -39,7 +39,7 @@ body.business {
       }
 
       :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-        @apply flex! flex-col gap-3;
+        @apply flex flex-col gap-3;
 
         &::before {
           @apply text-3xl! text-sky-600;

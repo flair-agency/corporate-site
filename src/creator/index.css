@@ -85,7 +85,7 @@
         @apply text-center;
 
         h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-          @apply flex! flex-col gap-2;
+          @apply flex flex-col gap-2;
 
           &::before {
             @apply text-3xl!;
@@ -152,7 +152,7 @@
 
       article {
         h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-          @apply flex! items-center gap-2;
+          @apply flex items-center gap-2;
         }
       }
 
@@ -192,7 +192,7 @@
         }
 
         h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-          @apply flex! flex-col gap-3;
+          @apply flex flex-col gap-3;
 
           &::before {
             @apply text-4xl!;
