@@ -1,13 +1,64 @@
 // Mobile nav toggle
 ((selectors) => {
-  Array.from(document.querySelectorAll<HTMLElement>(selectors.toggle)).forEach(
-    (toggle) => {
-      toggle.addEventListener("click", () => {
-        const open = toggle.getAttribute("aria-expanded") === "true";
-        toggle.setAttribute("aria-expanded", String(!open));
-      });
-    },
-  );
+  type Item = {
+    toggle: HTMLElement;
+    nav: HTMLElement;
+    menu: HTMLElement | null;
+  };
+
+  const items: Item[] = Array.from(
+    document.querySelectorAll<HTMLElement>(selectors.toggle),
+  )
+    .map((toggle) => {
+      const nav = toggle.closest<HTMLElement>("nav.on-page");
+      // In this markup, <menu> is the next sibling of the toggle button
+      const menu = toggle.nextElementSibling as HTMLElement | null;
+      return nav ? { toggle, nav, menu } : null;
+    })
+    .filter((v): v is Item => v !== null);
+
+  const isOpen = (t: HTMLElement) => t.getAttribute("aria-expanded") === "true";
+  const open = (t: HTMLElement) => t.setAttribute("aria-expanded", "true");
+  const close = (t: HTMLElement) => t.setAttribute("aria-expanded", "false");
+
+  // Toggle button click
+  items.forEach(({ toggle }) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      isOpen(toggle) ? close(toggle) : open(toggle);
+    });
+  });
+
+  // Close when clicking outside the nav (also catches taps on body::before/backdrop)
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Node)) return;
+
+    items.forEach(({ toggle, nav }) => {
+      if (!isOpen(toggle)) return;
+      if (nav.contains(target)) return;
+      close(toggle);
+    });
+  });
+
+  // ESC closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    items.forEach(({ toggle }) => {
+      if (isOpen(toggle)) close(toggle);
+    });
+  });
+
+  // Close when a menu link is clicked
+  items.forEach(({ toggle, menu }) => {
+    if (!menu) return;
+    menu.addEventListener("click", (e) => {
+      if (e.target instanceof HTMLAnchorElement) {
+        close(toggle);
+      }
+    });
+  });
 })({
   toggle: "nav.on-page>button.toggle",
 });

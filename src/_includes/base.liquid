@@ -35,7 +35,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ google.fonts.query | default: site.default.google.fonts.query }}">
     </noscript>
     <!-- LCP image preload -->
-    {% assign preload_image_links = links | where: "rel", "preload" | where: "as", "image" %}
+    {% assign preload_image_links = links | where: 'rel', 'preload' | where: 'as', 'image' %}
     {% for link in preload_image_links %}
       <link
         rel="{{ link.rel }}"

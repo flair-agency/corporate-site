@@ -221,9 +221,11 @@ layer(base);
 
   nav.on-page {
     @apply flex flex-1 items-center justify-end gap-3;
+    @apply relative z-61;
 
     & > button.toggle {
       @apply hidden h-10 w-10 items-center justify-center;
+      @apply relative z-61;
 
       & + menu {
         @apply flex flex-1 flex-nowrap gap-2.5 overflow-x-auto px-0 py-1.5 whitespace-nowrap;
@@ -250,7 +252,7 @@ layer(base);
           @apply inline-flex;
 
           & + menu {
-            @apply absolute top-[calc(env(safe-area-inset-top)+3rem)] right-4 z-60 hidden min-w-55 flex-col flex-nowrap rounded-xl bg-[rgba(255,255,255,0.96)] p-2.5 shadow-[0_14px_36px_rgba(0,0,0,0.12)];
+            @apply absolute top-[calc(env(safe-area-inset-top)+3rem)] right-4 z-62 hidden min-w-55 flex-col flex-nowrap rounded-xl bg-[rgba(255,255,255,0.96)] p-2.5 shadow-[0_14px_36px_rgba(0,0,0,0.12)];
 
             li a {
               @apply block px-3 py-2.5;
@@ -265,6 +267,19 @@ layer(base);
         html.no-js & {
           @apply hidden!;
         }
+      }
+    }
+  }
+
+  /* ===== Mobile menu backdrop (pseudo-element) ===== */
+  @media (max-width: 767px) {
+    html.js body:has(nav.on-page) {
+      &::before {
+        @apply pointer-events-none fixed inset-0 z-49 bg-[rgba(0,0,0,.4)] opacity-0 transition-opacity duration-200 content-[""];
+      }
+
+      &:has(nav.on-page > button.toggle[aria-expanded="true"])::before {
+        @apply pointer-events-auto opacity-100;
       }
     }
   }
