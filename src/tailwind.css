@@ -18,6 +18,7 @@ layer(base);
   /* TOKENS */
   :root {
     --brand: #ff5a3c;
+    --brand-rgb: 255 90 60;
     --brand-accent-bg: #fff3ef;
     --brand-accent-border: #ffb9a7;
     --brand-chip-border: #ffd0c5;
@@ -60,6 +61,16 @@ layer(base);
     --header-bg: rgba(255, 255, 255, 0.9);
     --header-border: #eee;
     --header-blur: saturate(180%) blur(10px);
+
+    /* Liquid Glass (web) */
+    --glass-bg: rgba(255, 255, 255, 0.62);
+    --glass-bg-strong: rgba(255, 255, 255, 0.78);
+    --glass-border: rgba(255, 255, 255, 0.38);
+    --glass-border-strong: rgba(255, 255, 255, 0.52);
+    --glass-shadow: 0 14px 36px rgba(15, 23, 42, 0.12);
+    --glass-shadow-weak: 0 10px 28px rgba(15, 23, 42, 0.08);
+    --glass-blur: saturate(140%) blur(14px);
+    --glass-blur-strong: saturate(160%) blur(18px);
 
     --on-page-link: #374151;
     --on-page-link-hover-bg: #fff1ee;
@@ -526,7 +537,7 @@ layer(base);
     }
 
     &.btn {
-      @apply inline-block rounded-full bg-(--brand) px-5 py-3 font-bold text-white no-underline transition-[transform_.08s_ease,box-shadow_.2s_ease] hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(255,90,60,0.25)];
+      @apply relative isolate inline-block overflow-hidden rounded-full bg-(--brand) px-5 py-3 font-bold text-white no-underline transition-[transform_.08s_ease,box-shadow_.2s_ease] hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(255,90,60,0.25)];
 
       &[data-variant~="secondary"] {
         @apply border border-gray-300 bg-inherit font-[weight:inherit] text-gray-700 hover:shadow-none;
@@ -590,6 +601,61 @@ layer(base);
 @layer utilities {
   .full-bleed {
     @apply relative right-1/2 left-1/2 -mx-[50vw] w-screen;
+  }
+
+  /* Liquid Glass */
+  body:has(main[data-variant~="glass"]) {
+    > header {
+      @apply shadow-[0_10px_28px_rgba(15,23,42,0.08)];
+    }
+
+    main > section.hero {
+      background: var(--glass-bg-strong);
+      border: 1px solid var(--glass-border-strong);
+      backdrop-filter: var(--glass-blur-strong);
+      box-shadow: var(--glass-shadow);
+      border-radius: 16px;
+    }
+
+    main > section.panel {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      box-shadow: var(--glass-shadow-weak);
+      border-radius: 16px;
+    }
+
+    @media (max-width: 767px) {
+      html.js nav.on-page > button.toggle + menu {
+        @apply border border-(--glass-border) bg-(--glass-bg) shadow-(--glass-shadow) backdrop-filter-(--glass-blur);
+      }
+    }
+
+    .cta.btn {
+      @apply bg-[rgb(var(--brand-rgb)/0.72)] backdrop-filter-(--glass-blur) border border-solid border-[rgba(255,255,255,.30)] shadow-[inset_0_1px_0_rgba(255,255,255,.28),0_10px_24px_rgba(255,90,60,.18)];
+
+      &::before {
+        @apply content-[""] absolute inset-[-70%_-55%] bg-linear-120 from-42% from-[rgba(255,255,255,0)] via-50% via-[rgba(255,255,255,.26)] to-58% to-[rgba(255,255,255,0)] opacity-0 transform-none transition-opacity duration-180 pointer-events-none blur-[1px];
+        @apply hover:opacity-65 focus-visible:opacity-65;
+        @apply motion-reduce:transition-none;
+      }
+
+      &:focus-visible {
+        @apply outline-none shadow-[inset_0_1px_0_rgba(255,255,255,.28),0_10px_24px_rgba(255,90,60,.18),0_0_0_3px_rgba(255,90,60,.22)];
+      }
+
+      &::after {
+        @apply content-[""] absolute inset-0 bg-linear-to-b from-[rgba(255,255,255,.30)] to-55% to-[rgba(255,255,255,0)] opacity-18 pointer-events-none rounded-[inherit];
+      }
+
+      &[data-variant~="secondary"] {
+        @apply bg-[rgba(255,255,255,.58)] backdrop-filter-(--glass-blur) border border-solid border-[rgba(15,23,42,.14)] shadow-[inset_0_1px_0_rgba(255,255,255,.38),0_10px_24px_rgba(15,23,42,.10)] text-[#374151] before:opacity-18;
+
+        &:focus-visible {
+          @apply outline-none shadow-[inset_0_1px_0_rgba(255,255,255,.38),0_10px_24px_rgba(15,23,42,.10),0_0_0_3px_rgba(15,23,42,.16)];
+        }
+      }
+    }
   }
 
   :is(.fab, .far, .fas)[data-animate="true"] {
