@@ -28,7 +28,7 @@ body.business {
     }
 
     article {
-      @apply rounded-(--radius-base) border border-[#bfdbfe] bg-(--section-bg) p-6 text-sm shadow-sm hover:shadow-[0_6px_18px_rgba(37,99,235,0.08)];
+      @apply rounded-(--radius-base) border border-[#bfdbfe] bg-(--color-surface) p-6 text-sm shadow-sm hover:shadow-[0_6px_18px_rgba(37,99,235,0.08)];
 
       p {
         @apply my-2 text-sm;
