@@ -8,20 +8,20 @@
     </script>
     <title>{{ title | append: '|' | append: site.name | strip | split: '|' | compact | join: ' | ' }}</title>
     <meta name="description" content="{{ description }}">
-    <meta name="keywords" content="{{ keywords }}">
+    <meta name="keywords" content="{{ keywords | concat: site.default.keywords | join: ", " }}">
     <meta name="author" content="{{ site.name }}">
     <meta property="og:title" content="{{ title }}">
     <meta property="og:description" content="{{ description }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ page.path | prepend: site.origin }}">
-    <meta property="og:image" content="{{ image.path | prepend: site.origin }}">
+    <meta property="og:image" content="{{ image.path | default: site.default.image.path | prepend: site.origin }}">
     <meta property="og:site_name" content="{{ site.name }}">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ title }}">
     <meta name="twitter:description" content="{{ description }}">
     <meta name="twitter:url" content="{{ page.path | prepend: site.origin }}">
-    <meta name="twitter:image" content="{{ image.path | prepend: site.origin }}">
+    <meta name="twitter:image" content="{{ image.path | default: site.default.image.path | prepend: site.origin }}">
     <!-- ファビコン設定 -->
     <link rel="icon" href="/assets/favicon-192.png" onerror="this.href='favicon-192.png';">
     <!-- Preconnect -->

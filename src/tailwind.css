@@ -190,8 +190,6 @@ layer(base);
 @import "./company/index.css";
 @import "./creator/index.css";
 @import "./news/index.css";
-@import "./privacy-policy/index.css";
-@import "./terms/index.css";
 
 @layer base {
   html {

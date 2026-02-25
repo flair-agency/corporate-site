@@ -2,18 +2,24 @@
   "asset": {
     "version": "20260222r03"
   },
-  "google": {
-    "tagmanager": {
-      "tag_id": "G-Z85HL3MPJH"
-    }
-  },
-  "name": "合同会社Flair",
   "default": {
     "google": {
       "fonts": {
         "query": "family=Inter:wght@400;600;700&display=swap"
       }
     },
+    "image": {
+      "path": "/company/og.png"
+    },
+    "keywords": [
+      "合同会社Flair",
+      "Flair",
+      "TikTok LIVE",
+      "ライブ配信",
+      "マネジメント",
+      "LIVEエージェンシー",
+      "LIVEクリエイター支援"
+    ],
     "nav": {
       "menu": [
         {
@@ -23,6 +29,12 @@
       ]
     }
   },
+  "google": {
+    "tagmanager": {
+      "tag_id": "G-Z85HL3MPJH"
+    }
+  },
+  "name": "合同会社Flair",
   "origin": "https://www.flair-agency.biz",
   "pages": [
     {

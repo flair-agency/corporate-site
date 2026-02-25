@@ -1,5 +1,7 @@
 {
-  "classes": ["creator"],
+  "classes": [
+    "creator"
+  ],
   "description": "TikTok LIVE配信を始めたい・続けたいクリエイター向けに、機材提供・初期設定・週次フィードバックで伴走支援します。",
   "google": {
     "fonts": {
@@ -10,7 +12,6 @@
   "image": {
     "path": "/creator/og.png"
   },
-  "keywords": "合同会社Flair, Flair, TikTok LIVE, ライブ配信, マネジメント, エージェンシー, クリエイター支援",
   "layout": "base.liquid",
   "links": [
     {
@@ -61,6 +62,8 @@
   "page": {
     "path": "/creator/"
   },
-  "tags": ["creator"],
+  "tags": [
+    "creator"
+  ],
   "title": "トップ"
 }

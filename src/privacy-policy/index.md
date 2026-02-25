@@ -1,3 +1,19 @@
+---
+classes:
+  - privacy-policy
+description: >
+  合同会社Flairのプライバシーポリシー。
+  個人情報の取得・利用・管理方針について記載しています。
+id: privacy-policy
+keywords: 
+  - プライバシーポリシー
+layout: document.liquid
+page:
+  path: /privacy-policy/
+tags:
+  - privacy-policy
+title: プライバシーポリシー
+---
 <section id="top">
 
 プライバシーポリシー

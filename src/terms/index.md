@@ -1,3 +1,20 @@
+---
+classes:
+  - terms
+description: >
+  合同会社Flairの利用規約。
+  ウェブサイトの利用条件、禁止事項、免責事項、準拠法などを記載しています。
+id: terms
+keywords:
+  - 利用規約
+  - 利用条件
+layout: document.liquid
+page:
+  path: /terms/
+tags:
+  - terms
+title: 利用規約
+---
 <section id="top">
 
 利用規約
