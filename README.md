@@ -29,10 +29,10 @@ It does **not** contain internal operational systems or creator management tools
 
 ## Tech Stack
 
-- HTML  
-- CSS  
-- JavaScript  
+- 11ty (Eleventy)  
+- TypeScript  
 - Tailwind CSS  
+- Prettier  
 - Firebase Hosting  
 
 ---
@@ -43,12 +43,6 @@ Install dependencies:
 
 ```
 npm install
-```
-
-Run Tailwind build (watch mode):
-
-```
-build:css:watch
 ```
 
 Build for production:
