@@ -1,5 +1,7 @@
 # Flair Corporate Website
 
+[![Deploy to Firebase Hosting (OIDC)](https://github.com/flair-agency/corporate-site/actions/workflows/firebase-hosting-deploy.yml/badge.svg)](https://github.com/flair-agency/corporate-site/actions/workflows/firebase-hosting-deploy.yml)
+
 This repository contains the source code for the official corporate website of **Flair**, a Japan-based TikTok LIVE agency.
 
 - 🌐 Website: https://www.flair-agency.biz/
