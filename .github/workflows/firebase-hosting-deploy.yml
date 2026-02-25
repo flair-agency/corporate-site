@@ -11,6 +11,8 @@ permissions:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    outputs:
+      origin: ${{ steps.preview.outputs.origin }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,10 +27,16 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: "projects/${{ secrets.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-pool/providers/github-provider"
-          service_account: "github-firebase-deployer@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
+          service_account: "github-firebase-deployer@${{ vars.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
 
-      - name: Deploy to a short-lived preview channel and capture output
-        run: npx firebase hosting:channel:deploy test -e 1h --project "${{ secrets.GCP_PROJECT_ID }}"
+      - id: preview
+        name: Deploy to a short-lived preview channel
+        env:
+          PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          npx firebase hosting:channel:deploy test -e 1h --project "${PROJECT_ID}" --json |
+          jq -er --arg pid "${PROJECT_ID}" '.result[$pid].url | select(. != null and . != "") | "origin=\(.)"' >> "$GITHUB_OUTPUT"
 
   test:
     runs-on: ubuntu-latest
@@ -40,7 +48,7 @@ jobs:
     env:
       REPORTS_PATH: /tmp/lighthouse-reports
       FIREBASE_PID_FILE: /tmp/firebase-emulator.pid
-      ORIGIN: https://corporate-site-d81cd--test-brpr20pn.web.app
+      ORIGIN: ${{ needs.setup.outputs.origin }}
     steps:
       - uses: actions/checkout@v4
 
@@ -52,13 +60,15 @@ jobs:
         run: npm ci
 
       - name: Test
+        env:
+          PAGE: ${{ matrix.page }}
         run: |
           set -euo pipefail
-          REPORT_FILE="${REPORTS_PATH}/${{ matrix.page }}.json"
+          REPORT_FILE="${REPORTS_PATH}/${PAGE}.json"
 
           mkdir -p "${REPORTS_PATH}"
 
-          npm -s run test:lighthouse "${ORIGIN}/${{ matrix.page }}/" -- --quiet --output-path="${REPORT_FILE}" --throttling-method=provided --skip-audits="is-crawlable,robots-txt"
+          npm -s run test:lighthouse "${ORIGIN}/${PAGE}/" -- --quiet --output-path="${REPORT_FILE}" --throttling-method=provided --skip-audits="is-crawlable,robots-txt"
 
           npm -s run test:lighthouse-gate < "${REPORT_FILE}" | while IFS=$'\t' read -r METRIC SCORE RESULT
           do
@@ -99,7 +109,9 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: "projects/${{ secrets.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-pool/providers/github-provider"
-          service_account: "github-firebase-deployer@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
+          service_account: "github-firebase-deployer@${{ vars.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
 
       - name: Deploy to Firebase Hosting
-        run: npx firebase deploy --only hosting --project "${{ secrets.GCP_PROJECT_ID }}"
+        env:
+          PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+        run: npx firebase deploy --only hosting --project "${PROJECT_ID}"
