@@ -4,6 +4,18 @@
       <h2>News</h2>
       <p class="lead">お知らせ・プレスリリース・サービス更新情報を掲載しています。</p>
     </hgroup>
+    <style>
+      :root {
+        --avif-option: url("/news/background-image.avif?v={{ site.asset.version }}")
+          type("image/avif") 1x;
+        --jpg-option: url("/news/background-image.jpg?v={{ site.asset.version }}")
+          type("image/jpg") 1x;
+        --png-option: url("/news/background-image.png?v={{ site.asset.version }}")
+          type("image/png") 1x;
+        --webp-option: url("/news/background-image.webp?v={{ site.asset.version }}")
+          type("image/webp") 1x;
+      }
+    </style>
   </section>
 
   <section id="news">
@@ -14,12 +26,19 @@
     {% assign n = collections.news | where: 'url', page.url | size %}
     {% if collections.news and collections.news.size > n %}
       <div>
-        {% assign articles = collections.news | sort: "data.date" | reverse %}
+        {% assign articles = collections.news | sort: 'data.date' | reverse %}
         {% for article in articles %}
           {% unless article.url == page.url %}
-            <article class="card" data-slug="news-{{ article.fileSlug }}" style="view-transition-name: news-{{ article.fileSlug }}">
+            <article
+              class="card"
+              data-slug="news-{{ article.fileSlug }}"
+              style="view-transition-name: news-{{ article.fileSlug }}"
+            >
               <hgroup>
-                <time class="fas fa-calendar" datetime="{{ article.data.date | default: article.date | date: "%Y-%m-%dT%H:%M:%S" }}">
+                <time
+                  class="fas fa-calendar"
+                  datetime="{{ article.data.date | default: article.date | date: "%Y-%m-%dT%H:%M:%S" }}"
+                >
                   {{ article.data.date | default: article.date | date: '%Y年%m月%d日' }}
                 </time>
                 <h3 class="far fa-newspaper">
@@ -31,6 +50,13 @@
               <p>
                 {{ article.data.description }}
               </p>
+              <ul class="hashtags" aria-label="ハッシュタグ">
+                {% for tag in article.data.hashtags %}
+                  <li>
+                    <span class="hashtag fas fa-hashtag">{{ tag }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
             </article>
           {% endunless %}
         {% endfor %}

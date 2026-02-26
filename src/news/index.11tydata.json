@@ -1,9 +1,38 @@
 {
-  "classes": ["news"],
+  "classes": [
+    "news"
+  ],
   "description": "合同会社Flairからのお知らせ、プレスリリース、サービス更新情報を掲載しています。",
   "id": "news",
-  "keywords": ["ニュース", "お知らせ", "プレスリリース"],
+  "keywords": [
+    "ニュース",
+    "お知らせ",
+    "プレスリリース"
+  ],
   "layout": "base.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./background-image.avif",
+      "imagesizes": "100vw",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./background-image.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.png"
+        }
+      ],
+      "rel": "preload"
+    }
+  ],
   "nav": {
     "menu": [
       {
@@ -15,6 +44,8 @@
   "page": {
     "path": "/news/"
   },
-  "tags": ["news"],
+  "tags": [
+    "news"
+  ],
   "title": "ニュース"
 }

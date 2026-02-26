@@ -17,17 +17,35 @@
     {
       "as": "image",
       "fetchpriority": "high",
-      "href": "./background-image.avif?v=20260222r03",
+      "href": "./background-image.avif",
       "imagesizes": "100vw",
-      "imagesrcset": "./background-image.avif?v=20260222r03 1x, ./background-image.webp?v=20260222r03 1x, ./background-image.png?v=20260222r03 1x",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./background-image.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.png"
+        }
+      ],
       "rel": "preload"
     },
     {
       "as": "image",
       "fetchpriority": "high",
-      "href": "./hero.webp?v=20260222r03",
+      "href": "./hero.webp",
       "imagesizes": "100vw",
-      "imagesrcset": "./hero.webp?v=20260222r03 1x",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./hero.webp"
+        }
+      ],
       "rel": "preload"
     }
   ],

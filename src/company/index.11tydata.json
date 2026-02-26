@@ -1,5 +1,7 @@
 {
-  "classes": ["company"],
+  "classes": [
+    "company"
+  ],
   "description": "TikTok LIVEのタイアップ・番組企画・キャスティングを支援。信頼性と運用基盤を明示し、企業向けの最適な配信設計を提供します。",
   "google": {
     "fonts": {
@@ -15,9 +17,22 @@
     {
       "as": "image",
       "fetchpriority": "high",
-      "href": "./background-image.avif?v=20260222r03",
+      "href": "./background-image.avif",
       "imagesizes": "100vw",
-      "imagesrcset": "./background-image.avif?v=20260222r03 1x, ./background-image.webp?v=20260222r03 1x, ./background-image.png?v=20260222r03 1x",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./background-image.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.png"
+        }
+      ],
       "rel": "preload"
     }
   ],
@@ -40,6 +55,8 @@
   "page": {
     "path": "/company/"
   },
-  "tags": ["company"],
+  "tags": [
+    "company"
+  ],
   "title": "私たちについて"
 }

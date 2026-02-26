@@ -2,14 +2,43 @@
 layout: base.liquid
 tags: article
 ---
-<main data-variant="article" data-slug="news-{{ page.fileSlug }}" style="view-transition-name: news-{{ page.fileSlug }}">
+<main
+  data-variant="article"
+  data-slug="news-{{ page.fileSlug }}"
+  style="view-transition-name: news-{{ page.fileSlug }}"
+>
   <section id="top" class="hero">
     <hgroup>
       <h2>{{ hero.subtitle | default: title }}</h2>
-      <p class="lead">{{ hero.subtitle | default: "" }}</p>
+      <p class="lead">{{ hero.subtitle | default: '' }}</p>
     </hgroup>
+    <style>
+      :root {
+        --avif-option: url('/news/background-image.avif?v={{ site.asset.version }}') type('image/avif') 1x;
+        --jpg-option: url('/news/background-image.jpg?v={{ site.asset.version }}') type('image/jpg') 1x;
+        --png-option: url('/news/background-image.png?v={{ site.asset.version }}') type('image/png') 1x;
+        --webp-option: url('/news/background-image.webp?v={{ site.asset.version }}') type('image/webp') 1x;
+      }
+    </style>
   </section>
   <section>
-    <article>{{ content }}</article>
+    <article>
+      {{ content }}
+      <footer>
+        <ul class="hashtags" aria-label="ハッシュタグ">
+          {% for tag in hashtags %}
+            <li>
+              <span class="hashtag fas fa-hashtag">{{ tag }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+        <time
+          class="fas fa-calendar"
+          datetime="{{ date | default: page.date | date: "%Y-%m-%dT%H:%M:%S" }}"
+        >
+          {{ date | default: page.date | date: '%Y年%m月%d日' }}
+        </time>
+      </footer>
+    </article>
   </section>
 </main>

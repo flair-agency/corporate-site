@@ -1,5 +1,5 @@
 /* ===== New Article Page Specific Styles ===== */
-@layer components {
+@layer base {
   body.news {
     @apply bg-linear-to-b from-black/2 via-transparent to-transparent;
 
@@ -23,7 +23,7 @@
         @apply px-5 py-8 sm:px-8 sm:py-10;
 
         /* subtle paper shading */
-        @apply bg-linear-180 from-0% from-[rgba(255,255,255,.85)] via-85% via-[rgba(255,255,255,0)] to-100% to-[rgba(0,0,0,.02)];
+        @apply bg-linear-180 from-[rgba(255,255,255,.85)] from-0% via-[rgba(255,255,255,0)] via-85% to-[rgba(0,0,0,.02)] to-100%;
 
         /* micro texture (very subtle) */
         &::before {
@@ -107,6 +107,11 @@
 
         code {
           @apply rounded bg-black/5 px-1.5 py-0.5 text-[0.95em];
+        }
+
+        footer {
+          @apply mt-6;
+          @apply flex flex-col items-end justify-between gap-4 sm:flex-row sm:items-center;
         }
       }
     }

@@ -1,17 +1,32 @@
 /* ===== News Page Specific Styles ===== */
-@layer components {
+@layer base {
   body.news {
     /* Page background nuance (keeps overall layout intact) */
     @apply bg-linear-to-b from-black/2 via-transparent to-transparent;
 
+    .fas,
+    .far,
+    .fab,
+    .fa-solid,
+    .fa-regular,
+    .fa-brands {
+      @apply inline-flex gap-1;
+
+      &:is(time)::before {
+        @apply text-[#FF4D3D] opacity-80;
+      }
+
+      &:is(h3)::before {
+        @apply pr-2 text-[#FF4D3D] opacity-85;
+      }
+    }
+  }
+}
+
+@layer components {
+  body.news {
     section.hero {
-      --avif-option: url("/news/background-image.avif?v=20260222r03")
-        type("image/avif") 1x;
-      --jpg-option: url("/news/background-image.jpg?v=20260222r03")
-        type("image/jpg") 1x;
-      --webp-option: url("/news/background-image.webp?v=20260222r03")
-        type("image/avif") 1x;
-      @apply bg-[image-set(var(--avif-option),var(--jpg-option),var(--webp-option))];
+      @apply bg-[image-set(var(--avif-option),var(--jpg-option),var(--png-option),var(--webp-option))];
     }
 
     /* Container for the news list */
@@ -66,8 +81,7 @@
         /* Date */
         time {
           @apply inline-flex w-fit items-center gap-2;
-          @apply text-sm leading-none text-black/70;
-          @apply rounded-full border border-black/10 bg-black/5 px-3 py-1.5;
+          @apply px-0 py-1.5 text-sm leading-none text-black/70;
         }
 
         /* Title */
@@ -90,6 +104,24 @@
         @apply line-clamp-3 leading-7 text-black/75;
         @apply empty:hidden;
       }
+
+    }
+
+    /* Hashtags */
+    ul.hashtags {
+      @apply m-0 px-1;
+
+      > li {
+        @apply contents;
+
+        .hashtag {
+          @apply inline-block rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700;
+        }
+      }
+
+      p + & {
+        @apply mt-3;
+      }
     }
 
     /* If there's only one column worth of content, keep cards from looking too stretched */
@@ -105,23 +137,6 @@
   body.news {
     @media (prefers-reduced-motion: reduce) {
       @apply transition-none hover:translate-y-0;
-    }
-
-    .fas,
-    .far,
-    .fab,
-    .fa-solid,
-    .fa-regular,
-    .fa-brands {
-      @apply inline-flex gap-1;
-
-      &:is(time)::before {
-        @apply text-[#FF4D3D] opacity-80;
-      }
-
-      &:is(h3)::before {
-        @apply pr-2 text-[#FF4D3D] opacity-85;
-      }
     }
   }
 }
