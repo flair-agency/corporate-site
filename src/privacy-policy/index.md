@@ -7,7 +7,7 @@ description: >
 id: privacy-policy
 keywords: 
   - プライバシーポリシー
-layout: layouts/document/document.liquid
+layout: layouts/document/index.liquid
 page:
   path: /privacy-policy/
 tags:
