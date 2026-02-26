@@ -1,0 +1,22 @@
+.indicator {
+  /* Text */
+  @apply text-secondary;
+  /* Flex */
+  @apply flex flex-col items-center;
+  /* Layout */
+  @apply gap-2 -translate-x-1/2;
+
+  .label {
+    /* Text */
+    @apply tracking-4xl text-xs;
+  }
+
+  .icon {
+    /* Layout */
+    @apply grid h-8 w-8 place-items-center;
+    /* Border */
+    @apply border border-line rounded-full;
+    /* Animation */
+    @apply animate-bounce;
+  }
+}

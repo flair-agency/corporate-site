@@ -1,0 +1,8 @@
+.logo {
+  /* Layout */
+  @apply block aspect-7/5 h-auto w-17.5 max-w-full;
+  /* Appearance */
+  @apply object-contain;
+  /* Border */
+  @apply rounded-base;
+}

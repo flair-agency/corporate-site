@@ -1,0 +1,10 @@
+a[href].hyperlink {
+  /* Text */
+  @apply underline decoration-1 underline-offset-4;
+  /* Border */
+  @apply decoration-line;
+  /* Effects */
+  @apply hover:decoration-line active:decoration-line focus-visible:ring-line focus-visible:ring-2;
+  /* Appearance */
+  @apply focus:outline-none;
+}

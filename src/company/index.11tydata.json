@@ -12,7 +12,7 @@
   "image": {
     "path": "/company/og.png"
   },
-  "layout": "base.liquid",
+  "layout": "layouts/base/index.liquid",
   "links": [
     {
       "as": "image",

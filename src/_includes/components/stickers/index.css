@@ -1,0 +1,57 @@
+.stickers {
+  /* Grid */
+  @apply grid justify-items-end;
+  /* Layout */
+  @apply gap-2;
+
+  .sticker {
+    /* Layout */
+    @apply inline-block px-3.5 py-1.5;
+    /* Text */
+    @apply text-strong text-[clamp(.72rem,2.6vw,.82rem)] leading-none font-bold tracking-wide;
+    /* Background */
+    @apply backdrop-blur-[6px];
+    /* Border */
+    @apply border border-sticker-line/46 rounded-full;
+    /* Effects */
+    @apply shadow-sticker will-change-transform;
+    /* Animation */
+    @apply motion-reduce:animate-none!;
+
+    @media (max-width: 640px) {
+      /* Layout */
+      @apply px-2.5 py-1.25;
+      /* Text */
+      @apply text-2xs;
+    }
+
+    &.s1 {
+      /* Animation */
+      @apply animate-[sticker-float_2.7s_0s_ease-in-out_infinite];
+    }
+
+    &.s2 {
+      /* Animation */
+      @apply animate-[sticker-float_2.7s_.45s_ease-in-out_infinite];
+    }
+
+    &.s3 {
+      /* Animation */
+      @apply animate-[sticker-float_2.7s_.9s_ease-in-out_infinite];
+    }
+  }
+}
+
+@keyframes sticker-float {
+  0% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-3px) rotate(0.8deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+}

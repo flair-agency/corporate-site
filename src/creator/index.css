@@ -1,16 +1,23 @@
 /* ===== Creator Page Specific Styles ===== */
 @theme {
   --color-creator-red-250: #fee2e2;
-  --color-creator-red-200: oklch(from var(--color-creator-red-250) calc(l + 0.03) c h);
-  --color-creator-red-150: oklch(from var(--color-creator-red-250) calc(l + 0.06) c h);
-  --color-creator-red-100: oklch(from var(--color-creator-red-250) calc(l + 0.09) c h);
-  --color-creator-red-50:  oklch(from var(--color-creator-red-250) calc(l + 0.12) c h);
+  --color-creator-red-200: oklch(
+    from var(--color-creator-red-250) calc(l + 0.03) c h
+  );
+  --color-creator-red-150: oklch(
+    from var(--color-creator-red-250) calc(l + 0.06) c h
+  );
+  --color-creator-red-100: oklch(
+    from var(--color-creator-red-250) calc(l + 0.09) c h
+  );
+  --color-creator-red-50: oklch(
+    from var(--color-creator-red-250) calc(l + 0.12) c h
+  );
 
-  /* Creator page (semantic accents) */
-  --color-creator-icon: var(--color-attention);
+  --color-creator-icon: var(--palette-brand-500);
 
-  /* Compare table (attention column highlights) */
-  --color-creator-compare-col: var(--color-attention);
+  /* Comparison table (attention column highlights) */
+  --color-creator-comparison-col: var(--color-attention);
 
   /* How-to-start flow (step gradient + marker) */
   --color-creator-flow-step-1-to: var(--color-surface);
@@ -28,192 +35,186 @@
   --color-creator-flow-step-6-marker: var(--color-red-900);
 }
 
-@layer base {
-  body.creator {
-    article {
-      @apply bg-page border-line rounded-lg border p-6 transition-transform duration-150 hover:-translate-y-1;
+body.creator {
+  article {
+    @apply bg-page border-line rounded-lg border p-6 transition-transform duration-150 hover:-translate-y-1;
 
-      h3,
-      h4 {
-        @apply mb-2 font-bold;
+    h3,
+    h4 {
+      @apply mb-2 font-bold;
+    }
+
+    :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class]::before {
+      @apply text-creator-icon;
+    }
+
+    p {
+      @apply text-secondary text-sm;
+    }
+  }
+
+  & > main {
+    @apply font-["M_PLUS_Rounded_1c",var(--font-fallback-sans)];
+  }
+
+  section.hero {
+    &::before {
+      @apply bg-hero-fallback-surface transform-[scale(1.08)] bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center filter-[blur(6px)_brightness(.74)_saturate(.9)_contrast(.7)] transition-[background-image] duration-500 ease-in-out;
+    }
+
+    .card[data-variant~="media"] {
+      @apply absolute top-1/2 left-1/2 z-10 h-full max-h-none lg:w-4/5 lg:max-w-130;
+
+      video {
+        @apply opacity-90 filter-[brightness(.85)] max-lg:filter-none;
+      }
+    }
+
+    hgroup {
+      @apply bg-surface/1 relative z-20 rounded-[.3rem] backdrop-filter-[blur(2px)_saturate(110%)] text-shadow-[0_2px_10px_rgba(0,0,0,.45),0_0_2px_rgba(0,0,0,.65)];
+
+      h2 {
+        @apply mx-auto mb-4 max-w-[22em] font-["Zen_Kurenaido",var(--font-fallback-sans)] text-3xl font-bold text-balance md:text-5xl;
+      }
+    }
+
+    .stickers {
+      @apply pointer-events-none absolute top-[clamp(1rem,5.5vw,2.2rem)] right-[clamp(.75rem,4.4vw,2.4rem)] z-20;
+
+      @media (max-width: 640px) {
+        @apply top-3.5 right-2.5 gap-1.5;
+      }
+    }
+
+    & > footer {
+      @apply relative z-20 text-center;
+    }
+  }
+
+  section#benefits {
+    hgroup + div {
+      @apply grid gap-6 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3;
+
+      & > h3 {
+        @apply col-span-full;
+      }
+    }
+
+    article {
+      @apply text-center;
+
+      h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
+        @apply flex flex-col gap-2;
+
+        &::before {
+          @apply text-3xl!;
+        }
+      }
+    }
+  }
+
+  section#comparison {
+    hgroup + div {
+      @apply overflow-x-auto px-4;
+    }
+
+    table.comparison {
+      @apply min-w-full;
+
+      tbody tr td:first-child {
+        @apply text-right font-medium;
       }
 
-      :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class]::before {
-        @apply text-creator-icon;
+      th,
+      td {
+        @apply nth-[2]:text-secondary;
+      }
+
+      & {
+        @apply [&_tbody_tr:nth-child(even)_td:nth-child(3)]:bg-creator-comparison-col/3;
+        @apply [&_tbody_tr:nth-child(odd)_td:nth-child(3)]:bg-creator-comparison-col/1.5;
+        @apply [&_thead_tr_th:nth-child(3)]:bg-creator-comparison-col/6;
+      }
+    }
+
+    & > footer {
+      @apply text-center;
+    }
+  }
+
+  section#how-to-start {
+    hgroup + ol {
+      @apply grid gap-6 md:grid-cols-3;
+    }
+
+    ol.flow {
+      li {
+        @apply bg-linear-to-b from-0% to-80% sm:bg-linear-to-r;
+        @apply nth-[1]:to-creator-flow-step-1-to nth-[1]:before:bg-creator-flow-step-1-marker nth-[1]:from-inherit;
+        @apply nth-[2]:from-creator-flow-step-1-to nth-[2]:to-creator-flow-step-2-to nth-[2]:before:bg-creator-flow-step-2-marker;
+        @apply nth-[3]:from-creator-flow-step-2-to nth-[3]:to-creator-flow-step-3-to nth-[3]:before:bg-creator-flow-step-3-marker;
+        @apply nth-[4]:from-creator-flow-step-3-to nth-[4]:to-creator-flow-step-4-to nth-[4]:before:bg-creator-flow-step-4-marker;
+        @apply nth-[5]:from-creator-flow-step-4-to nth-[5]:to-creator-flow-step-5-to nth-[5]:before:bg-creator-flow-step-5-marker;
+        @apply nth-[6]:from-creator-flow-step-5-to nth-[6]:to-creator-flow-step-6-to nth-[6]:before:bg-creator-flow-step-6-marker;
+      }
+    }
+
+    & > footer {
+      @apply text-center;
+    }
+  }
+
+  section#trust {
+    hgroup + div {
+      @apply grid gap-6 px-4 md:grid-cols-2;
+    }
+
+    article {
+      h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
+        @apply flex items-center gap-2;
+      }
+    }
+
+    & > footer {
+      @apply mt-8;
+
+      .statement {
+        @apply mx-4;
+      }
+    }
+  }
+
+  section#faq {
+    hgroup + div {
+      @apply grid items-start gap-6 md:grid-cols-2;
+    }
+  }
+
+  section#contact {
+    hgroup + div {
+      @apply grid gap-6 px-4 md:grid-cols-2;
+    }
+
+    article {
+      @apply flex flex-col text-center;
+
+      h4 {
+        @apply mb-2 text-xl;
       }
 
       p {
-        @apply text-sm text-secondary;
-      }
-    }
-
-    & > main {
-      @apply font-["M_PLUS_Rounded_1c",var(--font-fallback-sans)];
-    }
-  }
-}
-
-@layer components {
-  body.creator {
-    section.hero {
-      &::before {
-        @apply transform-[scale(1.08)] bg-hero-fallback-surface bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center filter-[blur(6px)_brightness(.74)_saturate(.9)_contrast(.7)] transition-[background-image] duration-500 ease-in-out;
+        @apply mb-4;
       }
 
-      .card[data-variant~="media"] {
-        @apply absolute top-1/2 left-1/2 z-10 h-full max-h-none lg:w-4/5 lg:max-w-130;
-
-        video {
-          @apply opacity-90 filter-[brightness(.85)] max-lg:filter-none;
-        }
+      .cta.btn {
+        @apply mt-auto;
       }
 
-      hgroup {
-        @apply relative z-20 rounded-[.3rem] bg-surface/1 backdrop-filter-[blur(2px)_saturate(110%)] text-shadow-[0_2px_10px_rgba(0,0,0,.45),0_0_2px_rgba(0,0,0,.65)];
+      h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
+        @apply flex flex-col gap-3;
 
-        h2 {
-          @apply mx-auto mb-4 max-w-[22em] font-["Zen_Kurenaido",var(--font-fallback-sans)] text-3xl font-bold text-balance md:text-5xl;
-        }
-      }
-
-      .stickers {
-        @apply pointer-events-none absolute top-[clamp(1rem,5.5vw,2.2rem)] right-[clamp(.75rem,4.4vw,2.4rem)] z-20;
-
-        @media (max-width: 640px) {
-          @apply top-3.5 right-2.5 gap-1.5;
-        }
-      }
-
-      & > footer {
-        @apply relative z-20 text-center;
-      }
-    }
-
-    section#benefits {
-      hgroup + div {
-        @apply grid gap-6 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3;
-
-        & > h3 {
-          @apply col-span-full;
-        }
-      }
-
-      article {
-        @apply text-center;
-
-        h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-          @apply flex flex-col gap-2;
-
-          &::before {
-            @apply text-3xl!;
-          }
-        }
-      }
-    }
-
-    section#compare {
-      hgroup + div {
-        @apply overflow-x-auto px-4;
-      }
-
-      table.compare {
-        @apply min-w-full;
-
-        tbody tr td:first-child {
-          @apply text-right font-medium;
-        }
-
-        th,
-        td {
-          @apply nth-[2]:text-secondary;
-        }
-
-        & {
-          @apply [&_tbody_tr:nth-child(even)_td:nth-child(3)]:bg-creator-compare-col/3;
-          @apply [&_tbody_tr:nth-child(odd)_td:nth-child(3)]:bg-creator-compare-col/1.5;
-          @apply [&_thead_tr_th:nth-child(3)]:bg-creator-compare-col/6;
-        }
-      }
-
-      & > footer {
-        @apply text-center;
-      }
-    }
-
-    section#how-to-start {
-      hgroup + ol {
-        @apply grid gap-6 md:grid-cols-3;
-      }
-
-      ol.flow {
-        li {
-          @apply bg-linear-to-b from-0% to-80% sm:bg-linear-to-r;
-          @apply nth-[1]:from-inherit nth-[1]:to-creator-flow-step-1-to nth-[1]:before:bg-creator-flow-step-1-marker;
-          @apply nth-[2]:from-creator-flow-step-1-to nth-[2]:to-creator-flow-step-2-to nth-[2]:before:bg-creator-flow-step-2-marker;
-          @apply nth-[3]:from-creator-flow-step-2-to nth-[3]:to-creator-flow-step-3-to nth-[3]:before:bg-creator-flow-step-3-marker;
-          @apply nth-[4]:from-creator-flow-step-3-to nth-[4]:to-creator-flow-step-4-to nth-[4]:before:bg-creator-flow-step-4-marker;
-          @apply nth-[5]:from-creator-flow-step-4-to nth-[5]:to-creator-flow-step-5-to nth-[5]:before:bg-creator-flow-step-5-marker;
-          @apply nth-[6]:from-creator-flow-step-5-to nth-[6]:to-creator-flow-step-6-to nth-[6]:before:bg-creator-flow-step-6-marker;
-        }
-      }
-
-      & > footer {
-        @apply text-center;
-      }
-    }
-
-    section#trust {
-      hgroup + div {
-        @apply grid gap-6 px-4 md:grid-cols-2;
-      }
-
-      article {
-        h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-          @apply flex items-center gap-2;
-        }
-      }
-
-      & > footer {
-        @apply mt-8;
-
-        .statement {
-          @apply mx-4;
-        }
-      }
-    }
-
-    section#faq {
-      hgroup + div {
-        @apply grid items-start gap-6 md:grid-cols-2;
-      }
-    }
-
-    section#contact {
-      hgroup + div {
-        @apply grid gap-6 px-4 md:grid-cols-2;
-      }
-
-      article {
-        @apply flex flex-col text-center;
-
-        h4 {
-          @apply mb-2 text-xl;
-        }
-
-        p {
-          @apply mb-4;
-        }
-
-        .cta.btn {
-          @apply mt-auto;
-        }
-
-        h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
-          @apply flex flex-col gap-3;
-
-          &::before {
-            @apply text-4xl!;
-          }
+        &::before {
+          @apply text-4xl!;
         }
       }
     }

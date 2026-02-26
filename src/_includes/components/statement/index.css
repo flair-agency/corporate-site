@@ -1,0 +1,51 @@
+.statement {
+  /* Layout */
+  @apply relative pt-4 pr-0 pb-0 pl-4.5;
+  /* Text */
+  @apply font-["Zen_Kurenaido",var(--font-fallback-sans)];
+
+  &::before {
+    /* Generated Content */
+    @apply content-["STATEMENT"];
+    /* Text */
+    @apply tracking-2xl text-xs text-black/45 uppercase;
+    /* Layout */
+    @apply mx-0 mt-0 mb-2.5 block;
+  }
+
+  &::after {
+    /* Generated Content */
+    @apply content-[""];
+    /* Background */
+    @apply bg-black/12;
+    /* Layout */
+    @apply absolute top-0 bottom-0 left-0 w-px;
+  }
+
+  p {
+    /* Text */
+    @apply text-base leading-loose tracking-normal text-black/78;
+    /* Layout */
+    @apply m-0;
+  }
+
+  strong {
+    /* Text */
+    @apply font-bold text-black/92;
+  }
+
+  @media (max-width: 480px) {
+    /* Layout */
+    @apply mx-0 mt-5.5 mb-2 pl-3.5;
+
+    &::before {
+      /* Text */
+      @apply tracking-3xl text-xs;
+    }
+
+    p {
+      /* Text */
+      @apply text-base;
+    }
+  }
+}

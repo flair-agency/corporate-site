@@ -1,0 +1,23 @@
+footer ul.note {
+  /* Layout */
+  @apply w-fit pl-4;
+
+  /* List */
+  @apply list-["※"];
+
+  li {
+    /* Layout */
+    @apply pl-1;
+
+    /* Text */
+    @apply text-secondary text-xs;
+
+    /* Generated Content */
+    @apply marker:text-3xs;
+
+    small {
+      /* Text */
+      @apply text-[size:inherit];
+    }
+  }
+}

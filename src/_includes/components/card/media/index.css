@@ -1,0 +1,22 @@
+.card[data-variant~="media"] {
+  /* Background */
+  @apply bg-ink/5;
+  /* Layout */
+  @apply pointer-events-none self-stretch overflow-hidden -translate-x-1/2 -translate-y-1/2;
+  /* Effects */
+  @apply shadow-[0_20px_40px_from_var(--color-ink)/25] will-change-transform contain-layout contain-size;
+  /* Animation */
+  @apply transform-[translateZ(0)];
+
+  &[data-aspect="9/16"] {
+    /* Layout */
+    @apply aspect-9/16;
+  }
+
+  video {
+    /* Layout */
+    @apply block h-full w-full;
+    /* Appearance */
+    @apply object-cover object-[50%_20%] lg:object-center;
+  }
+}

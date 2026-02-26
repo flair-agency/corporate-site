@@ -9,7 +9,7 @@
     "お知らせ",
     "プレスリリース"
   ],
-  "layout": "base.liquid",
+  "layout": "layouts/base/index.liquid",
   "links": [
     {
       "as": "image",

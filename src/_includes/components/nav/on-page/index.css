@@ -1,0 +1,108 @@
+nav.on-page {
+  /* Flex */
+  @apply flex flex-1 items-center justify-end;
+  /* Layout */
+  @apply relative z-61 gap-3;
+
+  & > button.toggle {
+    /* Layout */
+    @apply relative z-61 hidden h-10 w-10;
+    /* Flex */
+    @apply items-center justify-center;
+
+    & + menu {
+      /* Flex */
+      @apply flex flex-1 flex-nowrap;
+      /* Layout */
+      @apply gap-2.5 overflow-x-auto px-0 py-1.5 whitespace-nowrap;
+
+      &::-webkit-scrollbar {
+        /* Layout */
+        @apply h-1.5;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        /* Background */
+        @apply bg-on-page-scrollbar-thumb;
+        /* Border */
+        @apply rounded-full;
+      }
+
+      li a {
+        /* Text */
+        @apply text-on-page-link text-sm;
+        /* Layout */
+        @apply px-2.5 py-2;
+        /* Background */
+        @apply hover:bg-on-page-link-hover-surface;
+        /* Text */
+        @apply hover:text-on-page-link-hover-primary;
+        /* Border */
+        @apply rounded-full;
+
+        &[data-state~="active"] {
+          /* Background */
+          @apply bg-on-page-link-active-surface;
+          /* Text */
+          @apply text-on-page-link-active-primary;
+        }
+      }
+    }
+
+    @media (max-width: 767px) {
+      html.js & {
+        /* Flex */
+        @apply inline-flex;
+
+        & + menu {
+          /* Background */
+          @apply bg-mobile-menu-surface/96;
+          /* Effects */
+          @apply shadow-mobile-menu;
+          /* Layout */
+          @apply absolute top-[calc(env(safe-area-inset-top)+3rem)] right-4 z-62 hidden min-w-55 p-2.5;
+          /* Flex */
+          @apply flex-col flex-nowrap;
+          /* Border */
+          @apply rounded-xl;
+
+          li a {
+            /* Layout */
+            @apply block px-3 py-2.5;
+          }
+        }
+
+        &[aria-expanded="true"] + menu {
+          /* Flex */
+          @apply flex flex-wrap;
+        }
+      }
+
+      html.no-js & {
+        /* Layout */
+        @apply hidden!;
+      }
+    }
+  }
+}
+
+/* ===== Mobile menu backdrop (pseudo-element) ===== */
+@media (max-width: 767px) {
+  html.js body:has(nav.on-page) {
+    &::before {
+      /* Background */
+      @apply bg-mobile-backdrop/40;
+      /* Layout */
+      @apply pointer-events-none fixed inset-0 z-49 opacity-0;
+      /* Animation */
+      @apply transition-opacity duration-200;
+      /* Generated Content */
+      @apply content-[""];
+    }
+
+    &:has(nav.on-page > button.toggle[aria-expanded="true"])::before {
+      /* Layout */
+      @apply pointer-events-auto opacity-100;
+    }
+  }
+}

@@ -1,0 +1,126 @@
+details.faq {
+  /* Layout */
+  @apply p-4;
+  /* Background */
+  @apply bg-surface-subtle;
+  /* Border */
+  @apply border border-line/70 rounded-xl;
+  /* Effects */
+  @apply shadow-[0_1px_0_from_var(--color-ink-cool)/2];
+  /* Animation */
+  @apply transition-[transform,box-shadow,border-color,background-color] duration-200;
+
+  &:hover {
+    /* Layout */
+    @apply -translate-y-0.5;
+    /* Effects */
+    @apply shadow-[0_10px_22px_from_var(--color-ink-cool)/6];
+  }
+
+  &:open {
+    /* Background */
+    @apply bg-attention/3;
+    /* Border */
+    @apply border-attention-line;
+  }
+
+  &.light {
+    /* Background */
+    @apply bg-surface;
+    /* Effects */
+    @apply shadow-sm;
+
+    &:open {
+      /* Background */
+      @apply bg-surface;
+      /* Border */
+      @apply border-attention-line;
+    }
+  }
+
+  summary {
+    /* Layout */
+    @apply relative gap-3 pl-10;
+    /* Flex */
+    @apply flex items-start justify-between;
+    /* Text */
+    @apply text-primary font-bold;
+    /* Appearance */
+    @apply cursor-pointer;
+    /* List */
+    @apply list-none;
+
+    /* Q badge */
+    &::before {
+      /* Generated Content */
+      @apply content-["Q"];
+      /* Layout */
+      @apply absolute top-0.5 left-0 grid h-7 w-7 place-items-center;
+      /* Background */
+      @apply bg-attention-weak;
+      /* Border */
+      @apply border border-attention-line rounded-full;
+      /* Text */
+      @apply text-brand-chip-primary text-xs font-extrabold;
+    }
+
+    /* Chevron */
+    &::after {
+      /* Generated Content */
+      @apply content-["▾"];
+      /* Layout */
+      @apply mt-0.5;
+      /* Text */
+      @apply text-secondary;
+      /* Animation */
+      @apply transition-transform duration-200;
+    }
+
+    &:focus-visible {
+      /* Effects */
+      @apply ring-2 ring-offset-2;
+      /* Border */
+      @apply ring-attention-line;
+      /* Appearance */
+      @apply outline-none;
+    }
+  }
+
+  &:open summary::after {
+    /* Animation */
+    @apply transform-[rotate(180deg)];
+  }
+
+  ol {
+    /* Layout */
+    @apply pl-10 space-y-1;
+    /* List */
+    @apply list-outside list-decimal;
+  }
+
+  footer {
+    /* Layout */
+    @apply mt-2;
+  }
+
+  /* Answer */
+  summary + * {
+    /* Layout */
+    @apply relative mt-3 pl-10 [ol]:pl-15;
+    /* Text */
+    @apply text-secondary leading-7;
+
+    &::before {
+      /* Generated Content */
+      @apply content-["A"];
+      /* Layout */
+      @apply absolute top-0.5 left-0 grid h-7 w-7 place-items-center;
+      /* Background */
+      @apply bg-surface;
+      /* Border */
+      @apply border border-attention-line rounded-full;
+      /* Text */
+      @apply text-brand-chip-primary text-xs font-extrabold;
+    }
+  }
+}

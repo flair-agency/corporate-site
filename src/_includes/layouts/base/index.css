@@ -1,0 +1,171 @@
+@layer components {
+  body {
+    & > header,
+    & > footer {
+      /* Layout */
+      @apply mx-auto max-w-275;
+    }
+
+    & > main {
+      /* Layout */
+      @apply mx-auto w-full max-w-6xl px-4;
+    }
+  }
+
+  body > header {
+    /* Layout */
+    @apply sticky top-0 z-50 px-4 pt-[calc(env(safe-area-inset-top)+.5rem)] pb-3;
+    /* Flex */
+    @apply flex items-center justify-between gap-3;
+    /* Background */
+    @apply bg-linear-to-b from-page via-header-surface/90 to-header-surface/90 from-0% via-40% to-100%;
+    /* Border */
+    @apply border-b border-header-line;
+    /* Effects */
+    @apply shadow-sm backdrop-filter-(--header-blur);
+  }
+
+  [id] {
+    /* Layout */
+    @apply scroll-mt-22;
+  }
+
+  body > footer {
+    /* Layout */
+    @apply px-6 pt-6 pb-[calc(env(safe-area-inset-bottom)+.5rem)] text-center;
+    /* Background */
+    @apply bg-linear-to-b from-ink-cool/4 via-ink-cool/2 to-page from-0% via-35% to-100%;
+    /* Text */
+    @apply text-secondary;
+  }
+
+  body > main > section {
+    /* Layout */
+    @apply mx-(--section-margin-x) my-(--section-margin-y) px-(--section-pad-x) py-(--section-pad-y);
+
+    & {
+      & > hgroup {
+        /* Layout */
+        @apply mb-10 text-center;
+
+        & > h2 {
+          /* Text */
+          @apply text-primary text-2xl font-bold md:text-3xl;
+
+          & + .accentline {
+            /* Layout */
+            @apply w-20;
+          }
+
+          & ~ p {
+            /* Layout */
+            @apply mt-4;
+            /* Text */
+            @apply text-secondary text-base md:text-lg;
+          }
+        }
+      }
+    }
+
+    &[data-variant~="cool"] {
+      /* Background */
+      @apply bg-linear-[180deg] from-surface/0 to-accent-cool/6;
+
+      & > hgroup > h2 {
+        /* Text */
+        @apply text-cool-head;
+
+        & + .accentline {
+          /* Background */
+          @apply bg-linear-to-r from-underline-cool-from via-underline-cool-to;
+        }
+      }
+
+      &,
+      & p,
+      & li,
+      & h3,
+      & h4 {
+        /* Text */
+        @apply text-cool-body;
+      }
+
+      .chip {
+        /* Background */
+        @apply bg-cool-chip-surface;
+        /* Border */
+        @apply border-cool-chip-line;
+        /* Text */
+        @apply text-cool-chip-primary;
+      }
+
+      .cta.btn {
+        /* Background */
+        @apply bg-cool-cta-surface;
+        /* Effects */
+        @apply hover:shadow-[0_6px_18px_from_var(--color-accent-cool)/25];
+      }
+    }
+
+    &.hero {
+      /* Layout */
+      @apply relative isolate z-1 mx-4 mt-8 mb-2 overflow-hidden rounded-lg text-center;
+      /* Flex */
+      @apply flex min-h-(--hero-height) flex-col justify-center;
+      /* Background */
+      @apply bg-hero-fallback-surface bg-cover bg-center;
+      /* Text */
+      @apply text-inverse;
+      /* Animation */
+      @apply transition-[background-image_0.5s_ease-in-out];
+
+      &::before {
+        /* Generated Content */
+        @apply content-[""];
+        /* Layout */
+        @apply absolute inset-0 -z-10;
+        /* Background */
+        @apply bg-hero-overlay-surface;
+        /* Border */
+        @apply rounded-(--radius-base);
+      }
+
+      & > hgroup > h2 {
+        /* Layout */
+        @apply mb-4;
+        /* Text */
+        @apply text-3xl leading-tight font-bold text-inherit md:text-5xl;
+        /* Effects */
+        @apply text-shadow-(--color-title-shadow);
+
+        & + p {
+          /* Layout */
+          @apply mx-auto mb-6 max-w-2xl;
+          /* Text */
+          @apply text-base text-inherit md:text-lg;
+          /* Effects */
+          @apply opacity-90;
+        }
+      }
+
+      & > .indicator {
+        /* Layout */
+        @apply absolute bottom-6 left-1/2 z-20;
+      }
+    }
+
+    &.panel {
+      /* Layout */
+      @apply mx-4 mt-8 rounded-lg;
+      /* Background */
+      @apply bg-surface;
+      /* Effects */
+      @apply shadow-lg;
+    }
+
+    &.band {
+      /* Layout */
+      @apply mx-auto my-8 max-w-275 px-4 py-16;
+    }
+  }
+}

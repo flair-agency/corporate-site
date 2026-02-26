@@ -1,0 +1,106 @@
+/* Liquid Glass */
+body:has(main[data-variant~="glass"]) {
+  > header {
+    /* Effects */
+    @apply shadow-[0_10px_28px_from_var(--color-ink-cool)/8];
+  }
+
+  main > section.hero {
+    /* Background */
+    @apply bg-glass-surface-strong;
+    /* Border */
+    @apply border border-solid border-glass-line-strong;
+    /* Layout */
+    @apply rounded-2xl;
+    /* Effects */
+    @apply shadow-(--glass-shadow);
+  }
+
+  main > section.panel {
+    /* Background */
+    @apply bg-glass-surface;
+    /* Border */
+    @apply border border-solid border-glass-line;
+    /* Layout */
+    @apply rounded-2xl;
+    /* Effects */
+    @apply shadow-(--glass-shadow-weak) backdrop-filter-(--glass-blur);
+  }
+
+  @media (max-width: 767px) {
+    html.js nav.on-page > button.toggle + menu {
+      /* Background */
+      @apply bg-glass-surface;
+      /* Border */
+      @apply border border-glass-line;
+      /* Effects */
+      @apply shadow-(--glass-shadow) backdrop-filter-(--glass-blur);
+    }
+  }
+
+  .cta.btn {
+    /* Background */
+    @apply bg-brand/72;
+    /* Border */
+    @apply border border-solid border-surface/30;
+    /* Effects */
+    @apply shadow-[inset_0_1px_0_from_var(--color-surface)/28,0_10px_24px_from_var(--color-brand)/18] backdrop-filter-(--glass-blur);
+
+    &::before {
+      /* Generated Content */
+      @apply content-[""];
+      /* Background */
+      @apply bg-linear-120 from-surface/0 via-surface/26 to-surface/0 from-42% via-50% to-58%;
+      /* Layout */
+      @apply pointer-events-none absolute inset-[-70%_-55%];
+      /* Animation */
+      @apply transition-opacity duration-180;
+      /* Effects */
+      @apply transform-none opacity-0 blur-[1px];
+      /* Appearance */
+      @apply hover:opacity-65 focus-visible:opacity-65;
+      /* Animation */
+      @apply motion-reduce:transition-none;
+    }
+
+    &:focus-visible {
+      /* Effects */
+      @apply shadow-[inset_0_1px_0_from_var(--color-surface)/28,0_10px_24px_from_var(--color-brand)/18,0_0_0_3px_from_var(--color-brand)/22];
+      /* Appearance */
+      @apply outline-none;
+    }
+
+    &::after {
+      /* Generated Content */
+      @apply content-[""];
+      /* Background */
+      @apply bg-linear-to-b from-surface/30 to-surface/0 to-55%;
+      /* Layout */
+      @apply pointer-events-none absolute inset-0;
+      /* Border */
+      @apply rounded-[inherit];
+      /* Effects */
+      @apply opacity-18;
+    }
+
+    &[data-variant~="secondary"] {
+      /* Background */
+      @apply bg-surface/58;
+      /* Text */
+      @apply text-secondary;
+      /* Border */
+      @apply border border-solid border-ink-cool/14;
+      /* Effects */
+      @apply shadow-[inset_0_1px_0_from_var(--color-surface)/38,0_10px_24px_from_var(--color-ink-cool)/10] backdrop-filter-(--glass-blur);
+      /* Appearance */
+      @apply before:opacity-18;
+
+      &:focus-visible {
+        /* Effects */
+        @apply shadow-[inset_0_1px_0_from_var(--color-surface)/38,0_10px_24px_from_var(--color-ink-cool)/10,0_0_0_3px_from_var(--color-ink-cool)/16];
+        /* Appearance */
+        @apply outline-none;
+      }
+    }
+  }
+}

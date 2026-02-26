@@ -1,0 +1,40 @@
+blockquote.letter {
+  /* Layout */
+  @apply relative isolate overflow-hidden p-8 sm:p-10;
+  /* Text */
+  @apply text-letter-primary font-["Zen_Kurenaido",var(--font-fallback-sans)];
+  /* Background */
+  @apply bg-letter-surface/70;
+  /* Border */
+  @apply border border-letter-line;
+  /* Effects */
+  @apply shadow-sm;
+
+  &::before {
+    /* Generated Content */
+    @apply content-[""];
+    /* Layout */
+    @apply pointer-events-none absolute inset-0 z-0;
+    /* Background */
+    @apply bg-[url("/assets/logo.svg")] bg-size-[420px_auto] bg-center bg-no-repeat;
+    /* Effects */
+    @apply opacity-5;
+  }
+
+  & > * {
+    /* Layout */
+    @apply relative z-10;
+  }
+
+  p {
+    /* Layout */
+    @apply my-3;
+
+    &.signature {
+      /* Layout */
+      @apply mt-8;
+      /* Text */
+      @apply text-right;
+    }
+  }
+}

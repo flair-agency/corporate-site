@@ -1,0 +1,71 @@
+ol.flow {
+  /* List */
+  @apply list-none;
+  /* Layout */
+  @apply px-4 [counter-reset:step];
+
+  li {
+    /* Layout */
+    @apply relative p-6 pl-12;
+    /* Flex */
+    @apply flex flex-col justify-between;
+    /* Background */
+    @apply bg-page;
+    /* Border */
+    @apply border border-line rounded-lg;
+    /* Animation */
+    @apply transition-[background-color,box-shadow,transform] duration-200;
+
+    &:hover {
+      /* Layout */
+      @apply -translate-y-0.5;
+      /* Animation */
+      @apply transform;
+      /* Effects */
+      @apply shadow-[0_8px_16px_from_var(--color-ink-cool)/8];
+    }
+
+    &::before {
+      /* Generated Content */
+      @apply content-[attr(data-step)];
+      /* Layout */
+      @apply absolute top-4 left-4 grid h-6 w-6 place-items-center;
+      /* Background */
+      @apply bg-attention;
+      /* Border */
+      @apply rounded-full;
+      /* Text */
+      @apply text-inverse text-xs font-bold;
+      /* Effects */
+      @apply shadow-[0_0_0_3px_var(--color-surface)];
+    }
+
+    h4 {
+      /* Text */
+      @apply font-bold;
+    }
+
+    p {
+      /* Layout */
+      @apply mt-3;
+      /* Text */
+      @apply text-secondary text-sm;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Layout */
+    @apply gap-3.5;
+    li {
+      /* Layout */
+      @apply pl-12;
+
+      &::before {
+        /* Layout */
+        @apply h-5 w-5;
+        /* Text */
+        @apply text-xs;
+      }
+    }
+  }
+}

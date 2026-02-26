@@ -1,0 +1,17 @@
+.chip {
+  /* Layout */
+  @apply mb-2.5 inline-block px-2.5 py-1.5;
+  /* Text */
+  @apply text-brand-chip-primary text-xs tracking-2xl;
+  /* Background */
+  @apply bg-brand-chip-surface;
+  /* Border */
+  @apply border border-brand-chip-line rounded-full;
+
+  &[data-variant~="accent"] {
+    /* Background */
+    @apply bg-brand-chip-accent-surface;
+    /* Border */
+    @apply border-brand-chip-accent-line;
+  }
+}

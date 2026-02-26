@@ -1,0 +1,40 @@
+nav.on-site {
+  /* Layout */
+  @apply mb-2.5;
+
+  /* Flex */
+  @apply flex justify-center;
+
+  & > menu {
+    /* Layout */
+    @apply gap-4 whitespace-nowrap;
+
+    /* Grid */
+    @apply grid grid-cols-1 justify-items-center sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6;
+
+    /* Text */
+    @apply text-on-site-primary text-sm;
+
+    li a {
+      /* Layout */
+      @apply px-2.5 py-1.5;
+
+      /* Background */
+      @apply hover:bg-ink-cool/6;
+
+      /* Border */
+      @apply rounded-full border border-transparent;
+
+      &[aria-current="page"] {
+        /* Text */
+        @apply text-ink-cool;
+
+        /* Background */
+        @apply bg-ink-cool/8;
+
+        /* Border */
+        @apply border-ink-cool/12;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+nav > ul.accounts {
+  /* Flex */
+  @apply flex flex-wrap items-center;
+  /* Layout */
+  @apply gap-3 pl-0;
+
+  & > li a {
+    /* Layout */
+    @apply px-3 py-2;
+    /* Background */
+    @apply hover:bg-page;
+    /* Border */
+    @apply border border-line rounded-lg;
+    /* Animation */
+    @apply transition;
+    /* Appearance */
+    @apply *:hidden;
+  }
+}

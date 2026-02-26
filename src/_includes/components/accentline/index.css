@@ -1,0 +1,8 @@
+.accentline {
+  /* Background */
+  @apply bg-linear-to-r from-brand via-(--palette-accent-warm-500) to-transparent to-95%;
+  /* Layout */
+  @apply mx-auto mt-2 mb-0 h-1;
+  /* Border */
+  @apply rounded;
+}

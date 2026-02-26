@@ -8,7 +8,7 @@ id: terms
 keywords:
   - 利用規約
   - 利用条件
-layout: document.liquid
+layout: layouts/document/document.liquid
 page:
   path: /terms/
 tags:

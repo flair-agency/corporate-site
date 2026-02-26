@@ -12,7 +12,7 @@
   "image": {
     "path": "/creator/og.png"
   },
-  "layout": "base.liquid",
+  "layout": "layouts/base/index.liquid",
   "links": [
     {
       "as": "image",
@@ -56,7 +56,7 @@
         "label": "理由"
       },
       {
-        "anchor": "#compare",
+        "anchor": "#comparison",
         "label": "ひとりとの違い"
       },
       {

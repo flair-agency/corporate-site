@@ -1,0 +1,41 @@
+.cta {
+  @apply mt-[clamp(20px,5vw,36px)] text-center;
+
+  &.note {
+    /* Layout */
+    @apply mt-2.5;
+    /* Text */
+    @apply text-secondary text-sm;
+
+    a {
+      /* Text */
+      @apply text-brand underline;
+    }
+  }
+
+  &.btn {
+    /* Layout */
+    @apply relative isolate inline-block overflow-hidden px-5 py-3;
+    /* Text */
+    @apply text-inverse font-bold no-underline;
+    /* Background */
+    @apply bg-brand;
+    /* Border */
+    @apply rounded-full;
+    /* Animation */
+    @apply transition-[transform_.08s_ease,box-shadow_.2s_ease];
+    /* Effects */
+    @apply hover:shadow-brand-hover hover:-translate-y-px;
+
+    &[data-variant~="secondary"] {
+      /* Text */
+      @apply text-secondary font-[weight:inherit];
+      /* Background */
+      @apply bg-inherit;
+      /* Border */
+      @apply border-line border;
+      /* Effects */
+      @apply hover:shadow-none;
+    }
+  }
+}

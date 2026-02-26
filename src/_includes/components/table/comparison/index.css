@@ -1,0 +1,61 @@
+table.comparison {
+  /* Layout */
+  @apply border-separate border-spacing-0 overflow-hidden rounded-lg;
+  /* Text */
+  @apply text-left text-sm;
+
+  thead {
+    /* Background */
+    @apply bg-page;
+
+    th {
+      /* Layout */
+      @apply p-3 align-bottom;
+      /* Text */
+      @apply text-center first:text-right;
+
+      @media (max-width: 480px) {
+        /* Text */
+        @apply text-sm leading-normal whitespace-normal;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      /* Background */
+      @apply odd:bg-surface even:bg-page;
+
+      td {
+        /* Layout */
+        @apply p-3;
+        /* Text */
+        @apply text-center;
+
+        &:first-child {
+          /* Text */
+          @apply text-right font-medium;
+        }
+
+        @media (max-width: 480px) {
+          /* Text */
+          @apply text-sm leading-normal whitespace-normal;
+        }
+      }
+    }
+  }
+
+  .chip {
+    /* Layout */
+    @apply mb-0 ml-1 px-2 py-0.5;
+    /* Text */
+    @apply text-xs;
+
+    @media (max-width: 480px) {
+      /* Layout */
+      @apply ml-1;
+      /* Text */
+      @apply text-xs;
+    }
+  }
+}
