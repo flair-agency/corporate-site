@@ -75,7 +75,7 @@ public/**/*.js
 public/**/*.js.map
 public/**/*.html
 public/**/*.css
-public/404.html
+public/sitemap.xml
 !public/assets/**/*.html
 !public/assets/**/*.css
 !public/assets/**/*.js
