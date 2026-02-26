@@ -1,7 +1,100 @@
 /* ===== New Article Page Specific Styles ===== */
+@theme {
+  --color-news-primary: color-mix(
+    in oklab,
+    var(--color-black) 80%,
+    transparent
+  );
+  --color-news-secondary: color-mix(
+    in oklab,
+    var(--color-black) 75%,
+    transparent
+  );
+  --color-news-muted: color-mix(in oklab, var(--color-black) 70%, transparent);
+  --color-news-surface: color-mix(in oklab, var(--color-black) 2%, transparent);
+  --color-news-article-surface: oklch(
+    from #fff calc(l - 0.002) calc(c + 0.003) 85
+  );
+  --color-news-article-line: color-mix(
+    in oklab,
+    var(--color-black) 5%,
+    transparent
+  );
+  --color-news-accentline-from: #ff4d3d;
+  --color-news-accentline-via: #ffb800;
+  --color-news-accentline-to: transparent;
+  --color-news-blockquote-surface: color-mix(
+    in oklab,
+    var(--color-black) 3%,
+    transparent
+  );
+  --color-news-blockquote-line: color-mix(
+    in oklab,
+    var(--color-black) 10%,
+    transparent
+  );
+  --color-news-pre-surface: color-mix(
+    in oklab,
+    var(--color-black) 3%,
+    transparent
+  );
+  --color-news-pre-line: color-mix(
+    in oklab,
+    var(--color-black) 10%,
+    transparent
+  );
+  --color-news-code-surface: color-mix(
+    in oklab,
+    var(--color-black) 5%,
+    transparent
+  );
+  --color-news-hr-via: color-mix(in oklab, var(--color-black) 15%, transparent);
+  --color-news-hero-overlay-from: color-mix(
+    in oklab,
+    var(--color-black) 55%,
+    transparent
+  );
+  --color-news-hero-overlay-via: color-mix(
+    in oklab,
+    var(--color-black) 35%,
+    transparent
+  );
+  --color-news-hero-overlay-to: color-mix(
+    in oklab,
+    var(--color-black) 20%,
+    transparent
+  );
+  --color-news-shadow-strong: color-mix(
+    in oklab,
+    var(--color-black) 6%,
+    transparent
+  );
+  --color-news-surface-shade-from: color-mix(
+    in oklab,
+    var(--color-article-surface) 85%,
+    transparent
+  );
+  --color-news-surface-shade-via: var(--color-article-surface);
+  --color-news-surface-shade-to: color-mix(
+    in oklab,
+    var(--color-black) 2%,
+    transparent
+  );
+  --color-news-link-underline: color-mix(
+    in oklab,
+    var(--color-black) 20%,
+    transparent
+  );
+  --color-news-texture-dot: color-mix(
+    in oklab,
+    var(--color-black) 35%,
+    transparent
+  );
+}
+
 @layer base {
   body.news {
-    @apply bg-linear-to-b from-black/2 via-transparent to-transparent;
+    @apply from-news-surface bg-linear-to-b via-transparent to-transparent;
 
     main[data-variant~="article"] {
       section.hero {
@@ -10,30 +103,30 @@
         &::after {
           @apply content-[""];
           @apply pointer-events-none absolute inset-0;
-          @apply bg-linear-to-b from-black/55 via-black/35 to-black/20;
+          @apply from-news-hero-overlay-from via-news-hero-overlay-via to-news-hero-overlay-to bg-linear-to-b;
         }
       }
 
       article {
         /* Paper-like container */
         @apply relative mt-8 overflow-hidden rounded-lg;
-        @apply border border-black/5;
-        @apply bg-[#FFFEFB];
-        @apply shadow-[0_12px_30px_rgba(0,0,0,.06)];
+        @apply border-news-article-line border;
+        @apply bg-news-article-surface;
+        @apply shadow-[0_12px_30px_var(--color-news-shadow-strong)];
         @apply px-5 py-8 sm:px-8 sm:py-10;
 
         /* subtle paper shading */
-        @apply bg-linear-180 from-[rgba(255,255,255,.85)] from-0% via-[rgba(255,255,255,0)] via-85% to-[rgba(0,0,0,.02)] to-100%;
+        @apply from-news-surface-shade-from via-news-surface-shade-via to-news-surface-shade-to bg-linear-180 from-0% via-85% to-100%;
 
         /* micro texture (very subtle) */
         &::before {
           @apply content-[""];
           @apply pointer-events-none absolute inset-0;
-          @apply bg-radial-[rgba(0,0,0,.035)_1px,transparent_1px] bg-size-[7px_7px] opacity-5 mix-blend-multiply;
+          @apply bg-radial-[var(--color-news-texture-dot)_1px,transparent_1px] bg-size-[7px_7px] opacity-5 mix-blend-multiply;
         }
 
         :is(p, ul, ol, blockquote) {
-          @apply leading-8 text-black/80;
+          @apply text-news-primary leading-8;
         }
 
         h1 {
@@ -46,7 +139,7 @@
           &::after {
             @apply content-[""];
             @apply mt-3 block h-px w-24;
-            @apply bg-linear-to-r from-[#FF4D3D] via-[#FFB800] to-transparent;
+            @apply from-news-accentline-from via-news-accentline-via to-news-accentline-to bg-linear-to-r;
             @apply opacity-70;
           }
         }
@@ -57,17 +150,17 @@
 
         ul {
           @apply mt-4 list-disc space-y-2 pl-6;
-          @apply text-black/75;
+          @apply text-news-secondary;
         }
 
         ol {
           @apply mt-4 list-decimal space-y-2 pl-6;
-          @apply text-black/75;
+          @apply text-news-secondary;
         }
 
         p {
           @apply mt-5;
-          @apply text-black/75;
+          @apply text-news-secondary;
 
           & + h2 {
             @apply mt-16;
@@ -76,37 +169,37 @@
 
         hr {
           @apply my-10 h-px border-0;
-          @apply bg-linear-to-r from-transparent via-black/15 to-transparent;
+          @apply via-news-hr-via bg-linear-to-r from-transparent to-transparent;
         }
 
         a[href] {
-          @apply underline decoration-black/20 underline-offset-4;
-          @apply hover:no-underline hover:decoration-[#FF4D3D]/60;
+          @apply decoration-news-link-underline underline underline-offset-4;
+          @apply hover:decoration-news-accentline-from/60 hover:no-underline;
         }
 
         blockquote {
-          @apply my-6 rounded-lg border border-black/10 bg-black/3;
+          @apply border-news-blockquote-line bg-news-blockquote-surface my-6 rounded-lg border;
           @apply relative px-5 py-4;
 
           &::before {
             @apply content-[""];
             @apply absolute top-0 left-0 h-full w-1 rounded-l-xl;
-            @apply bg-linear-to-b from-[#FF4D3D] via-[#FFB800] to-transparent;
+            @apply from-news-accentline-from via-news-accentline-via bg-linear-to-b to-transparent;
             @apply opacity-70;
           }
 
           p {
-            @apply mt-0 text-black/70;
+            @apply text-news-muted mt-0;
           }
         }
 
         pre {
-          @apply my-6 overflow-x-auto rounded-lg border border-black/10 bg-black/3;
+          @apply border-news-pre-line bg-news-pre-surface my-6 overflow-x-auto rounded-lg border;
           @apply p-4 text-sm leading-6;
         }
 
         code {
-          @apply rounded bg-black/5 px-1.5 py-0.5 text-[0.95em];
+          @apply bg-news-code-surface rounded px-1.5 py-0.5 text-[.95em];
         }
 
         footer {
