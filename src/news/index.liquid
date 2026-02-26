@@ -28,7 +28,7 @@
       <div>
         {% assign articles = collections.news | sort: 'data.date' | reverse %}
         {% for article in articles %}
-          {% unless article.url == page.url %}
+          {% unless article.url == page.url or article.data.draft == true %}
             <article
               class="card"
               data-slug="news-{{ article.fileSlug }}"
