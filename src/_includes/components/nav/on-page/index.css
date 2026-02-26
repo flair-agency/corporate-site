@@ -1,6 +1,6 @@
 nav.on-page {
   /* Flex */
-  @apply flex flex-1 items-center justify-end;
+  @apply flex items-center justify-end;
   /* Layout */
   @apply relative z-61 gap-3;
 
@@ -12,7 +12,7 @@ nav.on-page {
 
     & + menu {
       /* Flex */
-      @apply flex flex-1 flex-nowrap;
+      @apply flex flex-nowrap;
       /* Layout */
       @apply gap-2.5 overflow-x-auto px-0 py-1.5 whitespace-nowrap;
 
@@ -60,7 +60,7 @@ nav.on-page {
           /* Effects */
           @apply shadow-mobile-menu;
           /* Layout */
-          @apply absolute top-[calc(env(safe-area-inset-top)+3rem)] right-4 z-62 hidden min-w-55 p-2.5;
+          @apply absolute top-[calc(env(safe-area-inset-top)+1.75rem)] right-4 z-62 hidden min-w-55 p-2.5;
           /* Flex */
           @apply flex-col flex-nowrap;
           /* Border */

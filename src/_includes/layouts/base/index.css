@@ -1,11 +1,5 @@
 @layer components {
   body {
-    & > header,
-    & > footer {
-      /* Layout */
-      @apply mx-auto max-w-275;
-    }
-
     & > main {
       /* Layout */
       @apply mx-auto w-full max-w-6xl px-4;
@@ -15,8 +9,12 @@
   body > header {
     /* Layout */
     @apply sticky top-0 z-50 px-4 pt-[calc(env(safe-area-inset-top)+.5rem)] pb-3;
-    /* Flex */
-    @apply flex items-center justify-between gap-3;
+    /* Grid */
+    @apply grid items-end justify-items-end sm:justify-items-start sm:gap-3;
+    @apply grid-cols-[1fr_70px_minmax(0,64.375rem)_1fr];
+    @apply [grid-template-areas:"._logo_nav_."];
+    @apply [&>:has(.logo)]:[grid-area:logo];
+    @apply [&>nav.on-page]:[grid-area:nav];
     /* Background */
     @apply bg-linear-to-b from-page via-header-surface/90 to-header-surface/90 from-0% via-40% to-100%;
     /* Border */
@@ -69,7 +67,7 @@
 
     &[data-variant~="cool"] {
       /* Background */
-      @apply bg-linear-[180deg] from-surface/0 to-accent-cool/6;
+      @apply bg-linear-180 from-surface/0 to-accent-cool/6;
 
       & > hgroup > h2 {
         /* Text */
