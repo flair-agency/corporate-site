@@ -19,24 +19,63 @@ layer(base);
    */
 
   /* Brand palette */
-  --palette-brand-500: #ff5a3c;
-  /* Brand tints (relative via OKLCH lightness shift) */
-  --palette-brand-50: oklch(from var(--palette-brand-500) calc(l + 0.4) c h);
-  --palette-brand-100: oklch(from var(--palette-brand-500) calc(l + 0.32) c h);
-  --palette-brand-200: oklch(from var(--palette-brand-500) calc(l + 0.22) c h);
-  --palette-brand-300: oklch(from var(--palette-brand-500) calc(l + 0.12) c h);
-  --palette-brand-ink: #9a3412;
-  --palette-accent-warm-300: #fdba74;
-  --palette-accent-warm-500: #f59e0b;
-  --palette-attention-600: #dc2626;
-  --palette-attention-100: oklch(
-    from var(--palette-attention-600) calc(l + 0.36) c h
-  );
+  /* Warm palette (standardized hue-based scales) */
+
+  /* Coral (brand hue) */
+  --palette-coral-50: rgba(255,255,255,1);
+  --palette-coral-100: rgba(255,255,255,1);
+  --palette-coral-200: rgba(255,212,203,1);
+  --palette-coral-300: rgba(255,164,145,1);
+  --palette-coral-500: rgba(255,90,60,1);
+  --palette-coral-900: rgba(154,52,18,1);
+
+  /* Orange (warm accent; Tailwind default) */
+  --palette-orange-300: var(--color-orange-300);
+  --palette-orange-500: var(--color-orange-500);
+
+  /* Red (danger/attention; Tailwind default + mid-steps) */
+  --palette-red-50: var(--color-red-50);
+  --palette-red-100: var(--color-red-100);
+  --palette-red-150: rgba(254,214,214,1); /* Mid between 100 and 200 */
+  --palette-red-200: var(--color-red-200);
+  --palette-red-250: rgba(253,184,184,1); /* Mid between 200 and 300 */
+  --palette-red-300: var(--color-red-300);
+  --palette-red-350: rgba(250,139,139,1); /* Mid between 300 and 400 */
+  --palette-red-400: var(--color-red-400);
+  --palette-red-500: var(--color-red-500);
+  --palette-red-600: var(--color-red-600);
+  --palette-red-700: var(--color-red-700);
+  --palette-red-800: var(--color-red-800);
+  --palette-red-900: var(--color-red-900);
+
+  /* ---------------------------------------------------------------------- */
+  /* Back-compat aliases (to be removed once usages are migrated) */
+  /* ---------------------------------------------------------------------- */
+
+  /* Brand palette (legacy) */
+  --palette-brand-50: var(--palette-coral-50);
+  --palette-brand-100: var(--palette-coral-100);
+  --palette-brand-200: var(--palette-coral-200);
+  --palette-brand-300: var(--palette-coral-300);
+  --palette-brand-500: var(--palette-coral-500);
+  --palette-brand-ink: var(--palette-coral-900);
+
+  /* Accent warm (legacy) */
+  --palette-accent-warm-300: var(--palette-orange-300);
+  --palette-accent-warm-500: var(--palette-orange-500);
+
+  /* Amber (legacy; deprecated) */
+  --palette-amber-300: var(--palette-orange-300);
+  --palette-amber-500: var(--palette-orange-500);
+
+  /* Attention (legacy) */
+  --palette-attention-100: var(--palette-red-100);
+  --palette-attention-600: var(--palette-red-600);
 
   /* Neutral palette */
+--palette-black: #000;
   --palette-neutral-0: #fff;
   --palette-neutral-25: oklch(from var(--palette-black) 0.975 0 0);
-  --palette-black: #000;
   --palette-neutral-50: oklch(from var(--palette-black) 0.98 0 0);
   --palette-neutral-150: oklch(from var(--palette-black) 0.94 0 0);
   --palette-neutral-200: oklch(from var(--palette-black) 0.9 0 0);

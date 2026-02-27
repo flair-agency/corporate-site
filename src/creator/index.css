@@ -1,38 +1,19 @@
 /* ===== Creator Page Specific Styles ===== */
 @theme {
-  --color-creator-red-250: #fee2e2;
-  --color-creator-red-200: oklch(
-    from var(--color-creator-red-250) calc(l + 0.03) c h
-  );
-  --color-creator-red-150: oklch(
-    from var(--color-creator-red-250) calc(l + 0.06) c h
-  );
-  --color-creator-red-100: oklch(
-    from var(--color-creator-red-250) calc(l + 0.09) c h
-  );
-  --color-creator-red-50: oklch(
-    from var(--color-creator-red-250) calc(l + 0.12) c h
-  );
-
-  --color-creator-icon: var(--palette-brand-500);
+  --color-creator-icon: var(--color-brand);
 
   /* Comparison table (attention column highlights) */
   --color-creator-comparison-col: var(--color-attention);
 
   /* How-to-start flow (step gradient + marker) */
-  --color-creator-flow-step-1-to: var(--color-surface);
-  --color-creator-flow-step-2-to: var(--color-creator-red-50);
-  --color-creator-flow-step-3-to: var(--color-creator-red-100);
-  --color-creator-flow-step-4-to: var(--color-creator-red-150);
-  --color-creator-flow-step-5-to: var(--color-creator-red-200);
-  --color-creator-flow-step-6-to: var(--color-creator-red-250);
+  --color-creator-flow-surface: var(--palette-red-100);
 
-  --color-creator-flow-step-1-marker: var(--color-red-400);
-  --color-creator-flow-step-2-marker: var(--color-red-500);
-  --color-creator-flow-step-3-marker: var(--color-red-600);
-  --color-creator-flow-step-4-marker: var(--color-red-700);
-  --color-creator-flow-step-5-marker: var(--color-red-800);
-  --color-creator-flow-step-6-marker: var(--color-red-900);
+  --color-creator-flow-step-1-marker: var(--palette-red-300);
+  --color-creator-flow-step-2-marker: var(--palette-red-350);
+  --color-creator-flow-step-3-marker: var(--palette-red-400);
+  --color-creator-flow-step-4-marker: var(--palette-red-500);
+  --color-creator-flow-step-5-marker: var(--palette-red-600);
+  --color-creator-flow-step-6-marker: var(--palette-red-700);
 }
 
 body.creator {
@@ -54,7 +35,7 @@ body.creator {
   }
 
   & > main {
-    @apply font-["M_PLUS_Rounded_1c",var(--font-fallback-sans)];
+    @apply font-["M_PLUS_Rounded_1c",var(--font-family-sans)];
   }
 
   section.hero {
@@ -74,7 +55,7 @@ body.creator {
       @apply bg-surface/1 relative z-20 rounded-[.3rem] backdrop-filter-[blur(2px)_saturate(110%)] text-shadow-[0_2px_10px_rgba(0,0,0,.45),0_0_2px_rgba(0,0,0,.65)];
 
       h2 {
-        @apply mx-auto mb-4 max-w-[22em] font-["Zen_Kurenaido",var(--font-fallback-sans)] text-3xl font-bold text-balance md:text-5xl;
+        @apply mx-auto mb-4 max-w-[22em] font-["Zen_Kurenaido",var(--font-family-sans)] text-3xl font-bold text-balance md:text-5xl;
       }
     }
 
@@ -150,12 +131,12 @@ body.creator {
     ol.flow {
       li {
         @apply bg-linear-to-b from-0% to-80% sm:bg-linear-to-r;
-        @apply nth-[1]:to-creator-flow-step-1-to nth-[1]:before:bg-creator-flow-step-1-marker nth-[1]:from-inherit;
-        @apply nth-[2]:from-creator-flow-step-1-to nth-[2]:to-creator-flow-step-2-to nth-[2]:before:bg-creator-flow-step-2-marker;
-        @apply nth-[3]:from-creator-flow-step-2-to nth-[3]:to-creator-flow-step-3-to nth-[3]:before:bg-creator-flow-step-3-marker;
-        @apply nth-[4]:from-creator-flow-step-3-to nth-[4]:to-creator-flow-step-4-to nth-[4]:before:bg-creator-flow-step-4-marker;
-        @apply nth-[5]:from-creator-flow-step-4-to nth-[5]:to-creator-flow-step-5-to nth-[5]:before:bg-creator-flow-step-5-marker;
-        @apply nth-[6]:from-creator-flow-step-5-to nth-[6]:to-creator-flow-step-6-to nth-[6]:before:bg-creator-flow-step-6-marker;
+        @apply nth-[1]:to-creator-flow-surface/5 nth-[1]:before:bg-creator-flow-step-1-marker nth-[1]:from-inherit;
+        @apply nth-[2]:from-creator-flow-surface/5 nth-[2]:to-creator-flow-surface/25 nth-[2]:before:bg-creator-flow-step-2-marker;
+        @apply nth-[3]:from-creator-flow-surface/25 nth-[3]:to-creator-flow-surface/45 nth-[3]:before:bg-creator-flow-step-3-marker;
+        @apply nth-[4]:from-creator-flow-surface/45 nth-[4]:to-creator-flow-surface/65 nth-[4]:before:bg-creator-flow-step-4-marker;
+        @apply nth-[5]:from-creator-flow-surface/65 nth-[5]:to-creator-flow-surface/85 nth-[5]:before:bg-creator-flow-step-5-marker;
+        @apply nth-[6]:from-creator-flow-surface/85 nth-[6]:to-creator-flow-surface nth-[6]:before:bg-creator-flow-step-6-marker;
       }
     }
 
