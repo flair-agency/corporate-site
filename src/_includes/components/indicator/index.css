@@ -1,6 +1,6 @@
 .indicator {
   /* Text */
-  @apply text-secondary;
+  @apply text-ink--secondary;
   /* Flex */
   @apply flex flex-col items-center;
   /* Layout */

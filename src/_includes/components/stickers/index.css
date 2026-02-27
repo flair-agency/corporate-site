@@ -8,13 +8,13 @@
     /* Layout */
     @apply inline-block px-3.5 py-1.5;
     /* Text */
-    @apply text-strong text-[clamp(.72rem,2.6vw,.82rem)] leading-none font-bold tracking-wide;
+    @apply text-ink--strong text-[clamp(.72rem,2.6vw,.82rem)] leading-none font-bold tracking-wide;
     /* Background */
     @apply backdrop-blur-[6px];
     /* Border */
-    @apply border border-sticker-line/46 rounded-full;
+    @apply border border-white/46 rounded-full;
     /* Effects */
-    @apply shadow-sticker will-change-transform;
+    @apply shadow-[0_4px_14px_black/1] will-change-transform;
     /* Animation */
     @apply motion-reduce:animate-none!;
 

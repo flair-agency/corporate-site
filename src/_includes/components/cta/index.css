@@ -1,11 +1,9 @@
 .cta {
-  @apply mt-[clamp(20px,5vw,36px)] text-center;
+  @apply mt-[clamp(1rem,5vw,2.5rem)] text-center;
 
   &.note {
-    /* Layout */
-    @apply mt-2.5;
     /* Text */
-    @apply text-secondary text-sm;
+    @apply text-ink--secondary text-sm;
 
     a {
       /* Text */
@@ -17,7 +15,7 @@
     /* Layout */
     @apply relative isolate inline-block overflow-hidden px-5 py-3;
     /* Text */
-    @apply text-inverse font-bold no-underline;
+    @apply text-ink--inverse font-bold no-underline;
     /* Background */
     @apply bg-brand;
     /* Border */
@@ -25,17 +23,24 @@
     /* Animation */
     @apply transition-[transform_.08s_ease,box-shadow_.2s_ease];
     /* Effects */
-    @apply hover:shadow-brand-hover hover:-translate-y-px;
+    @apply hover:shadow-hover--brand hover:-translate-y-px;
+
+    [data-variant~="cool"] & {
+      /* Background */
+      @apply bg-brand--cool;
+      /* Effects */
+      @apply hover:shadow-hover--cool;
+    }
 
     &[data-variant~="secondary"] {
       /* Text */
-      @apply text-secondary font-[weight:inherit];
+      @apply text-ink--secondary font-[weight:inherit];
       /* Background */
       @apply bg-inherit;
       /* Border */
       @apply border-line border;
       /* Effects */
-      @apply hover:shadow-none;
+      @apply hover:shadow-md;
     }
   }
 }

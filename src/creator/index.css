@@ -3,7 +3,7 @@
   --color-creator-icon: var(--color-brand);
 
   /* Comparison table (attention column highlights) */
-  --color-creator-comparison-col: var(--color-attention);
+  --color-creator-comparison-col: var(--color-ink--attention);
 
   /* How-to-start flow (step gradient + marker) */
   --color-creator-flow-surface: var(--palette-red-100);
@@ -30,7 +30,7 @@ body.creator {
     }
 
     p {
-      @apply text-secondary text-sm;
+      @apply text-ink--secondary text-sm;
     }
   }
 
@@ -40,7 +40,7 @@ body.creator {
 
   section.hero {
     &::before {
-      @apply bg-hero-fallback-surface transform-[scale(1.08)] bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center filter-[blur(6px)_brightness(.74)_saturate(.9)_contrast(.7)] transition-[background-image] duration-500 ease-in-out;
+      @apply bg-(--palette-slate-900) transform-[scale(1.08)] bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center filter-[blur(6px)_brightness(.74)_saturate(.9)_contrast(.7)] transition-[background-image] duration-500 ease-in-out;
     }
 
     .card[data-variant~="media"] {
@@ -108,7 +108,7 @@ body.creator {
 
       th,
       td {
-        @apply nth-[2]:text-secondary;
+        @apply nth-[2]:text-ink--secondary;
       }
 
       & {

@@ -1,10 +1,10 @@
 .card[data-variant~="media"] {
   /* Background */
-  @apply bg-ink/5;
+  @apply bg-black/5;
   /* Layout */
   @apply pointer-events-none self-stretch overflow-hidden -translate-x-1/2 -translate-y-1/2;
   /* Effects */
-  @apply shadow-[0_20px_40px_from_var(--color-ink)/25] will-change-transform contain-layout contain-size;
+  @apply shadow-[0_20px_40px_black/25] will-change-transform contain-layout contain-size;
   /* Animation */
   @apply transform-[translateZ(0)];
 

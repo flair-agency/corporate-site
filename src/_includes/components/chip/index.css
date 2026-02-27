@@ -2,16 +2,32 @@
   /* Layout */
   @apply mb-2.5 inline-block px-2.5 py-1.5;
   /* Text */
-  @apply text-brand-chip-primary text-xs tracking-2xl;
+  @apply tracking-2xl text-xs text-(--palette-coral-900);
   /* Background */
-  @apply bg-brand-chip-surface;
+  @apply bg-(--palette-coral-100);
   /* Border */
-  @apply border border-brand-chip-line rounded-full;
+  @apply rounded-full border border-(--palette-coral-300);
+
+  &[data-variant~="secondary"] {
+    /* Background */
+    @apply bg-(--palette-orange-50);
+    /* Border */
+    @apply border-(--palette-coral-200);
+  }
 
   &[data-variant~="accent"] {
     /* Background */
-    @apply bg-brand-chip-accent-surface;
+    @apply bg-(--palette-orange-100);
     /* Border */
-    @apply border-brand-chip-accent-line;
+    @apply border-(--palette-coral-300);
+  }
+
+  [data-variant~="cool"] & {
+    /* Text */
+    @apply text-blue-700;
+    /* Background */
+    @apply bg-blue-50;
+    /* Border */
+    @apply border-blue-200;
   }
 }

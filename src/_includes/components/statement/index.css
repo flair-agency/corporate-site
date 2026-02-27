@@ -2,7 +2,7 @@
   /* Layout */
   @apply relative pt-4 pr-0 pb-0 pl-4.5;
   /* Text */
-  @apply font-["Zen_Kurenaido",var(--font-fallback-sans)];
+  @apply font-["Zen_Kurenaido",var(--font-family-sans)];
 
   &::before {
     /* Generated Content */

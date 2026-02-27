@@ -10,23 +10,23 @@ nav.on-site {
     /* Grid */
     @apply flex flex-col flex-nowrap justify-center sm:flex-row sm:flex-wrap;
     /* Text */
-    @apply text-on-site-primary text-sm;
+    @apply text-(--palette-neutral-500) text-sm;
 
     li a {
       /* Layout */
       @apply px-2.5 py-1.5;
       /* Background */
-      @apply hover:bg-ink-cool/6;
+      @apply hover:bg-ink--cool/6;
       /* Border */
       @apply rounded-full border border-transparent;
 
       &[aria-current="page"] {
         /* Text */
-        @apply text-ink-cool;
+        @apply text-ink--cool;
         /* Background */
-        @apply bg-ink-cool/8;
+        @apply bg-ink--cool/8;
         /* Border */
-        @apply border-ink-cool/12;
+        @apply border-ink--cool/12;
       }
     }
   }

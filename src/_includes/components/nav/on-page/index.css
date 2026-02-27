@@ -23,28 +23,28 @@ nav.on-page {
 
       &::-webkit-scrollbar-thumb {
         /* Background */
-        @apply bg-on-page-scrollbar-thumb;
+        @apply bg-(--palette-neutral-200);
         /* Border */
         @apply rounded-full;
       }
 
       li a {
         /* Text */
-        @apply text-on-page-link text-sm;
+        @apply text-(--palette-neutral-700) text-sm;
         /* Layout */
         @apply px-2.5 py-2;
         /* Background */
-        @apply hover:bg-on-page-link-hover-surface;
+        @apply hover:bg-(--palette-coral-150);
         /* Text */
-        @apply hover:text-on-page-link-hover-primary;
+        @apply hover:text-ink--secondary;
         /* Border */
         @apply rounded-full;
 
         &[data-state~="active"] {
           /* Background */
-          @apply bg-on-page-link-active-surface;
+          @apply bg-brand;
           /* Text */
-          @apply text-on-page-link-active-primary;
+          @apply text-ink--inverse;
         }
       }
     }
@@ -56,9 +56,9 @@ nav.on-page {
 
         & + menu {
           /* Background */
-          @apply bg-mobile-menu-surface/96;
+          @apply bg-white/96;
           /* Effects */
-          @apply shadow-mobile-menu;
+          @apply shadow-[0_14px_36px_black/12];
           /* Layout */
           @apply absolute top-[calc(env(safe-area-inset-top)+1.75rem)] right-4 z-62 hidden min-w-55 p-2.5;
           /* Flex */
@@ -91,7 +91,7 @@ nav.on-page {
   html.js body:has(nav.on-page) {
     &::before {
       /* Background */
-      @apply bg-mobile-backdrop/40;
+      @apply bg-black/40;
       /* Layout */
       @apply pointer-events-none fixed inset-0 z-49 opacity-0;
       /* Animation */

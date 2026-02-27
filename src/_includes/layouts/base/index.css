@@ -16,11 +16,11 @@
     @apply [&>:has(.logo)]:[grid-area:logo];
     @apply [&>nav.on-page]:[grid-area:nav];
     /* Background */
-    @apply bg-linear-to-b from-page via-header-surface/90 to-header-surface/90 from-0% via-40% to-100%;
+    @apply from-page via-white/90 to-white/90 bg-linear-to-b from-0% via-40% to-100%;
     /* Border */
-    @apply border-b border-header-line;
+    @apply border-(--palette-neutral-150) border-b;
     /* Effects */
-    @apply shadow-sm backdrop-filter-(--header-blur);
+    @apply shadow-sm backdrop-filter-[saturate(180%)_blur(10px)];
   }
 
   [id] {
@@ -32,14 +32,14 @@
     /* Layout */
     @apply px-6 pt-6 pb-[calc(env(safe-area-inset-bottom)+.5rem)] text-center;
     /* Background */
-    @apply bg-linear-to-b from-ink-cool/4 via-ink-cool/2 to-page from-0% via-35% to-100%;
+    @apply from-ink--cool/4 via-ink--cool/2 to-page bg-linear-to-b from-0% via-35% to-100%;
     /* Text */
-    @apply text-secondary;
+    @apply text-ink--secondary;
   }
 
   body > main > section {
     /* Layout */
-    @apply mx-(--section-margin-x) my-(--section-margin-y) px-(--section-pad-x) py-(--section-pad-y);
+    @apply mx-4 my-8 px-4 py-16;
 
     & {
       & > hgroup {
@@ -48,7 +48,7 @@
 
         & > h2 {
           /* Text */
-          @apply text-primary text-2xl font-bold md:text-3xl;
+          @apply text-ink text-2xl font-bold md:text-3xl;
 
           & + .accentline {
             /* Layout */
@@ -59,7 +59,7 @@
             /* Layout */
             @apply mt-4;
             /* Text */
-            @apply text-secondary text-base md:text-lg;
+            @apply text-ink--secondary text-base md:text-lg;
           }
         }
       }
@@ -67,15 +67,15 @@
 
     &[data-variant~="cool"] {
       /* Background */
-      @apply bg-linear-180 from-surface/0 to-accent-cool/6;
+      @apply from-surface/0 to-ink--cool/6 bg-linear-180;
 
       & > hgroup > h2 {
         /* Text */
-        @apply text-cool-head;
+        @apply text-ink--cool;
 
         & + .accentline {
           /* Background */
-          @apply bg-linear-to-r from-underline-cool-from via-underline-cool-to;
+          @apply from-brand--cool bg-linear-to-r via-(--palette-cyan-400);
         }
       }
 
@@ -85,23 +85,7 @@
       & h3,
       & h4 {
         /* Text */
-        @apply text-cool-body;
-      }
-
-      .chip {
-        /* Background */
-        @apply bg-cool-chip-surface;
-        /* Border */
-        @apply border-cool-chip-line;
-        /* Text */
-        @apply text-cool-chip-primary;
-      }
-
-      .cta.btn {
-        /* Background */
-        @apply bg-cool-cta-surface;
-        /* Effects */
-        @apply hover:shadow-[0_6px_18px_from_var(--color-accent-cool)/25];
+        @apply text-ink--secondary--cool;
       }
     }
 
@@ -109,11 +93,11 @@
       /* Layout */
       @apply relative isolate z-1 mx-4 mt-8 mb-2 overflow-hidden rounded-lg text-center;
       /* Flex */
-      @apply flex min-h-(--hero-height) flex-col justify-center;
+      @apply min-h-[clamp(520px,70vh,680px)] flex flex-col justify-center;
       /* Background */
-      @apply bg-hero-fallback-surface bg-cover bg-center;
+      @apply bg-(--palette-slate-900) bg-cover bg-center;
       /* Text */
-      @apply text-inverse;
+      @apply text-ink--inverse;
       /* Animation */
       @apply transition-[background-image_0.5s_ease-in-out];
 
@@ -123,7 +107,7 @@
         /* Layout */
         @apply absolute inset-0 -z-10;
         /* Background */
-        @apply bg-hero-overlay-surface;
+        @apply bg-black/2;
         /* Border */
         @apply rounded-(--radius-base);
       }
@@ -134,7 +118,7 @@
         /* Text */
         @apply text-3xl leading-tight font-bold text-inherit md:text-5xl;
         /* Effects */
-        @apply text-shadow-(--color-title-shadow);
+        @apply text-shadow-2xs;
 
         & + p {
           /* Layout */

@@ -1,15 +1,33 @@
 /* Liquid Glass */
+
 body:has(main[data-variant~="glass"]) {
+  /* Liquid Glass raw tokens (project-native) */
+  --glass-surface: oklch(from var(--palette-neutral-0) l c h / 0.62);
+  --glass-surface-strong: oklch(from var(--palette-neutral-0) l c h / 0.78);
+  --glass-line: oklch(from var(--palette-neutral-0) l c h / 0.38);
+  --glass-line-strong: oklch(from var(--palette-neutral-0) l c h / 0.52);
+  --glass-shadow: 0 14px 36px oklch(from var(--color-black) l c h / 0.12);
+  --glass-shadow-weak: 0 10px 28px
+    oklch(from var(--color-black) l c h / 0.08);
+  --glass-blur: saturate(140%) blur(14px);
+  --glass-blur-strong: saturate(160%) blur(18px);
+
+  /* Liquid Glass variant */
+  --color-surface--glass: var(--glass-surface);
+  --color-surface--glass--strong: var(--glass-surface-strong);
+  --color-line--glass: var(--glass-line);
+  --color-line--glass--strong: var(--glass-line-strong);
+
   > header {
     /* Effects */
-    @apply shadow-[0_10px_28px_from_var(--color-ink-cool)/8];
+    @apply shadow-[0_10px_28px_slate-950/8];
   }
 
   main > section.hero {
     /* Background */
-    @apply bg-glass-surface-strong;
+    @apply bg-(--color-surface--glass--strong);
     /* Border */
-    @apply border border-solid border-glass-line-strong;
+    @apply border border-solid border-(--color-line--glass--strong);
     /* Layout */
     @apply rounded-2xl;
     /* Effects */
@@ -18,9 +36,9 @@ body:has(main[data-variant~="glass"]) {
 
   main > section.panel {
     /* Background */
-    @apply bg-glass-surface;
+    @apply bg-(--color-surface--glass);
     /* Border */
-    @apply border border-solid border-glass-line;
+    @apply border border-solid border-(--color-line--glass);
     /* Layout */
     @apply rounded-2xl;
     /* Effects */
@@ -30,9 +48,9 @@ body:has(main[data-variant~="glass"]) {
   @media (max-width: 767px) {
     html.js nav.on-page > button.toggle + menu {
       /* Background */
-      @apply bg-glass-surface;
+      @apply bg-(--color-surface--glass);
       /* Border */
-      @apply border border-glass-line;
+      @apply border border-(--color-line--glass);
       /* Effects */
       @apply shadow-(--glass-shadow) backdrop-filter-(--glass-blur);
     }
@@ -44,7 +62,7 @@ body:has(main[data-variant~="glass"]) {
     /* Border */
     @apply border border-solid border-surface/30;
     /* Effects */
-    @apply shadow-[inset_0_1px_0_from_var(--color-surface)/28,0_10px_24px_from_var(--color-brand)/18] backdrop-filter-(--glass-blur);
+    @apply shadow-[inset_0_1px_0_white/28,0_10px_24px_brand/18] backdrop-filter-(--glass-blur);
 
     &::before {
       /* Generated Content */
@@ -65,7 +83,7 @@ body:has(main[data-variant~="glass"]) {
 
     &:focus-visible {
       /* Effects */
-      @apply shadow-[inset_0_1px_0_from_var(--color-surface)/28,0_10px_24px_from_var(--color-brand)/18,0_0_0_3px_from_var(--color-brand)/22];
+      @apply shadow-[inset_0_1px_0_white/28,0_10px_24px_brand/18,0_0_0_3px_brand/22];
       /* Appearance */
       @apply outline-none;
     }
@@ -87,17 +105,17 @@ body:has(main[data-variant~="glass"]) {
       /* Background */
       @apply bg-surface/58;
       /* Text */
-      @apply text-secondary;
+      @apply text-ink--secondary;
       /* Border */
-      @apply border border-solid border-ink-cool/14;
+      @apply border border-solid border-slate-950/14;
       /* Effects */
-      @apply shadow-[inset_0_1px_0_from_var(--color-surface)/38,0_10px_24px_from_var(--color-ink-cool)/10] backdrop-filter-(--glass-blur);
+      @apply shadow-[inset_0_1px_0_from_white/38,0_10px_24px_slate-950/10] backdrop-filter-(--glass-blur);
       /* Appearance */
       @apply before:opacity-18;
 
       &:focus-visible {
         /* Effects */
-        @apply shadow-[inset_0_1px_0_from_var(--color-surface)/38,0_10px_24px_from_var(--color-ink-cool)/10,0_0_0_3px_from_var(--color-ink-cool)/16];
+        @apply shadow-[inset_0_1px_0_white/38,0_10px_24px_slate-950/10,0_0_0_3px_slate-950/16];
         /* Appearance */
         @apply outline-none;
       }

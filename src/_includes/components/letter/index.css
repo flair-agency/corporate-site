@@ -2,11 +2,11 @@ blockquote.letter {
   /* Layout */
   @apply relative isolate overflow-hidden p-8 sm:p-10;
   /* Text */
-  @apply text-letter-primary font-["Zen_Kurenaido",var(--font-fallback-sans)];
+  @apply text-gray-700 font-["Zen_Kurenaido",var(--font-family-sans)];
   /* Background */
-  @apply bg-letter-surface/70;
+  @apply bg-amber-50/70;
   /* Border */
-  @apply border border-letter-line;
+  @apply border border-amber-100;
   /* Effects */
   @apply shadow-sm;
 

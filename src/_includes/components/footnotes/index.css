@@ -10,7 +10,7 @@ footer ul.note {
     @apply pl-1;
 
     /* Text */
-    @apply text-secondary text-xs;
+    @apply text-ink--secondary text-xs;
 
     /* Generated Content */
     @apply marker:text-3xs;

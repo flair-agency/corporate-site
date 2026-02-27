@@ -22,7 +22,7 @@ ol.flow {
       /* Animation */
       @apply transform;
       /* Effects */
-      @apply shadow-[0_8px_16px_from_var(--color-ink-cool)/8];
+      @apply shadow-[0_8px_16px_black/8];
     }
 
     &::before {
@@ -31,11 +31,11 @@ ol.flow {
       /* Layout */
       @apply absolute top-4 left-4 grid h-6 w-6 place-items-center;
       /* Background */
-      @apply bg-attention;
+      @apply bg-surface--attention;
       /* Border */
       @apply rounded-full;
       /* Text */
-      @apply text-inverse text-xs font-bold;
+      @apply text-ink--inverse text-xs font-bold;
       /* Effects */
       @apply shadow-[0_0_0_3px_var(--color-surface)];
     }
@@ -49,7 +49,7 @@ ol.flow {
       /* Layout */
       @apply mt-3;
       /* Text */
-      @apply text-secondary text-sm;
+      @apply text-ink--secondary text-sm;
     }
   }
 

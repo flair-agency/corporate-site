@@ -5,12 +5,6 @@ layer(base);
 
 @import "tailwindcss";
 
-/*
- * ==========================================================================
- * Design tokens (Tailwind v4 @theme)
- * ==========================================================================
- */
-
 :root {
   /*
    * ========================================================================
@@ -18,29 +12,75 @@ layer(base);
    * ========================================================================
    */
 
-  /* Brand palette */
-  /* Warm palette (standardized hue-based scales) */
-
-  /* Coral (brand hue) */
-  --palette-coral-50: rgba(255,255,255,1);
-  --palette-coral-100: rgba(255,255,255,1);
-  --palette-coral-200: rgba(255,212,203,1);
-  --palette-coral-300: rgba(255,164,145,1);
-  --palette-coral-500: rgba(255,90,60,1);
-  --palette-coral-900: rgba(154,52,18,1);
+  /* Coral (brand hue; perceptually balanced scale) */
+  --palette-coral-50: color-mix(
+    in oklch,
+    var(--color-white) 96%,
+    var(--palette-coral-500) 4%
+  );
+  --palette-coral-100: color-mix(
+    in oklch,
+    var(--color-white) 92%,
+    var(--palette-coral-500) 8%
+  );
+  --palette-coral-150: color-mix(
+    in oklch,
+    var(--color-white) 84%,
+    var(--palette-coral-500) 16%
+  );
+  --palette-coral-200: color-mix(
+    in oklch,
+    var(--color-white) 76%,
+    var(--palette-coral-500) 24%
+  );
+  --palette-coral-300: color-mix(
+    in oklch,
+    var(--color-white) 60%,
+    var(--palette-coral-500) 40%
+  );
+  --palette-coral-400: color-mix(
+    in oklch,
+    var(--color-white) 35%,
+    var(--palette-coral-500) 65%
+  );
+  --palette-coral-500: rgba(255, 90, 60, 1);
+  --palette-coral-600: color-mix(
+    in oklch,
+    var(--palette-coral-500) 85%,
+    var(--palette-black) 15%
+  );
+  --palette-coral-700: color-mix(
+    in oklch,
+    var(--palette-coral-500) 70%,
+    var(--palette-black) 30%
+  );
+  --palette-coral-800: color-mix(
+    in oklch,
+    var(--palette-coral-500) 55%,
+    var(--palette-black) 45%
+  );
+  --palette-coral-900: color-mix(
+    in oklch,
+    var(--palette-coral-500) 40%,
+    var(--palette-black) 60%
+  );
 
   /* Orange (warm accent; Tailwind default) */
+  --palette-orange-50: var(--color-orange-50);
+  --palette-orange-100: var(--color-orange-100);
+  --palette-orange-200: var(--color-orange-200);
   --palette-orange-300: var(--color-orange-300);
+  --palette-orange-400: var(--color-orange-400);
   --palette-orange-500: var(--color-orange-500);
 
   /* Red (danger/attention; Tailwind default + mid-steps) */
   --palette-red-50: var(--color-red-50);
   --palette-red-100: var(--color-red-100);
-  --palette-red-150: rgba(254,214,214,1); /* Mid between 100 and 200 */
+  --palette-red-150: rgba(254 214 214 / 1); /* Mid between 100 and 200 */
   --palette-red-200: var(--color-red-200);
-  --palette-red-250: rgba(253,184,184,1); /* Mid between 200 and 300 */
+  --palette-red-250: rgba(253 184 184 / 1); /* Mid between 200 and 300 */
   --palette-red-300: var(--color-red-300);
-  --palette-red-350: rgba(250,139,139,1); /* Mid between 300 and 400 */
+  --palette-red-350: rgba(250 139 139 / 1); /* Mid between 300 and 400 */
   --palette-red-400: var(--color-red-400);
   --palette-red-500: var(--color-red-500);
   --palette-red-600: var(--color-red-600);
@@ -48,93 +88,72 @@ layer(base);
   --palette-red-800: var(--color-red-800);
   --palette-red-900: var(--color-red-900);
 
-  /* ---------------------------------------------------------------------- */
-  /* Back-compat aliases (to be removed once usages are migrated) */
-  /* ---------------------------------------------------------------------- */
+  /* Neutral palette (Tailwind default: neutral) */
+  --palette-black: var(--color-black);
+  --palette-neutral-0: var(--color-white);
+  --palette-neutral-25: color-mix(
+    in oklch,
+    var(--color-white) 50%,
+    var(--color-neutral-50) 50%
+  );
+  --palette-neutral-50: var(--color-neutral-50);
+  --palette-neutral-150: color-mix(
+    in oklch,
+    var(--color-neutral-100) 50%,
+    var(--color-neutral-200) 50%
+  );
+  --palette-neutral-200: var(--color-neutral-200);
+  --palette-neutral-500: var(--color-neutral-500);
+  --palette-neutral-600: var(--color-neutral-600);
+  --palette-neutral-650: color-mix(
+    in oklch,
+    var(--color-neutral-600) 50%,
+    var(--color-neutral-700) 50%
+  );
+  --palette-neutral-700: var(--color-neutral-700);
+  --palette-neutral-800: var(--color-neutral-800);
+  --palette-neutral-850: color-mix(
+    in oklch,
+    var(--color-neutral-800) 50%,
+    var(--color-neutral-900) 50%
+  );
+  --palette-neutral-900: var(--color-neutral-900);
 
-  /* Brand palette (legacy) */
-  --palette-brand-50: var(--palette-coral-50);
-  --palette-brand-100: var(--palette-coral-100);
-  --palette-brand-200: var(--palette-coral-200);
-  --palette-brand-300: var(--palette-coral-300);
-  --palette-brand-500: var(--palette-coral-500);
-  --palette-brand-ink: var(--palette-coral-900);
-
-  /* Accent warm (legacy) */
-  --palette-accent-warm-300: var(--palette-orange-300);
-  --palette-accent-warm-500: var(--palette-orange-500);
-
-  /* Amber (legacy; deprecated) */
-  --palette-amber-300: var(--palette-orange-300);
-  --palette-amber-500: var(--palette-orange-500);
-
-  /* Attention (legacy) */
-  --palette-attention-100: var(--palette-red-100);
-  --palette-attention-600: var(--palette-red-600);
-
-  /* Neutral palette */
---palette-black: #000;
-  --palette-neutral-0: #fff;
-  --palette-neutral-25: oklch(from var(--palette-black) 0.975 0 0);
-  --palette-neutral-50: oklch(from var(--palette-black) 0.98 0 0);
-  --palette-neutral-150: oklch(from var(--palette-black) 0.94 0 0);
-  --palette-neutral-200: oklch(from var(--palette-black) 0.9 0 0);
-  --palette-neutral-500: oklch(from var(--palette-black) 0.6 0 0);
-  --palette-neutral-600: oklch(from var(--palette-black) 0.5 0 0);
-  --palette-neutral-650: oklch(from var(--palette-black) 0.55 0 0);
-  --palette-neutral-700: oklch(from var(--palette-black) 0.4 0 0);
-  --palette-neutral-800: oklch(from var(--palette-black) 0.3 0 0);
-  --palette-neutral-850: oklch(from var(--palette-black) 0.35 0 0);
-  --palette-neutral-900: oklch(from var(--palette-black) 0.2 0 0);
-
-  /* Accent palette */
-  --palette-blue-500: #3b82f6;
-  --palette-cyan-400: #22d3ee;
-  --palette-charcoal-900: #1a202c;
-  --palette-cool-900: #0f172a;
-
-  /* Layout (consumed via CSS vars in utilities) */
-  --hero-height: clamp(520px, 70vh, 680px);
-  --section-pad-y: 4rem;
-  --section-pad-x: 1rem;
-  --section-margin-y: 2rem;
-  --section-margin-x: 1rem;
-
-  /* Header blur (consumed via backdrop-filter-(--header-blur)) */
-  --header-blur: saturate(180%) blur(10px);
-
-  /* Liquid Glass raw tokens (project-native) */
-  --glass-surface: oklch(from var(--palette-neutral-0) l c h / 0.62);
-  --glass-surface-strong: oklch(from var(--palette-neutral-0) l c h / 0.78);
-  --glass-line: oklch(from var(--palette-neutral-0) l c h / 0.38);
-  --glass-line-strong: oklch(from var(--palette-neutral-0) l c h / 0.52);
-  --glass-shadow: 0 14px 36px oklch(from var(--palette-cool-900) l c h / 0.12);
-  --glass-shadow-weak: 0 10px 28px
-    oklch(from var(--palette-cool-900) l c h / 0.08);
-  --glass-blur: saturate(140%) blur(14px);
-  --glass-blur-strong: saturate(160%) blur(18px);
+  /* Accent palette (Tailwind-aligned) */
+  --palette-blue-500: var(--color-blue-500);
+  --palette-cyan-400: var(--color-cyan-400);
+  --palette-slate-900: var(--color-slate-900);
+  --palette-slate-950: var(--color-slate-950);
 }
 
+/*
+ * ==========================================================================
+ * Design tokens (Tailwind v4 @theme)
+ * ==========================================================================
+ */
 @theme inline {
   /* Brand */
-  --color-brand: var(--palette-brand-500);
-  --color-brand-accent-surface: var(--palette-brand-100);
-  --color-brand-accent-line: var(--palette-brand-300);
-  --color-brand-chip-line: #ffd0c5;
-  --color-brand-chip-surface: #fff7f5;
-  --color-brand-chip-primary: var(--palette-brand-ink);
-  --color-brand-chip-accent-line: var(--palette-accent-warm-300);
-  --color-brand-chip-accent-surface: #fff3e8;
+  --color-brand: var(--palette-coral-500);
+  --color-brand--cool: var(--palette-blue-500);
 
-  /* Cool variant */
-  --color-cool-head: var(--palette-cool-900);
-  --color-cool-body: var(--palette-neutral-800);
-  --color-cool-chip-line: var(--color-blue-200);
-  --color-cool-chip-surface: var(--color-blue-50);
-  --color-cool-chip-primary: var(--color-blue-700);
-  --color-cool-cta-surface: oklch(from var(--palette-blue-500) l c h);
-  --color-ink-cool: var(--palette-cool-900);
-  --color-accent-cool: var(--palette-blue-500);
+  /* Background */
+  --color-page: var(--palette-neutral-50);
+
+  /* Text / surfaces */
+  --color-ink: var(--palette-neutral-850);
+  --color-ink--strong: var(--palette-neutral-900);
+  --color-ink--inverse: var(--palette-neutral-0);
+  --color-ink--attention: var(--palette-red-600);
+  --color-ink--cool: var(--palette-slate-950);
+  --color-ink--secondary: var(--palette-neutral-650);
+  --color-ink--secondary--cool: var(--palette-slate-800);
+  --color-surface: var(--palette-neutral-0);
+  --color-surface--subtle: var(--palette-neutral-25);
+  --color-surface--accent: var(--palette-coral-100);
+  --color-surface--attention: var(--palette-red-100);
+  --color-line: var(--palette-neutral-200);
+  --color-line--accent: var(--palette-coral-300);
+  --color-line--attention: var(--color-red-200);
 
   /* Typography */
   --font-fallback-sans:
@@ -153,79 +172,14 @@ layer(base);
   --text-3xs: 0.5rem;
   --text-3xs--line-height: 0.75rem;
 
-  /* Text / surfaces */
-  --color-primary: var(--palette-neutral-850);
-  --color-secondary: var(--palette-neutral-650);
-  --color-page: var(--palette-neutral-50);
-  --color-surface: var(--palette-neutral-0);
-  --color-ink: var(--palette-black);
-  --color-surface-subtle: var(--palette-neutral-25);
-  --color-inverse: var(--palette-neutral-0);
-  --color-line: var(--palette-neutral-200);
-  --color-strong: var(--palette-neutral-900);
-  --color-attention: var(--palette-attention-600);
-  --color-attention-surface: var(--palette-attention-100);
-  --color-attention-primary: var(--color-red-800);
-  --color-attention-weak: var(--color-red-50);
-  --color-attention-line: var(--color-red-200);
-
   /* Radius / shadow */
   --radius-base: 0.5rem;
   --shadow-sm: 0 1px 2px oklch(from var(--palette-black) l c h / 0.05);
   --shadow-md: 0 4px 6px oklch(from var(--palette-black) l c h / 0.1);
-  --shadow-brand-hover: 0 6px 18px
-    oklch(from var(--palette-brand-500) l c h / 0.25);
-
-  /* Liquid Glass */
-  --color-glass-surface: var(--glass-surface);
-  --color-glass-surface-strong: var(--glass-surface-strong);
-  --color-glass-line: var(--glass-line);
-  --color-glass-line-strong: var(--glass-line-strong);
-
-  /* Hero */
-  --color-hero-fallback-surface: var(--palette-charcoal-900);
-  --color-hero-overlay-surface: oklch(from var(--palette-black) l c h / 0.2);
-  --shadow-hero-title: 2px 2px 4px oklch(from var(--palette-black) l c h / 0.2);
-
-  /* Header */
-  --color-header-surface: var(--palette-neutral-0);
-  --color-header-line: var(--palette-neutral-150);
-
-  /* On-page nav */
-  --color-on-page-link: var(--palette-neutral-700);
-  --color-on-page-link-hover-surface: #fff1ee;
-  --color-on-page-link-hover-primary: #111827;
-  --color-on-page-link-active-surface: var(--color-brand);
-  --color-on-page-link-active-primary: var(--palette-neutral-0);
-  --color-on-page-scrollbar-thumb: var(--palette-neutral-200);
-
-  /* On-site nav */
-  --color-on-site-primary: var(--palette-neutral-500);
-  --color-on-site-link: var(--palette-neutral-200);
-  --color-on-site-link-hover-surface: var(--palette-neutral-700);
-  --color-on-site-link-hover-primary: var(--palette-neutral-0);
-  --color-on-site-link-current-surface: var(--palette-neutral-0);
-  --color-on-site-link-current-primary: var(--palette-neutral-900);
-  --color-on-site-link-current-line: var(--palette-neutral-200);
-
-  /* Accent underlines */
-  --color-underline-cool-from: var(--palette-blue-500);
-  --color-underline-cool-to: var(--palette-cyan-400);
-
-  /* Letter */
-  --color-letter-line: var(--color-amber-100);
-  --color-letter-surface: var(--color-amber-50);
-  --color-letter-primary: var(--color-gray-700);
-
-  /* Nav/mobile menu */
-  --color-mobile-backdrop: var(--palette-black);
-  --color-mobile-menu-surface: var(--palette-neutral-0);
-  --shadow-mobile-menu: 0 14px 36px
-    oklch(from var(--palette-black) l c h / 0.12);
-
-  /* Stickers */
-  --color-sticker-line: var(--palette-neutral-0);
-  --shadow-sticker: 0 4px 14px oklch(from var(--palette-cool-900) l c h / 0.1);
+  --shadow-hover--brand: 0 6px 18px
+    oklch(from var(--palette-coral-50) l c h / 0.25);
+  --shadow-hover--cool: 0 6px 18px
+    oklch(from var(--palette-blue-500) l c h / 0.25);
 }
 
 @import "./_includes/layouts/article/index.css";
@@ -242,7 +196,7 @@ layer(base);
   }
 
   body {
-    @apply bg-page font-family-sans text-primary leading-relaxed [text-rendering:optimizeLegibility];
+    @apply bg-page font-family-sans text-ink leading-relaxed [text-rendering:optimizeLegibility];
   }
 
   img[width][height] {
