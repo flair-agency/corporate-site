@@ -106,13 +106,17 @@ body.news {
       }
     }
 
+    section:has(> article) {
+      @apply px-0 sm:px-[revert];
+    }
+
     article {
       /* Paper-like container */
       @apply relative mt-8 overflow-hidden rounded-lg;
       @apply border-news-article-line border;
       @apply bg-news-article-surface;
       @apply shadow-[0_12px_30px_var(--color-news-shadow-strong)];
-      @apply px-5 py-8 sm:px-8 sm:py-10;
+      @apply px-2 py-5 sm:px-8 sm:py-10;
 
       /* subtle paper shading */
       @apply from-news-surface-shade-from via-news-surface-shade-via to-news-surface-shade-to bg-linear-180 from-0% via-85% to-100%;
@@ -176,7 +180,7 @@ body.news {
         @apply hover:decoration-news-accentline-from/60 hover:no-underline;
       }
 
-      blockquote {
+      blockquote:not(.tiktok-embed) {
         @apply border-news-blockquote-line bg-news-blockquote-surface my-6 rounded-lg border;
         @apply relative px-5 py-4;
 
@@ -189,6 +193,16 @@ body.news {
 
         p {
           @apply text-news-muted mt-0;
+        }
+      }
+
+      /* TikTok embed (copypaste snippet) */
+      blockquote.tiktok-embed {
+        /* TikTok injects inline min-width/max-width that can overflow on small screens */
+        @apply mx-auto my-6 w-full! max-w-full! min-w-0! sm:mx-0;
+
+        iframe {
+          @apply mx-auto block aspect-video w-full! max-w-full!;
         }
       }
 
