@@ -244,28 +244,4 @@ layer(base);
   .full-bleed {
     @apply relative right-1/2 left-1/2 -mx-[50vw] w-screen;
   }
-
-  [data-animate][data-direction] {
-    @apply opacity-0;
-
-    @media (prefers-reduced-motion: reduce) {
-      @apply transform-none! animate-none! opacity-1! transition-none!;
-    }
-
-    &[data-animate="true"] {
-      @apply translate-x-0 translate-y-0 opacity-100 transition-all duration-300 ease-out;
-    }
-
-    &:where(&[data-direction="left"]) {
-      @apply -translate-x-6;
-    }
-
-    &:where([data-direction="right"]) {
-      @apply translate-x-6;
-    }
-
-    &:where([data-direction="up"]) {
-      @apply translate-y-4;
-    }
-  }
 }

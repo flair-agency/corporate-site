@@ -12,30 +12,4 @@
   &:is(.fab, .fa-brands)::before {
     @apply [font:var(--fa-font-brands)];
   }
-
-  &[data-animate="true"] {
-    @apply motion-reduce:animate-none!;
-
-    &::before {
-      @apply origin-[50%_50%] animate-[icon-pop_600ms_cubic-bezier(.2,.8,.2,1)_both];
-    }
-  }
-}
-
-@keyframes icon-pop {
-  0% {
-    transform: scale(0.88) rotate(-1.2deg);
-  }
-
-  55% {
-    transform: scale(1.14) rotate(0.8deg);
-  }
-
-  80% {
-    transform: scale(0.98) rotate(0deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
 }

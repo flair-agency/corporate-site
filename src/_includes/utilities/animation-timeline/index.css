@@ -1,0 +1,109 @@
+/*
+ * Scroll-driven Animations implementation.
+ * - Does NOT rely on data-animate="true".
+ */
+@supports (animation-timeline: view()) {
+  @keyframes panel-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes panel-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes panel-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  [data-animate][data-direction] {
+    @apply motion-reduce:transform-none! motion-reduce:animate-none! motion-reduce:opacity-1!;
+
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view();
+    animation-range: entry 20% entry 50%;
+  }
+
+  [data-animate][data-direction="left"] {
+    animation-name: panel-in-left;
+  }
+
+  [data-animate][data-direction="right"] {
+    animation-name: panel-in-right;
+  }
+
+  [data-animate][data-direction="up"] {
+    animation-name: panel-in-up;
+  }
+
+  /*
+   * Icon pop animation (Scroll-driven Animations) — pseudo-element direct.
+   *
+   * Applies the view() timeline animation directly to the Font Awesome ::before pseudo-element.
+   */
+  @keyframes icon-pop {
+    0% {
+      transform: scale(0.88) rotate(-1.2deg);
+      opacity: 1;
+    }
+
+    55% {
+      transform: scale(1.14) rotate(0.8deg);
+      opacity: 1;
+    }
+
+    80% {
+      transform: scale(0.98) rotate(0deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  [data-animate][data-direction] {
+    &:has(
+      :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[data-animate]
+    ) {
+      view-timeline-name: --icon-container;
+      view-timeline-axis: block;
+    }
+  }
+
+  /* Apply the scroll-linked animation directly to the pseudo-element */
+  :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands) {
+    &[data-animate]::before {
+      @apply motion-reduce:transform-none! motion-reduce:animate-none! motion-reduce:opacity-1!;
+      @apply origin-[50%_50%];
+
+      animation-name: icon-pop;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --icon-container;
+      animation-range: contain 10% contain 80%;
+    }
+  }
+}
