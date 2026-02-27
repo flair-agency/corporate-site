@@ -237,6 +237,7 @@ layer(base);
 }
 
 @layer utilities {
+  @import "./_includes/utilities/animation-timeline/index.css";
   @import "./_includes/utilities/glass/index.css";
   @import "./_includes/utilities/icon/index.css";
   @import "./_includes/utilities/view-transition/index.css";
