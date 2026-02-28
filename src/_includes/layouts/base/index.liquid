@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-5C2QMW6T');
+    </script>
+    <!-- End Google Tag Manager -->
     <script>
       document.documentElement.classList.add('js');
     </script>
@@ -62,7 +76,7 @@
     <!-- Local JS -->
     <script src="/index.js?v={{ site.asset.version }}" defer></script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google.tagmanager.tag_id }}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-5C2QMW6T"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -70,10 +84,20 @@
       }
       gtag('js', new Date());
 
-      gtag('config', '{{ site.google.tagmanager.tag_id }}');
+      gtag('config', 'GTM-5C2QMW6T');
     </script>
   </head>
   <body class="{{ classes | compact | join: " " }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5C2QMW6T"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header>
       <a href="{% if id == "creator" %}#{% else %}/{% endif %}">
         <img src="/assets/logo.svg" alt="{{ site.name }} ロゴ" class="logo" width="70" height="50">
