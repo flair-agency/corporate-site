@@ -1,4 +1,8 @@
 <main data-variant="glass">
+  <script>
+    // Ensure dataLayer exists for GTM event tracking
+    window.dataLayer = window.dataLayer || [];
+  </script>
   <section id="top" class="hero">
     <hgroup>
       <h2>
@@ -62,7 +66,7 @@
         href="https://www.tiktok.com/t/ZSBnHHQmx/"
         target="_blank"
         rel="noopener"
-        onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_hero_apply'});"
+        onclick="dataLayer.push({event:'click_dm', event_category:'engagement', event_label:'cta_hero_apply'});"
         >まずは話してみる</a
       >
     </footer>
@@ -161,7 +165,7 @@
       <a
         class="cta btn"
         href="#contact"
-        onclick="gtag('event','click_cta',{event_category:'engagement',event_label:'cta_compare_to_contact'});"
+        onclick="dataLayer.push({event:'click_cta', event_category:'engagement', event_label:'cta_compare_to_contact'});"
         >まずは相談する</a
       >
     </footer>
@@ -206,7 +210,7 @@
       <a
         class="cta btn"
         href="#contact"
-        onclick="gtag('event','click_dm',{event_category:'engagement',event_label:'cta_flow_dm'});"
+        onclick="dataLayer.push({event:'click_dm', event_category:'engagement', event_label:'cta_flow_dm'});"
         >まずは相談する</a
       >
     </footer>
@@ -343,7 +347,7 @@
           href="https://www.tiktok.com/t/ZSBnHHQmx/"
           target="_blank"
           rel="noopener"
-          onclick="gtag('event','contact_creators_apply',{event_category:'engagement',event_label:'cta_contact_creators_apply_form'});"
+          onclick="dataLayer.push({event:'contact_creators_apply', event_category:'engagement', event_label:'cta_contact_creators_apply_form'});"
         >
           申し込む
         </a>
@@ -358,7 +362,7 @@
           href="https://www.tiktok.com/@flair.agency.biz"
           target="_blank"
           rel="noopener"
-          onclick="gtag('event','contact_creators_dm',{event_category:'engagement',event_label:'cta_contact_creators_dm'});"
+          onclick="dataLayer.push({event:'contact_creators_dm', event_category:'engagement', event_label:'cta_contact_creators_dm'});"
         >
           DMで問合せる
         </a>
