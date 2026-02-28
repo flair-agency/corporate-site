@@ -75,17 +75,6 @@
     <link rel="stylesheet" href="/index.css?v={{ site.asset.version }}">
     <!-- Local JS -->
     <script src="/index.js?v={{ site.asset.version }}" defer></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z85HL3MPJH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-Z85HL3MPJH');
-    </script>
   </head>
   <body class="{{ classes | compact | join: " " }}">
     <!-- Google Tag Manager (noscript) -->
