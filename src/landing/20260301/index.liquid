@@ -1,0 +1,36 @@
+<main>
+  <style>
+    :root {
+      --avif-option: url('/landing/20260301/background-image.avif?v={{ site.asset.version }}') type('image/avif') 1x;
+      --png-option: url('/landing/20260301/background-image.png??v={{ site.asset.version }}') type('image/png') 1x;
+      --webp-option: url('/landing/20260301/background-image.webp?v={{ site.asset.version }}') type('image/webp') 1x;
+    }
+  </style>
+  <script>
+    // Ensure dataLayer exists for GTM event tracking
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <section id="top" class="hero" data-variant="poetic">
+    <hgroup>
+      <h2>
+        <span class="sentence">配信は、好き</span>
+        <span class="sentence conjunction mt-4">それでも</span>
+        <span class="sentence">楽しくない日が</span>
+      </h2>
+      <p>
+        <span class="sentence mt-10">なぜか、うまく笑えない</span>
+        <span class="sentence mt-4">どこかで、無理している</span>
+      </p>
+    </hgroup>
+    <p>
+      <span class="sentence mt-10">辞めたいわけじゃない</span>
+    </p>
+    <aside>
+      <div class="indicator" role="presentation" aria-hidden="true">
+        <span class="label">SCROLL</span>
+        <span class="icon">↓</span>
+      </div>
+    </aside>
+  </section>
+</main>

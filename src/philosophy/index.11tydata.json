@@ -1,0 +1,44 @@
+{
+  "classes": [
+    "philosophy"
+  ],
+  "description": null,
+  "id": "philosophy",
+  "image": {
+    "path": "/philosophy/og.png"
+  },
+  "layout": "layouts/base/index.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./background-image.avif",
+      "imagesizes": "100vw",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./background-image.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "./background-image.png"
+        }
+      ],
+      "rel": "preload"
+    }
+  ],
+  "nav": {
+    "menu": null
+  },
+  "page": {
+    "path": "/philosophy/"
+  },
+  "tags": [
+    "philosophy"
+  ],
+  "title": "哲学"
+}

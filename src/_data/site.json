@@ -41,6 +41,10 @@
       "path": "/business/"
     },
     {
+      "label": "哲学",
+      "path": "/philosophy/"
+    },
+    {
       "label": "ニュース",
       "path": "/news/"
     },

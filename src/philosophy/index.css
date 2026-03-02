@@ -1,0 +1,24 @@
+/* ===== Philosophy Page Specific Styles ===== */
+body.philosophy {
+  section.hero {
+    .indicator .label,
+    .indicator .icon {
+      @apply border-slate-300 text-slate-300;
+    }
+  }
+
+  section#reason,
+  section#design {
+    p {
+      @apply mx-auto mt-6 flex w-full max-w-xl flex-col gap-2 px-6 text-[16.5px] leading-[1.9] sm:px-8 sm:text-[18px];
+    }
+
+    hr {
+      @apply mx-auto my-10 w-full max-w-xl border-black/10;
+    }
+
+    strong {
+      @apply inline-block;
+    }
+  }
+}

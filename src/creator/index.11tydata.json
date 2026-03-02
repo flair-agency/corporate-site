@@ -40,7 +40,7 @@
     "menu": [
       {
         "anchor": "#benefits",
-        "label": "理由"
+        "label": "メリット"
       },
       {
         "anchor": "#comparison",
@@ -70,5 +70,5 @@
   "tags": [
     "creator"
   ],
-  "title": "トップ"
+  "title": "サポート内容について"
 }

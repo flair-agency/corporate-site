@@ -30,6 +30,11 @@ body.news > main {
   @apply [view-transition-name:news];
 }
 
+nav.on-site a[href="/philosophy/"],
+body.philosophy > main {
+  @apply [view-transition-name:philosophy];
+}
+
 nav.on-site a[href="/privacy-policy/"],
 body.privacy-policy > main {
   @apply [view-transition-name:privacy-policy];
