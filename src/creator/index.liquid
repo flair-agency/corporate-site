@@ -14,27 +14,63 @@
     window.dataLayer = window.dataLayer || [];
   </script>
 
-  <section id="top" class="hero" data-variant="poetic">
+  <section id="top" class="hero">
     <hgroup>
       <h2>
-        <span class="sentence">配信は、好き</span>
-        <span class="sentence conjunction mt-4">それでも</span>
-        <span class="sentence">楽しくない日が</span>
+        いま配信を<span class="whitespace-nowrap">がんばっている</span>
+        <span class="whitespace-nowrap">あなたへ</span>
       </h2>
-      <p>
-        <span class="sentence mt-10">なぜか、うまく笑えない</span>
-        <span class="sentence mt-4">どこかで、無理している</span>
-      </p>
+      <p>無理なく続けられる形を、一緒につくります。</p>
     </hgroup>
-    <p>
-      <span class="sentence mt-10">辞めたいわけじゃない</span>
-    </p>
-    <aside>
-      <div class="indicator" role="presentation" aria-hidden="true">
-        <span class="label">SCROLL</span>
-        <span class="icon">↓</span>
-      </div>
-    </aside>
+    <div class="card" data-variant="media" data-aspect="9/16" role="presentation" aria-hidden="true">
+      <video
+        muted
+        loop
+        playsinline
+        autoplay
+        preload="metadata"
+        poster="./hero.webp?v={{ site.asset.version }}"
+        data-hero-video
+      >
+        <!-- Mobile-optimized sources (used by Lighthouse mobile too) -->
+        <source
+          src="./hero-mobile.webm?v={{ site.asset.version }}"
+          type="video/webm"
+          width="480"
+          height="854"
+          media="(max-width: 640px)"
+        >
+        <source
+          src="./hero-mobile.mp4?v={{ site.asset.version }}"
+          type="video/mp4"
+          width="480"
+          height="854"
+          media="(max-width: 640px)"
+        >
+        <!-- Default sources -->
+        <source src="./hero.webm?v={{ site.asset.version }}" type="video/webm" width="1080" height="1920">
+        <source src="./hero.mp4?v={{ site.asset.version }}" type="video/mp4" width="1080" height="1920">
+      </video>
+    </div>
+    <div class="stickers" role="presentation" aria-hidden="true">
+      <span class="sticker s1">#ノルマなし</span>
+      <span class="sticker s2">#初期費用0</span>
+      <span class="sticker s3">#配信機材進呈</span>
+    </div>
+    <div class="indicator" role="presentation" aria-hidden="true">
+      <span class="label">SCROLL</span>
+      <span class="icon">↓</span>
+    </div>
+    <footer>
+      <a
+        class="cta btn"
+        href="https://www.tiktok.com/t/ZSBnHHQmx/"
+        target="_blank"
+        rel="noopener"
+        onclick="dataLayer.push({event:'click_apply', event_category:'engagement', event_label:'cta_hero_to_apply'});"
+        >まずは話してみる</a
+      >
+    </footer>
   </section>
 
   <section id="benefits" class="panel" data-animate data-direction="left">

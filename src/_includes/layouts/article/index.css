@@ -99,10 +99,9 @@ body.news {
     section.hero {
       @apply relative overflow-hidden rounded-2xl;
 
-      &::after {
-        @apply content-[""];
-        @apply pointer-events-none absolute inset-0;
-        @apply from-news-hero-overlay-from via-news-hero-overlay-via to-news-hero-overlay-to bg-linear-to-b;
+      &::before {
+        /* Background */
+        @apply brightness-50;
       }
     }
 

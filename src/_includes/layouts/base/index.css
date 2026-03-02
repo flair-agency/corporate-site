@@ -103,7 +103,7 @@
         /* Layout */
         @apply absolute inset-0 -z-10;
         /* Background */
-        @apply bg-(--palette-slate-900) bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center;
+        @apply bg-(--palette-slate-900) bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center brightness-85;
         /* Border */
         @apply rounded-(--radius-base);
         /* Animation */
