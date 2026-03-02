@@ -23,22 +23,11 @@ body:has(main[data-variant~="glass"]) {
     @apply shadow-[0_10px_28px_slate-950/8];
   }
 
-  main > section.hero {
-    /* Background */
-    @apply bg-(--color-surface--glass--strong);
-    /* Border */
-    @apply border border-solid border-(--color-line--glass--strong);
-    /* Layout */
-    @apply rounded-2xl;
-    /* Effects */
-    @apply shadow-(--glass-shadow);
-  }
-
-  main > section.panel {
+  main > section {
     /* Background */
     @apply bg-(--color-surface--glass);
     /* Border */
-    @apply border border-solid border-(--color-line--glass);
+    @apply border border-(--color-line--glass);
     /* Layout */
     @apply rounded-2xl;
     /* Effects */

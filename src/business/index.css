@@ -1,10 +1,6 @@
 /* ===== Business Page Specific Styles ===== */
 body.business {
   main > section {
-    &.hero {
-      @apply bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))];
-    }
-
     h3 {
       @apply my-2 text-2xl font-bold;
     }

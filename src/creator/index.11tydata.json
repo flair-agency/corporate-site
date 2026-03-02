@@ -34,19 +34,6 @@
         }
       ],
       "rel": "preload"
-    },
-    {
-      "as": "image",
-      "fetchpriority": "high",
-      "href": "./hero.webp",
-      "imagesizes": "100vw",
-      "imagesrcset": [
-        {
-          "resolution": "1x",
-          "url": "./hero.webp"
-        }
-      ],
-      "rel": "preload"
     }
   ],
   "nav": {

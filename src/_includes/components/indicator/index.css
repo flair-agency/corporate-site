@@ -15,7 +15,7 @@
     /* Layout */
     @apply grid h-8 w-8 place-items-center;
     /* Border */
-    @apply border border-line rounded-full;
+    @apply border border-ink--secondary rounded-full;
     /* Animation */
     @apply animate-bounce;
   }

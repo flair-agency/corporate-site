@@ -94,12 +94,8 @@
       @apply relative isolate z-1 mx-4 mt-8 mb-2 overflow-hidden rounded-lg text-center;
       /* Flex */
       @apply min-h-[clamp(520px,70vh,680px)] flex flex-col justify-center;
-      /* Background */
-      @apply bg-(--palette-slate-900) bg-cover bg-center;
       /* Text */
       @apply text-ink--inverse;
-      /* Animation */
-      @apply transition-[background-image_0.5s_ease-in-out];
 
       &::before {
         /* Generated Content */
@@ -107,9 +103,11 @@
         /* Layout */
         @apply absolute inset-0 -z-10;
         /* Background */
-        @apply bg-black/2;
+        @apply bg-(--palette-slate-900) bg-[image-set(var(--avif-option),var(--webp-option),var(--png-option))] bg-cover bg-center;
         /* Border */
         @apply rounded-(--radius-base);
+        /* Animation */
+        @apply transition-[background-image_0.5s_ease-in-out];
       }
 
       & > hgroup > h2 {
@@ -130,7 +128,7 @@
         }
       }
 
-      & > .indicator {
+      .indicator {
         /* Layout */
         @apply absolute bottom-6 left-1/2 z-20;
       }

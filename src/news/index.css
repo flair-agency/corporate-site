@@ -25,10 +25,6 @@
 
 @layer components {
   body.news {
-    section.hero {
-      @apply bg-[image-set(var(--avif-option),var(--jpg-option),var(--png-option),var(--webp-option))];
-    }
-
     /* Container for the news list */
     section#news > div {
       @apply mt-6 grid gap-4 sm:gap-5;
