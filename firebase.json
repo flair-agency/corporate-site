@@ -29,7 +29,7 @@
     "redirects": [
       {
         "source": "{,/}",
-        "destination": "/landing/20260301/",
+        "destination": "/creator/",
         "type": 301
       }
     ]
