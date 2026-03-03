@@ -1,24 +1,191 @@
-/* ===== Philosophy Page Specific Styles ===== */
+/* ===== Philosophy Page Specific Styles (Document Theme) ===== */
 body.philosophy {
+  /* --- Tokens (cool-gray document system) --- */
+  --canvas: rgb(248 250 252); /* slate-50 (cool) */
+  --canvas-tint: rgba(15 23 42 / 0.03);
+
+  /* paper (cool, slightly brighter than canvas) */
+  --paper: rgba(255 255 255 / 0.965);
+  --paper-strong: rgba(255 255 255 / 0.985);
+
+  /* Ink tone: deep blue fountain pen (stronger) */
+  --ink: rgba(11 18 52 / 0.92);
+  --ink-muted: rgba(22 33 88 / 0.72);
+  --ink-faint: rgba(22 33 88 / 0.58);
+
+  --rule: rgba(2 6 23 / 0.1);
+  --rule-strong: rgba(2 6 23 / 0.16);
+
+  --accent: rgba(30 58 138 / 0.18); /* blue-900, very subtle */
+
+  /* layout */
+  --gutter: 1.25rem;
+  --measure: 62rem; /* align to hero frame by sharing a single measure */
+  --block-pad-y: 3.25rem;
+  --block-pad-x: 2.25rem;
+
+  /* typography weights (tweakable) */
+  --body-weight: 540;
+  --body-weight-strong: 560;
+
+  @media (min-width: 640px) {
+    --gutter: 1.75rem;
+    --block-pad-y: 3.75rem;
+    --block-pad-x: 2.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    --block-pad-y: 4.25rem;
+    --block-pad-x: 3.25rem;
+  }
+
+  /* --- Canvas --- */
+  @apply bg-(--canvas) bg-linear-180 from-[rgba(15_23_42/0.025)] from-0% to-transparent to-55% text-(--ink) text-shadow-none;
+
+  /* Keep hero scroll indicator readable on hero imagery */
   section.hero {
     .indicator .label,
     .indicator .icon {
-      @apply border-slate-300 text-slate-300;
+      @apply border-slate-200 text-slate-200;
     }
   }
 
-  section#reason,
-  section#design {
-    p {
-      @apply mx-auto mt-6 flex w-full max-w-xl flex-col gap-2 px-6 text-[16.5px] leading-[1.9] sm:px-8 sm:text-[18px];
+  /* Sections become chapters inside the single document */
+  section:not(.hero) {
+    @apply relative;
+    @apply my-0 px-(--block-pad-x) py-(--block-pad-y);
+    @apply bg-(--paper);
+    @apply border-r border-l border-r-[rgba(2_6_23/0.08)] border-l-[rgba(2_6_23/0.08)];
+
+    /* typography */
+    @apply font-["Sawarabi_Mincho","Noto_Serif_JP",serif] font-features-[palt];
+
+    /* Chapter separators (hard, document-like) */
+    @apply border-t border-t-(--rule);
+
+    &:nth-child(1 of &:not(.hero)) {
+      @apply mt-10;
+      @apply border-t border-t-(--rule);
+      /* keep the first sheet consistent with others */
+      @apply pt-(--block-pad-y);
     }
 
-    hr {
-      @apply mx-auto my-10 w-full max-w-xl border-black/10;
+    &:last-child {
+      @apply border-b border-b-(--rule);
+      @apply mb-20 sm:mb-24;
     }
 
-    strong {
-      @apply inline-block;
+    /* Headings: same family, slightly stronger weight for hierarchy */
+    h1,
+    h2,
+    h3 {
+      @apply font-["Sawarabi_Mincho","Noto_Serif_JP",serif] font-semibold;
+    }
+
+    /* Left margin guide that continues through the whole document */
+    &::before {
+      @apply content-[""];
+      @apply absolute top-0 bottom-0 left-[calc(var(--block-pad-x)-1.15rem)];
+      @apply w-px;
+      @apply bg-[rgba(2_6_23/0.12)];
+      @apply opacity-85;
+      @apply pointer-events-none;
+      @apply mask-[linear-gradient(to_bottom,transparent_0%,black_18%,black_100%)];
+    }
+
+    /* Headings as chapter titles (left/top weighted) */
+
+    /* Kicker (auto-generated chapter label) */
+    > hgroup::before {
+      @apply mb-[0.75rem] block font-semibold tracking-[0.28em] text-[rgba(2_6_23/0.55)] uppercase;
+      @apply text-[11.5px] sm:text-[12px];
+    }
+    &#preface hgroup::before {
+      @apply content-["PREFACE"];
+    }
+    &#premise hgroup::before {
+      @apply content-["PREMISE"];
+    }
+    &#constraint hgroup::before {
+      @apply content-["CONSTRAINT"];
+    }
+    &#catalyst hgroup::before {
+      @apply content-["CATALYST"];
+    }
+    &#reproducibility hgroup::before {
+      @apply content-["REPRODUCIBILITY"];
+    }
+    &#commitment hgroup::before {
+      @apply content-["COMMITMENT"];
+    }
+
+    > hgroup {
+      @apply mx-0 mt-0 mb-[1.25rem] text-left;
+
+      h2 {
+        @apply text-[18px] font-bold tracking-[0.24em] text-[rgba(2_6_23/0.96)] sm:text-[20px];
+      }
+
+      p {
+        @apply text-[15px] leading-[1.9] text-(--ink-muted) sm:text-[15.5px];
+        @apply mt-[0.55rem];
+      }
+    }
+
+    /* Main body text */
+    > p {
+      @apply text-[16.5px] sm:text-[17.5px];
+      @apply mt-[1.25rem] text-left leading-[1.9] font-(--body-weight) tracking-[0.01em] text-(--ink);
+    }
+
+    /* Lists (statute-like) */
+    > :is(ul, ol) {
+      @apply mt-[1.25rem] list-outside pl-[1.4rem];
+
+      li {
+        @apply text-[16.5px] leading-[1.95] font-(--body-weight) tracking-[0.01em] text-[rgba(2_6_23/0.92)] sm:text-[17.5px];
+        @apply pl-[1.55rem];
+
+        &[data-variant~="accent"] {
+          @apply my-6 text-xl tracking-tight;
+        }
+      }
+    }
+
+    > ul {
+      @apply list-["—"];
+    }
+
+    > ol {
+      @apply list-decimal;
+    }
+
+    /* Margin note (clearly secondary) */
+    > aside.explanation {
+      @apply mt-[1.5rem] border-l border-l-[rgba(2_6_23/0.14)] pl-[1rem] opacity-55;
+
+      p {
+        @apply text-[12.75px] leading-[1.95] font-medium text-(--ink-faint) sm:text-[13px];
+      }
+    }
+  }
+
+  /* Body layout: main text + margin note. (hgroup stays 1-col) */
+  @media (min-width: 768px) {
+    section:not(.hero) {
+      @apply grid grid-cols-[minmax(0,1fr)_15rem] items-start gap-x-[2.5rem] gap-y-[0.85rem];
+
+      > hgroup {
+        @apply col-span-full;
+      }
+
+      > :is(p, ul, ol) {
+        @apply col-1;
+      }
+
+      > aside.explanation {
+        @apply col-2 row-2;
+      }
     }
   }
 }

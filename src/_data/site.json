@@ -41,12 +41,12 @@
       "path": "/business/"
     },
     {
-      "label": "哲学",
-      "path": "/philosophy/"
-    },
-    {
       "label": "ニュース",
       "path": "/news/"
+    },
+    {
+      "label": "思想",
+      "path": "/philosophy/"
     },
     {
       "label": "私たちについて",
