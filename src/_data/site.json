@@ -45,6 +45,10 @@
       "path": "/news/"
     },
     {
+      "label": "関わり方",
+      "path": "/approach/"
+    },
+    {
       "label": "思想",
       "path": "/philosophy/"
     },
