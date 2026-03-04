@@ -2,7 +2,7 @@
   "classes": [
     "philosophy"
   ],
-  "description": "楽しさは、鼓動を止めない。持続と可能性、そして制約をめぐるFlairの思想",
+  "description": "楽しさが続くと、可能性は動き出す。比較ではなく楽しさを基準に配信を続ける。そのためのFlairの思想。",
   "google": {
     "fonts": {
       "query": "family=Sawarabi+Mincho:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
@@ -39,6 +39,10 @@
   "nav": {
     "menu": [
       {
+        "anchor": "#abstract",
+        "label": "要旨"
+      },
+      {
         "anchor": "#preface",
         "label": "序文"
       },
@@ -70,5 +74,5 @@
   "tags": [
     "philosophy"
   ],
-  "title": "楽しさは、鼓動を止めない"
+  "title": "楽しさが続くと、可能性は動き出す"
 }

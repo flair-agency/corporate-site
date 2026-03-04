@@ -103,6 +103,9 @@ body.philosophy {
     &#preface hgroup::before {
       @apply content-["PREFACE"];
     }
+    &#abstract hgroup::before {
+      @apply content-["ABSTRACT"];
+    }
     &#premise hgroup::before {
       @apply content-["PREMISE"];
     }
@@ -194,6 +197,12 @@ body.philosophy {
       > aside.explanation {
         @apply col-2 row-2;
       }
+    }
+  }
+
+  section#abstract {
+    > hgroup > h2 + p span:not(:last-child)::after {
+      @apply content-[">"] inline px-2 opacity-60;
     }
   }
 }
