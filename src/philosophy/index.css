@@ -138,21 +138,29 @@ body.philosophy {
       @apply mt-[1.25rem] text-left leading-[1.9] font-(--body-weight) tracking-[0.01em] text-(--ink);
     }
 
-    /* Lists (statute-like) */
+    /* Lists (native markers, tuned spacing) */
     > :is(ul, ol) {
-      @apply mt-[1.25rem] list-outside pl-[1.4rem];
+      /* mobile: tighter indent; desktop: a bit more air */
+      @apply mt-[1.25rem] list-outside pl-[1.15rem] sm:pl-[1.4rem];
+
+      /* style the native marker (no pseudo marker elements) */
+      @apply marker:font-semibold marker:text-[rgba(2_6_23/0.55)];
 
       li {
         @apply text-[16.5px] leading-[1.95] font-(--body-weight) tracking-[0.01em] text-[rgba(2_6_23/0.92)] sm:text-[17.5px];
-        @apply pl-[1.55rem];
+        /* keep body text aligned while leaving marker breathing room */
+        @apply pl-[0.75rem] sm:pl-[1rem];
+        @apply my-0;
 
         &[data-variant~="accent"] {
-          @apply my-6 text-xl tracking-tight;
+          @apply my-6 text-[19px] tracking-tight sm:text-xl;
+          @apply marker:text-[rgba(2_6_23/0.35)];
         }
       }
     }
 
     > ul {
+      /* em dash marker, still native */
       @apply list-["—"];
     }
 
