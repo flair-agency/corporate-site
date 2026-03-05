@@ -9,10 +9,12 @@ tags: article
 >
   <style>
     :root {
-      --avif-option: url('/news/background-image.avif?v={{ site.asset.version }}') type('image/avif') 1x;
-      --jpg-option: url('/news/background-image.jpg?v={{ site.asset.version }}') type('image/jpg') 1x;
-      --png-option: url('/news/background-image.png?v={{ site.asset.version }}') type('image/png') 1x;
-      --webp-option: url('/news/background-image.webp?v={{ site.asset.version }}') type('image/webp') 1x;
+      --asset-hero: image-set(
+        url('/news/hero.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/news/hero.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/news/hero.webp?v={{ site.asset.version }}') type('image/jpg'),
+        url('/news/hero.png?v={{ site.asset.version }}') type('image/png')
+      );
     }
   </style>
 

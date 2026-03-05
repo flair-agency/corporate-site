@@ -1,12 +1,11 @@
 <main data-variant="glass">
   <style>
     :root {
-      --avif-option: url("/creator/background-image.avif?v={{ site.asset.version }}")
-        type("image/avif") 1x;
-      --png-option: url("/creator/background-image.png?v={{ site.asset.version }}")
-        type("image/png") 1x;
-      --webp-option: url("/creator/background-image.webp?v={{ site.asset.version }}")
-        type("image/webp") 1x;
+      --asset-hero: image-set(
+        url('/creator/hero.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/creator/hero.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/creator/hero.png?v={{ site.asset.version }}') type('image/png')
+      );
     }
   </style>
   <script>

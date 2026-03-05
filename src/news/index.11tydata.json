@@ -14,20 +14,20 @@
     {
       "as": "image",
       "fetchpriority": "high",
-      "href": "./background-image.avif",
+      "href": "./hero.avif",
       "imagesizes": "100vw",
       "imagesrcset": [
         {
           "resolution": "1x",
-          "url": "./background-image.avif"
+          "url": "./hero.avif"
         },
         {
           "resolution": "1x",
-          "url": "./background-image.webp"
+          "url": "./hero.webp"
         },
         {
           "resolution": "1x",
-          "url": "./background-image.png"
+          "url": "./hero.png"
         }
       ],
       "rel": "preload"
