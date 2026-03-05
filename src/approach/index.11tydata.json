@@ -37,6 +37,10 @@
   "nav": {
     "menu": [
       {
+        "anchor": "#abstract",
+        "label": "要旨"
+      },
+      {
         "anchor": "#starting-point",
         "label": "出発点"
       },
