@@ -6,7 +6,7 @@ body.approach {
   /* Chapter labels (document feel) */
   section > hgroup::before {
     @apply mb-3 block text-[10px] tracking-[0.22em] text-slate-400;
-    @apply text-center;
+    @apply relative z-0 text-center;
   }
 
   section#abstract > hgroup::before {
@@ -64,12 +64,12 @@ body.approach {
       @apply pt-10 pb-10 sm:pt-12 sm:pb-12 md:pt-14 md:pb-14;
 
       h2 {
-        @apply mx-auto sm:mx-0 mb-2 max-w-3xl text-3xl leading-tight font-bold tracking-tight text-white sm:text-4xl lg:text-5xl;
+        @apply mx-auto mb-2 max-w-3xl text-3xl leading-tight font-bold tracking-tight text-white sm:mx-0 sm:text-4xl lg:text-5xl;
         @apply drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)];
       }
 
       p {
-        @apply mx-auto sm:mx-0 max-w-xl text-xs leading-relaxed text-white/85 sm:text-sm md:text-sm lg:text-base;
+        @apply mx-auto max-w-xl text-xs leading-relaxed text-white/85 sm:mx-0 sm:text-sm md:text-sm lg:text-base;
         @apply drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)];
       }
     }
@@ -126,6 +126,8 @@ body.approach {
     }
 
     b {
+      @apply text-[1.1em] whitespace-nowrap;
+
       &::before {
         @apply content-['『'];
       }
@@ -150,6 +152,14 @@ body.approach {
     }
   }
 
+  main :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands) {
+    @apply relative;
+
+    &::before {
+      @apply absolute inset-[0] -top-[105%] -z-10 justify-self-center text-[1.1em] text-slate-400 opacity-55;
+    }
+  }
+
   /* Pillars layout */
   section#pillars {
     @apply p-0;
@@ -166,6 +176,12 @@ body.approach {
       @apply col-span-full;
       @apply px-10 py-10 sm:px-12 sm:py-12 md:px-14 md:py-14;
       @apply mb-0;
+
+      h2 + p span {
+        &:not(:last-child)::after {
+          @apply px-1 content-['_×'];
+        }
+      }
     }
 
     .pillar {
@@ -226,17 +242,6 @@ body.approach {
       ul {
         @apply mx-0 mb-0 max-w-none;
       }
-
-      /* Quote-like emphasis for <b> in pillar bullets */
-      b {
-        &::before {
-          @apply inline content-['『'];
-        }
-
-        &::after {
-          @apply inline content-['』'];
-        }
-      }
     }
   }
 
@@ -280,11 +285,11 @@ body.approach {
   section#where-to-next {
     ul {
       @apply mx-auto mt-6 max-w-3xl p-0;
-      @apply grid grid-cols-2 items-center list-none;
+      @apply grid list-none grid-cols-2 items-center;
       @apply relative;
 
       li {
-        @apply text-sm md:text-base p-0;
+        @apply p-0 text-sm md:text-base;
       }
 
       a {
@@ -318,7 +323,7 @@ body.approach {
 
       /* central axis between philosophy and creator */
       &::before {
-        @apply content-[""] absolute top-1 bottom-1 left-[50%] w-px bg-slate-200 transform-[translateX(-0.5px)];
+        @apply absolute top-1 bottom-1 left-[50%] w-px transform-[translateX(-0.5px)] bg-slate-200 content-[""];
       }
     }
   }
