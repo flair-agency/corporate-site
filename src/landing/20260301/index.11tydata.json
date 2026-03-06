@@ -1,0 +1,78 @@
+{
+  "classes": ["landing"],
+  "description": "楽しくないのは、向いていないからじゃない。理想と現実の距離が崩れたとき、配信は苦しくなる。まずは考え方から。",
+  "google": {
+    "fonts": {
+      "query": "family=Inter:wght@400;600;700&family=Zen+Kurenaido:wght@400;700&display=swap"
+    }
+  },
+  "id": "landing",
+  "image": {
+    "path": "/landing/20260301/og.png"
+  },
+  "layout": "layouts/base/index.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./hero.avif",
+      "imagesizes": "100vw",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./hero.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "./hero.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "./hero.png"
+        }
+      ],
+      "rel": "preload"
+    }
+  ],
+  "nav": {
+    "menu": [
+      {
+        "anchor": "#mirror",
+        "label": "いま起きていること"
+      },
+      {
+        "anchor": "#friction",
+        "label": "楽しくなくなる典型"
+      },
+      {
+        "anchor": "#insight",
+        "label": "よくある勘違い"
+      },
+      {
+        "anchor": "#premise",
+        "label": "比較は止められない"
+      },
+      {
+        "anchor": "#thesis",
+        "label": "原理"
+      },
+      {
+        "anchor": "#state-design",
+        "label": "状態設計"
+      },
+      {
+        "anchor": "#micro-check",
+        "label": "1分だけ"
+      },
+      {
+        "anchor": "#what-next",
+        "label": "次に読む"
+      }
+    ]
+  },
+  "page": {
+    "path": "/landing/20260301/"
+  },
+  "tags": ["landing", "creator"],
+  "title": "トップ"
+}

@@ -1,0 +1,662 @@
+/* ===== Landing Page Specific Styles ===== */
+
+/* allow scroll-driven interpolation of emotional variables */
+@property --emotion-hue {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 24;
+}
+
+@property --emotion-a {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.14;
+}
+
+body.landing {
+  /* quiet, poetic canvas */
+  @apply bg-page;
+  @apply text-slate-900;
+  @apply antialiased;
+
+  /* emotional accent (quiet warmth) */
+  --emotion-hue: 24;
+  --emotion-a: 0.14;
+  --emotion: hsl(var(--emotion-hue) 72% 52%);
+  --emotion-soft: hsl(var(--emotion-hue) 72% 52% / var(--emotion-a));
+  --emotion-softer: hsl(
+    var(--emotion-hue) 72% 52% / calc(var(--emotion-a) * 0.55)
+  );
+  --paper: rgba(255 255 255 / 0.72);
+  --paper-strong: rgba(255 255 255 / 0.9);
+  --paper-line: rgba(148 163 184 / 0.22);
+  --ink-soft: rgb(71 85 105);
+  --ink-faint: rgb(100 116 139);
+  --section-glow-a: 0;
+  --section-glow-b: 0;
+  --section-line: rgba(226 232 240 / 0.72);
+  --section-heading: rgb(15 23 42);
+  --section-copy: rgb(51 65 85);
+  --section-context: rgb(100 116 139);
+
+  section.hero {
+    &::before {
+      @apply [background-position-x:55%] sm:bg-center;
+    }
+
+    &[data-variant~="poetic"] {
+      @apply text-left;
+      @apply items-start justify-start;
+
+      .sentence {
+        @apply block font-["Zen_Kurenaido",var(--font-family-sans)];
+
+        &.conjunction {
+          @apply text-xl font-normal opacity-80;
+        }
+      }
+
+      :not(aside, aside *) {
+        @apply contents leading-[1.75] text-[rgba(248_250_252/0.95)] text-shadow-[0_2px_8px_rgba(0_0_0/.55),0_0_24px_rgba(0_0_0/.35)];
+      }
+
+      .indicator .label,
+      .indicator .icon {
+        @apply border-slate-500 text-slate-500;
+      }
+
+      &::after {
+        @apply pointer-events-none absolute inset-0 -z-9 rounded-[inherit] content-[""];
+        @apply bg-linear-90 from-[rgba(0_0_0/0.42)] from-0% via-[rgba(0_0_0/0.22)] via-38% to-transparent to-70%;
+      }
+
+      > hgroup {
+        @apply contents max-w-md rounded-2xl bg-[rgba(255_255_255/0.06)] px-[1.2rem] py-[1.1rem] backdrop-blur-sm backdrop-saturate-120;
+
+        > h2 {
+          @apply contents;
+          @apply text-3xl leading-snug font-bold;
+
+          + p {
+            @apply contents;
+            @apply text-sm leading-relaxed opacity-90;
+          }
+        }
+      }
+
+      > p {
+        @apply contents;
+        @apply text-base font-semibold;
+      }
+    }
+  }
+
+  /* shared section styling */
+  section:not(.hero) {
+    @apply font-["Sawarabi_Mincho","Noto_Serif_JP",serif];
+    @apply relative overflow-clip;
+    @apply px-6 sm:px-8 md:px-10;
+    @apply py-18 md:py-24;
+    @apply text-slate-800;
+
+    &::before {
+      @apply pointer-events-none absolute inset-0 z-0 opacity-100;
+      @apply content-[""];
+      @apply transition-[background,opacity] duration-220;
+
+      background:
+        radial-gradient(
+          92% 58% at 50% 42%,
+          hsl(var(--emotion-hue) 72% 52% / var(--section-glow-a)),
+          transparent 68%
+        ),
+        radial-gradient(
+          68% 44% at 50% 42%,
+          hsl(var(--emotion-hue) 72% 52% / var(--section-glow-b)),
+          transparent 62%
+        );
+    }
+
+    > * {
+      @apply relative z-1;
+    }
+
+    > hgroup {
+      @apply mb-11 md:mb-14;
+      @apply text-center;
+
+      h2 {
+        @apply text-2xl leading-tight font-bold tracking-tight text-(--section-heading) md:text-3xl;
+      }
+
+      p {
+        @apply mt-3 text-sm leading-relaxed text-(--section-context) md:text-base;
+      }
+
+      &::after {
+        @apply mx-auto mt-7 block h-px w-12 content-[""];
+        @apply bg-[linear-gradient(to_right,transparent,var(--emotion-soft),transparent)];
+      }
+    }
+
+    .brand[class] {
+      @apply font-semibold text-(--palette-coral-700);
+    }
+
+    p {
+      @apply mx-auto mb-6 max-w-3xl;
+      @apply text-[15px] leading-loose text-(--section-copy) md:text-base;
+
+      &.context {
+        @apply mt-6 text-[13px] leading-[1.95] text-(--section-context) md:text-sm;
+      }
+    }
+
+    ul {
+      @apply mx-auto mt-10 mb-10 max-w-3xl;
+      @apply space-y-3.5;
+      @apply list-["—"];
+      @apply pl-5;
+      @apply marker:font-semibold marker:text-slate-300;
+
+      li {
+        @apply leading-[1.95] text-(--section-copy);
+      }
+    }
+
+    b,
+    strong {
+      @apply font-semibold text-slate-900;
+    }
+
+    strong {
+      @apply rounded-sm bg-linear-180 from-transparent from-58% to-(--emotion-soft) to-58% px-1;
+    }
+
+    blockquote {
+      @apply mx-auto mb-6 max-w-3xl;
+      @apply text-base md:text-lg;
+      @apply leading-[2.05];
+      @apply relative;
+      @apply pl-4;
+      @apply font-semibold text-slate-800 italic;
+      @apply border-l border-(--emotion-soft);
+    }
+
+    aside {
+      @apply mx-auto mb-5 max-w-3xl;
+      @apply pl-4;
+      @apply border-l border-slate-200/80;
+      @apply text-[13px] leading-[1.85] text-slate-400;
+
+      p {
+        @apply mx-0 mb-0 max-w-none text-inherit;
+      }
+
+      strong,
+      b {
+        @apply font-medium text-slate-500;
+
+        &::before,
+        &::after {
+          @apply content-none;
+        }
+      }
+    }
+
+    & + section {
+      @apply border-t border-t-(--section-line);
+    }
+  }
+
+  /* who-speaks: */
+  section#who-speaks {
+    --section-glow-a: 0.075;
+    --section-glow-b: 0.03;
+    --section-line: rgba(241 245 249 / 0.92);
+    @apply py-12 md:py-14;
+
+    > p {
+      @apply max-w-2xl text-center;
+    }
+
+    > p:first-of-type {
+      @apply text-[15px] leading-[2.05] md:text-base;
+    }
+
+    > p.context {
+      @apply mt-4 max-w-2xl;
+    }
+  }
+
+  /* mirror: */
+  section#mirror {
+    --section-glow-a: 0.065;
+    --section-glow-b: 0.045;
+
+    > hgroup {
+      @apply mb-12 md:mb-14;
+    }
+
+    > p:not(.context) {
+      @apply max-w-2xl;
+    }
+
+    > p:nth-of-type(1),
+    > p:nth-of-type(2),
+    > p:nth-of-type(3) {
+      @apply text-[17px] leading-[2.15] text-slate-700 md:text-[19px];
+    }
+
+    > p.context {
+      @apply max-w-2xl;
+    }
+  }
+
+  /* friction: list-first */
+  section#friction {
+    --section-glow-a: 0.05;
+    --section-glow-b: 0.02;
+
+    ul {
+      @apply max-w-2xl list-none space-y-5;
+
+      li {
+        @apply text-[17px] leading-[2.1] text-slate-700 md:text-[18px];
+
+        i {
+          @apply text-(--emotion)/75;
+        }
+      }
+    }
+
+    p.context {
+      @apply max-w-2xl;
+    }
+  }
+
+  /* insight: */
+  section#insight {
+    --section-glow-a: 0.085;
+    --section-glow-b: 0.03;
+
+    > p {
+      @apply max-w-2xl;
+    }
+
+    p.context {
+      @apply mt-7 max-w-2xl border-l border-(--emotion-soft) pl-4;
+      @apply text-[13px] leading-[1.95] md:text-sm;
+    }
+  }
+
+  /* thesis: */
+  section#thesis {
+    --section-glow-a: 0.11;
+    --section-glow-b: 0.04;
+
+    > hgroup h2 {
+      @apply text-[2rem] leading-[1.28] md:text-[2.3rem];
+
+      > span:not(:last-child)::after {
+        @apply px-0 opacity-60 content-["_×"];
+      }
+    }
+
+    > hgroup p {
+      @apply text-[14px] md:text-[15px];
+    }
+
+    > p {
+      @apply max-w-2xl text-center;
+    }
+
+    > p:nth-of-type(1),
+    > p:nth-of-type(2),
+    > p:nth-of-type(3) {
+      @apply text-[18px] leading-[2.1] text-slate-700 md:text-[20px];
+    }
+
+    > p.context {
+      @apply mt-8 max-w-2xl text-[13px] leading-loose md:text-sm;
+    }
+  }
+
+  /* state-design: */
+  section#state-design {
+    --section-glow-a: 0.08;
+    --section-glow-b: 0.035;
+
+    > hgroup > h2:is(.fas, .far, .fab) {
+      @apply inline-flex flex-col;
+
+      &::before {
+        @apply text-(--emotion-soft);
+      }
+    }
+
+    > p:not(.context) {
+      @apply max-w-2xl;
+    }
+
+    p.context:has(a[href]) {
+      @apply mx-auto mt-10 max-w-xl sm:mt-12;
+      @apply rounded-[1.4rem] border border-slate-300/80;
+      @apply bg-(--paper-strong);
+      @apply px-5 py-5 sm:px-6 sm:py-6;
+      @apply text-center shadow-[0_8px_24px_rgba(15,23,42,0.035)];
+      @apply backdrop-blur-sm;
+      @apply transition-[border-color,box-shadow,transform,background-color] duration-200;
+
+      &:hover {
+        @apply border-slate-400/70;
+        @apply bg-white;
+        @apply shadow-[0_12px_30px_rgba(15,23,42,0.05)];
+        @apply transform-[translateY(-1px)];
+      }
+
+      &:active {
+        @apply transform-[translateY(0)];
+      }
+
+      > span:first-child {
+        @apply text-[13px] leading-[1.85] text-slate-500;
+      }
+
+      a {
+        @apply inline-flex items-center justify-center;
+        @apply text-[15px] font-semibold text-slate-950;
+        @apply underline decoration-slate-400 underline-offset-4;
+        @apply transition-[text-decoration-color,opacity] duration-200;
+        @apply hover:decoration-slate-600 hover:opacity-90;
+      }
+    }
+  }
+
+  /* micro-check: */
+  section#micro-check {
+    --section-glow-a: 0.06;
+    --section-glow-b: 0.025;
+
+    > p {
+      @apply max-w-2xl text-center;
+    }
+
+    ul {
+      @apply mt-9 max-w-2xl list-none;
+      @apply space-y-4;
+
+      li {
+        @apply text-[17px] leading-[2.05] md:text-[18px];
+
+        i {
+          @apply text-(--emotion);
+        }
+      }
+    }
+
+    p.context {
+      @apply mt-8 max-w-2xl text-center;
+    }
+  }
+
+  /* what-next: */
+  section#what-next {
+    --section-glow-a: 0.045;
+    --section-glow-b: 0.02;
+
+    > p.context {
+      @apply text-center;
+    }
+
+    ul {
+      @apply mt-9 grid grid-cols-1 gap-3 sm:grid-cols-2;
+      @apply list-none pl-0;
+    }
+
+    li {
+      @apply mb-0 rounded-2xl border border-slate-200/75;
+      @apply bg-(--paper-strong) px-5 py-4;
+      @apply shadow-[0_4px_14px_rgba(15,23,42,0.025)];
+      @apply backdrop-blur-sm;
+      @apply transition-[border-color,box-shadow,transform,background-color] duration-200;
+
+      &:hover {
+        @apply border-slate-300/70;
+        @apply bg-white;
+        @apply shadow-[0_8px_22px_rgba(15,23,42,0.035)];
+        @apply transform-[translateY(-1px)];
+      }
+
+      &:active {
+        @apply transform-[translateY(0)];
+      }
+
+      &:first-child {
+        @apply border-slate-300;
+        @apply bg-white;
+        @apply shadow-[0_10px_28px_rgba(15,23,42,0.045)];
+        @apply sm:col-span-2;
+      }
+
+      a {
+        @apply inline-flex items-center gap-2;
+        @apply font-semibold text-slate-900;
+        @apply underline decoration-slate-300 underline-offset-4;
+        @apply hover:decoration-slate-500;
+
+        &[href="/approach/"]::after {
+          @apply pl-1 content-["(How)"];
+        }
+
+        &[href="/creator/"]::after {
+          @apply pl-1 content-["(What)"];
+        }
+
+        &[href="/philosophy/"]::after {
+          @apply pl-1 content-["(Why)"];
+        }
+
+        + span {
+          @apply ml-1 block text-[13px] leading-[1.8] text-slate-500 md:inline;
+
+          &::before {
+            @apply pr-1 content-["—"];
+          }
+        }
+
+        &:is(.fas, .far, .fab) {
+          @apply inline-flex flex-row gap-2;
+
+          &::before {
+            @apply text-(--emotion)/75;
+          }
+        }
+      }
+
+      &:first-child a {
+        @apply text-slate-950;
+
+        + span {
+          @apply text-slate-600;
+        }
+      }
+
+      &:not(:first-child) a + span {
+        @apply text-slate-500;
+      }
+    }
+  }
+
+  /* footer-note: quieter ending */
+  section#footer-note {
+    > hgroup::after {
+      @apply hidden;
+    }
+
+    &::before {
+      @apply mx-auto mb-10 block h-px w-10 bg-slate-200/70 content-[""];
+    }
+  }
+
+  /* ===== Scroll‑driven emotional animations ===== */
+  @supports (animation-timeline: view()) {
+    /*
+     * Timeline tuning
+     * - view() ranges can become “too fast” for small elements (e.g., li) because the
+     *   element’s view-timeline progresses quickly.
+     * - To make animations *start when readable* and last long enough to perceive,
+     *   we shrink the effective viewport using view(block <topInset> <bottomInset>).
+     *   This delays the start and stretches the scroll distance.
+     */
+    section:not(.hero) {
+      /*
+       * Use a shared reading band for consistency,
+       * then add *texture* via varied keyframes + stagger.
+       */
+      --reading-band: view(block 80% 0%);
+
+      /* headings: slightly more "arrive" */
+      > hgroup {
+        @apply opacity-0;
+        animation: both linear;
+        animation-timeline: var(--reading-band);
+        animation-name: fade-rise;
+        animation-range: entry 0% exit 85%;
+      }
+
+      /* paragraphs: readable, gentle lift */
+      p {
+        @apply opacity-0;
+        animation: both linear;
+        animation-timeline: var(--reading-band);
+        animation-name: fade-rise;
+        animation-range: entry 0% exit 100%;
+      }
+
+      /* context paragraphs: quieter, later */
+      p.context {
+        @apply opacity-0;
+        animation: both linear;
+        animation-timeline: var(--reading-band);
+        animation-name: soft-fade;
+        animation-range: entry 0% exit 100%;
+      }
+
+      /* lists: less uniform (direction + stagger) */
+      li {
+        @apply opacity-0;
+        animation: both linear;
+        animation-timeline: var(--reading-band);
+        animation-name: soft-fade;
+        animation-range: entry 0% exit 100%;
+
+        /* subtle left/right drift so rows don't feel identical */
+        &:nth-child(odd) {
+          animation: both linear;
+          animation-timeline: var(--reading-band);
+          animation-name: soft-fade-left;
+          animation-range: entry 0% exit 100%;
+        }
+
+        &:nth-child(even) {
+          animation: both linear;
+          animation-timeline: var(--reading-band);
+          animation-name: soft-fade-right;
+          animation-range: entry 0% exit 100%;
+        }
+
+        /* stagger bullets (tuned for typical 3–6 items) */
+        &:nth-child(1) {
+          animation-delay: 0s;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.1s;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.2s;
+        }
+        &:nth-child(4) {
+          animation-delay: 0.3s;
+        }
+        &:nth-child(5) {
+          animation-delay: 0.4s;
+        }
+        &:nth-child(6) {
+          animation-delay: 0.5s;
+        }
+      }
+
+      /* a tiny stagger for blocks inside sections */
+      > :not(hgroup):not(ul) {
+        animation-delay: 0.05s;
+      }
+
+      &.hero,
+      &::before {
+        animation: none;
+      }
+
+      ul {
+        animation-delay: 0.08s;
+      }
+    }
+  }
+}
+
+/* keyframes */
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes soft-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-fade-left {
+  from {
+    opacity: 0;
+    transform: translateY(6px) translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes soft-fade-right {
+  from {
+    opacity: 0;
+    transform: translateY(6px) translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body.landing,
+  body.landing * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
