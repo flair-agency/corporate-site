@@ -8,7 +8,7 @@ nav.on-page {
     /* Flex */
     @apply flex flex-nowrap;
     /* Layout */
-    @apply w-full min-w-0 gap-2.5 overflow-x-auto px-1 py-1.5 whitespace-nowrap;
+    @apply w-full min-w-0 gap-0 overflow-x-auto px-1 py-1.5 whitespace-nowrap;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
@@ -20,6 +20,10 @@ nav.on-page {
     li {
       @apply flex-none;
       scroll-snap-align: center;
+
+      &:not(:last-child) a::after {
+        @apply pl-1 pr-3 sm:pl-3 sm:pr-5 content-["—"] text-neutral-300;
+      }
 
       /* Completed (items BEFORE the current one) */
       &:has(~ li a[aria-current]) {
@@ -42,7 +46,7 @@ nav.on-page {
       a {
         /* Layout */
         @apply inline-flex items-center gap-2;
-        @apply px-2.5 py-2;
+        @apply px-0 py-2;
         @apply rounded-full;
         /* Text */
         @apply text-sm text-(--palette-neutral-700);
@@ -64,11 +68,11 @@ nav.on-page {
         /* Active: prefer aria-current */
         &[aria-current],
         &[data-state~="active"] {
-          @apply text-(--palette-coral-800) font-bold;
+          @apply font-bold text-(--palette-coral-800);
 
           &::before {
             @apply bg-(--palette-coral-400);
-            @apply border-(--palette-coral-400);
+            @apply border-(--palette-coral-700);
             @apply shadow-[0_6px_14px_rgb(15_23_42/0.10)];
           }
         }
@@ -84,7 +88,7 @@ nav.on-page {
     /* Softer mobile appearance (header nav should not dominate) */
     > menu {
       /* Give the scroll area breathing room so labels don't look "cut" at edges */
-      @apply relative gap-2 px-4 py-1;
+      @apply relative px-4 py-1;
 
       /* Better snapping + keep current item away from the edges */
       @apply snap-x snap-mandatory scroll-px-4;
@@ -111,7 +115,7 @@ nav.on-page {
       li {
         a {
           /* Slightly tighter, but with enough inset so text doesn't feel cramped */
-          @apply px-2.5 py-1.5;
+          @apply py-1.5;
           @apply text-[12px] text-(--palette-neutral-600);
           @apply hover:bg-(--palette-neutral-100);
 
@@ -132,13 +136,12 @@ nav.on-page {
 @media (max-width: 380px) {
   nav.on-page {
     > menu {
-      @apply gap-2;
       @apply px-3;
       @apply scroll-px-[0.875rem];
 
       li {
         a {
-          @apply px-2 py-1.5;
+          @apply py-1.5;
 
           &::before {
             @apply h-2.5 w-2.5;
