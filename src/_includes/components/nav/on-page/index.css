@@ -37,9 +37,7 @@ nav.on-page {
           }
 
           /* Keep hover stronger than completed */
-          &:hover {
-            @apply text-ink--secondary;
-          }
+          @apply hover:text-ink--secondary;
         }
       }
 
@@ -50,10 +48,8 @@ nav.on-page {
         @apply rounded-full;
         /* Text */
         @apply text-sm text-(--palette-neutral-700);
-        /* Background */
-        @apply hover:bg-(--palette-coral-150);
         /* Text */
-        @apply hover:text-ink--secondary;
+        @apply text-ink hover:text-ink--secondary;
 
         /* Dot */
         &::before {
@@ -68,7 +64,7 @@ nav.on-page {
         /* Active: prefer aria-current */
         &[aria-current],
         &[data-state~="active"] {
-          @apply font-bold text-(--palette-coral-800);
+          @apply font-bold text-(--palette-coral-800) hover:text-(--palette-coral-700);
 
           &::before {
             @apply bg-(--palette-coral-400);
@@ -117,7 +113,6 @@ nav.on-page {
           /* Slightly tighter, but with enough inset so text doesn't feel cramped */
           @apply py-1.5;
           @apply text-[12px] text-(--palette-neutral-600);
-          @apply hover:bg-(--palette-neutral-100);
 
           /* Keep the active pill visually separated from nearby content (icons, headings) */
           @apply ring-1 ring-transparent;
