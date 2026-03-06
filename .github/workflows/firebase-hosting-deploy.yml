@@ -35,7 +35,7 @@ jobs:
           PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
         run: |
           set -euo pipefail
-          npx firebase hosting:channel:deploy test -e 1h --project "${PROJECT_ID}" --json |
+          npx firebase hosting:channel:deploy "${GITHUB_RUN_ID}" -e 1h --project "${PROJECT_ID}" --json |
           jq -er --arg pid "${PROJECT_ID}" '.result[$pid].url | select(. != null and . != "") | "origin=\(.)"' >> "$GITHUB_OUTPUT"
 
   test:
