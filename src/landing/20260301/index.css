@@ -519,86 +519,68 @@ body.landing {
       /* headings: slightly more "arrive" */
       > hgroup {
         @apply opacity-0;
-        animation: both linear;
-        animation-timeline: var(--reading-band);
-        animation-name: fade-rise;
-        animation-range: entry 0% exit 85%;
+        @apply [animation-fill-mode:both] [animation-name:fade-rise] [animation-range:entry_0%_exit_85%] [animation-timeline:var(--reading-band)] [animation-timing-function:linear];
       }
 
       /* paragraphs: readable, gentle lift */
       p {
         @apply opacity-0;
-        animation: both linear;
-        animation-timeline: var(--reading-band);
-        animation-name: fade-rise;
-        animation-range: entry 0% exit 100%;
+        @apply [animation-fill-mode:both] [animation-name:fade-rise] [animation-range:entry_0%_exit_100%] [animation-timeline:var(--reading-band)] [animation-timing-function:linear];
       }
 
       /* context paragraphs: quieter, later */
       p.context {
         @apply opacity-0;
-        animation: both linear;
-        animation-timeline: var(--reading-band);
-        animation-name: soft-fade;
-        animation-range: entry 0% exit 100%;
+        @apply [animation-fill-mode:both] [animation-name:soft-fade] [animation-range:entry_0%_exit_100%] [animation-timeline:var(--reading-band)] [animation-timing-function:linear];
       }
 
       /* lists: less uniform (direction + stagger) */
       li {
         @apply opacity-0;
-        animation: both linear;
-        animation-timeline: var(--reading-band);
-        animation-name: soft-fade;
-        animation-range: entry 0% exit 100%;
+        @apply [animation-fill-mode:both] [animation-range:entry_0%_exit_100%] [animation-timeline:var(--reading-band)] [animation-timing-function:linear];
 
         /* subtle left/right drift so rows don't feel identical */
         &:nth-child(odd) {
-          animation: both linear;
-          animation-timeline: var(--reading-band);
-          animation-name: soft-fade-left;
-          animation-range: entry 0% exit 100%;
+          @apply [animation-name:soft-fade-left];
         }
 
         &:nth-child(even) {
-          animation: both linear;
-          animation-timeline: var(--reading-band);
-          animation-name: soft-fade-right;
-          animation-range: entry 0% exit 100%;
+          @apply [animation-name:soft-fade-right];
         }
 
         /* stagger bullets (tuned for typical 3–6 items) */
         &:nth-child(1) {
-          animation-delay: 0s;
+          @apply [animation-delay:0s];
         }
         &:nth-child(2) {
-          animation-delay: 0.1s;
+          @apply [animation-delay:0.1s];
         }
         &:nth-child(3) {
-          animation-delay: 0.2s;
+          @apply [animation-delay:0.2s];
         }
         &:nth-child(4) {
-          animation-delay: 0.3s;
+          @apply [animation-delay:0.3s];
         }
         &:nth-child(5) {
-          animation-delay: 0.4s;
+          @apply [animation-delay:0.4s];
         }
         &:nth-child(6) {
-          animation-delay: 0.5s;
+          @apply [animation-delay:0.5s];
         }
       }
 
       /* a tiny stagger for blocks inside sections */
       > :not(hgroup):not(ul) {
-        animation-delay: 0.05s;
+        @apply [animation-delay:0.05s];
       }
 
       &.hero,
       &::before {
-        animation: none;
+        @apply animate-none;
       }
 
       ul {
-        animation-delay: 0.08s;
+        @apply [animation-delay:0.08s];
       }
     }
   }
