@@ -62,17 +62,7 @@ nav.on-page {
         }
 
         /* Active: prefer aria-current */
-        &[aria-current] {
-          @apply bg-brand;
-          @apply text-ink--inverse;
-
-          &::before {
-            @apply border-white/70;
-            @apply shadow-[0_8px_18px_rgb(15_23_42/0.16)];
-          }
-        }
-
-        /* Back-compat: keep existing active attribute working */
+        &[aria-current],
         &[data-state~="active"] {
           @apply bg-brand;
           @apply text-ink--inverse;
@@ -90,20 +80,84 @@ nav.on-page {
 @media (max-width: 767px) {
   nav.on-page {
     @apply justify-center;
+
+    /* Softer mobile appearance (header nav should not dominate) */
+    > menu {
+      /* Give the scroll area breathing room so labels don't look "cut" at edges */
+      @apply relative gap-2 px-4 py-1;
+
+      /* Better snapping + keep current item away from the edges */
+      @apply snap-x snap-mandatory scroll-px-4;
+
+      /* Soften the hard clip at the viewport edges (intentional fade) */
+      @apply mask-[linear-gradient(to_right,transparent,black_22px,black_calc(100%-22px),transparent)];
+
+      /* Optional visual hint that the list continues (subtle edge fades) */
+      &::before,
+      &::after {
+        @apply pointer-events-none sticky top-0 z-1 h-full w-[18px] content-[""];
+      }
+
+      &::before {
+        @apply left-0;
+        @apply bg-[linear-gradient(to_right,rgba(255_255_255/1),rgba(255_255_255/0))];
+      }
+
+      &::after {
+        @apply right-0;
+        @apply bg-[linear-gradient(to_left,rgba(255_255_255/1),rgba(255_255_255/0))];
+      }
+
+      li {
+        a {
+          /* Slightly tighter, but with enough inset so text doesn't feel cramped */
+          @apply px-2.5 py-1.5;
+          @apply text-[12px] text-(--palette-neutral-600);
+          @apply hover:bg-(--palette-neutral-100);
+
+          /* Keep the active pill visually separated from nearby content (icons, headings) */
+          @apply ring-1 ring-transparent;
+
+          &::before {
+            @apply h-2.5 w-2.5;
+            @apply border-(--palette-neutral-300);
+            @apply shadow-none;
+          }
+
+          /* Active on mobile: subtle highlight instead of strong filled pill */
+          &[aria-current],
+          &[data-state~="active"] {
+            @apply bg-(--palette-coral-150);
+            @apply text-ink--secondary;
+
+            &::before {
+              @apply bg-brand;
+              @apply border-brand;
+              @apply shadow-[0_6px_14px_rgb(15_23_42/0.10)];
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 380px) {
-  nav.on-page > menu {
-    @apply gap-2;
-    @apply px-2.5;
-  }
+  nav.on-page {
+    > menu {
+      @apply gap-2;
+      @apply px-3;
+      @apply scroll-px-[0.875rem];
 
-  nav.on-page > menu li a {
-    @apply px-2 py-1.5;
-  }
+      li {
+        a {
+          @apply px-2 py-1.5;
 
-  nav.on-page > menu li a::before {
-    @apply h-2.5 w-2.5;
+          &::before {
+            @apply h-2.5 w-2.5;
+          }
+        }
+      }
+    }
   }
 }
