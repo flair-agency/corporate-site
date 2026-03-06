@@ -1,108 +1,109 @@
 nav.on-page {
   /* Flex */
-  @apply flex items-center justify-end;
+  @apply flex items-center justify-start;
   /* Layout */
-  @apply relative z-61 gap-3;
+  @apply relative z-61 w-full min-w-0 gap-3;
 
-  & > button.toggle {
-    /* Layout */
-    @apply relative z-61 hidden h-10 w-10;
+  > menu {
     /* Flex */
-    @apply items-center justify-center;
+    @apply flex flex-nowrap;
+    /* Layout */
+    @apply w-full min-w-0 gap-2.5 overflow-x-auto px-1 py-1.5 whitespace-nowrap;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
 
-    & + menu {
-      /* Flex */
-      @apply flex flex-nowrap;
-      /* Layout */
-      @apply gap-2.5 overflow-x-auto px-0 py-1.5 whitespace-nowrap;
+    &::-webkit-scrollbar {
+      @apply h-0;
+    }
 
-      &::-webkit-scrollbar {
-        /* Layout */
-        @apply h-1.5;
+    li {
+      @apply flex-none;
+      scroll-snap-align: center;
+
+      /* Completed (items BEFORE the current one) */
+      &:has(~ li a[aria-current]) {
+        a {
+          @apply text-(--palette-neutral-500);
+
+          &::before {
+            @apply bg-(--palette-neutral-200);
+            @apply border-(--palette-neutral-300);
+            @apply shadow-none;
+          }
+
+          /* Keep hover stronger than completed */
+          &:hover {
+            @apply text-ink--secondary;
+          }
+        }
       }
 
-      &::-webkit-scrollbar-thumb {
-        /* Background */
-        @apply bg-(--palette-neutral-200);
-        /* Border */
-        @apply rounded-full;
-      }
-
-      li a {
-        /* Text */
-        @apply text-(--palette-neutral-700) text-sm;
+      a {
         /* Layout */
+        @apply inline-flex items-center gap-2;
         @apply px-2.5 py-2;
+        @apply rounded-full;
+        /* Text */
+        @apply text-sm text-(--palette-neutral-700);
         /* Background */
         @apply hover:bg-(--palette-coral-150);
         /* Text */
         @apply hover:text-ink--secondary;
-        /* Border */
-        @apply rounded-full;
 
-        &[data-state~="active"] {
-          /* Background */
-          @apply bg-brand;
-          /* Text */
-          @apply text-ink--inverse;
+        /* Dot */
+        &::before {
+          content: "";
+          @apply inline-block;
+          @apply h-3 w-3 rounded-full;
+          @apply bg-white;
+          @apply border border-(--palette-neutral-200);
+          @apply shadow-[0_2px_10px_rgb(15_23_42/0.06)];
         }
-      }
-    }
 
-    @media (max-width: 767px) {
-      html.js & {
-        /* Flex */
-        @apply inline-flex;
+        /* Active: prefer aria-current */
+        &[aria-current] {
+          @apply bg-brand;
+          @apply text-ink--inverse;
 
-        & + menu {
-          /* Background */
-          @apply bg-white/96;
-          /* Effects */
-          @apply shadow-[0_14px_36px_black/12];
-          /* Layout */
-          @apply absolute top-[calc(env(safe-area-inset-top)+1.75rem)] right-4 z-62 hidden min-w-55 p-2.5;
-          /* Flex */
-          @apply flex-col flex-nowrap;
-          /* Border */
-          @apply rounded-xl;
-
-          li a {
-            /* Layout */
-            @apply block px-3 py-2.5;
+          &::before {
+            @apply border-white/70;
+            @apply shadow-[0_8px_18px_rgb(15_23_42/0.16)];
           }
         }
 
-        &[aria-expanded="true"] + menu {
-          /* Flex */
-          @apply flex flex-wrap;
-        }
-      }
+        /* Back-compat: keep existing active attribute working */
+        &[data-state~="active"] {
+          @apply bg-brand;
+          @apply text-ink--inverse;
 
-      html.no-js & {
-        /* Layout */
-        @apply hidden!;
+          &::before {
+            @apply border-white/70;
+            @apply shadow-[0_8px_18px_rgb(15_23_42/0.16)];
+          }
+        }
       }
     }
   }
 }
 
-/* ===== Mobile menu backdrop (pseudo-element) ===== */
 @media (max-width: 767px) {
-  html.js body:has(nav.on-page) {
-    &::before {
-      /* Background */
-      @apply bg-black/40;
-      /* Layout */
-      @apply pointer-events-none fixed inset-0 z-49 opacity-0;
-      /* Animation */
-      @apply transition-opacity duration-200;
-      /* Generated Content */
-      @apply content-[""];
-    }
+  nav.on-page {
+    @apply justify-center;
+  }
+}
 
-    &:has(nav.on-page > button.toggle[aria-expanded="true"])::before {
-      /* Layout */
-      @apply pointer-events-auto opacity-100;
-    }
+@media (max-width: 380px) {
+  nav.on-page > menu {
+    @apply gap-2;
+    @apply px-2.5;
+  }
+
+  nav.on-page > menu li a {
+    @apply px-2 py-1.5;
+  }
+
+  nav.on-page > menu li a::before {
+    @apply h-2.5 w-2.5;
   }
 }

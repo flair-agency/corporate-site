@@ -1,0 +1,9 @@
+<nav class="on-page" aria-label="On-page navigation">
+  <menu class="chapter-indicator" aria-label="Chapters">
+    {% for a in menu %}
+      <li>
+        <a href="{{ a.anchor }}"><span class="label">{{ a.label }}</span></a>
+      </li>
+    {% endfor %}
+  </menu>
+</nav>

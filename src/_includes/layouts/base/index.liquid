@@ -91,19 +91,8 @@
       <a href="{% if id == "landing" %}#{% else %}/{% endif %}">
         <img src="/assets/logo.svg" alt="{{ site.name }} ロゴ" class="logo" width="70" height="50">
       </a>
-      <nav class="on-page" aria-label="ページ内ナビゲーション">
-        <button class="toggle fas fa-bars text-xl" aria-expanded="false" aria-label="メニューを開く">
-          <span class="sr-only">メニュー</span>
-        </button>
-        <menu>
-          {% assign menu = site.default.nav.menu | concat: nav.menu %}
-          {% for a in menu %}
-            <li>
-              <a href="{{ a.anchor }}">{{ a.label }}</a>
-            </li>
-          {% endfor %}
-        </menu>
-      </nav>
+      {% assign menu = site.default.nav.menu | concat: nav.menu %}
+      {% render 'components/nav/on-page/index.liquid', menu: menu %}
     </header>
     {{ content }}
     <footer>

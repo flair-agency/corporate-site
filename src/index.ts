@@ -80,6 +80,35 @@
     })
     .filter((l) => l !== null);
   const linkMap = new Map(targets.map((el, i) => [el?.id, links[i]]));
+
+  const centerInMenu = (link: HTMLElement) => {
+    const menu = link.closest("menu");
+    if (!(menu instanceof HTMLElement)) return;
+
+    const mr = menu.getBoundingClientRect();
+    const lr = link.getBoundingClientRect();
+
+    // delta so that the link's center aligns to the menu's center
+    const delta = (lr.left + lr.width / 2) - (mr.left + mr.width / 2);
+    if (!Number.isFinite(delta) || Math.abs(delta) < 1) return;
+
+    menu.scrollTo({
+      left: menu.scrollLeft + delta,
+      behavior: "smooth",
+    });
+  };
+
+  let currentLink: HTMLElement | null = null;
+  let raf: number | null = null;
+  const syncIndicator = (link: HTMLElement) => {
+    currentLink = link;
+    if (raf !== null) return;
+    raf = requestAnimationFrame(() => {
+      raf = null;
+      if (currentLink) centerInMenu(currentLink);
+    });
+  };
+
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -87,15 +116,21 @@
         if (!link) return;
         if (entry.isIntersecting) {
           links.forEach((link) => {
+            link.removeAttribute("aria-current");
             removeData.bind(link)("state", "active");
           });
+          link.setAttribute("aria-current", String(true));
           addData.bind(link)("state", "active");
+          syncIndicator(link);
         }
       });
     },
     { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 },
   );
   targets.forEach((t) => io.observe(t));
+
+  const initial = links.find((l) => l.hasAttribute("aria-current") || (l.dataset.state ?? "").includes("active"));
+  if (initial) syncIndicator(initial);
 })({
   a: 'nav.on-page menu li a[href^="#"]',
 });
