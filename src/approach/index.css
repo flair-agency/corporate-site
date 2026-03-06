@@ -5,7 +5,7 @@ body.approach {
 
   /* Chapter labels (document feel) */
   section > hgroup::before {
-    @apply mb-3 block text-[10px] tracking-[0.22em] text-slate-400;
+    @apply mb-2 block text-[9px] tracking-[0.18em] text-slate-400;
     @apply relative z-0 text-center;
   }
 
@@ -48,7 +48,6 @@ body.approach {
   section#where-to-next > hgroup::before {
     @apply content-["NEXT"];
   }
-
   /* Hero adjustments */
   section.hero {
     &::before {
@@ -83,8 +82,8 @@ body.approach {
 
   section:not(.hero) {
     /* Layout: centered document sections like /philosophy/ */
-    @apply px-6 sm:px-8 md:px-10;
-    @apply py-14 md:py-16;
+    @apply px-4 sm:px-8 md:px-10;
+    @apply py-8 sm:py-12 md:py-16;
 
     /* document card (lighter + calmer than “LP card”) */
     @apply bg-white;
@@ -93,32 +92,41 @@ body.approach {
     @apply shadow-[0_6px_24px_rgba(15,23,42,0.05)];
 
     /* inner padding without touching HTML */
-    @apply p-10 sm:p-12 md:p-14;
+    @apply p-7 sm:p-12 md:p-14;
 
     /* typography */
     @apply font-["Sawarabi_Mincho","Noto_Serif_JP",serif] font-features-[palt];
 
     /* chapter header */
     > hgroup {
-      @apply relative mb-10 md:mb-12;
+      @apply relative mb-7 sm:mb-10 md:mb-12;
       @apply text-center;
 
       &::after {
-        @apply mx-auto mt-6 block h-px w-12 bg-slate-200/80 content-[""];
+        @apply mx-auto mt-4 block h-px w-10 bg-slate-200/80 content-[""] sm:mt-6 sm:w-12;
       }
 
       h2 {
-        @apply mb-2 text-2xl font-bold tracking-tight md:text-3xl;
+        @apply mb-1 text-[1.85rem] font-bold tracking-tight md:text-3xl;
 
         + p {
-          @apply text-sm text-slate-600 md:text-base;
+          @apply text-[13px] text-slate-600 md:text-base;
         }
       }
     }
 
+    .brand {
+      @apply font-semibold text-(--palette-coral-700);
+    }
+
+    strong {
+      @apply font-semibold text-slate-800;
+      @apply decoration-slate-300/70 underline underline-offset-[0.14em] decoration-[0.06em];
+    }
+
     /* Paragraph readability */
     p {
-      @apply mx-auto mb-6 max-w-3xl leading-relaxed text-slate-700 md:mb-7;
+      @apply mx-auto mb-5 max-w-3xl leading-[1.9] text-slate-700 md:mb-7;
 
       &.context {
         @apply text-sm text-slate-500;
@@ -156,7 +164,7 @@ body.approach {
     @apply relative;
 
     &::before {
-      @apply absolute inset-[0] -top-[105%] -z-10 justify-self-center text-[1.1em] text-slate-400 opacity-55;
+      @apply absolute inset-0 -top-[88%] -z-10 justify-self-center text-[0.95em] text-slate-400 opacity-45;
     }
   }
 
@@ -174,7 +182,7 @@ body.approach {
     /* Header stays inside the sheet */
     > hgroup {
       @apply col-span-full;
-      @apply px-10 py-10 sm:px-12 sm:py-12 md:px-14 md:py-14;
+      @apply px-7 py-7 sm:px-12 sm:py-12 md:px-14 md:py-14;
       @apply mb-0;
 
       h2 + p span {
@@ -190,7 +198,7 @@ body.approach {
       @apply rounded-none border-0 bg-transparent shadow-none;
 
       /* column padding */
-      @apply px-10 py-10 sm:px-8 sm:py-12 md:px-10;
+      @apply px-7 py-7 sm:px-8 sm:py-12 md:px-10;
 
       /* mobile: stacked with subtle horizontal separators */
       @apply border-t border-slate-200/40 sm:border-t-0;
@@ -217,7 +225,7 @@ body.approach {
 
       /* Header */
       > hgroup {
-        @apply mb-7 text-center;
+        @apply mb-5 text-center;
 
         h3 {
           @apply mb-1 text-lg font-semibold tracking-tight;
@@ -226,12 +234,6 @@ body.approach {
         h3 + p {
           @apply mb-0 text-xs text-slate-500;
         }
-      }
-
-      /* subtle kicker tuning for pillar headings */
-      .pillar > hgroup::before {
-        @apply mb-2 text-[9px] tracking-[0.28em] text-slate-300;
-        @apply text-center;
       }
 
       /* Body text */
@@ -246,85 +248,71 @@ body.approach {
   }
 
   section#principle {
-    /* Make the Enjoy › Continue › Possibility line look intentional */
     > hgroup > h2 + p {
       @apply mt-2 text-sm text-slate-600;
     }
 
-    > hgroup > h2 + p span {
-      @apply font-semibold text-slate-700;
-    }
+    > article,
+    > section {
+      @apply mx-auto max-w-3xl;
+      @apply py-5 sm:py-6;
+      @apply border-t border-slate-200/60;
+      @apply text-center;
 
-    > hgroup > h2 + p span:not(:last-child)::after {
-      @apply inline px-2 opacity-60 content-["›"];
-    }
+      &:first-of-type {
+        @apply mt-1;
+      }
 
-    /* Principle list emphasis */
-    ul {
-      @apply mt-8;
+      hgroup {
+        @apply mb-2;
 
-      li {
-        @apply font-medium;
+        h3 {
+          @apply mb-1 text-xl font-semibold tracking-tight;
+          @apply text-slate-800;
+        }
 
-        b {
-          @apply block sm:inline;
-
-          &::before {
-            @apply inline content-["<"];
-          }
-
-          &::after {
-            @apply inline content-[">"];
-          }
+        h3 + p {
+          @apply mb-0 text-[11px] tracking-[0.08em] text-slate-400;
         }
       }
+
+      > p {
+        @apply mb-0 max-w-xl text-slate-700;
+      }
+    }
+
+    > p.context {
+      @apply mt-8;
     }
   }
 
   /* Navigation section (two directions: philosophy ↔ creator) */
   section#where-to-next {
     ul {
-      @apply mx-auto mt-6 max-w-3xl p-0;
-      @apply grid list-none grid-cols-2 items-center;
-      @apply relative;
+      @apply mx-auto mt-5 max-w-3xl p-0;
+      @apply grid list-none gap-3 md:grid-cols-2;
+    }
 
-      li {
-        @apply p-0 text-sm md:text-base;
-      }
+    li {
+      @apply p-0;
+    }
 
-      a {
-        @apply relative font-medium text-slate-800;
-        @apply underline decoration-slate-300 underline-offset-4;
-        @apply hover:decoration-slate-500;
-      }
+    a {
+      @apply block rounded-2xl border border-slate-200/80 bg-slate-50/70 px-5 py-4;
+      @apply no-underline transition;
+      @apply hover:border-slate-300 hover:bg-slate-50;
+    }
 
-      span {
-        @apply text-slate-500;
-      }
+    a > span:first-child {
+      @apply mb-2 block text-[10px] tracking-[0.22em] text-slate-400 uppercase;
+    }
 
-      /* philosophy = backward / reflective direction */
-      li:first-child a::before {
-        @apply mr-2 inline-block content-['<<'];
-      }
+    a > b {
+      @apply mb-1 block text-[1.05rem] font-semibold text-slate-800 md:text-lg;
+    }
 
-      /* creator = forward / practical direction */
-      li:last-child a::after {
-        @apply ml-2 inline-block content-['>>'];
-      }
-
-      /* subtle visual balance */
-      li:first-child {
-        @apply text-left;
-      }
-
-      li:last-child {
-        @apply text-right;
-      }
-
-      /* central axis between philosophy and creator */
-      &::before {
-        @apply absolute top-1 bottom-1 left-[50%] w-px transform-[translateX(-0.5px)] bg-slate-200 content-[""];
-      }
+    a > span:last-child {
+      @apply block text-[13px] leading-relaxed text-slate-600;
     }
   }
 }
