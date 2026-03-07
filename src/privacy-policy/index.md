@@ -13,6 +13,8 @@ page:
 tags:
   - privacy-policy
 title: プライバシーポリシー
+priority: 0.1
+noindex: true
 ---
 <section id="top">
 

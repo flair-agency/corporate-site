@@ -14,6 +14,8 @@ page:
 tags:
   - terms
 title: 利用規約
+priority: 0.1
+noindex: true
 ---
 <section id="top">
 
