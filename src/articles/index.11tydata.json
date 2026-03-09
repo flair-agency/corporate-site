@@ -1,0 +1,43 @@
+{
+  "classes": ["articles"],
+  "description": "Flairが公開する記事一覧です。TikTok LIVEや配信文化、クリエイター支援に関する記事を掲載しています。",
+  "id": "articles",
+  "keywords": ["Flair", "TikTok LIVE", "配信", "クリエイター", "note記事"],
+  "layout": "layouts/base/index.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "./hero.avif",
+      "imagesizes": "100vw",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "./hero.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "./hero.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "./hero.png"
+        }
+      ],
+      "rel": "preload"
+    }
+  ],
+  "nav": {
+    "menu": [
+      {
+        "anchor": "#note",
+        "label": "note"
+      }
+    ]
+  },
+  "page": {
+    "path": "/articles/"
+  },
+  "tags": ["articles"],
+  "title": "記事一覧"
+}

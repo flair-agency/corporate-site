@@ -1,0 +1,90 @@
+/* ===== Articles Page Specific Styles ===== */
+body.articles {
+  @apply leading-relaxed;
+
+  /* Hero section */
+  section.hero {
+    @apply mb-12;
+
+    > hgroup {
+      @apply w-full max-w-2xl px-6 text-left md:px-12;
+    }
+
+    h1,
+    h2 {
+      @apply mb-2 text-left;
+    }
+
+    p {
+      @apply text-left text-gray-200;
+    }
+  }
+
+  /* Note section */
+  #note {
+    @apply mb-8;
+    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3;
+
+    > hgroup {
+      @apply mb-2;
+    }
+
+    > p {
+      @apply mb-3 text-gray-600;
+
+      a {
+        @apply text-sm;
+      }
+    }
+
+    > :not(article) {
+      @apply col-span-full;
+    }
+
+    /* Articles */
+    article {
+      @apply overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200;
+      @apply hover:-translate-y-0.5 hover:shadow-md;
+
+      > a {
+        @apply block aspect-video overflow-hidden bg-gray-100;
+
+        img {
+          @apply h-full w-full object-cover transition duration-300;
+        }
+      }
+
+      &:hover > a img {
+        @apply scale-[1.02];
+      }
+
+      > h3,
+      > p,
+      > time {
+        @apply px-5;
+      }
+
+      h3 {
+        @apply pt-4 text-base font-semibold leading-snug line-clamp-2 min-h-12;
+      }
+
+      a {
+        @apply no-underline;
+
+        &:hover {
+          @apply underline underline-offset-4;
+        }
+      }
+
+      /* Description */
+      p.description {
+        @apply mt-3 line-clamp-3 overflow-hidden text-sm text-gray-600;
+      }
+
+      /* Published date */
+      time {
+        @apply mt-4 block pb-5 text-sm text-gray-500;
+      }
+    }
+  }
+}

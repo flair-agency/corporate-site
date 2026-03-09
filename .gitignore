@@ -79,3 +79,5 @@ public/sitemap.xml
 !public/assets/**/*.html
 !public/assets/**/*.css
 !public/assets/**/*.js
+
+src/_data/note_articles.json

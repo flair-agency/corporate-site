@@ -45,6 +45,10 @@
       "path": "/news/"
     },
     {
+      "label": "記事一覧",
+      "path": "/articles/"
+    },
+    {
       "label": "関わり方",
       "path": "/approach/"
     },

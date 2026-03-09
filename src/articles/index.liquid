@@ -1,0 +1,54 @@
+<main>
+  <style>
+    :root {
+      --asset-hero: image-set(
+        url('/articles/hero.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/articles/hero.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/articles/hero.png?v={{ site.asset.version }}') type('image/png')
+      );
+    }
+  </style>
+  <script>
+    // Ensure dataLayer exists for GTM event tracking
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <section id="top" class="hero">
+    <hgroup>
+      <h2>TikTok LIVEと配信文化を読み解く</h2>
+      <p>TikTok LIVE、クリエイター、エージェンシーのリアルを解説しています。</p>
+    </hgroup>
+  </section>
+
+  <section id="note">
+    <hgroup>
+      <h2>note</h2>
+    </hgroup>
+    <p>
+      <a href="https://note.com/flair_agency_biz" target="_blank" rel="noopener">note</a>では、 Flairの活動、TikTok
+      LIVE、クリエイターエコシステムに関する記事を掲載しています。
+    </p>
+
+    {% for article in note_articles %}
+      <article>
+        <h3>
+          <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
+        </h3>
+
+        <a href="{{ article.url }}" target="_blank" rel="noopener">
+          <img
+            src="{{ article.thumbnail }}"
+            alt="{{ article.title }}"
+            loading="lazy"
+          >
+        </a>
+
+        <p class="description">{{ article.description | strip_html | replace: '続きをみる', '' }}</p>
+
+        <time datetime="{{ article.publishedAt | date: '%Y-%m-%d' }}">
+          {{ article.publishedAt | date: '%Y年%m月%d日' }}
+        </time>
+      </article>
+    {% endfor %}
+  </section>
+</main>

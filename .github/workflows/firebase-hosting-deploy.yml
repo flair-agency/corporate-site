@@ -3,6 +3,9 @@ name: Deploy to Firebase Hosting (OIDC)
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */3 * * *"
 
 permissions:
   contents: read
@@ -101,6 +104,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
+
+      - name: Generate note articles data
+        env:
+          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
+        run: |
+          set -euo pipefail
+
+          sudo apt-get update && sudo apt-get install -y xsltproc 
+
+          curl -fsSL "${NOTE_RSS_URL}" |
+          xsltproc ./rss-to-tsv.xsl - |
+          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
+          jq -s '.' > src/_data/note_articles.json
 
       - name: Install
         run: npm ci
