@@ -5,8 +5,8 @@ body.approach {
 
   /* Chapter labels (document feel) */
   section > hgroup::before {
-    @apply mb-2 block text-[9px] tracking-[0.18em] text-slate-400;
-    @apply relative z-0 text-center;
+    @apply mb-2 block text-[10px] tracking-3xl text-(--palette-coral-700)/55;
+    @apply relative z-0 text-center font-semibold;
   }
 
   section#abstract > hgroup::before {
@@ -86,37 +86,38 @@ body.approach {
     @apply py-8 sm:py-12 md:py-16;
 
     /* document card (lighter + calmer than “LP card”) */
-    @apply bg-white;
-    @apply rounded-2xl;
-    @apply border border-slate-200/70;
-    @apply shadow-[0_6px_24px_rgba(15,23,42,0.05)];
+    @apply bg-white/95;
+    @apply rounded-3xl;
+    @apply border border-slate-200/60;
+    @apply shadow-[0_10px_32px_rgba(15,23,42,0.045)];
 
     /* inner padding without touching HTML */
-    @apply p-7 sm:p-12 md:p-14;
+    @apply p-7 sm:p-10 md:p-12;
 
     /* typography */
     @apply font-["Sawarabi_Mincho","Noto_Serif_JP",serif] font-features-[palt];
 
     /* chapter header */
     > hgroup {
-      @apply relative mb-7 sm:mb-10 md:mb-12;
+      @apply relative mb-6 sm:mb-8 md:mb-10;
       @apply text-center;
 
       &::after {
-        @apply mx-auto mt-4 block h-px w-10 bg-slate-200/80 content-[""] sm:mt-6 sm:w-12;
+        @apply mx-auto mt-4 block h-px w-12 bg-(--palette-coral-700)/18 content-[""] sm:mt-5 sm:w-14;
       }
 
       h2 {
-        @apply mb-1 text-[1.85rem] font-bold tracking-tight md:text-3xl;
+        @apply mb-1.5 text-[1.8rem] font-bold tracking-tight text-slate-900 md:text-[2rem];
 
         + p {
-          @apply text-[13px] text-slate-600 md:text-base;
+          @apply text-[13px] leading-relaxed text-slate-600 md:text-[15px];
         }
       }
     }
 
     .brand {
       @apply font-semibold text-(--palette-coral-700);
+      text-shadow: 0 0 0.01px currentColor;
     }
 
     strong {
@@ -126,10 +127,10 @@ body.approach {
 
     /* Paragraph readability */
     p {
-      @apply mx-auto mb-5 max-w-3xl leading-[1.9] text-slate-700 md:mb-7;
+      @apply mx-auto mb-5 max-w-176 leading-[1.95] text-slate-700 md:mb-6;
 
       &.context {
-        @apply text-sm text-slate-500;
+        @apply text-sm leading-[1.85] text-slate-500;
       }
     }
 
@@ -164,13 +165,13 @@ body.approach {
     @apply relative;
 
     &::before {
-      @apply absolute inset-0 -top-[88%] -z-10 justify-self-center text-[0.95em] text-slate-400 opacity-45;
+      @apply absolute inset-0 -top-[84%] -z-10 justify-self-center text-[1em] text-(--palette-coral-700)/20 opacity-100;
     }
   }
 
   /* Pillars layout */
   section#pillars {
-    @apply p-0;
+    @apply overflow-hidden p-0;
 
     /* Use the section itself as the “sheet”, but remove the generic card padding
        so we can control separators + spacing precisely. */
@@ -182,7 +183,7 @@ body.approach {
     /* Header stays inside the sheet */
     > hgroup {
       @apply col-span-full;
-      @apply px-7 py-7 sm:px-12 sm:py-12 md:px-14 md:py-14;
+      @apply px-7 py-7 sm:px-10 sm:py-10 md:px-12 md:py-12;
       @apply mb-0;
 
       h2 + p span {
@@ -198,7 +199,7 @@ body.approach {
       @apply rounded-none border-0 bg-transparent shadow-none;
 
       /* column padding */
-      @apply px-7 py-7 sm:px-8 sm:py-12 md:px-10;
+      @apply px-7 py-7 sm:px-7 sm:py-10 md:px-8;
 
       /* mobile: stacked with subtle horizontal separators */
       @apply border-t border-slate-200/40 sm:border-t-0;
@@ -208,7 +209,7 @@ body.approach {
       }
 
       &:nth-of-type(2) {
-        @apply sm:bg-(--palette-neutral-50)/50;
+        @apply sm:bg-(--palette-coral-400)/[0.035];
       }
 
       /* desktop: vertical separators between columns */
@@ -225,10 +226,10 @@ body.approach {
 
       /* Header */
       > hgroup {
-        @apply mb-5 text-center;
+        @apply mb-4 text-center;
 
         h3 {
-          @apply mb-1 text-lg font-semibold tracking-tight;
+          @apply mb-1 text-[1.1rem] font-semibold tracking-tight text-slate-900;
         }
 
         h3 + p {
@@ -238,7 +239,7 @@ body.approach {
 
       /* Body text */
       p {
-        @apply mx-0 mb-6 max-w-none;
+        @apply mx-0 mb-5 max-w-none;
       }
 
       ul {
@@ -255,7 +256,7 @@ body.approach {
     > article,
     > section {
       @apply mx-auto max-w-3xl;
-      @apply py-5 sm:py-6;
+      @apply py-4 sm:py-5;
       @apply border-t border-slate-200/60;
       @apply text-center;
 
@@ -264,15 +265,14 @@ body.approach {
       }
 
       hgroup {
-        @apply mb-2;
+        @apply mb-2.5;
 
         h3 {
-          @apply mb-1 text-xl font-semibold tracking-tight;
-          @apply text-slate-800;
+          @apply mb-1 text-xl font-semibold tracking-tight text-slate-900;
         }
 
         h3 + p {
-          @apply mb-0 text-[11px] tracking-[0.08em] text-slate-400;
+          @apply mb-0 text-[11px] tracking-[0.08em] text-(--palette-coral-700)/60;
         }
       }
 
