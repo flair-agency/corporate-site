@@ -1,6 +1,6 @@
 {
   "classes": ["approach"],
-  "description": "比較は止められない。だから、楽しさを基準にする。楽しさが続く状態を設計し、配信者の可能性が動き出すためのFlairのアプローチ。",
+  "description": "楽しさが続くと、可能性は動き出す。Flairは、配信者が自分らしく続けられる状態を「認知・距離・環境」の3つの柱で設計します。楽しさを基準に、可能性が動き出す配信環境をつくる考え方を紹介します。",
   "google": {
     "fonts": {
       "query": "family=Sawarabi+Mincho:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
@@ -70,5 +70,5 @@
     "path": "/approach/"
   },
   "tags": ["approach"],
-  "title": "配信者の状態設計"
+  "title": "配信者の状態設計とは"
 }
