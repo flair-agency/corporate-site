@@ -218,6 +218,15 @@ layer(base);
   ol ol {
     @apply pl-5;
   }
+
+  a[href^="http"]:not([href*="flair-agency.biz"])::after {
+    @apply content-["\f08e"]; /* arrow-up-right-from-square */
+    @apply inline-block;
+    @apply font-["Font_Awesome_6_Free"] font-extrabold;
+    @apply text-[0.8em];
+    @apply align-middle leading-none;
+    @apply mx-[0.35em];
+  }
 }
 
 @layer components {
