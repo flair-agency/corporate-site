@@ -47,7 +47,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        page: [creator, business, company]
+        page: [home, creator, business, company]
     env:
       REPORTS_PATH: /tmp/lighthouse-reports
       FIREBASE_PID_FILE: /tmp/firebase-emulator.pid
