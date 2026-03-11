@@ -1,11 +1,7 @@
 {
   "hosting": {
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
         "source": "**/*.@(woff2|woff|ttf|otf|png|jpg|jpeg|webp|avif|svg|ico|json|webm|mp4|wasm)",
@@ -26,11 +22,10 @@
         ]
       }
     ],
-    "redirects": [
+    "rewrites": [
       {
-        "source": "{,/}",
-        "destination": "/landing/20260301/",
-        "type": 301
+        "source": "/{,index.html}",
+        "destination": "/home/index.html"
       }
     ]
   },

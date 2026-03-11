@@ -190,6 +190,7 @@ layer(base);
 @import "./business/index.css";
 @import "./company/index.css";
 @import "./creator/index.css";
+@import "./home/index.css";
 @import "./landing/20260301/index.css";
 @import "./news/index.css";
 @import "./philosophy/index.css";

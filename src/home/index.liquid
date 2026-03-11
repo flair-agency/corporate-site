@@ -1,0 +1,68 @@
+<main>
+  <style>
+    :root {
+      --asset-hero: image-set(
+        url('/home/hero.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/home/hero.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/home/hero.png?v={{ site.asset.version }}') type('image/png')
+      );
+      --asset-scene-1: image-set(
+        url('/home/scene-1.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/home/scene-1.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/home/scene-1.png?v={{ site.asset.version }}') type('image/png')
+      );
+      --asset-scene-2: image-set(
+        url('/home/scene-2.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/home/scene-2.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/home/scene-2.png?v={{ site.asset.version }}') type('image/png')
+      );
+      --asset-scene-3: image-set(
+        url('/home/scene-3.avif?v={{ site.asset.version }}') type('image/avif'),
+        url('/home/scene-3.webp?v={{ site.asset.version }}') type('image/webp'),
+        url('/home/scene-3.png?v={{ site.asset.version }}') type('image/png')
+      );
+      --asset-logo: url('/assets/logo.svg');
+    }
+  </style>
+  <script>
+    // Ensure dataLayer exists for GTM event tracking
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <article class="full-bleed">
+    <header id="top">
+      <h1>誰もが、<span>LIVEで</span><span>自分を</span><span>解き放てる</span>社会を<span>つくる</span></h1>
+    </header>
+
+    <section id="lead" aria-labelledby="lead">
+      <p>比較は止められない。</p>
+      <h2>だから、<span>楽しさ</span>を<span>基準に</span>する。</h2>
+    </section>
+
+    <section id="image-1" aria-labelledby="image-1">
+      <h2><span>楽しさ</span>は、<span>逃避</span><span>ではない</span></h2>
+    </section>
+
+    <section id="image-2" aria-labelledby="image-2">
+      <h2>人は、<span>楽しいこと</span>しか<span>続けられない</span></h2>
+    </section>
+
+    <section id="image-3" aria-labelledby="image-3">
+      <h2><span>楽しさが</span><span>続くと、</span><span>可能性は</span><span>動き出す</span></h2>
+    </section>
+
+    <nav>
+      <ul>
+        <li><a href="/creator/">Creator</a></li>
+        <li><a href="/business/">Business</a></li>
+        <li><a href="/philosophy/">Philosophy</a></li>
+        <li><a href="/company/">Company</a></li>
+      </ul>
+    </nav>
+
+    <section id="closing" aria-labelledby="closing">
+      <h2>Flair</h2>
+      <p><span>若手クリエイター</span>の<span>挑戦と成長</span>を支え、<span>最も信頼される</span><span>LIVEパートナー</span>となる。</p>
+    </section>
+  </article>
+</main>

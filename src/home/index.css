@@ -1,0 +1,608 @@
+/* ===== Home Page Specific Styles ===== */
+body.home {
+  > main {
+    @apply bg-page text-ink--strong;
+    @apply font-["Noto_Sans_JP"];
+
+    --home-hero-min-height: calc(100svh - var(--site-header-height, 4.5rem));
+    --home-scene-min-height: 88svh;
+
+    span {
+      @apply whitespace-nowrap;
+    }
+
+    header,
+    section,
+    nav {
+      @apply relative overflow-hidden px-[clamp(1.5rem,4vw,4rem)];
+    }
+
+    header {
+      @apply min-h-(--home-hero-min-height);
+      @apply flex flex-col justify-end gap-3;
+      @apply px-[clamp(1.5rem,4vw,4rem)] pt-[clamp(5rem,10vh,8rem)] pb-[clamp(4.5rem,10vh,7rem)];
+      @apply bg-[linear-gradient(to_top,color-mix(in_oklch,var(--palette-neutral-900)_68%,transparent),color-mix(in_oklch,var(--palette-neutral-900)_24%,transparent)),var(--asset-hero)] bg-cover bg-position-[72%] bg-no-repeat;
+      @apply text-ink--inverse;
+
+      > h1 {
+        @apply m-0 max-w-[9ch] text-[clamp(2.75rem,5.8vw,5.6rem)] leading-[1.04] font-medium tracking-[0.01em] text-balance;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 1.5rem;
+        width: 0.375rem;
+        height: 3rem;
+        border: 1px solid color-mix(in oklch, var(--color-ink--inverse) 72%, transparent);
+        border-radius: 999px;
+        background: transparent;
+        box-sizing: border-box;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 3.55rem;
+        width: 0.25rem;
+        height: 0.5rem;
+        border-radius: 999px;
+        background: color-mix(in oklch, var(--color-ink--inverse) 88%, transparent);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%);
+      }
+    }
+
+    section#lead {
+      @apply min-h-[70svh];
+      @apply flex flex-col justify-center gap-4 py-[clamp(5rem,12vh,9rem)];
+      @apply from-page to-surface--accent bg-linear-180;
+
+      > h2,
+      > p {
+        @apply m-0 max-w-[20rem];
+      }
+
+      > h2 {
+        @apply text-[clamp(2rem,5vw,4.25rem)] leading-[1.15] font-medium text-balance;
+      }
+
+      > p {
+        @apply text-ink--secondary text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.9] tracking-[0.04em];
+      }
+    }
+
+    section:is(#image-1, #image-2, #image-3) {
+      @apply min-h-(--home-scene-min-height);
+      @apply flex;
+      @apply py-[clamp(2rem,6vh,4rem)];
+      @apply text-ink--inverse;
+      @apply bg-(--palette-neutral-900);
+      isolation: isolate;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: -8% 0;
+        z-index: 0;
+        background-image: var(--home-scene-image);
+        background-position: var(--home-scene-position, center center);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: scale(1.12) translateY(6%);
+        will-change: transform;
+      }
+
+      &::before {
+        @apply content-[""];
+        @apply absolute inset-0 z-1;
+        @apply bg-linear-to-t from-[color-mix(in_oklch,var(--palette-neutral-900)_64%,transparent)] to-[color-mix(in_oklch,var(--palette-neutral-900)_22%,transparent)];
+      }
+
+      > h2 {
+        @apply relative z-2;
+        @apply m-0 max-w-[11ch];
+        @apply text-[clamp(2rem,5vw,4.5rem)] leading-[1.12] font-medium text-balance;
+      }
+    }
+
+    section#image-1 {
+      @apply items-end;
+      --home-scene-image: var(--asset-scene-1);
+      --home-scene-position: center center;
+    }
+
+    section#image-2 {
+      align-items: flex-end;
+      justify-content: flex-start;
+      text-align: left;
+      --home-scene-image: var(--asset-scene-2);
+      --home-scene-position: 62% center;
+    }
+
+    section#image-3 {
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: right;
+      --home-scene-image: var(--asset-scene-3);
+      --home-scene-position: 62% center;
+    }
+
+    nav {
+      @apply font-["Manrope"];
+      padding-block: clamp(2rem, 5vh, 3.5rem);
+      background: var(--color-page);
+      border-block: 1px solid var(--color-line);
+
+      > ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        a {
+          color: inherit;
+          font-size: 0.875rem;
+          line-height: 1.6;
+          letter-spacing: 0.12em;
+          text-decoration: none;
+          text-transform: uppercase;
+          border-bottom: 1px solid
+            color-mix(in oklch, var(--color-ink--strong) 24%, transparent);
+          padding-bottom: 0.2rem;
+          transition:
+            border-color 180ms ease,
+            opacity 180ms ease;
+
+          &:hover,
+          &:focus-visible {
+            opacity: 0.68;
+            border-color: currentColor;
+          }
+        }
+      }
+    }
+
+    section#closing {
+      @apply min-h-[44svh];
+      @apply flex flex-col justify-end gap-3;
+      @apply py-[clamp(4rem,10vh,7rem)];
+      @apply bg-linear-180 from-page to-[color-mix(in_oklch,var(--color-surface--accent)_70%,var(--color-page)_30%)];
+
+      > h2,
+      > p {
+        @apply m-0;
+      }
+
+      > h2 {
+        @apply font-["Manrope"] font-medium;
+        @apply text-[clamp(2.5rem,8vw,6rem)] leading-none tracking-[0.02em] text-transparent;
+        @apply text-[size:0] leading-0;
+        @apply relative;
+        @apply text-transparent;
+
+        &::before {
+          @apply content-[""];
+          @apply block;
+          @apply w-[clamp(8rem,18vw,14rem)] aspect-220/72;
+          @apply bg-(image:--asset-logo) bg-no-repeat bg-contain bg-position-[left_center];
+        }
+      }
+
+      > p {
+        @apply max-w-104;
+        @apply text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.9] text-ink--secondary;
+      }
+    }
+  }
+}
+
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes home-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2.5rem) scale(0.975);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes home-fade-up-soft {
+  0% {
+    opacity: 0;
+    transform: translateY(6rem) scale(0.985);
+    filter: blur(1px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes home-scene-parallax {
+  from {
+    transform: scale(1.12) translateY(6%);
+  }
+
+  to {
+    transform: scale(1.12) translateY(-6%);
+  }
+}
+
+@keyframes home-scroll-indicator-track {
+  0% {
+    opacity: 0.34;
+    transform: translateX(-50%);
+  }
+
+  50% {
+    opacity: 0.62;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 0.34;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes home-scroll-indicator-dot {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  18% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  82% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(1.2rem);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1.45rem);
+  }
+}
+
+body.home {
+  > main {
+    header > h1 {
+      animation-name: home-fade-up;
+      animation-duration: 900ms;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      animation-delay: 160ms;
+      animation-fill-mode: both;
+    }
+
+    section#closing > h2::before {
+      animation-name: home-fade-in;
+      animation-duration: 1400ms;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: both;
+    }
+
+    section#closing > p {
+      animation-name: home-fade-up-soft;
+      animation-duration: 1500ms;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: both;
+    }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  body.home {
+    > main {
+      section#lead {
+        view-timeline-name: --home-lead;
+        view-timeline-axis: block;
+      }
+
+      section#image-1 {
+        view-timeline-name: --home-image-1;
+        view-timeline-axis: block;
+      }
+
+      section#image-2 {
+        view-timeline-name: --home-image-2;
+        view-timeline-axis: block;
+      }
+
+      section#image-3 {
+        view-timeline-name: --home-image-3;
+        view-timeline-axis: block;
+      }
+
+      nav {
+        view-timeline-name: --home-nav;
+        view-timeline-axis: block;
+      }
+
+      section#closing {
+        view-timeline-name: --home-closing;
+        view-timeline-axis: block;
+      }
+
+      section#lead > h2,
+      section#lead > p,
+      section#image-1 > h2,
+      section#image-2 > h2,
+      section#image-3 > h2,
+      section#closing > p {
+        opacity: 0;
+        transform: translateY(6rem) scale(0.985);
+        filter: blur(14px);
+        animation-name: home-fade-up-soft;
+        animation-duration: 1ms;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+      }
+
+      nav > ul,
+      section#closing > h2::before {
+        opacity: 0;
+        transform: translateY(2.5rem) scale(0.975);
+        filter: blur(12px);
+        animation-name: home-fade-in;
+        animation-duration: 1ms;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+      }
+
+      section#lead > h2 {
+        animation-timeline: --home-lead;
+        animation-range-start: entry 65%;
+        animation-range-end: cover 42%;
+      }
+
+      section#lead > p {
+        animation-timeline: --home-lead;
+        animation-range-start: entry 74%;
+        animation-range-end: cover 46%;
+      }
+
+      section#image-1 > h2 {
+        animation-timeline: --home-image-1;
+        animation-range-start: entry 70%;
+        animation-range-end: cover 44%;
+      }
+
+      section#image-2 > h2 {
+        animation-timeline: --home-image-2;
+        animation-range-start: entry 70%;
+        animation-range-end: cover 44%;
+      }
+
+      section#image-3 > h2 {
+        animation-timeline: --home-image-3;
+        animation-range-start: entry 70%;
+        animation-range-end: cover 44%;
+      }
+
+      nav > ul {
+        animation-timeline: --home-nav;
+        animation-range-start: entry 58%;
+        animation-range-end: cover 38%;
+      }
+
+      section#closing > h2::before {
+        animation-timeline: --home-closing;
+        animation-range-start: entry 44%;
+        animation-range-end: entry 96%;
+      }
+
+      section#closing > p {
+        animation-timeline: --home-closing;
+        animation-range-start: entry 58%;
+        animation-range-end: entry 100%;
+      }
+
+      section#image-1::after {
+        animation-name: home-scene-parallax;
+        animation-duration: 1ms;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        animation-timeline: --home-image-1;
+        animation-range-start: entry 0%;
+        animation-range-end: exit 100%;
+      }
+
+      section#image-2::after {
+        animation-name: home-scene-parallax;
+        animation-duration: 1ms;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        animation-timeline: --home-image-2;
+        animation-range-start: entry 0%;
+        animation-range-end: exit 100%;
+      }
+
+      section#image-3::after {
+        animation-name: home-scene-parallax;
+        animation-duration: 1ms;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        animation-timeline: --home-image-3;
+        animation-range-start: entry 0%;
+        animation-range-end: exit 100%;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home > main header::before,
+  body.home > main header::after,
+  body.home > main header > h1,
+  body.home > main section#lead > h2,
+  body.home > main section#lead > p,
+  body.home > main section#image-1 > h2,
+  body.home > main section#image-2 > h2,
+  body.home > main section#image-3 > h2,
+  body.home > main section#image-1::after,
+  body.home > main section#image-2::after,
+  body.home > main section#image-3::after,
+  body.home > main nav > ul,
+  body.home > main section#closing > h2::before,
+  body.home > main section#closing > p {
+    animation-name: none !important;
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation-timing-function: linear !important;
+    animation-fill-mode: none !important;
+    animation-iteration-count: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.home {
+    > main {
+      --home-hero-min-height: calc(100svh - var(--site-header-height, 4rem));
+      --home-scene-min-height: 72svh;
+
+      header {
+        @apply justify-end;
+        padding-top: 5.25rem;
+        padding-bottom: 4rem;
+        background-position: 64% center;
+      }
+
+      header::after {
+        opacity: 1;
+        animation-name: home-scroll-indicator-track;
+        animation-duration: 1800ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
+
+      header::before {
+        opacity: 1;
+        animation-name: home-scroll-indicator-dot;
+        animation-duration: 1800ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
+
+      header > h1,
+      section#image-1 > h2,
+      section#image-2 > h2,
+      section#image-3 > h2 {
+        @apply max-w-[9ch];
+      }
+
+      header > h1 {
+        max-width: 8ch;
+        font-size: clamp(2.1rem, 9.6vw, 3.5rem);
+        line-height: 1.02;
+      }
+
+      section#lead {
+        @apply min-h-auto;
+      }
+
+      section#image-1,
+      section#image-2,
+      section#image-3 {
+        @apply min-h-(--home-scene-min-height);
+      }
+
+      section#image-1 {
+        --home-scene-position: 58% center;
+      }
+
+      section#image-2 {
+        align-items: flex-end;
+        justify-content: flex-start;
+        text-align: left;
+        --home-scene-position: 60% center;
+      }
+
+      section#image-3 {
+        @apply justify-end;
+        --home-scene-position: 60% center;
+      }
+
+      nav > ul {
+        @apply flex-col gap-3.5;
+
+        a {
+          @apply inline-block;
+        }
+      }
+
+      section#closing > h2::before {
+        width: clamp(7rem, 42vw, 10rem);
+      }
+
+      section#closing {
+        @apply min-h-auto;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  body.home {
+    > main {
+      header {
+        background-position: 66% center;
+      }
+
+      header > h1 {
+        max-width: 9ch;
+        font-size: clamp(3.3rem, 6vw, 5rem);
+        line-height: 1.04;
+      }
+
+      section#image-1 {
+        --home-scene-position: 58% center;
+      }
+
+      section#image-2 {
+        align-items: flex-end;
+        justify-content: flex-start;
+        text-align: left;
+        --home-scene-position: 60% center;
+      }
+
+      section#image-3 {
+        --home-scene-position: 58% center;
+      }
+    }
+  }
+}

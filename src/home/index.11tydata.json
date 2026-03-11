@@ -1,0 +1,46 @@
+{
+  "classes": ["home"],
+  "description": "Flairは、LIVEクリエイターの挑戦と成長を支えるTikTok LIVEエージェンシーです。表現を楽しみながら続けられる環境づくりに取り組んでいます。",
+  "google": {
+    "fonts": {
+      "query": "family=Manrope:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    }
+  },
+  "id": "home",
+  "image": {
+    "path": "/home/og.png"
+  },
+  "layout": "layouts/base/index.liquid",
+  "links": [
+    {
+      "as": "image",
+      "fetchpriority": "high",
+      "href": "/home/hero.avif",
+      "imagesizes": "100vw",
+      "imagesrcset": [
+        {
+          "resolution": "1x",
+          "url": "/home/hero.avif"
+        },
+        {
+          "resolution": "1x",
+          "url": "/home/hero.webp"
+        },
+        {
+          "resolution": "1x",
+          "url": "/home/hero.png"
+        }
+      ],
+      "rel": "preload"
+    }
+  ],
+  "nav": {
+    "menu": null
+  },
+  "noindex": true,
+  "page": {
+    "path": "/"
+  },
+  "tags": ["home"],
+  "title": "LIVEクリエイターの挑戦と成長を支える"
+}
