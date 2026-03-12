@@ -11,6 +11,10 @@ body.home {
       @apply whitespace-nowrap;
     }
 
+    strong {
+      @apply font-bold text-[color-mix(in_oklch,currentColor_90%,var(--color-brand)_10%)];
+    }
+
     header,
     section,
     nav {
@@ -29,33 +33,24 @@ body.home {
       }
 
       &::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 1.5rem;
-        width: 0.375rem;
-        height: 3rem;
-        border: 1px solid color-mix(in oklch, var(--color-ink--inverse) 72%, transparent);
-        border-radius: 999px;
-        background: transparent;
-        box-sizing: border-box;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-50%);
+        @apply content-[""];
+        @apply absolute bottom-6 left-1/2;
+        @apply box-border h-12 w-1.5;
+        @apply border-ink--inverse/72 rounded-full border;
+        @apply bg-transparent;
+        @apply opacity-100 sm:opacity-0;
+        @apply pointer-events-none;
+        @apply transform-[translateX(-50%)];
       }
 
       &::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 3.55rem;
-        width: 0.25rem;
-        height: 0.5rem;
-        border-radius: 999px;
-        background: color-mix(in oklch, var(--color-ink--inverse) 88%, transparent);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(-50%);
+        @apply content-[""];
+        @apply absolute bottom-14.25 left-1/2;
+        @apply h-2 w-1;
+        @apply border-ink--inverse/88 rounded-full border;
+        @apply opacity-100 sm:opacity-0;
+        @apply pointer-events-none;
+        @apply transform-[translateX(-50%)];
       }
     }
 
@@ -84,19 +79,13 @@ body.home {
       @apply py-[clamp(2rem,6vh,4rem)];
       @apply text-ink--inverse;
       @apply bg-(--palette-neutral-900);
-      isolation: isolate;
+      @apply isolate;
 
       &::after {
-        content: "";
-        position: absolute;
-        inset: -8% 0;
-        z-index: 0;
-        background-image: var(--home-scene-image);
-        background-position: var(--home-scene-position, center center);
-        background-repeat: no-repeat;
-        background-size: cover;
-        transform: scale(1.12) translateY(6%);
-        will-change: transform;
+        @apply content-[""];
+        @apply absolute inset-[-8%_0] z-0;
+        @apply bg-(image:--home-scene-image) bg-cover bg-position-(--home-scene-position,center_center) bg-no-repeat;
+        @apply transform-[scale(1.12)_translateY(6%)] will-change-transform;
       }
 
       &::before {
@@ -115,57 +104,40 @@ body.home {
     section#image-1 {
       @apply items-end;
       --home-scene-image: var(--asset-scene-1);
-      --home-scene-position: center center;
     }
 
     section#image-2 {
-      align-items: flex-end;
-      justify-content: flex-start;
-      text-align: left;
+      @apply items-end justify-start;
+      @apply text-left;
       --home-scene-image: var(--asset-scene-2);
-      --home-scene-position: 62% center;
     }
 
     section#image-3 {
-      justify-content: flex-end;
-      align-items: flex-end;
-      text-align: right;
+      @apply items-end justify-end;
+      @apply text-left;
       --home-scene-image: var(--asset-scene-3);
-      --home-scene-position: 62% center;
     }
 
     nav {
       @apply font-["Manrope"];
-      padding-block: clamp(2rem, 5vh, 3.5rem);
-      background: var(--color-page);
-      border-block: 1px solid var(--color-line);
+      @apply py-[clamp(2rem,5vh,3.5rem)];
+      @apply bg-page;
+      @apply [border-block:1px_solid_var(--color-line)];
 
       > ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem 1.5rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+        @apply flex flex-nowrap gap-x-3 gap-y-6;
+        @apply m-0 p-0;
+        @apply list-none;
 
         a {
-          color: inherit;
-          font-size: 0.875rem;
-          line-height: 1.6;
-          letter-spacing: 0.12em;
-          text-decoration: none;
-          text-transform: uppercase;
-          border-bottom: 1px solid
-            color-mix(in oklch, var(--color-ink--strong) 24%, transparent);
-          padding-bottom: 0.2rem;
-          transition:
-            border-color 180ms ease,
-            opacity 180ms ease;
+          @apply tracking-2xl text-[0.875rem] leading-[1.6] text-inherit uppercase no-underline;
+          @apply border-b-ink--strong/24 border-b;
+          @apply pb-1;
+          @apply transition-[border-color,opacity] duration-180;
 
           &:hover,
           &:focus-visible {
-            opacity: 0.68;
-            border-color: currentColor;
+            @apply border-current opacity-68;
           }
         }
       }
@@ -175,7 +147,7 @@ body.home {
       @apply min-h-[44svh];
       @apply flex flex-col justify-end gap-3;
       @apply py-[clamp(4rem,10vh,7rem)];
-      @apply bg-linear-180 from-page to-[color-mix(in_oklch,var(--color-surface--accent)_70%,var(--color-page)_30%)];
+      @apply from-page bg-linear-180 to-[color-mix(in_oklch,var(--color-surface--accent)_70%,var(--color-page)_30%)];
 
       > h2,
       > p {
@@ -192,14 +164,111 @@ body.home {
         &::before {
           @apply content-[""];
           @apply block;
-          @apply w-[clamp(8rem,18vw,14rem)] aspect-220/72;
-          @apply bg-(image:--asset-logo) bg-no-repeat bg-contain bg-position-[left_center];
+          @apply aspect-220/72 w-[clamp(8rem,18vw,14rem)];
+          @apply bg-(image:--asset-logo) bg-contain bg-position-[left_center] bg-no-repeat;
         }
       }
 
       > p {
         @apply max-w-104;
-        @apply text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.9] text-ink--secondary;
+        @apply text-ink--secondary text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.9];
+      }
+    }
+
+    @media (max-width: 767px) {
+      --home-hero-min-height: calc(100svh - var(--site-header-height, 4rem));
+      --home-scene-min-height: 72svh;
+
+      header {
+        @apply justify-end;
+        @apply pt-21 pb-16;
+        @apply bg-position-[64%_center];
+
+        &::after {
+          animation-name: home-scroll-indicator-track;
+          animation-duration: 1800ms;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-fill-mode: both;
+        }
+
+        &::before {
+          animation-name: home-scroll-indicator-dot;
+          animation-duration: 1800ms;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-fill-mode: both;
+        }
+
+        > h1 {
+          @apply max-w-[8ch];
+          @apply text-[clamp(2.1rem,9.6vw,3.5rem)] leading-[1.02];
+        }
+      }
+
+      header > h1,
+      section:is(#image-1, #image-2, #image-3) > h2 {
+        @apply max-w-[9ch];
+      }
+
+      section#lead {
+        @apply min-h-auto;
+      }
+
+      section:is(#image-1, #image-2, #image-3) {
+        @apply min-h-(--home-scene-min-height);
+      }
+
+      section#image-1 {
+        --home-scene-position: 58% center;
+      }
+
+      section#image-2 {
+        --home-scene-position: 60% center;
+      }
+
+      section#image-3 {
+        @apply justify-end;
+        --home-scene-position: 60% center;
+      }
+
+      nav > ul {
+        @apply flex-col gap-3.5;
+
+        a {
+          @apply inline-block;
+        }
+      }
+
+      section#closing > h2::before {
+        @apply w-[clamp(7rem,42vw,10rem)];
+      }
+
+      section#closing {
+        @apply min-h-auto;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1100px) {
+      header {
+        @apply bg-position-[66%_center];
+
+        > h1 {
+          @apply max-w-[9ch];
+          @apply text-[clamp(3.3rem,6vw,5rem)] leading-[1.04];
+        }
+      }
+
+      section#image-1 {
+        --home-scene-position: 58% center;
+      }
+
+      section#image-2 {
+        --home-scene-position: 60% center;
+      }
+
+      section#image-3 {
+        --home-scene-position: 58% center;
       }
     }
   }
@@ -317,12 +386,8 @@ body.home {
       animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
       animation-fill-mode: both;
     }
-  }
-}
 
-@supports (animation-timeline: view()) {
-  body.home {
-    > main {
+    @supports (animation-timeline: view()) {
       section#lead {
         view-timeline-name: --home-lead;
         view-timeline-axis: block;
@@ -457,151 +522,31 @@ body.home {
         animation-range-end: exit 100%;
       }
     }
-  }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  body.home > main header::before,
-  body.home > main header::after,
-  body.home > main header > h1,
-  body.home > main section#lead > h2,
-  body.home > main section#lead > p,
-  body.home > main section#image-1 > h2,
-  body.home > main section#image-2 > h2,
-  body.home > main section#image-3 > h2,
-  body.home > main section#image-1::after,
-  body.home > main section#image-2::after,
-  body.home > main section#image-3::after,
-  body.home > main nav > ul,
-  body.home > main section#closing > h2::before,
-  body.home > main section#closing > p {
-    animation-name: none !important;
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
-    animation-timing-function: linear !important;
-    animation-fill-mode: none !important;
-    animation-iteration-count: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    opacity: 1 !important;
-  }
-}
-
-@media (max-width: 767px) {
-  body.home {
-    > main {
-      --home-hero-min-height: calc(100svh - var(--site-header-height, 4rem));
-      --home-scene-min-height: 72svh;
-
-      header {
-        @apply justify-end;
-        padding-top: 5.25rem;
-        padding-bottom: 4rem;
-        background-position: 64% center;
-      }
-
-      header::after {
-        opacity: 1;
-        animation-name: home-scroll-indicator-track;
-        animation-duration: 1800ms;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-fill-mode: both;
-      }
-
-      header::before {
-        opacity: 1;
-        animation-name: home-scroll-indicator-dot;
-        animation-duration: 1800ms;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-fill-mode: both;
-      }
-
+    @media (prefers-reduced-motion: reduce) {
+      header::before,
+      header::after,
       header > h1,
+      section#lead > h2,
+      section#lead > p,
       section#image-1 > h2,
       section#image-2 > h2,
-      section#image-3 > h2 {
-        @apply max-w-[9ch];
-      }
-
-      header > h1 {
-        max-width: 8ch;
-        font-size: clamp(2.1rem, 9.6vw, 3.5rem);
-        line-height: 1.02;
-      }
-
-      section#lead {
-        @apply min-h-auto;
-      }
-
-      section#image-1,
-      section#image-2,
-      section#image-3 {
-        @apply min-h-(--home-scene-min-height);
-      }
-
-      section#image-1 {
-        --home-scene-position: 58% center;
-      }
-
-      section#image-2 {
-        align-items: flex-end;
-        justify-content: flex-start;
-        text-align: left;
-        --home-scene-position: 60% center;
-      }
-
-      section#image-3 {
-        @apply justify-end;
-        --home-scene-position: 60% center;
-      }
-
-      nav > ul {
-        @apply flex-col gap-3.5;
-
-        a {
-          @apply inline-block;
-        }
-      }
-
-      section#closing > h2::before {
-        width: clamp(7rem, 42vw, 10rem);
-      }
-
-      section#closing {
-        @apply min-h-auto;
-      }
-    }
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1100px) {
-  body.home {
-    > main {
-      header {
-        background-position: 66% center;
-      }
-
-      header > h1 {
-        max-width: 9ch;
-        font-size: clamp(3.3rem, 6vw, 5rem);
-        line-height: 1.04;
-      }
-
-      section#image-1 {
-        --home-scene-position: 58% center;
-      }
-
-      section#image-2 {
-        align-items: flex-end;
-        justify-content: flex-start;
-        text-align: left;
-        --home-scene-position: 60% center;
-      }
-
-      section#image-3 {
-        --home-scene-position: 58% center;
+      section#image-3 > h2,
+      section#image-1::after,
+      section#image-2::after,
+      section#image-3::after,
+      nav > ul,
+      section#closing > h2::before,
+      section#closing > p {
+        animation-name: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        animation-timing-function: linear !important;
+        animation-fill-mode: none !important;
+        animation-iteration-count: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
       }
     }
   }
