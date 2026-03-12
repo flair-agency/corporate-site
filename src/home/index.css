@@ -25,11 +25,16 @@ body.home {
       @apply min-h-(--home-hero-min-height);
       @apply flex flex-col justify-end gap-3;
       @apply px-[clamp(1.5rem,4vw,4rem)] pt-[clamp(5rem,10vh,8rem)] pb-[clamp(4.5rem,10vh,7rem)];
-      @apply bg-[linear-gradient(to_top,color-mix(in_oklch,var(--palette-neutral-900)_68%,transparent),color-mix(in_oklch,var(--palette-neutral-900)_24%,transparent)),var(--asset-hero)] bg-cover bg-position-[72%] bg-no-repeat;
+      @apply bg-(image:--asset-hero) bg-cover bg-position-[72%] bg-no-repeat;
       @apply text-ink--inverse;
 
       > h1 {
         @apply m-0 max-w-[9ch] text-[clamp(2.75rem,5.8vw,5.6rem)] leading-[1.04] font-medium tracking-[0.01em] text-balance;
+        text-shadow:
+          0 0.125rem 0.75rem
+            color-mix(in oklch, var(--palette-neutral-900) 36%, transparent),
+          0 0 1.75rem
+            color-mix(in oklch, var(--palette-neutral-900) 18%, transparent);
       }
 
       &::after {
@@ -56,12 +61,19 @@ body.home {
 
     section#lead {
       @apply min-h-[70svh];
+      @apply from-page bg-linear-180 from-0% via-[color-mix(in_oklch,var(--color-surface--accent)_72%,var(--color-page)_28%)] via-62% to-[color-mix(in_oklch,var(--color-brand)_8%,var(--color-page)_92%)] to-100%;
       @apply flex flex-col justify-center gap-4 py-[clamp(5rem,12vh,9rem)];
-      @apply from-page to-surface--accent bg-linear-180;
+
+      &::before {
+        @apply content-[""];
+        @apply absolute inset-0;
+        @apply bg-[radial-gradient(circle_at_72%_32%,color-mix(in_oklch,var(--color-brand)_10%,transparent)_0%,transparent_42%),radial-gradient(circle_at_18%_78%,color-mix(in_oklch,var(--color-surface--accent)_55%,transparent)_0%,transparent_36%)];
+        @apply pointer-events-none;
+      }
 
       > h2,
       > p {
-        @apply m-0 max-w-[20rem];
+        @apply relative z-1 m-0 max-w-[20rem];
       }
 
       > h2 {
@@ -88,34 +100,46 @@ body.home {
         @apply transform-[scale(1.12)_translateY(6%)] will-change-transform;
       }
 
-      &::before {
-        @apply content-[""];
-        @apply absolute inset-0 z-1;
-        @apply bg-linear-to-t from-[color-mix(in_oklch,var(--palette-neutral-900)_64%,transparent)] to-[color-mix(in_oklch,var(--palette-neutral-900)_22%,transparent)];
-      }
-
       > h2 {
-        @apply relative z-2;
+        @apply relative z-1;
         @apply m-0 max-w-[11ch];
         @apply text-[clamp(2rem,5vw,4.5rem)] leading-[1.12] font-medium text-balance;
+        text-shadow:
+          0 0.125rem 0.85rem
+            color-mix(in oklch, var(--palette-neutral-900) 42%, transparent),
+          0 0 1.8rem
+            color-mix(in oklch, var(--palette-neutral-900) 22%, transparent);
       }
     }
 
     section#image-1 {
-      @apply items-end;
+      @apply items-end justify-end;
+      @apply text-right;
       --home-scene-image: var(--asset-scene-1);
+
+      > h2 {
+        @apply left-auto -right-2 top-2;
+      }
     }
 
     section#image-2 {
       @apply items-end justify-start;
       @apply text-left;
       --home-scene-image: var(--asset-scene-2);
+
+      > h2 {
+        @apply max-w-[9ch];
+      }
     }
 
     section#image-3 {
       @apply items-end justify-end;
       @apply text-left;
       --home-scene-image: var(--asset-scene-3);
+
+      > h2 {
+        @apply max-w-[8ch];
+      }
     }
 
     nav {
@@ -289,8 +313,14 @@ body.home {
 @keyframes home-fade-in {
   0% {
     opacity: 0;
-    transform: translateY(2.5rem) scale(0.975);
-    filter: blur(4px);
+    transform: translateY(1.8rem) scale(0.985);
+    filter: blur(6px);
+  }
+
+  60% {
+    opacity: 0.28;
+    transform: translateY(0.8rem) scale(0.992);
+    filter: blur(3px);
   }
 
   100% {
@@ -303,8 +333,14 @@ body.home {
 @keyframes home-fade-up-soft {
   0% {
     opacity: 0;
-    transform: translateY(6rem) scale(0.985);
-    filter: blur(1px);
+    transform: translateY(4.5rem) scale(0.992);
+    filter: blur(10px);
+  }
+
+  55% {
+    opacity: 0.18;
+    transform: translateY(2.2rem) scale(0.996);
+    filter: blur(5px);
   }
 
   100% {
@@ -425,8 +461,8 @@ body.home {
       section#image-3 > h2,
       section#closing > p {
         opacity: 0;
-        transform: translateY(6rem) scale(0.985);
-        filter: blur(14px);
+        transform: translateY(4.5rem) scale(0.992);
+        filter: blur(10px);
         animation-name: home-fade-up-soft;
         animation-duration: 1ms;
         animation-fill-mode: both;
@@ -436,8 +472,8 @@ body.home {
       nav > ul,
       section#closing > h2::before {
         opacity: 0;
-        transform: translateY(2.5rem) scale(0.975);
-        filter: blur(12px);
+        transform: translateY(1.8rem) scale(0.985);
+        filter: blur(6px);
         animation-name: home-fade-in;
         animation-duration: 1ms;
         animation-fill-mode: both;
@@ -446,49 +482,49 @@ body.home {
 
       section#lead > h2 {
         animation-timeline: --home-lead;
-        animation-range-start: entry 65%;
-        animation-range-end: cover 42%;
+        animation-range-start: entry 58%;
+        animation-range-end: cover 46%;
       }
 
       section#lead > p {
         animation-timeline: --home-lead;
-        animation-range-start: entry 74%;
-        animation-range-end: cover 46%;
+        animation-range-start: entry 72%;
+        animation-range-end: cover 52%;
       }
 
       section#image-1 > h2 {
         animation-timeline: --home-image-1;
-        animation-range-start: entry 70%;
-        animation-range-end: cover 44%;
+        animation-range-start: entry 62%;
+        animation-range-end: cover 46%;
       }
 
       section#image-2 > h2 {
         animation-timeline: --home-image-2;
-        animation-range-start: entry 70%;
-        animation-range-end: cover 44%;
+        animation-range-start: entry 64%;
+        animation-range-end: cover 48%;
       }
 
       section#image-3 > h2 {
         animation-timeline: --home-image-3;
-        animation-range-start: entry 70%;
-        animation-range-end: cover 44%;
+        animation-range-start: entry 66%;
+        animation-range-end: cover 50%;
       }
 
       nav > ul {
         animation-timeline: --home-nav;
-        animation-range-start: entry 58%;
-        animation-range-end: cover 38%;
+        animation-range-start: entry 54%;
+        animation-range-end: cover 42%;
       }
 
       section#closing > h2::before {
         animation-timeline: --home-closing;
-        animation-range-start: entry 44%;
-        animation-range-end: entry 96%;
+        animation-range-start: entry 52%;
+        animation-range-end: entry 98%;
       }
 
       section#closing > p {
         animation-timeline: --home-closing;
-        animation-range-start: entry 58%;
+        animation-range-start: entry 66%;
         animation-range-end: entry 100%;
       }
 
@@ -498,8 +534,8 @@ body.home {
         animation-fill-mode: both;
         animation-timing-function: linear;
         animation-timeline: --home-image-1;
-        animation-range-start: entry 0%;
-        animation-range-end: exit 100%;
+        animation-range-start: entry 8%;
+        animation-range-end: exit 92%;
       }
 
       section#image-2::after {
@@ -508,8 +544,8 @@ body.home {
         animation-fill-mode: both;
         animation-timing-function: linear;
         animation-timeline: --home-image-2;
-        animation-range-start: entry 0%;
-        animation-range-end: exit 100%;
+        animation-range-start: entry 4%;
+        animation-range-end: exit 96%;
       }
 
       section#image-3::after {
