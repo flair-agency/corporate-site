@@ -10,10 +10,18 @@ nav > ul.accounts {
     /* Background */
     @apply hover:bg-page;
     /* Border */
-    @apply border border-line rounded-lg;
+    @apply border-line rounded-lg border;
     /* Animation */
     @apply transition;
     /* Appearance */
     @apply *:hidden [:is(&>svg)]:[display:revert];
+
+    &:has(> svg) {
+      @apply px-2;
+
+      > svg {
+        @apply m-0 h-6 w-6 p-0;
+      }
+    }
   }
 }

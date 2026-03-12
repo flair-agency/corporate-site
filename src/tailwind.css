@@ -220,7 +220,7 @@ layer(base);
     @apply pl-5;
   }
 
-  a[href^="http"]:not([href*="flair-agency.biz"])::after {
+  a[href^="http"]:not([href*="flair-agency.biz"]):not([data-external-icon="disabled"])::after {
     @apply content-["\f08e"]; /* arrow-up-right-from-square */
     @apply inline-block;
     @apply font-["Font_Awesome_6_Free"] font-extrabold;
