@@ -37,18 +37,6 @@
       "path": "/creator/"
     },
     {
-      "label": "企業のご担当者さまへ",
-      "path": "/business/"
-    },
-    {
-      "label": "ニュース",
-      "path": "/news/"
-    },
-    {
-      "label": "記事一覧",
-      "path": "/articles/"
-    },
-    {
       "label": "関わり方",
       "path": "/approach/"
     },
@@ -59,6 +47,18 @@
     {
       "label": "私たちについて",
       "path": "/company/"
+    },
+    {
+      "label": "ニュース",
+      "path": "/news/"
+    },
+    {
+      "label": "記事一覧",
+      "path": "/articles/"
+    },
+    {
+      "label": "企業のご担当者さまへ",
+      "path": "/business/"
     },
     {
       "label": "プライバシーポリシー",
