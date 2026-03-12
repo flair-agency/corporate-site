@@ -63,6 +63,62 @@
   toggle: "nav.on-page>button.toggle",
 });
 
+// Auto-hide header on immersive pages
+((selectors) => {
+  const header = document.querySelector<HTMLElement>(selectors.header);
+
+  if (!header) return;
+
+  const isHidden = () =>
+    (header.dataset.state ?? "").split(" ").includes("hidden");
+  const hide = () => addData.bind(header)("state", "hidden");
+  const show = () => removeData.bind(header)("state", "hidden");
+
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const updateHeader =
+    (lastY: number, callback: (scrollY: number) => void) => () => {
+      const hideOffset = 80;
+      const deltaThreshold = 8;
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
+
+      if (currentY <= hideOffset) {
+        show();
+        callback(currentY);
+        return;
+      }
+
+      if (delta > deltaThreshold) {
+        if (!isHidden()) hide();
+      }
+
+      if (delta < -deltaThreshold) {
+        if (isHidden()) show();
+      }
+
+      callback(currentY);
+    };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(
+        updateHeader(lastY, (currentY) => {
+          lastY = currentY;
+          ticking = false;
+        }),
+      );
+    },
+    { passive: true },
+  );
+})({
+  header: 'body:has(main[data-variant~="immersive"]) > header',
+});
+
 // Active link highlight on scroll
 ((selectors) => {
   const links = Array.from(
@@ -89,7 +145,7 @@
     const lr = link.getBoundingClientRect();
 
     // delta so that the link's center aligns to the menu's center
-    const delta = (lr.left + lr.width / 2) - (mr.left + mr.width / 2);
+    const delta = lr.left + lr.width / 2 - (mr.left + mr.width / 2);
     if (!Number.isFinite(delta) || Math.abs(delta) < 1) return;
 
     menu.scrollTo({
@@ -129,7 +185,11 @@
   );
   targets.forEach((t) => io.observe(t));
 
-  const initial = links.find((l) => l.hasAttribute("aria-current") || (l.dataset.state ?? "").includes("active"));
+  const initial = links.find(
+    (l) =>
+      l.hasAttribute("aria-current") ||
+      (l.dataset.state ?? "").includes("active"),
+  );
   if (initial) syncIndicator(initial);
 })({
   a: 'nav.on-page menu li a[href^="#"]',

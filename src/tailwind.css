@@ -256,6 +256,14 @@ layer(base);
   @import "./_includes/utilities/icon/index.css";
   @import "./_includes/utilities/view-transition/index.css";
 
+  body:has(main[data-variant~="immersive"]) > header {
+    @apply translate-y-0 transition-transform duration-200 ease-out will-change-transform;
+
+    &[data-state~="hidden"] {
+      @apply -translate-y-full;
+    }
+  }
+
   .full-bleed {
     @apply relative right-1/2 left-1/2 -mx-[50vw] w-screen;
   }
