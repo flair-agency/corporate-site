@@ -19,15 +19,15 @@
       "imagesizes": "100vw",
       "imagesrcset": [
         {
-          "resolution": "1x",
+          "resolution": "2x",
           "url": "/home/hero.avif"
         },
         {
-          "resolution": "1x",
+          "resolution": "2x",
           "url": "/home/hero.webp"
         },
         {
-          "resolution": "1x",
+          "resolution": "2x",
           "url": "/home/hero.png"
         }
       ],
