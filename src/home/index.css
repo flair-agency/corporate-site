@@ -7,6 +7,10 @@ body.home {
     --home-hero-min-height: calc(100svh - var(--site-header-height, 4.5rem));
     --home-scene-min-height: 88svh;
 
+    > article {
+      @apply my-0 p-0;
+    }
+
     span {
       @apply whitespace-nowrap;
     }
