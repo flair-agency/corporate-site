@@ -39,20 +39,24 @@
   "nav": {
     "menu": [
       {
+        "anchor": "#about",
+        "label": "まず知ってほしいこと"
+      },
+      {
+        "anchor": "#policy",
+        "label": "すること・しないこと"
+      },
+      {
         "anchor": "#benefits",
-        "label": "メリット"
+        "label": "支援内容"
+      },
+      {
+        "anchor": "#how-to-start",
+        "label": "はじめる流れ"
       },
       {
         "anchor": "#comparison",
         "label": "ひとりとの違い"
-      },
-      {
-        "anchor": "#how-to-start",
-        "label": "はじめ方"
-      },
-      {
-        "anchor": "#trust",
-        "label": "大切にしていること"
       },
       {
         "anchor": "#faq",

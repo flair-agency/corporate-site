@@ -14,23 +14,35 @@
   --color-creator-flow-step-4-marker: var(--palette-red-500);
   --color-creator-flow-step-5-marker: var(--palette-red-600);
   --color-creator-flow-step-6-marker: var(--palette-red-700);
+  --color-creator-flow-step-7-marker: var(--palette-red-800);
+  --color-creator-flow-step-8-marker: var(--palette-red-900);
 }
 
 body.creator {
   article {
-    @apply bg-page border-line rounded-lg border p-6 transition-transform duration-150 hover:-translate-y-1;
+    > section {
+      @apply bg-page border-line rounded-lg border p-6 transition-transform duration-150 hover:-translate-y-1;
 
-    h3,
-    h4 {
-      @apply mb-2 font-bold;
-    }
+      h3,
+      h4 {
+        @apply mb-2 font-bold;
+      }
 
-    :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class]::before {
-      @apply text-creator-icon;
+      :is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class]::before {
+        @apply text-creator-icon;
+      }
+
+      p {
+        @apply text-ink--secondary text-sm;
+      }
     }
 
     p {
-      @apply text-ink--secondary text-sm;
+      @apply mt-4;
+
+      &:has(a[href^="https://note.com/flair_agency_biz/"]) {
+        @apply text-right;
+      }
     }
   }
 
@@ -72,16 +84,41 @@ body.creator {
     }
   }
 
-  section#benefits {
-    hgroup + div {
-      @apply grid gap-6 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3;
+  article#about {
+    @apply grid gap-6 md:grid-cols-3;
 
-      & > h3 {
-        @apply col-span-full;
-      }
+    hgroup,
+    p {
+      @apply col-span-full;
+    }
+  }
+
+  article#policy {
+    @apply grid gap-6 md:grid-cols-2;
+
+    hgroup,
+    p {
+      @apply col-span-full;
     }
 
-    article {
+    ul {
+      @apply list-disc;
+    }
+  }
+
+  article#benefits {
+    @apply grid gap-6 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3;
+
+    hgroup,
+    p {
+      @apply col-span-full;
+    }
+
+    h3 {
+      @apply col-span-full;
+    }
+
+    section {
       @apply text-center;
 
       h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
@@ -94,8 +131,8 @@ body.creator {
     }
   }
 
-  section#comparison {
-    hgroup + div {
+  article#comparison {
+    hgroup + table {
       @apply overflow-x-auto px-4;
     }
 
@@ -123,20 +160,20 @@ body.creator {
     }
   }
 
-  section#how-to-start {
-    hgroup + ol {
-      @apply grid gap-6 md:grid-cols-3;
-    }
-
+  article#how-to-start {
     ol.flow {
+      @apply grid gap-6 md:grid-cols-3;
+
       li {
         @apply bg-linear-to-b from-0% to-80% sm:bg-linear-to-r;
         @apply nth-[1]:to-creator-flow-surface/5 nth-[1]:before:bg-creator-flow-step-1-marker nth-[1]:from-inherit;
-        @apply nth-[2]:from-creator-flow-surface/5 nth-[2]:to-creator-flow-surface/25 nth-[2]:before:bg-creator-flow-step-2-marker;
-        @apply nth-[3]:from-creator-flow-surface/25 nth-[3]:to-creator-flow-surface/45 nth-[3]:before:bg-creator-flow-step-3-marker;
-        @apply nth-[4]:from-creator-flow-surface/45 nth-[4]:to-creator-flow-surface/65 nth-[4]:before:bg-creator-flow-step-4-marker;
-        @apply nth-[5]:from-creator-flow-surface/65 nth-[5]:to-creator-flow-surface/85 nth-[5]:before:bg-creator-flow-step-5-marker;
-        @apply nth-[6]:from-creator-flow-surface/85 nth-[6]:to-creator-flow-surface nth-[6]:before:bg-creator-flow-step-6-marker;
+        @apply nth-[2]:from-creator-flow-surface/5 nth-[2]:to-creator-flow-surface/15 nth-[2]:before:bg-creator-flow-step-2-marker;
+        @apply nth-[3]:from-creator-flow-surface/15 nth-[3]:to-creator-flow-surface/15 nth-[3]:before:bg-creator-flow-step-3-marker;
+        @apply nth-[4]:from-creator-flow-surface/25 nth-[4]:to-creator-flow-surface/35 nth-[4]:before:bg-creator-flow-step-4-marker;
+        @apply nth-[5]:from-creator-flow-surface/35 nth-[5]:to-creator-flow-surface/45 nth-[5]:before:bg-creator-flow-step-5-marker;
+        @apply nth-[6]:from-creator-flow-surface/45 nth-[6]:to-creator-flow-surface/55 nth-[6]:before:bg-creator-flow-step-6-marker;
+        @apply nth-[7]:from-creator-flow-surface/55 nth-[7]:to-creator-flow-surface/65 nth-[7]:before:bg-creator-flow-step-7-marker;
+        @apply nth-[8]:from-creator-flow-surface/65 nth-[8]:to-creator-flow-surface/75 nth-[8]:before:bg-creator-flow-step-8-marker;
       }
     }
 
@@ -145,38 +182,47 @@ body.creator {
     }
   }
 
-  section#trust {
-    hgroup + div {
-      @apply grid gap-6 px-4 md:grid-cols-2;
+  article#trust {
+    @apply grid gap-6 px-4 md:grid-cols-2;
+
+    hgroup,
+    p {
+      @apply col-span-full;
     }
 
-    article {
+    section {
       h4:is(.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands)[class] {
         @apply flex items-center gap-2;
       }
     }
 
-    & > footer {
-      @apply mt-8;
+    .statement {
+      @apply col-span-full mx-4 mt-8;
+    }
+  }
 
-      .statement {
-        @apply mx-4;
+  article#faq {
+    @apply grid items-start gap-6 md:grid-cols-2;
+
+    hgroup,
+    p {
+      @apply col-span-full;
+    }
+  }
+
+  article#contact {
+    @apply grid gap-6 md:grid-cols-2;
+
+    hgroup,
+    p {
+      @apply col-span-full;
+
+      + section {
+        @apply px-4;
       }
     }
-  }
 
-  section#faq {
-    hgroup + div {
-      @apply grid items-start gap-6 md:grid-cols-2;
-    }
-  }
-
-  section#contact {
-    hgroup + div {
-      @apply grid gap-6 px-4 md:grid-cols-2;
-    }
-
-    article {
+    section {
       @apply flex flex-col text-center;
 
       h4 {

@@ -37,7 +37,7 @@
     @apply text-ink--secondary;
   }
 
-  body > main > section {
+  body > main > :is(section,article) {
     /* Layout */
     @apply mx-4 my-8 px-4 py-16;
 

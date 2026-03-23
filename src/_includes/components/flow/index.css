@@ -8,7 +8,7 @@ ol.flow {
     /* Layout */
     @apply relative p-6 pl-12;
     /* Flex */
-    @apply flex flex-col justify-between;
+    @apply flex flex-col justify-start;
     /* Background */
     @apply bg-page;
     /* Border */
