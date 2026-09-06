@@ -1,0 +1,57 @@
+name: Update published note article data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7 */3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: note-articles-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: source
+      - uses: actions/checkout@v4
+        with:
+          ref: site-data
+          path: published-data
+      - name: Generate note article data
+        env:
+          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update && sudo apt-get install -y xsltproc
+          curl --fail --silent --show-error --location --max-time 30 --retry 2 "${NOTE_RSS_URL}" |
+          xsltproc source/rss-to-tsv.xsl - |
+          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
+          jq -s -S '.' > "${RUNNER_TEMP}/note-articles.json"
+          jq -e 'type == "array" and length > 0 and all(.[];
+            (.title | type == "string" and length > 0) and
+            (.url | type == "string" and startswith("https://note.com/")) and
+            (.publishedAt | type == "string" and length > 0) and
+            (.description | type == "string") and
+            (.thumbnail | type == "string" and (length == 0 or startswith("https://"))))' \
+            "${RUNNER_TEMP}/note-articles.json" > /dev/null
+      - name: Publish changed data only
+        working-directory: published-data
+        run: |
+          set -euo pipefail
+          if cmp -s "${RUNNER_TEMP}/note-articles.json" note-articles.json; then
+            echo "Article data is unchanged."
+            exit 0
+          fi
+          cp "${RUNNER_TEMP}/note-articles.json" note-articles.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add note-articles.json
+          git commit -m "Update note article data"
+          git push origin HEAD:site-data

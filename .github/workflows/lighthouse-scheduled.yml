@@ -1,0 +1,47 @@
+name: Audit published site with Lighthouse
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */3 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse-scheduled
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        page: [home, creator, business, company]
+    env:
+      ORIGIN: ${{ vars.LIGHTHOUSE_ORIGIN || 'https://www.flair-agency.biz' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".tool-versions"
+          cache: npm
+      - name: Install audit dependencies without building the site
+        run: npm ci --ignore-scripts
+      - name: Audit the published page
+        env:
+          PAGE: ${{ matrix.page }}
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          npm -s run test:lighthouse "${ORIGIN%/}/${PAGE}/" -- --quiet --output-path="reports/${PAGE}.json" --throttling-method=provided
+          node lighthouse-gate.mjs < "reports/${PAGE}.json"
+      - name: Upload Lighthouse report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-lighthouse-${{ matrix.page }}
+          path: reports/*.json
+          retention-days: 14
