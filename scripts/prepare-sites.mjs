@@ -2,7 +2,6 @@ import { copyFileSync, readdirSync, writeFileSync, cpSync, rmSync } from 'node:f
 import { join, extname } from 'node:path';
 
 copyFileSync('public/home/index.html', 'public/index.html');
-copyFileSync('src/_data/note_articles.json', 'public/note-articles.json');
 // Firebase consumes public; Sites consumes a separate generated directory.
 rmSync('dist', { recursive: true, force: true });
 cpSync('public', 'dist', { recursive: true });
@@ -14,7 +13,7 @@ function visit(dir) {
     const path = join(dir, entry.name);
     if (entry.isDirectory()) { visit(path); continue; }
     const ext = extname(path);
-    const cache = path === 'dist/note-articles.json' ? 'no-store' : longCache.has(ext) ? 'public,max-age=31536000,immutable' : shortCache.has(ext) ? 'public,max-age=300,must-revalidate' : null;
+    const cache = longCache.has(ext) ? 'public,max-age=31536000,immutable' : shortCache.has(ext) ? 'public,max-age=300,must-revalidate' : null;
     if (!cache) continue;
     const route = '/' + path.slice(5);
     const canonicalRoute = route.endsWith('/index.html') ? route.slice(0, -10) : route;

@@ -9,10 +9,10 @@ on:
 
 env:
   SITE_ENV: production
-  PRODUCTION_ORIGIN: ${{ vars.PRODUCTION_ORIGIN || 'https://www.flair-agency.biz' }}
 
 permissions:
   contents: read
+  actions: read
   id-token: write
 
 concurrency:
@@ -44,43 +44,54 @@ jobs:
             (.description | type == "string") and
             (.thumbnail | type == "string" and (length == 0 or startswith("https://"))))' \
             "${RUNNER_TEMP}/note-articles.json" > /dev/null
-      - name: Compare with the last published JSON
+      - name: Restore the hash from a successful deployment
+        if: github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            try {
+              const repo = { owner: context.repo.owner, repo: context.repo.repo };
+              const current = await github.rest.actions.getWorkflowRun({ ...repo, run_id: context.runId });
+              const { data } = await github.rest.actions.listArtifactsForRepo({
+                ...repo, name: 'deployed-note-hash', per_page: 100,
+              });
+              const candidates = data.artifacts.filter(a => !a.expired)
+                .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
+              for (const artifact of candidates) {
+                if (!artifact.workflow_run) continue;
+                const { data: run } = await github.rest.actions.getWorkflowRun({
+                  ...repo, run_id: artifact.workflow_run.id,
+                });
+                if (run.workflow_id !== current.data.workflow_id || run.conclusion !== 'success') continue;
+                const archive = await github.rest.actions.downloadArtifact({
+                  ...repo, artifact_id: artifact.id, archive_format: 'zip',
+                });
+                fs.writeFileSync(path.join(process.env.RUNNER_TEMP, 'deployed-note-hash.zip'), Buffer.from(archive.data));
+                break;
+              }
+            } catch {
+              core.warning('Comparison hash unavailable; this run will use CI and deployment.');
+            }
+      - name: Compare article hashes
         id: compare
         env:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
-          # Code changes and manual runs always pass through CI and deployment.
-          if [[ "${EVENT_NAME}" != "schedule" ]]; then
-            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
-            exit 0
+          CURRENT_HASH=$(sha256sum "${RUNNER_TEMP}/note-articles.json" | cut -d ' ' -f 1)
+          PUBLISHED_HASH=''
+          if [[ -f "${RUNNER_TEMP}/deployed-note-hash.zip" ]]; then
+            PUBLISHED_HASH=$(unzip -p "${RUNNER_TEMP}/deployed-note-hash.zip" note-articles.sha256 2>/dev/null || true)
           fi
-          STATUS=$(curl --silent --show-error --location --max-time 30 --retry 2 \
-            -H 'Cache-Control: no-cache' \
-            --output "${RUNNER_TEMP}/published-note-articles.json" --write-out '%{http_code}' \
-            "${PRODUCTION_ORIGIN%/}/note-articles.json?sync=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}")
-          case "${STATUS}" in
-            200)
-              jq -e 'type == "array" and length > 0' "${RUNNER_TEMP}/published-note-articles.json" > /dev/null
-              jq -cS '.' "${RUNNER_TEMP}/published-note-articles.json" > "${RUNNER_TEMP}/published-normalized.json"
-              CURRENT_HASH=$(sha256sum "${RUNNER_TEMP}/note-articles.json" | cut -d ' ' -f 1)
-              PUBLISHED_HASH=$(sha256sum "${RUNNER_TEMP}/published-normalized.json" | cut -d ' ' -f 1)
-              if [[ "${CURRENT_HASH}" == "${PUBLISHED_HASH}" ]]; then
-                echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
-                echo "Article JSON is unchanged; skipping build, preview, CI, and deployment."
-              else
-                echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
-              fi
-              ;;
-            404)
-              # Bootstrap: the current production site may not publish the JSON yet.
-              echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
-              ;;
-            *)
-              echo "::error::Cannot read published article JSON (HTTP ${STATUS})."
-              exit 1
-              ;;
-          esac
+          # Missing, expired or invalid baselines trigger CI instead of suppressing an update.
+          if [[ "${EVENT_NAME}" == "schedule" && "${PUBLISHED_HASH}" =~ ^[0-9a-f]{64}$ && "${CURRENT_HASH}" == "${PUBLISHED_HASH}" ]]; then
+            echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
+            echo "Article JSON is unchanged; skipping build, preview, CI, and deployment."
+          else
+            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+          fi
       - uses: actions/upload-artifact@v4
         if: steps.compare.outputs.should_deploy == 'true'
         with:
@@ -154,8 +165,6 @@ jobs:
           mkdir -p "${REPORTS_PATH}"
           REPORT_FILE="${REPORTS_PATH}/${PAGE}.json"
 
-          mkdir -p "${REPORTS_PATH}"
-
           npm -s run test:lighthouse "${ORIGIN}/${PAGE}/" -- --quiet --output-path="${REPORT_FILE}" --throttling-method=provided --skip-audits="is-crawlable,robots-txt"
 
           npm -s run test:lighthouse-gate < "${REPORT_FILE}" | while IFS=$'\t' read -r METRIC SCORE RESULT
@@ -208,3 +217,14 @@ jobs:
         env:
           PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
         run: npx firebase deploy --only hosting --project "${PROJECT_ID}"
+
+      - name: Record the successfully deployed article hash
+        run: |
+          set -euo pipefail
+          sha256sum src/_data/note_articles.json | cut -d ' ' -f 1 > "${RUNNER_TEMP}/note-articles.sha256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployed-note-hash
+          path: ${{ runner.temp }}/note-articles.sha256
+          if-no-files-found: error
+          retention-days: 90

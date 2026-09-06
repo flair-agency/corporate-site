@@ -62,48 +62,45 @@ Use the actual public production origin, not an owner-only preview.
 
 ## Hash-based article synchronization
 
-All RSS shell commands remain inline in `firebase-hosting-deploy.yml`. The
-prepare job uses the existing `curl` → `xsltproc` → `jq` conversion and
-`NOTE_RSS_URL` repository variable. It rejects an empty or invalid article array.
+RSS commands remain inline in `firebase-hosting-deploy.yml`. The prepare job
+uses `curl` → `xsltproc` → `jq` and `NOTE_RSS_URL`, rejecting empty or invalid
+article data. `jq -cS` gives JSON stable key order and formatting while preserving
+article array order. SHA-256 is calculated from those normalized bytes.
 
-For a scheduled run:
+For a scheduled run, the workflow retrieves the newest available
+`deployed-note-hash` artifact from a successful run of the same deployment
+workflow. It checks up to 100 matching artifacts and ignores expired artifacts
+and unsuccessful runs. Only a valid 64-character hash can suppress deployment.
 
-1. Serialize the generated JSON with `jq -cS` for stable key order and formatting.
-   Preserve array order because it determines the order of displayed articles.
-2. Fetch `/note-articles.json` from the actual production origin. This file is
-   published with the site and contains the exact article data used by that build.
-3. Normalize the published JSON the same way and compare SHA-256 hashes.
-4. If the hashes match, skip the build, preview, Lighthouse CI, and deployment.
-   The independent public Lighthouse audit continues on its own schedule.
-5. If they differ, pass the generated JSON to subsequent jobs as a run artifact.
-   Build a preview, run Lighthouse, and deploy only after the gate passes.
+- Same hash: skip build, preview, Lighthouse CI, and deployment.
+- Changed hash: pass the generated JSON to preview and production jobs as a
+  run artifact, build, pass Lighthouse, and deploy.
+- Missing, expired, unreadable, or malformed hash: run the same CI/deployment
+  path, rather than risk skipping an update.
+- Code changes and manual runs: always run CI and deployment.
 
-Both preview and production builds download the same artifact into
-`src/_data/note_articles.json` before building. There is no second RSS fetch
-between testing and deployment. The pipeline also builds this snapshot into
-`/note-articles.json`; it is a comparison baseline, not a browser data source.
-It contains only the already public article metadata and is served with
-`Cache-Control: no-store`. Comparison requests also avoid cached responses.
+The comparison artifact contains only the hash and is saved after the Firebase
+production deployment command succeeds. Its retention is 90 days. A failure
+before or during deployment does not save a new hash. If deployment succeeds
+but hash storage fails, a subsequent run may repeat CI and deployment; it does
+not lose the article update. Production runs are serialized.
 
-A 404 for the published JSON triggers the first deployment that establishes the
-baseline. Network errors, other HTTP errors, and invalid published JSON fail the
-check instead of silently treating them as a content change. Failed builds,
-Lighthouse gates, or deployments do not advance the published baseline; the
-next scheduled run can retry the change. Production runs are serialized to
-avoid overlapping deployments. Manual and code-change runs always use CI and
-deployment, regardless of whether article hashes match.
+The complete JSON is used only as a short-lived Actions artifact to supply the
+same input to preview and production builds. There is no second RSS fetch after
+CI. Neither this JSON nor the comparison hash is copied into `public/` or `dist/`.
+No comparison endpoint or special cache header is added to the public site.
+Actions needs read permission to restore artifacts from prior runs.
 
-There is no data branch, browser fetch, or separate note update workflow.
-The HTML includes articles and thumbnails at build time. Visitors see new
-articles once the successful deployment becomes available and they open or
-reload the page, subject to the normal HTML cache policy. An already open page
-does not update itself. RSS changes may wait until the next scheduled check;
-Actions scheduling can also be delayed. This is intentionally not a real-time
-synchronization guarantee.
+Articles and thumbnails remain in static HTML. Visitors see new articles after
+a successful deployment when they open or reload the page, subject to normal
+HTML caching. An open page does not update itself. Synchronization may wait for
+the next scheduled check, and Actions scheduling can be delayed; real-time
+synchronization is not required. The independent public Lighthouse audit runs
+regardless of whether article data changed.
 
-The repository snapshot remains a fallback for local or Sites preview builds.
-It is not used as the last-successful-deployment baseline. The run artifact
-transfers data between jobs only; its expiry does not affect future comparisons.
+The repository snapshot is a fallback for local or Sites preview builds, not
+the comparison baseline. There is no browser-side data fetch or data-branch
+update workflow. The obsolete JSON file on the old data branch has been removed.
 
 ## Sites deployment integration
 
