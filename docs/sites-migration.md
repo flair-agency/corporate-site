@@ -1,84 +1,99 @@
-# Sites移行と更新運用
+# Sites Migration and Update Operations
 
-## 現在の状態
+## Current state
 
-- 正本: `flair-agency/corporate-site` の GitHub リポジトリー。
-- 本番: Firebase Hosting、`https://www.flair-agency.biz`。
-- 確認: 所有者のみ閲覧できるSitesの確認環境。
-- `.openai/hosting.json` は環境ごとのローカル設定。GitHubには含めず、Sites側のソースで保持する。
-  確認用と本番用の設定を区別し、既存SitesのIDはコネクターから取得して再利用する。
-- SitesとGitHubは別のGit保存先。自動同期は設定されていない。
-- このPRは移行準備。マージ自体はSitesへの公開やDNS変更を行わない。
+- Source of truth: the `flair-agency/corporate-site` GitHub repository.
+- Production: Firebase Hosting at `https://www.flair-agency.biz`.
+- Preview: an owner-only Sites environment.
+- `.openai/hosting.json` is environment-specific local configuration. Keep it out of
+  GitHub and retain it in the Sites source repository. Use separate preview and
+  production configurations, and retrieve and reuse existing Site IDs through the connector.
+- Sites and GitHub are separate Git remotes. Automatic synchronization is not configured.
+- This PR prepares the migration. Merging it does not publish to Sites or change DNS.
 
-## 開発・公開
+## Development and deployment
 
-1. GitHubの最新mainから作業ブランチを作る。
-2. 変更を実装し、確認用ビルドで検証する。
-3. GitHubにPRを作成する。Sitesの確認サイトへの反映はSites経由で行う。
-4. レビュー後にGitHubへマージする。現在は既存ActionsがFirebaseへ公開する。
-5. Sitesへの本番移行後は、承認済み変更を本番用の別Sitesに公開する。
+1. Create a working branch from the latest GitHub `main`.
+2. Implement changes and validate them with a preview build.
+3. Open a GitHub PR. Deploy to the preview environment through Sites.
+4. Merge into GitHub after review. The existing Actions workflow currently deploys to Firebase.
+5. After the production migration, deploy approved changes to a separate production Site.
 
-Sitesに保存するソースも同じGitHubの変更を含める。Sites側の保存履歴とGitHubの
-コミット履歴が異なる場合は、GitHubの変更を作業ツリーに適用してからSites側に
-コミットする。履歴を強制的に上書きして同期しない。
+The source saved in Sites must include the same changes as GitHub. If the Sites
+and GitHub commit histories differ, apply the GitHub changes to the working tree
+and then commit them in the Sites repository. Do not force-overwrite history to
+synchronize the repositories.
 
-## ビルドの切り替え
+## Build modes
 
-| コマンド | 用途 | 検索除外 | GTM |
+| Command | Purpose | Search indexing blocked | GTM |
 |---|---|---|---|
-| `npm run build` | 確認用（SITE_ENV未指定時） | 有効 | 無効 |
-| `npm run build:production` | 本番用 | 無効 | 有効 |
-| `SITE_ENV=production npm ci` | 既存Firebase CIのインストール・ビルド | 無効 | 有効 |
+| `npm run build` | Preview when SITE_ENV is unset | Yes | Disabled |
+| `npm run build:production` | Production | No | Enabled |
+| `SITE_ENV=production npm ci` | Install and build in the existing Firebase CI workflow | No | Enabled |
 
-`SITE_ENV` は `preview` / `production` のみ。未知の値はビルドを失敗させる。
-既存のFirebaseワークフローは `SITE_ENV: production` を指定するため、マージ後も
-検索掲載と計測を維持する。公開範囲は別途Sitesで管理する。ビルドモードを変えても
-非公開サイトが一般公開になることはない。
+`SITE_ENV` accepts only `preview` or `production`. Unknown values fail the build.
+The existing Firebase workflow sets `SITE_ENV: production`, preserving search
+indexing and analytics after the merge. Sites access controls are managed
+separately: changing the build mode does not make a private Site public.
 
-Eleventy・TypeScript・Tailwindの出力先 `public/` は維持する。Sites向けには `dist/`
-にコピーし、`/` のトップページとキャッシュ設定を用意する。canonicalなディレクトリー
-URLにキャッシュヘッダーを指定し、存在しないページは404を返す。
+Eleventy, TypeScript, and Tailwind continue to write to `public/`. For Sites, the
+output is copied to `dist/`, with a homepage at `/` and cache configuration.
+Cache headers target canonical directory URLs, and missing pages return 404.
 
-## 記事自動更新の方針
+## Automatic article updates
 
-静的生成を継続し、「RSS取得 → JSON生成 → ビルド → 公開」の順序を維持する。
-RSS取得のためだけにサイトをサーバー実行へ書き換えない。
+Keep static generation and the existing sequence: fetch RSS, generate JSON,
+build, and deploy. Do not convert the site to server-side execution solely to
+fetch RSS.
 
 ```sh
 npm run articles:refresh
 npm run build
 ```
 
-取得元は既存の `NOTE_RSS_URL` 環境変数を優先し、未設定時は
-`https://note.com/flair_agency_biz/rss` を使う。Python 3の標準ライブラリーで動き、
-追加パッケージは不要。取得・解析・検証の失敗時は既存JSONを維持して異常終了する。
-空のRSSで記事を消さない。内容が同じ場合はファイルを書き換えない。
+The source URL comes from the existing `NOTE_RSS_URL` environment variable,
+falling back to `https://note.com/flair_agency_biz/rss` when unset. The current
+implementation uses the Python 3 standard library and requires no additional
+packages. Fetch, parse, or validation failures preserve the existing JSON and
+exit with an error. An empty RSS feed does not delete articles. Unchanged
+content does not rewrite the file.
 
-既存Firebaseワークフローの3時間ごとのスケジュールと公開処理は継続する。
-RSS変換部分だけを共通スクリプトに置き換える。定期更新時に生成したJSONは
-ビルドへ渡されるが、GitHubへ自動コミットする処理は追加していない。
-リポジトリー中のJSONは、確認ビルドをネットワーク非依存で再現するための
-2026-09-06時点のフォールバックであり、最新記事を保証しない。
+The existing Firebase workflow retains its three-hour schedule and deployment
+steps. Only the RSS conversion is replaced with the shared script. JSON
+generated during scheduled updates is passed to the build; no automatic
+commit to GitHub has been added.
 
-### Sitesへの自動公開は未接続
+The JSON stored in the repository is a fallback snapshot from 2026-09-06,
+allowing preview builds without network access. It does not guarantee that
+articles are current.
 
-2026-09-06時点で、この作業環境で確認できたSites公開操作はChatGPTのSites
-コネクター経由。GitHub Actionsから利用できる公式の公開API・CI認証方式は
-確認できていない。Sitesのソース書き込み用短期トークンはデプロイAPIではなく、
-Actionsの永続的なsecretとして使わない。GitHubへのpushだけではSitesは更新されない。
+### Automatic deployment to Sites is not connected
 
-したがって、現段階では「Sites本番移行後も記事が自動更新される」とは扱わない。
-Sites向けの手動更新は上記スクリプトで取得してから、ビルドとSites公開を実行する。
-定期公開の正式な手段が確認・実証できるまでは、Firebaseの自動更新を継続する。
+As of 2026-09-06, the Sites deployment operations verified in this environment
+use the ChatGPT Sites connector. An official deployment API and CI
+authentication method usable from GitHub Actions have not been verified.
+Short-lived Sites source-write tokens are not a deployment API and must not
+be stored as persistent Actions secrets. Pushing to GitHub alone does not
+update Sites.
 
-## 本番切り替えの条件
+Do not assume that articles will continue updating automatically after the
+production migration to Sites. For a manual Sites update, fetch articles with
+the script above, then build and deploy through Sites. Keep Firebase's
+automatic updates running until an officially supported scheduled deployment
+method has been verified and demonstrated.
 
-- 本番用Sitesを別に用意し、本番ビルド・一般公開を確認する。
-- 記事取得からSites公開までの自動処理を実証する。失敗時に旧版が維持されることも確認する。
-- 主要URL、404、画像・動画、問い合わせ導線、GTMの動作を確認する。
-- 独自ドメインとDNSを切り替え、実ドメインで動作を確認する。
-- 安定確認後にFirebaseの定期公開を停止する。復帰用の既存公開状態は当面保持する。
+## Production cutover conditions
 
-依存更新は変更用PRで扱い、ビルドと主要ページを確認する。Sitesの障害時は保存済みの
-正常な版を再公開する。確認サイトで検索除外を解除したり、確認アクセスを本番計測へ
-混ぜたりしないよう、公開先とビルドモードを対応させる。
+- Prepare a separate production Site and verify the production build and public access.
+- Demonstrate automatic operation from article retrieval through Sites deployment.
+  Also verify that failures preserve the previous version.
+- Check key URLs, 404 responses, images, videos, contact links, and GTM behavior.
+- Switch the custom domain and DNS, then verify operation on the actual domain.
+- Stop scheduled Firebase deployments after confirming stability. Retain the
+  existing Firebase deployment temporarily as a fallback.
+
+Handle dependency updates in dedicated PRs and check the build and key pages.
+If a Sites deployment fails, redeploy a saved, known-good version. Match the
+deployment destination to the build mode so that previews remain excluded
+from search indexing and preview traffic does not enter production analytics.
