@@ -81,3 +81,11 @@ public/sitemap.xml
 !public/assets/**/*.js
 
 src/_data/note_articles.json
+
+# Sites build output and versioned fallback articles
+dist/
+public/_headers
+!src/_data/note_articles.json
+
+# Environment-specific Sites identity (retained in the Sites source repository)
+.openai/hosting.json

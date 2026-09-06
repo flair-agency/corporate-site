@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if deployment.production %}
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -17,6 +18,9 @@
       })(window, document, 'script', 'dataLayer', 'GTM-5C2QMW6T');
     </script>
     <!-- End Google Tag Manager -->
+    {% else %}
+    <meta name="robots" content="noindex, nofollow">
+    {% endif %}
     <script>
       document.documentElement.classList.add('js');
     </script>
@@ -77,6 +81,7 @@
     <script src="/index.js?v={{ site.asset.version }}" defer></script>
   </head>
   <body class="{{ classes | compact | join: " " }}">
+    {% if deployment.production %}
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
@@ -87,6 +92,7 @@
       ></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+    {% endif %}
     <header>
       <a href="{% if id == "home" %}#{% else %}/{% endif %}">
         <img src="/assets/logo.svg" alt="{{ site.name }} ロゴ" class="logo" width="70" height="50">

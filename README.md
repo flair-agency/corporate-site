@@ -75,3 +75,7 @@ See the `LICENSE` file for details.
 ## Maintainer
 
 [Flair LLC](https://www.flair-agency.biz/company)
+
+## Sites migration
+
+See [Sites migration and operations](docs/sites-migration.md) for preview/production builds, article refresh, and the remaining automatic-publication requirement.
