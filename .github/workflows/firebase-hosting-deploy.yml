@@ -12,7 +12,6 @@ env:
 
 permissions:
   contents: read
-  actions: read
   id-token: write
 
 concurrency:
@@ -36,54 +35,31 @@ jobs:
           curl --fail --silent --show-error --location --max-time 30 --retry 2 "${NOTE_RSS_URL}" |
           xsltproc ./rss-to-tsv.xsl - |
           jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
-          jq -s -cS '.' > "${RUNNER_TEMP}/note-articles.json"
+          jq -s -cS '.' > "${RUNNER_TEMP}/note_articles.json"
           jq -e 'type == "array" and length > 0 and all(.[];
             (.title | type == "string" and length > 0) and
             (.url | type == "string" and startswith("https://note.com/")) and
             (.publishedAt | type == "string" and length > 0) and
             (.description | type == "string") and
             (.thumbnail | type == "string" and (length == 0 or startswith("https://"))))' \
-            "${RUNNER_TEMP}/note-articles.json" > /dev/null
+            "${RUNNER_TEMP}/note_articles.json" > /dev/null
       - name: Restore the hash from a successful deployment
         if: github.event_name == 'schedule'
-        uses: actions/github-script@v7
+        uses: actions/cache/restore@v6.1.0
         with:
-          script: |
-            const fs = require('node:fs');
-            const path = require('node:path');
-            try {
-              const repo = { owner: context.repo.owner, repo: context.repo.repo };
-              const current = await github.rest.actions.getWorkflowRun({ ...repo, run_id: context.runId });
-              const { data } = await github.rest.actions.listArtifactsForRepo({
-                ...repo, name: 'deployed-note-hash', per_page: 100,
-              });
-              const candidates = data.artifacts.filter(a => !a.expired)
-                .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
-              for (const artifact of candidates) {
-                if (!artifact.workflow_run) continue;
-                const { data: run } = await github.rest.actions.getWorkflowRun({
-                  ...repo, run_id: artifact.workflow_run.id,
-                });
-                if (run.workflow_id !== current.data.workflow_id || run.conclusion !== 'success') continue;
-                const archive = await github.rest.actions.downloadArtifact({
-                  ...repo, artifact_id: artifact.id, archive_format: 'zip',
-                });
-                fs.writeFileSync(path.join(process.env.RUNNER_TEMP, 'deployed-note-hash.zip'), Buffer.from(archive.data));
-                break;
-              }
-            } catch {
-              core.warning('Comparison hash unavailable; this run will use CI and deployment.');
-            }
+          path: ${{ runner.temp }}/note-articles.sha256
+          key: deployed-note-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: deployed-note-v1-
       - name: Compare article hashes
         id: compare
         env:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
-          CURRENT_HASH=$(sha256sum "${RUNNER_TEMP}/note-articles.json" | cut -d ' ' -f 1)
+          CURRENT_HASH=$(sha256sum "${RUNNER_TEMP}/note_articles.json" | cut -d ' ' -f 1)
           PUBLISHED_HASH=''
-          if [[ -f "${RUNNER_TEMP}/deployed-note-hash.zip" ]]; then
-            PUBLISHED_HASH=$(unzip -p "${RUNNER_TEMP}/deployed-note-hash.zip" note-articles.sha256 2>/dev/null || true)
+          if [[ -f "${RUNNER_TEMP}/note-articles.sha256" ]]; then
+            PUBLISHED_HASH=$(cat "${RUNNER_TEMP}/note-articles.sha256")
           fi
           # Missing, expired or invalid baselines trigger CI instead of suppressing an update.
           if [[ "${EVENT_NAME}" == "schedule" && "${PUBLISHED_HASH}" =~ ^[0-9a-f]{64}$ && "${CURRENT_HASH}" == "${PUBLISHED_HASH}" ]]; then
@@ -96,7 +72,7 @@ jobs:
         if: steps.compare.outputs.should_deploy == 'true'
         with:
           name: note-articles
-          path: ${{ runner.temp }}/note-articles.json
+          path: ${{ runner.temp }}/note_articles.json
           if-no-files-found: error
           retention-days: 7
 
@@ -222,9 +198,7 @@ jobs:
         run: |
           set -euo pipefail
           sha256sum src/_data/note_articles.json | cut -d ' ' -f 1 > "${RUNNER_TEMP}/note-articles.sha256"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/cache/save@v6.1.0
         with:
-          name: deployed-note-hash
           path: ${{ runner.temp }}/note-articles.sha256
-          if-no-files-found: error
-          retention-days: 90
+          key: deployed-note-v1-${{ github.run_id }}-${{ github.run_attempt }}

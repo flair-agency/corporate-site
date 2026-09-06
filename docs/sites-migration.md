@@ -67,29 +67,31 @@ uses `curl` → `xsltproc` → `jq` and `NOTE_RSS_URL`, rejecting empty or inval
 article data. `jq -cS` gives JSON stable key order and formatting while preserving
 article array order. SHA-256 is calculated from those normalized bytes.
 
-For a scheduled run, the workflow retrieves the newest available
-`deployed-note-hash` artifact from a successful run of the same deployment
-workflow. It checks up to 100 matching artifacts and ignores expired artifacts
-and unsuccessful runs. Only a valid 64-character hash can suppress deployment.
+For a scheduled run, `actions/cache/restore@v6.1.0` restores the newest
+available deployment hash using the `deployed-note-v1-` key prefix. The workflow
+compares the restored SHA-256 value with the newly normalized JSON, rather than
+using `cache-hit` as the change detector.
 
 - Same hash: skip build, preview, Lighthouse CI, and deployment.
 - Changed hash: pass the generated JSON to preview and production jobs as a
   run artifact, build, pass Lighthouse, and deploy.
-- Missing, expired, unreadable, or malformed hash: run the same CI/deployment
-  path, rather than risk skipping an update.
+- Missing, evicted, or malformed hash: run the same CI/deployment path.
 - Code changes and manual runs: always run CI and deployment.
 
-The comparison artifact contains only the hash and is saved after the Firebase
-production deployment command succeeds. Its retention is 90 days. A failure
-before or during deployment does not save a new hash. If deployment succeeds
-but hash storage fails, a subsequent run may repeat CI and deployment; it does
-not lose the article update. Production runs are serialized.
+Only after the Firebase production deployment command succeeds,
+`actions/cache/save@v6.1.0` saves the hash under a unique run ID and attempt key.
+Existing cache entries are not overwritten. A failure before or during deployment
+does not save a new baseline. Cache storage is a best-effort optimization;
+production runs are serialized. GitHub cache branch scopes apply, so scheduled
+runs use deployment baselines saved on the default branch.
 
-The complete JSON is used only as a short-lived Actions artifact to supply the
-same input to preview and production builds. There is no second RSS fetch after
-CI. Neither this JSON nor the comparison hash is copied into `public/` or `dist/`.
-No comparison endpoint or special cache header is added to the public site.
-Actions needs read permission to restore artifacts from prior runs.
+The complete JSON is passed as a short-lived, same-run Actions artifact named
+`note-articles`, containing `note_articles.json` to match the build data filename.
+This supplies identical input to preview and production builds, with no second
+RSS fetch after CI. Neither the JSON nor the comparison hash is copied into
+`public/` or `dist/`. No comparison endpoint or special cache header is added
+to the public site. Prior-run artifact lookup and its Actions read permission
+are no longer needed.
 
 Articles and thumbnails remain in static HTML. Visitors see new articles after
 a successful deployment when they open or reload the page, subject to normal
