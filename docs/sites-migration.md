@@ -41,50 +41,90 @@ Eleventy, TypeScript, and Tailwind continue to write to `public/`. For Sites, th
 output is copied to `dist/`, with a homepage at `/` and cache configuration.
 Cache headers target canonical directory URLs, and missing pages return 404.
 
-## Automatic article updates
+## Operational requirements
 
-Keep static generation and the existing sequence: fetch RSS, generate JSON,
-build, and deploy. Do not convert the site to server-side execution solely to
-fetch RSS.
+Lighthouse serves both as a pre-deployment CI gate and as a periodic audit of
+the published site. note articles need eventual synchronization, not real-time
+updates. Article pages remain statically generated, including thumbnails.
 
-Article retrieval and conversion remain inline in
-`.github/workflows/firebase-hosting-deploy.yml`. The existing `curl` →
-`xsltproc` → `jq` pipeline reads `NOTE_RSS_URL` and writes
-`src/_data/note_articles.json` before the production build.
+| Responsibility | Trigger | Behavior |
+|---|---|---|
+| Audit the published site | Every three hours at minute 17, or manual | Run Lighthouse without building or deploying |
+| Check note articles | Every three hours at minute 7 | Fetch RSS, normalize JSON, and compare hashes; deploy only if changed |
+| Deploy code changes | Push to main, or manual | Fetch articles, build, pass Lighthouse, and deploy even if article data is unchanged |
 
-The existing Firebase workflow retains its three-hour schedule and deployment
-steps. This PR does not extract or rewrite its article retrieval logic, add a
-separate refresh command, or introduce a Python runtime dependency. Generated
-JSON is passed to the build; no automatic commit to GitHub has been added.
+The standalone audit uses `lighthouse-scheduled.yml`. It installs dependencies
+with lifecycle scripts disabled and retains reports for 14 days. Both audits
+cover home, creator, business, company, and articles, using the existing score
+thresholds. `PRODUCTION_ORIGIN` overrides the default
+`https://www.flair-agency.biz` for both the public audit and article comparison.
+Use the actual public production origin, not an owner-only preview.
 
-The JSON stored in the repository is a fallback snapshot from 2026-09-06,
-allowing preview builds without network access. It does not guarantee that
-articles are current.
+## Hash-based article synchronization
 
-### Automatic deployment to Sites is not connected
+RSS commands remain inline in `firebase-hosting-deploy.yml`. The prepare job
+uses `curl` → `xsltproc` → `jq` and `NOTE_RSS_URL`, rejecting empty or invalid
+article data. `jq -cS` gives JSON stable key order and formatting while preserving
+article array order. SHA-256 is calculated from those normalized bytes.
 
-As of 2026-09-06, the Sites deployment operations verified in this environment
-use the ChatGPT Sites connector. An official deployment API and CI
-authentication method usable from GitHub Actions have not been verified.
-Short-lived Sites source-write tokens are not a deployment API and must not
-be stored as persistent Actions secrets. Pushing to GitHub alone does not
-update Sites.
+For a scheduled run, `actions/cache/restore@v6.1.0` restores the newest
+available deployment hash using the `deployed-note-v1-` key prefix. The workflow
+compares the restored SHA-256 value with the newly normalized JSON, rather than
+using `cache-hit` as the change detector.
 
-Do not assume that articles will continue updating automatically after the
-production migration to Sites. The checked-in snapshot supports preview builds, but a workflow for refreshing
-articles and publishing them to Sites remains to be established. Keep Firebase's
-automatic updates running until an officially supported scheduled deployment
-method has been verified and demonstrated.
+- Same hash: skip build, preview, Lighthouse CI, and deployment.
+- Changed hash: pass the generated JSON to preview and production jobs as a
+  run artifact, build, pass Lighthouse, and deploy.
+- Missing, evicted, or malformed hash: run the same CI/deployment path.
+- Code changes and manual runs: always run CI and deployment.
+
+Only after the Firebase production deployment command succeeds,
+`actions/cache/save@v6.1.0` saves the hash under a unique run ID and attempt key.
+Existing cache entries are not overwritten. A failure before or during deployment
+does not save a new baseline. Cache storage is a best-effort optimization;
+production runs are serialized. GitHub cache branch scopes apply, so scheduled
+runs use deployment baselines saved on the default branch.
+
+The complete JSON is passed as a short-lived, same-run Actions artifact named
+`note-articles`, containing `note_articles.json` to match the build data filename.
+This supplies identical input to preview and production builds, with no second
+RSS fetch after CI. Neither the JSON nor the comparison hash is copied into
+`public/` or `dist/`. No comparison endpoint or special cache header is added
+to the public site. Prior-run artifact lookup and its Actions read permission
+are no longer needed.
+
+Articles and thumbnails remain in static HTML. Visitors see new articles after
+a successful deployment when they open or reload the page, subject to normal
+HTML caching. An open page does not update itself. Synchronization may wait for
+the next scheduled check, and Actions scheduling can be delayed; real-time
+synchronization is not required. The independent public Lighthouse audit runs
+regardless of whether article data changed.
+
+The repository snapshot is a fallback for local or Sites preview builds, not
+the comparison baseline. There is no browser-side data fetch or data-branch
+update workflow. The obsolete JSON file on the old data branch has been removed.
+
+## Sites deployment integration
+
+The implementation above uses the existing Firebase deployment path. Sites
+must eventually support the same sequence: changed JSON, build, Lighthouse
+CI, and publication of the tested content. An official CI deployment interface
+for Sites has not been verified in this environment. That integration remains
+open; it is not a reason to introduce dynamic article rendering or a data branch.
+
+Reference: [GitHub scheduled workflow behavior](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 
 ## Production cutover conditions
 
 - Prepare a separate production Site and verify the production build and public access.
-- Demonstrate automatic operation from article retrieval through Sites deployment.
-  Also verify that failures preserve the previous version.
+- Verify the standalone Lighthouse workflow against the public site.
+- Verify that changed article JSON passes through build and Lighthouse before
+  deployment; unchanged JSON skips publication and failed CI retains the old site.
 - Check key URLs, 404 responses, images, videos, contact links, and GTM behavior.
 - Switch the custom domain and DNS, then verify operation on the actual domain.
-- Stop scheduled Firebase deployments after confirming stability. Retain the
-  existing Firebase deployment temporarily as a fallback.
+- Retire Firebase code deployments after confirming stability. Scheduled audits
+  and article synchronization remain enabled through their production paths. Retain the existing Firebase deployment
+  temporarily as a fallback.
 
 Handle dependency updates in dedicated PRs and check the build and key pages.
 If a Sites deployment fails, redeploy a saved, known-good version. Match the

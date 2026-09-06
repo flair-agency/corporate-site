@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "7 */3 * * *"
 
 env:
   SITE_ENV: production
@@ -14,8 +14,71 @@ permissions:
   contents: read
   id-token: write
 
+concurrency:
+  group: firebase-production
+  cancel-in-progress: false
+
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      should_deploy: ${{ steps.compare.outputs.should_deploy }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and normalize note article data
+        env:
+          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update && sudo apt-get install -y xsltproc
+          curl --fail --silent --show-error --location --max-time 30 --retry 2 "${NOTE_RSS_URL}" |
+          xsltproc ./rss-to-tsv.xsl - |
+          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
+          jq -s -cS '.' > "${RUNNER_TEMP}/note_articles.json"
+          jq -e 'type == "array" and length > 0 and all(.[];
+            (.title | type == "string" and length > 0) and
+            (.url | type == "string" and startswith("https://note.com/")) and
+            (.publishedAt | type == "string" and length > 0) and
+            (.description | type == "string") and
+            (.thumbnail | type == "string" and (length == 0 or startswith("https://"))))' \
+            "${RUNNER_TEMP}/note_articles.json" > /dev/null
+      - name: Restore the hash from a successful deployment
+        if: github.event_name == 'schedule'
+        uses: actions/cache/restore@v6.1.0
+        with:
+          path: ${{ runner.temp }}/note-articles.sha256
+          key: deployed-note-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: deployed-note-v1-
+      - name: Compare article hashes
+        id: compare
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          CURRENT_HASH=$(sha256sum "${RUNNER_TEMP}/note_articles.json" | cut -d ' ' -f 1)
+          PUBLISHED_HASH=''
+          if [[ -f "${RUNNER_TEMP}/note-articles.sha256" ]]; then
+            PUBLISHED_HASH=$(cat "${RUNNER_TEMP}/note-articles.sha256")
+          fi
+          # Missing, expired or invalid baselines trigger CI instead of suppressing an update.
+          if [[ "${EVENT_NAME}" == "schedule" && "${PUBLISHED_HASH}" =~ ^[0-9a-f]{64}$ && "${CURRENT_HASH}" == "${PUBLISHED_HASH}" ]]; then
+            echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
+            echo "Article JSON is unchanged; skipping build, preview, CI, and deployment."
+          else
+            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: steps.compare.outputs.should_deploy == 'true'
+        with:
+          name: note-articles
+          path: ${{ runner.temp }}/note_articles.json
+          if-no-files-found: error
+          retention-days: 7
+
   setup:
+    needs: prepare
+    if: needs.prepare.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     outputs:
       origin: ${{ steps.preview.outputs.origin }}
@@ -25,6 +88,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: note-articles
+          path: src/_data
 
       - name: Install
         run: npm ci
@@ -50,7 +118,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        page: [home, creator, business, company]
+        page: [home, creator, business, company, articles]
     env:
       REPORTS_PATH: /tmp/lighthouse-reports
       FIREBASE_PID_FILE: /tmp/firebase-emulator.pid
@@ -70,9 +138,8 @@ jobs:
           PAGE: ${{ matrix.page }}
         run: |
           set -euo pipefail
-          REPORT_FILE="${REPORTS_PATH}/${PAGE}.json"
-
           mkdir -p "${REPORTS_PATH}"
+          REPORT_FILE="${REPORTS_PATH}/${PAGE}.json"
 
           npm -s run test:lighthouse "${ORIGIN}/${PAGE}/" -- --quiet --output-path="${REPORT_FILE}" --throttling-method=provided --skip-audits="is-crawlable,robots-txt"
 
@@ -108,18 +175,10 @@ jobs:
         with:
           node-version-file: ".tool-versions"
 
-      - name: Generate note articles data
-        env:
-          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
-        run: |
-          set -euo pipefail
-
-          sudo apt-get update && sudo apt-get install -y xsltproc
-
-          curl -fsSL "${NOTE_RSS_URL}" |
-          xsltproc ./rss-to-tsv.xsl - |
-          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
-          jq -s '.' > src/_data/note_articles.json
+      - uses: actions/download-artifact@v4
+        with:
+          name: note-articles
+          path: src/_data
 
       - name: Install
         run: npm ci
@@ -134,3 +193,12 @@ jobs:
         env:
           PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
         run: npx firebase deploy --only hosting --project "${PROJECT_ID}"
+
+      - name: Record the successfully deployed article hash
+        run: |
+          set -euo pipefail
+          sha256sum src/_data/note_articles.json | cut -d ' ' -f 1 > "${RUNNER_TEMP}/note-articles.sha256"
+      - uses: actions/cache/save@v6.1.0
+        with:
+          path: ${{ runner.temp }}/note-articles.sha256
+          key: deployed-note-v1-${{ github.run_id }}-${{ github.run_attempt }}
