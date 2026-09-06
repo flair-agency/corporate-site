@@ -15,8 +15,7 @@
     "test:lighthouse-gate": "node ./lighthouse-gate.mjs",
     "test": "npm -s run test:lighthouse ${npm_config_url:-http://127.0.0.1:5002/creator/} | npm -s run test:lighthouse-gate",
     "postinstall": "npm -s run build",
-    "build:production": "node scripts/build.mjs production",
-    "articles:refresh": "python3 scripts/refresh-note-articles.py"
+    "build:production": "node scripts/build.mjs production"
   },
   "repository": {
     "type": "git",

@@ -47,22 +47,15 @@ Keep static generation and the existing sequence: fetch RSS, generate JSON,
 build, and deploy. Do not convert the site to server-side execution solely to
 fetch RSS.
 
-```sh
-npm run articles:refresh
-npm run build
-```
-
-The source URL comes from the existing `NOTE_RSS_URL` environment variable,
-falling back to `https://note.com/flair_agency_biz/rss` when unset. The current
-implementation uses the Python 3 standard library and requires no additional
-packages. Fetch, parse, or validation failures preserve the existing JSON and
-exit with an error. An empty RSS feed does not delete articles. Unchanged
-content does not rewrite the file.
+Article retrieval and conversion remain inline in
+`.github/workflows/firebase-hosting-deploy.yml`. The existing `curl` →
+`xsltproc` → `jq` pipeline reads `NOTE_RSS_URL` and writes
+`src/_data/note_articles.json` before the production build.
 
 The existing Firebase workflow retains its three-hour schedule and deployment
-steps. Only the RSS conversion is replaced with the shared script. JSON
-generated during scheduled updates is passed to the build; no automatic
-commit to GitHub has been added.
+steps. This PR does not extract or rewrite its article retrieval logic, add a
+separate refresh command, or introduce a Python runtime dependency. Generated
+JSON is passed to the build; no automatic commit to GitHub has been added.
 
 The JSON stored in the repository is a fallback snapshot from 2026-09-06,
 allowing preview builds without network access. It does not guarantee that
@@ -78,8 +71,8 @@ be stored as persistent Actions secrets. Pushing to GitHub alone does not
 update Sites.
 
 Do not assume that articles will continue updating automatically after the
-production migration to Sites. For a manual Sites update, fetch articles with
-the script above, then build and deploy through Sites. Keep Firebase's
+production migration to Sites. The checked-in snapshot supports preview builds, but a workflow for refreshing
+articles and publishing them to Sites remains to be established. Keep Firebase's
 automatic updates running until an officially supported scheduled deployment
 method has been verified and demonstrated.
 

@@ -114,7 +114,12 @@ jobs:
         run: |
           set -euo pipefail
 
-          python3 scripts/refresh-note-articles.py
+          sudo apt-get update && sudo apt-get install -y xsltproc
+
+          curl -fsSL "${NOTE_RSS_URL}" |
+          xsltproc ./rss-to-tsv.xsl - |
+          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
+          jq -s '.' > src/_data/note_articles.json
 
       - name: Install
         run: npm ci

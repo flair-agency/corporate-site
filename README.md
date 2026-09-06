@@ -78,4 +78,4 @@ See the `LICENSE` file for details.
 
 ## Sites migration
 
-See [Sites migration and operations](docs/sites-migration.md) for preview/production builds, article refresh, and the remaining automatic-publication requirement.
+See [Sites migration and operations](docs/sites-migration.md) for preview/production builds, existing article updates, and the remaining automatic-publication requirement.
