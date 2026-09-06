@@ -4,16 +4,94 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    - cron: "7 */3 * * *"
 
 env:
   SITE_ENV: production
+  PRODUCTION_ORIGIN: ${{ vars.PRODUCTION_ORIGIN || 'https://www.flair-agency.biz' }}
 
 permissions:
   contents: read
   id-token: write
 
+concurrency:
+  group: firebase-production
+  cancel-in-progress: false
+
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      should_deploy: ${{ steps.compare.outputs.should_deploy }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and normalize note article data
+        env:
+          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update && sudo apt-get install -y xsltproc
+          curl --fail --silent --show-error --location --max-time 30 --retry 2 "${NOTE_RSS_URL}" |
+          xsltproc ./rss-to-tsv.xsl - |
+          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
+          jq -s -cS '.' > "${RUNNER_TEMP}/note-articles.json"
+          jq -e 'type == "array" and length > 0 and all(.[];
+            (.title | type == "string" and length > 0) and
+            (.url | type == "string" and startswith("https://note.com/")) and
+            (.publishedAt | type == "string" and length > 0) and
+            (.description | type == "string") and
+            (.thumbnail | type == "string" and (length == 0 or startswith("https://"))))' \
+            "${RUNNER_TEMP}/note-articles.json" > /dev/null
+      - name: Compare with the last published JSON
+        id: compare
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          # Code changes and manual runs always pass through CI and deployment.
+          if [[ "${EVENT_NAME}" != "schedule" ]]; then
+            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+          STATUS=$(curl --silent --show-error --location --max-time 30 --retry 2 \
+            -H 'Cache-Control: no-cache' \
+            --output "${RUNNER_TEMP}/published-note-articles.json" --write-out '%{http_code}' \
+            "${PRODUCTION_ORIGIN%/}/note-articles.json?sync=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}")
+          case "${STATUS}" in
+            200)
+              jq -e 'type == "array" and length > 0' "${RUNNER_TEMP}/published-note-articles.json" > /dev/null
+              jq -cS '.' "${RUNNER_TEMP}/published-note-articles.json" > "${RUNNER_TEMP}/published-normalized.json"
+              CURRENT_HASH=$(sha256sum "${RUNNER_TEMP}/note-articles.json" | cut -d ' ' -f 1)
+              PUBLISHED_HASH=$(sha256sum "${RUNNER_TEMP}/published-normalized.json" | cut -d ' ' -f 1)
+              if [[ "${CURRENT_HASH}" == "${PUBLISHED_HASH}" ]]; then
+                echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
+                echo "Article JSON is unchanged; skipping build, preview, CI, and deployment."
+              else
+                echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+              fi
+              ;;
+            404)
+              # Bootstrap: the current production site may not publish the JSON yet.
+              echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+              ;;
+            *)
+              echo "::error::Cannot read published article JSON (HTTP ${STATUS})."
+              exit 1
+              ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: steps.compare.outputs.should_deploy == 'true'
+        with:
+          name: note-articles
+          path: ${{ runner.temp }}/note-articles.json
+          if-no-files-found: error
+          retention-days: 7
+
   setup:
+    needs: prepare
+    if: needs.prepare.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     outputs:
       origin: ${{ steps.preview.outputs.origin }}
@@ -23,6 +101,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: note-articles
+          path: src/_data
 
       - name: Install
         run: npm ci
@@ -48,7 +131,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        page: [home, creator, business, company]
+        page: [home, creator, business, company, articles]
     env:
       REPORTS_PATH: /tmp/lighthouse-reports
       FIREBASE_PID_FILE: /tmp/firebase-emulator.pid
@@ -68,6 +151,7 @@ jobs:
           PAGE: ${{ matrix.page }}
         run: |
           set -euo pipefail
+          mkdir -p "${REPORTS_PATH}"
           REPORT_FILE="${REPORTS_PATH}/${PAGE}.json"
 
           mkdir -p "${REPORTS_PATH}"
@@ -106,18 +190,10 @@ jobs:
         with:
           node-version-file: ".tool-versions"
 
-      - name: Generate note articles data
-        env:
-          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
-        run: |
-          set -euo pipefail
-
-          sudo apt-get update && sudo apt-get install -y xsltproc
-
-          curl -fsSL "${NOTE_RSS_URL}" |
-          xsltproc ./rss-to-tsv.xsl - |
-          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
-          jq -s '.' > src/_data/note_articles.json
+      - uses: actions/download-artifact@v4
+        with:
+          name: note-articles
+          path: src/_data
 
       - name: Install
         run: npm ci

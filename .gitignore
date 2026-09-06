@@ -89,3 +89,5 @@ public/_headers
 
 # Environment-specific Sites identity (retained in the Sites source repository)
 .openai/hosting.json
+
+public/note-articles.json

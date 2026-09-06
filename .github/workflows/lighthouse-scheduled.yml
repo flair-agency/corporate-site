@@ -19,9 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        page: [home, creator, business, company]
+        page: [home, creator, business, company, articles]
     env:
-      ORIGIN: ${{ vars.LIGHTHOUSE_ORIGIN || 'https://www.flair-agency.biz' }}
+      ORIGIN: ${{ vars.PRODUCTION_ORIGIN || 'https://www.flair-agency.biz' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

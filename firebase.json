@@ -1,10 +1,14 @@
 {
   "hosting": {
     "public": "public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "headers": [
       {
-        "source": "**/*.@(woff2|woff|ttf|otf|png|jpg|jpeg|webp|avif|svg|ico|json|webm|mp4|wasm)",
+        "source": "**/*.@(woff2|woff|ttf|otf|png|jpg|jpeg|webp|avif|svg|ico|webm|mp4|wasm)",
         "headers": [
           {
             "key": "Cache-Control",
@@ -18,6 +22,15 @@
           {
             "key": "Cache-Control",
             "value": "public,max-age=300,must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "/note-articles.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-store"
           }
         ]
       }

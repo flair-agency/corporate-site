@@ -78,4 +78,4 @@ See the `LICENSE` file for details.
 
 ## Sites migration
 
-See [Sites migration and operations](docs/sites-migration.md) for preview/production builds, independent Lighthouse audits, and article updates without site deployment.
+See [Sites migration and operations](docs/sites-migration.md) for preview/production builds, independent Lighthouse audits, and hash-based article synchronization and deployment.
