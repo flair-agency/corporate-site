@@ -30,8 +30,16 @@
   "nav": {
     "menu": [
       {
-        "anchor": "#note",
-        "label": "note"
+        "anchor": "#m33abe2658638",
+        "label": "Journal"
+      },
+      {
+        "anchor": "#m9ed537589a2f",
+        "label": "Tech Blog"
+      },
+      {
+        "anchor": "#m90ca92447bab",
+        "label": "配信が楽しくなくなる典型"
       }
     ]
   },

@@ -21,7 +21,7 @@
   </section>
 
   {% for channel in note_articles %}
-    <section class="channel">
+    <section class="channel" id="{{ channel.url | split: '/' | slice: 0, -1 }}">
       <hgroup>
         <h2>
           <a href="{{ channel.url }}" target="_blank" rel="noopener">{{ channel.title }}</a>
