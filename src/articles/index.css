@@ -21,7 +21,7 @@ body.articles {
   }
 
   /* Note section */
-  #note {
+  section.channel {
     @apply mb-8;
     @apply grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3;
 

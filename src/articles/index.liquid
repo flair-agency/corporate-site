@@ -20,36 +20,35 @@
     </hgroup>
   </section>
 
-  <section id="note">
-    <hgroup>
-      <h2>note</h2>
-    </hgroup>
-    <p>
-      <a href="https://note.com/flair_agency_biz" target="_blank" rel="noopener">note</a>では、 Flairの活動、TikTok
-      LIVE、クリエイターエコシステムに関する記事を掲載しています。
-    </p>
-    {% for channel in note_articles %}
-    {% for article in channel.articles %}
-      <article>
-        <h3>
-          <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
-        </h3>
+  {% for channel in note_articles %}
+    <section class="channel">
+      <hgroup>
+        <h2>
+          <a href="{{ channel.url }}" target="_blank" rel="noopener">{{ channel.title }}</a>
+        </h2>
+      </hgroup>
+      <p>{{ channel.description }}</p>
+      {% for article in channel.articles %}
+        <article>
+          <h3>
+            <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
+          </h3>
 
-        <a href="{{ article.url }}" target="_blank" rel="noopener">
-          <img
-            src="{{ article.thumbnail }}"
-            alt="{{ article.title }}"
-            loading="lazy"
-          >
-        </a>
+          <a href="{{ article.url }}" target="_blank" rel="noopener">
+            <img
+              src="{{ article.thumbnail }}"
+              alt="{{ article.title }}"
+              loading="lazy"
+            >
+          </a>
 
-        <p class="description">{{ article.description | strip_html | replace: '続きをみる', '' }}</p>
+          <p class="description">{{ article.description | strip_html | replace: '続きをみる', '' }}</p>
 
-        <time datetime="{{ article.publishedAt | date: '%Y-%m-%d' }}">
-          {{ article.publishedAt | date: '%Y年%m月%d日' }}
-        </time>
-      </article>
-    {% endfor %}
-    {% endfor %}
-  </section>
+          <time datetime="{{ article.publishedAt | date: '%Y-%m-%d' }}">
+            {{ article.publishedAt | date: '%Y年%m月%d日' }}
+          </time>
+        </article>
+      {% endfor %}
+    </section>
+  {% endfor %}
 </main>
