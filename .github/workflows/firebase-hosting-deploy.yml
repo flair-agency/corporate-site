@@ -34,7 +34,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -y xsltproc
           for url in "${NOTE_RSS_URL1}"
           do
-            curl -fsSL --max-time 30 --retry 2 "${url}" | xsltproc ./rss-to-tsv.xsl - 
+            curl -fsSL --max-time 30 --retry 2 "${url}" | xsltproc ./rss-to-json.xsl - 
           done | jq -s '.' > "${RUNNER_TEMP}/note_articles.json"
       - name: Restore the hash from a successful deployment
         if: github.event_name == 'schedule'
