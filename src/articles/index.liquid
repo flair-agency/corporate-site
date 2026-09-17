@@ -28,8 +28,8 @@
       <a href="https://note.com/flair_agency_biz" target="_blank" rel="noopener">note</a>では、 Flairの活動、TikTok
       LIVE、クリエイターエコシステムに関する記事を掲載しています。
     </p>
-
-    {% for article in note_articles %}
+    {% for channel in note_articles %}
+    {% for article in channel.articles %}
       <article>
         <h3>
           <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
@@ -49,6 +49,7 @@
           {{ article.publishedAt | date: '%Y年%m月%d日' }}
         </time>
       </article>
+    {% endfor %}
     {% endfor %}
   </section>
 </main>

@@ -28,21 +28,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Fetch and normalize note article data
         env:
-          NOTE_RSS_URL: ${{ vars.NOTE_RSS_URL }}
+          NOTE_RSS_URL1: ${{ vars.NOTE_RSS_URL }}
         run: |
           set -euo pipefail
           sudo apt-get update && sudo apt-get install -y xsltproc
-          curl --fail --silent --show-error --location --max-time 30 --retry 2 "${NOTE_RSS_URL}" |
-          xsltproc ./rss-to-tsv.xsl - |
-          jq -R 'select(length > 0)|split("\t")|{title:.[0],url:.[1],publishedAt:.[2],description:.[3],thumbnail:.[4]}' |
-          jq -s -cS '.' > "${RUNNER_TEMP}/note_articles.json"
-          jq -e 'type == "array" and length > 0 and all(.[];
-            (.title | type == "string" and length > 0) and
-            (.url | type == "string" and startswith("https://note.com/")) and
-            (.publishedAt | type == "string" and length > 0) and
-            (.description | type == "string") and
-            (.thumbnail | type == "string" and (length == 0 or startswith("https://"))))' \
-            "${RUNNER_TEMP}/note_articles.json" > /dev/null
+          for url in "${NOTE_RSS_URL1}"
+          do
+            curl -fsSL --max-time 30 --retry 2 "${url}" | xsltproc ./rss-to-tsv.xsl - 
+          done | jq -s '.' > "${RUNNER_TEMP}/note_articles.json"
       - name: Restore the hash from a successful deployment
         if: github.event_name == 'schedule'
         uses: actions/cache/restore@v6.1.0
