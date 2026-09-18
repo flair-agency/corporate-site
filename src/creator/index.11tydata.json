@@ -39,24 +39,16 @@
   "nav": {
     "menu": [
       {
-        "anchor": "#about",
-        "label": "まず知ってほしいこと"
-      },
-      {
-        "anchor": "#policy",
-        "label": "すること・しないこと"
-      },
-      {
         "anchor": "#benefits",
-        "label": "支援内容"
+        "label": "サポート"
+      },
+      {
+        "anchor": "#about",
+        "label": "安心して選べる理由"
       },
       {
         "anchor": "#how-to-start",
         "label": "はじめる流れ"
-      },
-      {
-        "anchor": "#comparison",
-        "label": "ひとりとの違い"
       },
       {
         "anchor": "#faq",
@@ -64,7 +56,7 @@
       },
       {
         "anchor": "#contact",
-        "label": "お問合せ"
+        "label": "申し込み・相談"
       }
     ]
   },
