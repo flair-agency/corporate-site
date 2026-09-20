@@ -291,7 +291,7 @@ body.creator {
       }
 
       &:nth-of-type(2) h3::before {
-        @apply content-["0"];
+        @apply content-["¥"];
       }
 
       &:nth-of-type(3) h3::before {
