@@ -1,0 +1,42 @@
+{
+  "classes": ["creator", "creator-conditions"],
+  "description": "Flairへの所属を検討しているTikTok LIVEクリエイター向けに、契約期間、費用、配信報酬、活動ペース、機材等の支援について説明します。",
+  "google": {
+    "fonts": {
+      "query": "family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap"
+    }
+  },
+  "id": "creator-conditions",
+  "layout": "layouts/base/index.liquid",
+  "nav": {
+    "menu": [
+      {
+        "anchor": "#summary",
+        "label": "先に知ってほしいこと"
+      },
+      {
+        "anchor": "#contract",
+        "label": "契約"
+      },
+      {
+        "anchor": "#compensation",
+        "label": "費用・報酬"
+      },
+      {
+        "anchor": "#support",
+        "label": "活動・支援"
+      },
+      {
+        "anchor": "#consultation",
+        "label": "相談"
+      }
+    ]
+  },
+  "page": {
+    "path": "/creator/conditions/"
+  },
+  "priority": 0.8,
+  "tags": ["creator-conditions"],
+  "title": "契約・費用・報酬について",
+  "updated": "2026-09-17"
+}

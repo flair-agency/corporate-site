@@ -1,0 +1,102 @@
+body.creator-conditions {
+  & > main {
+    @apply overflow-x-clip bg-linear-to-b from-white via-[#fffafd] to-[#faf7ff] pb-8 font-["M_PLUS_Rounded_1c",var(--font-family-sans)];
+  }
+
+  .conditions-hero {
+    @apply from-creator-lavender/55 to-creator-pink/45 mx-0 mt-0 rounded-none bg-linear-to-br via-white px-5 py-14 text-center sm:mx-4 sm:mt-8 sm:rounded-[2rem] md:px-12 md:py-20;
+
+    .eyebrow {
+      @apply text-creator-purple text-xs font-bold tracking-[.2em];
+    }
+
+    h1 {
+      @apply text-creator-ink mt-3 font-["Zen_Kurenaido",var(--font-family-sans)] text-3xl leading-tight font-bold tracking-tight md:text-5xl;
+    }
+
+    .lead {
+      @apply text-ink--secondary mx-auto mt-5 max-w-3xl text-sm leading-relaxed md:text-lg;
+    }
+
+    .reference-date {
+      @apply text-ink--secondary mt-6 text-xs;
+    }
+  }
+
+  article.panel {
+    @apply grid gap-5;
+  }
+
+  .conditions-summary .summary-grid {
+    @apply m-0 grid list-none gap-4 p-0 md:grid-cols-2;
+
+    li {
+      @apply border-creator-lavender/70 to-creator-lavender/20 flex flex-col gap-2 rounded-2xl border bg-linear-to-br from-white p-5;
+    }
+
+    strong {
+      @apply text-creator-ink text-base;
+    }
+
+    span {
+      @apply text-ink--secondary text-sm leading-relaxed;
+    }
+  }
+
+  .conditions-section {
+    @apply md:grid-cols-2;
+
+    & > hgroup {
+      @apply md:col-span-2;
+    }
+
+    & > section,
+    .note-box {
+      @apply border-creator-lavender/65 rounded-2xl border bg-white p-5 shadow-[0_8px_24px_rgb(93_72_135/.06)];
+
+      h3 {
+        @apply text-creator-ink mb-2 text-base font-bold;
+      }
+
+      p {
+        @apply text-ink--secondary text-sm leading-relaxed;
+      }
+    }
+
+    .note-box {
+      @apply border-creator-pink/80 bg-creator-ivory md:col-span-2;
+    }
+  }
+
+  .conditions-priority {
+    @apply border-creator-purple/25 bg-creator-lavender/25 text-center;
+
+    h2 {
+      @apply text-creator-ink text-xl leading-snug font-bold md:text-2xl;
+    }
+
+    p {
+      @apply text-ink--secondary mx-auto max-w-3xl text-sm leading-relaxed;
+    }
+  }
+
+  .conditions-consultation {
+    @apply border-creator-pink/80 from-creator-pink/35 to-creator-lavender/35 justify-items-center bg-linear-to-br via-white text-center;
+
+    & > hgroup {
+      @apply mb-0;
+    }
+
+    .cta.btn {
+      @apply mt-2;
+    }
+
+    .back-link {
+      @apply text-sm;
+
+      a {
+        @apply text-creator-purple underline hover:no-underline;
+      }
+    }
+  }
+}
