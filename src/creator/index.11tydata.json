@@ -2,7 +2,7 @@
   "classes": [
     "creator"
   ],
-  "description": "配信内容・頻度・時間は自分で決める。TikTok LIVEを自分らしく続けたいクリエイターへ。Flairは、条件と支援内容を契約前に説明し、配信の設計と改善を伴走するLIVEエージェンシーです。",
+  "description": "配信の内容やペースは、自分で決められます。TikTok LIVEを自分らしく続けたいクリエイターへ。Flairは、条件と支援内容を契約前に分かりやすく説明し、配信の準備と改善をサポートします。",
   "google": {
     "fonts": {
       "query": "family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Kurenaido:wght@400;700&display=swap"
@@ -10,7 +10,7 @@
   },
   "id": "creator",
   "image": {
-    "path": "/creator/og.png"
+    "path": "/creator/og-v2.png"
   },
   "layout": "layouts/base/index.liquid",
   "links": [
