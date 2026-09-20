@@ -43,6 +43,8 @@ body.articles {
 
     /* Articles */
     article {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 28rem;
       @apply overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-200;
       @apply hover:-translate-y-0.5 hover:shadow-md;
 
