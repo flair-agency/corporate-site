@@ -73,8 +73,14 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `cohort_denominator` | Non-negative integer or `suppressed` | Same defined population for every row in the cohort |
 | `rate` | Decimal, `not_applicable`, or `suppressed` | Calculate only for the two cohort metrics; never derive it from same-month counts |
 | `attribution_class` | `directly_observed`, `assisted`, `unknown`, or `all` | Use `all` for the primary cohort; segment only when privacy rules permit |
+| `source` | Controlled `utm_source`, `direct`, `other`, `unknown`, or `all` | Use `all` for the primary cohort; do not add free text |
+| `campaign` | Documented public campaign ID, `not_applicable`, `unknown`, or `all` | Never encode a person or private relationship |
+| `account_role` | `corporate`, `personal`, `not_applicable`, `unknown`, or `all` | Role, not an account handle |
+| `content_id` | Public stable content ID, `not_applicable`, `unknown`, or `all` | Public identifier only |
 
-A cohort result is a record set containing the denominator and its applicable outcome rows. The media review may receive that set only when the cohort meets the minimum size. Otherwise every count, denominator, rate, and outcome value exposed outside the restricted system is `suppressed`; only the metric, period, window, maturity, and “sample too small” status remain visible.
+A cohort result is a record set containing the denominator and its applicable outcome rows. The primary record uses `all` for source dimensions. Optional source, campaign, account-role, or content segments are separate record sets and may be exposed only when every displayed segment independently meets the minimum size; do not derive a suppressed segment by subtracting other segments from the total.
+
+The media review may receive a cohort record set only when it meets the minimum size. Otherwise the fixed outcome labels may remain, but every count, denominator, and rate is `suppressed`; source dimensions must be `all`, and only the metric, period, window, maturity, and “sample too small” status remain visible.
 
 ### Current-to-target mapping
 
@@ -95,7 +101,7 @@ Assign a candidate state only when the page, content purpose, or operational ste
 | `interested` | Do they seek more context? | article-to-site transitions, profile visits, relevant replies, repeat content response |
 | `checking_terms` | Do they inspect conditions and support? | Creator-page engaged sessions, term/support article transitions, contact-options inspection clicks |
 | `ready_to_consult` | Do they initiate a conversation or application? | DM clicks, application clicks, aggregate new inquiries, inquiry-to-consultation rate |
-| `deciding` | Can they reach an informed decision? | consultations completed, decisions recorded, consultation-to-decision time |
+| `deciding` | Can they reach an informed decision? | consultations completed and aggregate decisions recorded |
 | `joined_or_declined` | What was the outcome without hiding negative evidence? | joined, declined, deferred, and unknown outcomes; consultation-to-join rate |
 
 Report counts before rates and show `unknown` alongside attributed results. Use a rate only when its numerator and denominator cover the same period and population. Small counts must not be presented in a way that could identify a candidate.
@@ -122,7 +128,7 @@ Do not divide decisions recorded in a month by consultations completed in that s
 
 For consultation cohorts of at least five, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics.
 
-When either an inquiry or consultation cohort contains fewer than five members, keep the entire rate and outcome breakdown in the access-restricted operational system. The media review records only that the sample is too small; it must not include the cohort's rate, individual outcome counts, or a segmentation that could reconstruct them. Combine cohorts only across a predefined, documented period—not selectively after seeing their outcomes—and retain the original 30-day or 90-day observation rule.
+When either an inquiry or consultation cohort contains fewer than five members, keep the entire rate and outcome breakdown in the access-restricted operational system. The media review records only the fixed outcome labels with suppressed values and that the sample is too small; it must not include the cohort's rate, outcome counts, source breakdown, or a segmentation that could reconstruct them. Combine cohorts only across a predefined, documented period—not selectively after seeing their outcomes—and retain the original 30-day or 90-day observation rule.
 
 ## Monthly review
 
