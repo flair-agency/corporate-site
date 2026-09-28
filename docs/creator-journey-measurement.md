@@ -75,6 +75,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | Field | Allowed value | Rule |
 | --- | --- | --- |
 | `record_version` | Positive integer | Start at `1`; increment for each incompatible definition change |
+| `record_version_effective_at` | ISO 8601 timestamp with offset | Future `Asia/Tokyo` calendar-month boundary at which this version becomes active |
 | `measurement_start_at` | ISO 8601 timestamp with offset | Immutable boundary recorded before production measurement starts |
 | `metric` | `inquiry_count`, `consultation_count`, `inquiry_to_consultation_30d`, `consultation_to_join_90d` | One metric per record set |
 | `cohort_start` / `cohort_end` | ISO calendar dates | Predefined inquiry-received or consultation-completed period in `Asia/Tokyo` |
@@ -110,6 +111,10 @@ Store the `inquiry_to_consultation_30d` conversion rate only on its `consulted` 
 Apply the same minimum of five to `inquiry_count` and `consultation_count` period records. When a period contains fewer than five unique candidates, expose only `count: suppressed` with every source dimension set to `all`; do not expose segments. For a permitted segmented period count, the complete-partition and complement rules above still apply.
 
 Both period metrics count unique candidates, not events. `inquiry_count` counts only candidates whose lifetime-first valid inquiry occurs both in the period and on or after `measurement_start_at`; follow-up inquiries and candidates with a valid pre-start inquiry never enter that period count. `consultation_count` counts only candidates whose lifetime-first completed valid consultation occurs both in the period and on or after `measurement_start_at`; follow-up consultations and candidates with a valid pre-start consultation never enter that period count. Each population is identical to its matching cohort denominator before suppression, so subtracting the records cannot expose a small pre-start or repeat-event group. Period-count records use `cohort_denominator: not_applicable` and `rate: not_applicable`.
+
+### Version migration
+
+Exactly one `record_version` is active at any instant. Before an incompatible change, assign the next positive version a documented `record_version_effective_at` at 00:00 on the first day of a future calendar month in `Asia/Tokyo`; version intervals must be contiguous and must never overlap. A candidate cohort keeps the version active at its qualifying lifetime-first event through maturation and publication. A period-count record uses the single version active for its entire calendar period, which is why changes may take effect only at a month boundary. Retain already published records unchanged under their original version, and finish queued cohorts under their assigned version; never recompute, duplicate, or replace them under a later version. Consumers select the one version whose effective interval contains the qualifying event or count period, so the same cohort or period cannot be counted under two versions. Document any semantic discontinuity instead of combining incompatible versions into one trend.
 
 ### Current-to-target mapping
 
