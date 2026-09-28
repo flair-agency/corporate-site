@@ -102,6 +102,8 @@ For `consultation_to_join_90d`, assign each cohort member exactly one outcome fr
 
 The media review may receive a cohort record set only when it meets the minimum size. Otherwise the fixed outcome labels may remain, but every count, denominator, and rate is `suppressed`; source dimensions must be `all`, and only the metric, period, window, maturity, and “sample too small” status remain visible.
 
+For a conversion rate, both its numerator and its complement must independently contain at least five members; otherwise suppress the rate and denominator. Publish an outcome breakdown only when every displayed outcome cell and its complement independently meet the same threshold. If they do not, coarsen outcomes under a rule fixed before inspecting results or suppress the entire breakdown, including counts, denominator, and rate. Never expose a rate or complementary value that reconstructs a suppressed count.
+
 Apply the same minimum of five to `inquiry_count` and `consultation_count` period records. When a period contains fewer than five unique candidates, expose only `count: suppressed` with every source dimension set to `all`; do not expose segments. For a permitted segmented period count, the complete-partition and complement rules above still apply.
 
 ### Current-to-target mapping
@@ -140,7 +142,7 @@ Do not divide consultations completed in a month by inquiries received in that s
 / all unique candidates whose qualifying inquiry is in that cohort
 ```
 
-Define “valid new inquiry” before reviewing results: exclude documented spam and exact duplicate delivery, but do not remove a person because they declined, did not reply, or appeared unlikely to join. Mark the rate provisional until every cohort member has reached the 30-day boundary and compare only equally matured cohorts.
+Define “valid new inquiry” before reviewing results: exclude documented spam and exact duplicate delivery, but do not remove a person because they declined, did not reply, or appeared unlikely to join. Keep the result provisional only in the access-restricted operational system until every cohort member has reached the 30-day boundary. Publish the cohort to the media review once, after maturity; do not publish provisional snapshots.
 
 Do not divide decisions recorded in a month by consultations completed in that same month. Use a unique-candidate cohort based on the candidate's lifetime first completed valid consultation in the available operational history. A candidate is eligible only when that lifetime-first consultation occurs on or after measurement begins, and enters exactly once in its calendar month (`Asia/Tokyo`). Fix that consultation as the qualifying consultation and observe the candidate's outcome for 90 days from its completion date. Candidates with a valid pre-start consultation are excluded; later follow-up or repeat consultations do not create another cohort entry or reset the observation window. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
 
@@ -150,7 +152,7 @@ Do not divide decisions recorded in a month by consultations completed in that s
 / all unique candidates whose qualifying consultation is in that cohort
 ```
 
-For consultation cohorts of at least five, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics.
+For consultation cohorts of at least five, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort only when the outcome-specific privacy rule above permits it. Keep the result provisional only in the access-restricted operational system until every member has reached the 90-day boundary. Publish the cohort to the media review once, after maturity; do not publish provisional snapshots. Do not export candidate-level dates or outcomes to analytics.
 
 When either an inquiry or consultation cohort contains fewer than five members, keep the entire rate and outcome breakdown in the access-restricted operational system. The media review records only the fixed outcome labels with suppressed values and that the sample is too small; it must not include the cohort's rate, outcome counts, source breakdown, or a segmentation that could reconstruct them. Combine cohorts only across a predefined, documented period—not selectively after seeing their outcomes—and retain the original 30-day or 90-day observation rule.
 
@@ -160,8 +162,8 @@ The Flair owner is initially accountable for the review and may assign preparati
 
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
-3. Maintain a maturation queue containing every inquiry or consultation cohort whose observation window has not closed. Recalculate each queued cohort through `observed_through`; when all members reach their boundary, replace its provisional aggregate with the matured result and remove it from the queue. Add each newly eligible 90-day result once. Upsert rather than append, using `record_version`, `measurement_start_at`, `metric`, cohort dates, observation days, outcome, `attribution_frozen_at`, and frozen exposed dimension values as the stable aggregate key, so a cohort cannot remain permanently provisional or appear twice.
-4. Add aggregate inquiry and consultation counts, the matured or explicitly provisional 30-day inquiry-cohort result, and matured 90-day consultation-cohort outcomes calculated in the approved operational system, subject to the small-cohort restriction above. Never derive either conversion rate from the raw same-month counts.
+3. Maintain an access-restricted maturation queue containing every inquiry or consultation cohort whose observation window has not closed. Recalculate each queued cohort through `observed_through`; when all members reach their boundary, publish its privacy-safe matured aggregate once and remove it from the queue. Never copy a provisional snapshot into the media review. Use `record_version`, `measurement_start_at`, `metric`, cohort dates, observation days, outcome, `attribution_frozen_at`, and frozen exposed dimension values as the stable aggregate key, so a matured cohort cannot appear twice.
+4. Add aggregate inquiry and consultation counts and newly matured 30-day and 90-day cohort results calculated in the approved operational system, subject to the small-cohort and outcome-specific restrictions above. Never derive either conversion rate from the raw same-month counts.
 5. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
 6. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
 7. Record missing data and instrumentation changes before interpreting movement.
