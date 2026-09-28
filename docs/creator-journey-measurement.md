@@ -46,15 +46,35 @@ For new GTM/GA4 configuration, use one event name, `creator_funnel_transition`, 
 
 | Parameter | Values | Example |
 | --- | --- | --- |
-| `funnel_stage` | `content_view`, `site_visit`, `content_inspection`, `contact_intent`, `consultation`, `joining_decision` | `contact_intent` |
-| `action` | `view`, `click`, `start`, `complete`, `decline`, `defer` | `click` |
-| `channel` | `corporate_site`, `note`, `x`, `tiktok_dm`, `application`, `consultation`, `operations` | `application` |
+| `funnel_stage` | `content_view`, `site_visit`, `content_inspection`, `contact_intent` | `contact_intent` |
+| `action` | `view`, `click` | `click` |
+| `channel` | `corporate_site`, `note`, `x`, `tiktok_dm`, `application` | `application` |
 | `account_role` | `corporate`, `personal`, `not_applicable` | `corporate` |
 | `content_id` | Public stable identifier or `not_applicable` | `n6a165826ad75` |
 | `cta_id` | Stable placement and destination | `creator_contact_apply` |
 | `candidate_state` | Values defined below or `unknown` | `checking_terms` |
 
-Browser events cover only observable clicks and views. `consultation` and `joining_decision` events are monthly aggregate operational records, not browser events. Do not upload user-level operational rows to GA4.
+Browser events cover only observable clicks and views. Consultation and joining decisions use the separate aggregate record below; they are not `creator_funnel_transition` events. Do not upload user-level operational rows or aggregate operational records to GA4.
+
+### Aggregate operational record
+
+Calculate this record in the approved, access-restricted operational system. Store no name, handle, contact detail, free text, or candidate-level date in the media review.
+
+| Field | Allowed value | Rule |
+| --- | --- | --- |
+| `record_version` | `1` | Increment only for an incompatible definition change |
+| `metric` | `inquiry_count`, `consultation_count`, `inquiry_to_consultation_30d`, `consultation_to_join_90d` | One metric per record set |
+| `cohort_start` / `cohort_end` | ISO calendar dates | Predefined inquiry-received or consultation-completed period in `Asia/Tokyo` |
+| `observation_days` | `0`, `30`, or `90` | `0` for period counts; `30` or `90` for the matching cohort metric |
+| `observed_through` | ISO calendar date | Latest operational data included |
+| `maturity` | `not_applicable`, `provisional`, `matured` | Cohort rate is matured only after every member reaches its observation boundary |
+| `outcome` | `not_applicable`, `consulted`, `joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; preserve negative and unknown results |
+| `count` | Non-negative integer or `suppressed` | `suppressed` for every small-cohort row exposed to the media review |
+| `cohort_denominator` | Non-negative integer or `suppressed` | Same defined population for every row in the cohort |
+| `rate` | Decimal, `not_applicable`, or `suppressed` | Calculate only for the two cohort metrics; never derive it from same-month counts |
+| `attribution_class` | `directly_observed`, `assisted`, `unknown`, or `all` | Use `all` for the primary cohort; segment only when privacy rules permit |
+
+A cohort result is a record set containing the denominator and its applicable outcome rows. The media review may receive that set only when the cohort meets the minimum size. Otherwise every count, denominator, rate, and outcome value exposed outside the restricted system is `suppressed`; only the metric, period, window, maturity, and “sample too small” status remain visible.
 
 ### Current-to-target mapping
 
