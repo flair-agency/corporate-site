@@ -46,7 +46,7 @@ For new GTM/GA4 configuration, use one event name, `creator_funnel_transition`, 
 
 | Parameter | Values | Example |
 | --- | --- | --- |
-| `funnel_stage` | `content_view`, `site_visit`, `contact_intent`, `consultation`, `joining_decision` | `contact_intent` |
+| `funnel_stage` | `content_view`, `site_visit`, `content_inspection`, `contact_intent`, `consultation`, `joining_decision` | `contact_intent` |
 | `action` | `view`, `click`, `start`, `complete`, `decline`, `defer` | `click` |
 | `channel` | `corporate_site`, `note`, `x`, `tiktok_dm`, `application`, `consultation`, `operations` | `application` |
 | `account_role` | `corporate`, `personal`, `not_applicable` | `corporate` |
@@ -60,7 +60,7 @@ Browser events cover only observable clicks and views. `consultation` and `joini
 
 | Current event | Target stage/action | Target CTA |
 | --- | --- | --- |
-| `click_cta` / `cta_how-to-start_to_contact` | `contact_intent` / `click` | `creator_flow_contact` |
+| `click_cta` / `cta_how-to-start_to_contact` | `content_inspection` / `click` | `creator_flow_contact_options` |
 | `click_apply` / `cta_hero_to_apply` | `contact_intent` / `click` | `creator_hero_apply` |
 | `click_apply` / `cta_contact_to_apply` | `contact_intent` / `click` | `creator_contact_apply` |
 | `click_dm` / `cta_contact_to_dm` | `contact_intent` / `click` | `creator_contact_dm` |
@@ -73,12 +73,24 @@ Assign a candidate state only when the page, content purpose, or operational ste
 | --- | --- | --- |
 | `unaware` | Are relevant people discovering Flair? | note article PV at comparable age, X impressions, corporate-site landing sessions |
 | `interested` | Do they seek more context? | article-to-site transitions, profile visits, relevant replies, repeat content response |
-| `checking_terms` | Do they inspect conditions and support? | Creator-page engaged sessions, term/support article transitions, FAQ-to-contact clicks |
+| `checking_terms` | Do they inspect conditions and support? | Creator-page engaged sessions, term/support article transitions, contact-options inspection clicks |
 | `ready_to_consult` | Do they initiate a conversation or application? | DM clicks, application clicks, aggregate new inquiries, inquiry-to-consultation rate |
 | `deciding` | Can they reach an informed decision? | consultations completed, decisions recorded, consultation-to-decision time |
 | `joined_or_declined` | What was the outcome without hiding negative evidence? | joined, declined, deferred, and unknown outcomes; consultation-to-join rate |
 
 Report counts before rates and show `unknown` alongside attributed results. Use a rate only when its numerator and denominator cover the same period and population. Small counts must not be presented in a way that could identify a candidate.
+
+### Consultation outcome cohort
+
+Do not divide decisions recorded in a month by consultations completed in that same month. Define each cohort by the calendar month in which consultation was completed (`Asia/Tokyo`) and observe its outcome for 90 days from each consultation date. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
+
+```text
+90-day consultation-to-join rate
+= members of the consultation cohort recorded as joined within 90 days
+/ all completed consultations in that cohort
+```
+
+Report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics. Do not publish or segment a cohort rate when the denominator is fewer than five; retain the restricted operational aggregate and report that the sample is too small.
 
 ## Monthly review
 
@@ -86,7 +98,7 @@ The Flair owner is initially accountable for the review and may assign preparati
 
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
-3. Add aggregate inquiry, consultation, joined, declined, deferred, and unknown counts from the approved operational system.
+3. Add aggregate inquiry and consultation counts, plus matured consultation-cohort outcomes calculated in the approved operational system.
 4. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
 5. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
 6. Record missing data and instrumentation changes before interpreting movement.
@@ -112,7 +124,7 @@ Do not backfill a “baseline” from incompatible legacy events. Legacy `click_
 - A candidate may read on one device or account and contact Flair through another.
 - Word of mouth, prior relationships, scouting, and repeated media touches make single-source attribution incomplete.
 - Platform metric definitions, availability, and reporting windows may change.
-- Joining decisions can occur well after the content view; same-month conversion rates may undercount longer journeys.
+- Joining decisions can occur well after consultation; same-month ratios can undercount or overcount by mixing different cohorts.
 - Low volumes make percentages volatile and can create privacy risk.
 
 These gaps are reporting constraints, not values to estimate away. Use `unknown`, retain the evidence actually observed, and describe attribution as directional.
@@ -125,4 +137,3 @@ These gaps are reporting constraints, not values to estimate away. Use `unknown`
 - [ ] Verify events in production debug/realtime tools without submitting a real application or sending a real DM.
 - [ ] Record the first complete baseline month using the contract above.
 - [ ] Review retention and access controls for analytics and the private operational source.
-
