@@ -75,10 +75,12 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | Field | Allowed value | Rule |
 | --- | --- | --- |
 | `record_version` | `1` | Increment only for an incompatible definition change |
+| `measurement_start_at` | ISO 8601 timestamp with offset | Immutable boundary recorded before production measurement starts |
 | `metric` | `inquiry_count`, `consultation_count`, `inquiry_to_consultation_30d`, `consultation_to_join_90d` | One metric per record set |
 | `cohort_start` / `cohort_end` | ISO calendar dates | Predefined inquiry-received or consultation-completed period in `Asia/Tokyo` |
 | `observation_days` | `0`, `30`, or `90` | `0` for period counts; `30` or `90` for the matching cohort metric |
 | `observed_through` | ISO calendar date | Latest operational data included |
+| `attribution_frozen_at` | ISO 8601 timestamp with offset or `not_applicable` | Time at which cohort attribution dimensions became immutable |
 | `maturity` | `not_applicable`, `provisional`, `matured` | Cohort rate is matured only after every member reaches its observation boundary |
 | `outcome` | `not_applicable`, `consulted`, `joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; preserve negative and unknown results |
 | `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
@@ -93,6 +95,8 @@ Calculate this record in the approved, access-restricted operational system. Sto
 A cohort result is a record set containing the denominator and its applicable outcome rows. The primary record uses `all` for source dimensions. Optional source, campaign, account-role, or content segments are separate record sets. Expose only one segmentation dimension at a time, using a complete mutually exclusive partition that includes `unknown` and `other`. Every cell and the complement of every displayed cell or grouped cell must independently contain at least five cohort members. Do not publish cross-tabulated dimensions. If any cell, complement, or reconstructable grouping fails the threshold, coarsen the partition under a rule fixed before inspecting outcomes or expose only the `all` record.
 
 For every optional dimension, take the value attached to the same frozen first-discovery evidence selected by the primary-source rule. Use `not_applicable` when that evidence type cannot carry the dimension, `other` when it carries a known value outside the published controlled buckets, and `unknown` when the value is missing or several values are tied at the selected first touch. Later touches never replace it. Thus each candidate enters exactly one cell in an exposed source, campaign, account-role, or content partition.
+
+Before publishing any provisional or matured segmented cohort, snapshot its attribution values and set `attribution_frozen_at`. Evidence obtained after that timestamp, including a later voluntary answer about an earlier first touch, may remain in the restricted operational record but must not rewrite published attribution or create a second dimension key. Unsegmented `all` records use `attribution_frozen_at: not_applicable`.
 
 For `consultation_to_join_90d`, assign each cohort member exactly one outcome from their effective status at the end of their individual 90-day observation window. A join completed by that boundary is `joined`, regardless of an earlier deferred or pending state. Otherwise use the latest recorded state at or before the boundary: closed without joining is `declined`, explicitly deferred and not later resumed is `deferred`, an open decision is `still_pending`, and absent or irreconcilable status evidence is `unknown`. Changes after the boundary belong to later operational reporting and do not rewrite the fixed 90-day cohort result. The outcome rows must therefore be mutually exclusive and sum to the cohort denominator before suppression.
 
@@ -126,6 +130,8 @@ Report counts before rates and show `unknown` alongside attributed results. Use 
 
 ### Inquiry and consultation cohorts
 
+Before collecting production measurements, the Flair owner must record one exact `measurement_start_at` timestamp in the approved operational configuration. It is shared by all records, must not be inferred from contract adoption, GTM verification, or the first baseline month, and cannot change without a new `record_version` and an explicitly documented migration. Cohort eligibility uses this stored boundary.
+
 Do not divide consultations completed in a month by inquiries received in that same month. Use a unique-candidate inquiry cohort based on the candidate's lifetime first valid inquiry in the available operational history. A candidate is eligible only when that lifetime-first inquiry occurs on or after measurement begins, and enters exactly once in its calendar month (`Asia/Tokyo`). Fix that inquiry as the qualifying inquiry and observe whether the candidate completes consultation within 30 days of its receipt. Candidates with a valid pre-start inquiry are excluded; later follow-up or repeated inquiries do not create another cohort entry, reset the observation window, or receive credit for the same consultation:
 
 ```text
@@ -154,11 +160,11 @@ The Flair owner is initially accountable for the review and may assign preparati
 
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
-3. Maintain a maturation queue containing every inquiry or consultation cohort whose observation window has not closed. Recalculate each queued cohort through `observed_through`; when all members reach their boundary, replace its provisional aggregate with the matured result and remove it from the queue. Add each newly eligible 90-day result once. Upsert rather than append, using `record_version`, `metric`, cohort dates, observation days, outcome, and exposed dimension values as the stable aggregate key, so a cohort cannot remain permanently provisional or appear twice.
+3. Maintain a maturation queue containing every inquiry or consultation cohort whose observation window has not closed. Recalculate each queued cohort through `observed_through`; when all members reach their boundary, replace its provisional aggregate with the matured result and remove it from the queue. Add each newly eligible 90-day result once. Upsert rather than append, using `record_version`, `measurement_start_at`, `metric`, cohort dates, observation days, outcome, `attribution_frozen_at`, and frozen exposed dimension values as the stable aggregate key, so a cohort cannot remain permanently provisional or appear twice.
 4. Add aggregate inquiry and consultation counts, the matured or explicitly provisional 30-day inquiry-cohort result, and matured 90-day consultation-cohort outcomes calculated in the approved operational system, subject to the small-cohort restriction above. Never derive either conversion rate from the raw same-month counts.
 5. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
 6. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
-6. Record missing data and instrumentation changes before interpreting movement.
+7. Record missing data and instrumentation changes before interpreting movement.
 
 ## Baseline
 
