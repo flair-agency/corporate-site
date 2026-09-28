@@ -83,7 +83,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `coverage_through` | ISO 8601 timestamp with offset | Minimum certified completeness watermark across every required input source |
 | `reporting_lag_days` | Non-negative integer | Maximum allowance across every input source required by the metric, fixed before the cohort or count period starts |
 | `attribution_snapshot_version` | Positive integer or `not_applicable` | Opaque aggregate snapshot version; never derived from a person or timestamp |
-| `maturity` | `not_applicable`, `provisional`, `matured` | Mature only when `coverage_through` covers the latest member boundary plus `reporting_lag_days` |
+| `maturity` | `not_applicable`, `provisional`, `matured` | Mature only when `coverage_through` covers the later of `period_end_exclusive` and the latest member boundary, plus `reporting_lag_days`; an empty cohort uses `period_end_exclusive` |
 | `outcome` | `not_applicable`, `consulted`, `not_consulted`, `joined`, `not_joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; the two `not_*` values are predefined aggregate buckets |
 | `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
 | `cohort_denominator` | Non-negative integer, `not_applicable`, or `suppressed` | Same defined population for every cohort row; must be `not_applicable` for period-count metrics |
