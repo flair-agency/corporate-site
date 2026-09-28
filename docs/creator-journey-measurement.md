@@ -75,7 +75,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | Field | Allowed value | Rule |
 | --- | --- | --- |
 | `record_version` | Positive integer | Start at `1`; increment for each incompatible definition change |
-| `record_version_effective_at` | ISO 8601 timestamp with offset | Future `Asia/Tokyo` calendar-month boundary at which this version becomes active |
+| `record_version_effective_at` | ISO 8601 timestamp with offset | Immutable `Asia/Tokyo` month boundary scheduled and recorded before this version became active |
 | `measurement_start_at` | ISO 8601 timestamp with offset | Immutable boundary recorded before production measurement starts |
 | `metric` | `inquiry_count`, `consultation_count`, `inquiry_to_consultation_30d`, `consultation_to_join_90d` | One metric per record set |
 | `cohort_start` / `cohort_end` | ISO calendar dates | Inclusive first and last dates of a predefined `Asia/Tokyo` period; timestamp interval is half-open |
@@ -84,7 +84,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `reporting_lag_days` | Non-negative integer | Maximum allowance across every input source required by the metric, fixed before the cohort or count period starts |
 | `attribution_snapshot_version` | Positive integer or `not_applicable` | Opaque aggregate snapshot version; never derived from a person or timestamp |
 | `maturity` | `not_applicable`, `provisional`, `matured` | Mature only when `coverage_through` covers the later of `period_end_exclusive` and the latest member boundary, plus `reporting_lag_days`; an empty cohort uses `period_end_exclusive` |
-| `outcome` | `not_applicable`, `consulted`, `not_consulted`, `joined`, `not_joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; the two `not_*` values are predefined aggregate buckets |
+| `outcome` | `not_applicable`, `consulted`, `not_consulted`, `joined`, `not_joined`, `declined`, `deferred`, `still_pending`, `unknown` | Period-count metrics require `not_applicable`; cohort metrics use matching outcomes only, with the two `not_*` values as predefined aggregate buckets |
 | `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
 | `cohort_denominator` | Non-negative integer, `not_applicable`, or `suppressed` | Same defined population for every cohort row; must be `not_applicable` for period-count metrics |
 | `rate` | Decimal fraction from `0` through `1`, `not_applicable`, or `suppressed` | Store `0.6`, not `60`, for 60%; calculate only for the two cohort metrics and never from same-month counts |
