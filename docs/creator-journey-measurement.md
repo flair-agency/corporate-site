@@ -86,11 +86,13 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `rate` | Decimal, `not_applicable`, or `suppressed` | Calculate only for the two cohort metrics; never derive it from same-month counts |
 | `attribution_class` | `directly_observed`, `assisted`, `unknown`, or `all` | Use `all` for the primary cohort; segment only when privacy rules permit |
 | `source` | Controlled `utm_source`, `direct`, `other`, `unknown`, or `all` | Use `all` for the primary cohort; do not add free text |
-| `campaign` | Documented public campaign ID, `not_applicable`, `unknown`, or `all` | Never encode a person or private relationship |
-| `account_role` | `corporate`, `personal`, `not_applicable`, `unknown`, or `all` | Role, not an account handle |
-| `content_id` | Public stable content ID, `not_applicable`, `unknown`, or `all` | Public identifier only |
+| `campaign` | Documented public campaign ID, `not_applicable`, `other`, `unknown`, or `all` | Never encode a person or private relationship |
+| `account_role` | `corporate`, `personal`, `not_applicable`, `other`, `unknown`, or `all` | Role, not an account handle |
+| `content_id` | Public stable content ID, `not_applicable`, `other`, `unknown`, or `all` | Public identifier only |
 
 A cohort result is a record set containing the denominator and its applicable outcome rows. The primary record uses `all` for source dimensions. Optional source, campaign, account-role, or content segments are separate record sets. Expose only one segmentation dimension at a time, using a complete mutually exclusive partition that includes `unknown` and `other`. Every cell and the complement of every displayed cell or grouped cell must independently contain at least five cohort members. Do not publish cross-tabulated dimensions. If any cell, complement, or reconstructable grouping fails the threshold, coarsen the partition under a rule fixed before inspecting outcomes or expose only the `all` record.
+
+For every optional dimension, take the value attached to the same frozen first-discovery evidence selected by the primary-source rule. Use `not_applicable` when that evidence type cannot carry the dimension, `other` when it carries a known value outside the published controlled buckets, and `unknown` when the value is missing or several values are tied at the selected first touch. Later touches never replace it. Thus each candidate enters exactly one cell in an exposed source, campaign, account-role, or content partition.
 
 For `consultation_to_join_90d`, assign each cohort member exactly one outcome from their effective status at the end of their individual 90-day observation window. A join completed by that boundary is `joined`, regardless of an earlier deferred or pending state. Otherwise use the latest recorded state at or before the boundary: closed without joining is `declined`, explicitly deferred and not later resumed is `deferred`, an open decision is `still_pending`, and absent or irreconcilable status evidence is `unknown`. Changes after the boundary belong to later operational reporting and do not rewrite the fixed 90-day cohort result. The outcome rows must therefore be mutually exclusive and sum to the cohort denominator before suppression.
 
@@ -132,12 +134,12 @@ Do not divide consultations completed in a month by inquiries received in that s
 
 Define “valid new inquiry” before reviewing results: exclude documented spam and exact duplicate delivery, but do not remove a person because they declined, did not reply, or appeared unlikely to join. Mark the rate provisional until every cohort member has reached the 30-day boundary and compare only equally matured cohorts.
 
-Do not divide decisions recorded in a month by consultations completed in that same month. Define each cohort by the calendar month in which consultation was completed (`Asia/Tokyo`) and observe its outcome for 90 days from each consultation date. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
+Do not divide decisions recorded in a month by consultations completed in that same month. Use a unique-candidate cohort: each candidate enters exactly once, in the calendar month of their first completed valid consultation (`Asia/Tokyo`) after measurement begins. Fix that consultation as the qualifying consultation and observe the candidate's outcome for 90 days from its completion date. Later follow-up or repeat consultations do not create another cohort entry or reset the observation window. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
 
 ```text
 90-day consultation-to-join rate
 = members of the consultation cohort recorded as joined within 90 days
-/ all completed consultations in that cohort
+/ all unique candidates whose qualifying consultation is in that cohort
 ```
 
 For consultation cohorts of at least five, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics.
