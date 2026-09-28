@@ -106,6 +106,8 @@ For a conversion rate, both its numerator and its complement must independently 
 
 Apply the same minimum of five to `inquiry_count` and `consultation_count` period records. When a period contains fewer than five unique candidates, expose only `count: suppressed` with every source dimension set to `all`; do not expose segments. For a permitted segmented period count, the complete-partition and complement rules above still apply.
 
+Both period metrics count unique candidates, not events. `inquiry_count` counts each candidate with at least one valid inquiry in the period once, and `consultation_count` counts each candidate with at least one completed valid consultation in the period once. Additional inquiries or consultations by the same candidate during that period do not increase the count. This period-count deduplication does not change the lifetime-first event used for cohort eligibility.
+
 ### Current-to-target mapping
 
 | Current event | Target stage/action | Target CTA |
