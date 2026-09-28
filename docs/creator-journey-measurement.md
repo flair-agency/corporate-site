@@ -90,7 +90,9 @@ Do not divide decisions recorded in a month by consultations completed in that s
 / all completed consultations in that cohort
 ```
 
-Report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics. Do not publish or segment a cohort rate when the denominator is fewer than five; retain the restricted operational aggregate and report that the sample is too small.
+For cohorts of at least five completed consultations, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics.
+
+When a cohort contains fewer than five completed consultations, keep the entire rate and outcome breakdown in the access-restricted operational system. The media review records only that the sample is too small; it must not include the cohort's rate, individual outcome counts, or a segmentation that could reconstruct them. Combine cohorts only across a predefined, documented period—not selectively after seeing their outcomes—and retain the original 90-day observation rule.
 
 ## Monthly review
 
