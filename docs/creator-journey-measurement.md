@@ -80,7 +80,17 @@ Assign a candidate state only when the page, content purpose, or operational ste
 
 Report counts before rates and show `unknown` alongside attributed results. Use a rate only when its numerator and denominator cover the same period and population. Small counts must not be presented in a way that could identify a candidate.
 
-### Consultation outcome cohort
+### Inquiry and consultation cohorts
+
+Do not divide consultations completed in a month by inquiries received in that same month. Define each inquiry cohort by the calendar month in which a valid new inquiry was received (`Asia/Tokyo`) and observe whether consultation is completed within 30 days of each inquiry:
+
+```text
+30-day inquiry-to-consultation rate
+= members of the valid-inquiry cohort completing consultation within 30 days
+/ all valid new inquiries in that cohort
+```
+
+Define “valid new inquiry” before reviewing results: exclude documented spam and exact duplicate delivery, but do not remove a person because they declined, did not reply, or appeared unlikely to join. Mark the rate provisional until every cohort member has reached the 30-day boundary and compare only equally matured cohorts.
 
 Do not divide decisions recorded in a month by consultations completed in that same month. Define each cohort by the calendar month in which consultation was completed (`Asia/Tokyo`) and observe its outcome for 90 days from each consultation date. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
 
@@ -90,9 +100,9 @@ Do not divide decisions recorded in a month by consultations completed in that s
 / all completed consultations in that cohort
 ```
 
-For cohorts of at least five completed consultations, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics.
+For consultation cohorts of at least five, report joined, declined, deferred, still pending, and unknown outcomes for the same cohort. Mark a rate as provisional until every member has reached the 90-day boundary; compare only equally matured cohorts. Do not export candidate-level dates or outcomes to analytics.
 
-When a cohort contains fewer than five completed consultations, keep the entire rate and outcome breakdown in the access-restricted operational system. The media review records only that the sample is too small; it must not include the cohort's rate, individual outcome counts, or a segmentation that could reconstruct them. Combine cohorts only across a predefined, documented period—not selectively after seeing their outcomes—and retain the original 90-day observation rule.
+When either an inquiry or consultation cohort contains fewer than five members, keep the entire rate and outcome breakdown in the access-restricted operational system. The media review records only that the sample is too small; it must not include the cohort's rate, individual outcome counts, or a segmentation that could reconstruct them. Combine cohorts only across a predefined, documented period—not selectively after seeing their outcomes—and retain the original 30-day or 90-day observation rule.
 
 ## Monthly review
 
