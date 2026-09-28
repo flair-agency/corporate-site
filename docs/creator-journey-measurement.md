@@ -152,9 +152,10 @@ The Flair owner is initially accountable for the review and may assign preparati
 
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
-3. Add aggregate inquiry and consultation counts, the matured or explicitly provisional 30-day inquiry-cohort result, and matured 90-day consultation-cohort outcomes calculated in the approved operational system, subject to the small-cohort restriction above. Never derive either conversion rate from the raw same-month counts.
-4. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
-5. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
+3. Maintain a maturation queue containing every inquiry or consultation cohort whose observation window has not closed. Recalculate each queued cohort through `observed_through`; when all members reach their boundary, replace its provisional aggregate with the matured result and remove it from the queue. Add each newly eligible 90-day result once. Upsert rather than append, using `record_version`, `metric`, cohort dates, observation days, outcome, and exposed dimension values as the stable aggregate key, so a cohort cannot remain permanently provisional or appear twice.
+4. Add aggregate inquiry and consultation counts, the matured or explicitly provisional 30-day inquiry-cohort result, and matured 90-day consultation-cohort outcomes calculated in the approved operational system, subject to the small-cohort restriction above. Never derive either conversion rate from the raw same-month counts.
+5. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
+6. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
 6. Record missing data and instrumentation changes before interpreting movement.
 
 ## Baseline
