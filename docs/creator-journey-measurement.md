@@ -85,7 +85,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `outcome` | `not_applicable`, `consulted`, `not_consulted`, `joined`, `not_joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; the two `not_*` values are predefined aggregate buckets |
 | `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
 | `cohort_denominator` | Non-negative integer, `not_applicable`, or `suppressed` | Same defined population for every cohort row; must be `not_applicable` for period-count metrics |
-| `rate` | Decimal, `not_applicable`, or `suppressed` | Calculate only for the two cohort metrics; never derive it from same-month counts |
+| `rate` | Decimal fraction from `0` through `1`, `not_applicable`, or `suppressed` | Store `0.6`, not `60`, for 60%; calculate only for the two cohort metrics and never from same-month counts |
 | `attribution_class` | `directly_observed`, `assisted`, `unknown`, or `all` | Use `all` for the primary cohort; segment only when privacy rules permit |
 | `source` | Controlled `utm_source`, `direct`, `other`, `unknown`, or `all` | Use `all` for the primary cohort; do not add free text |
 | `campaign` | Documented public campaign ID, `not_applicable`, `other`, `unknown`, or `all` | Never encode a person or private relationship |
@@ -135,6 +135,8 @@ Report counts before rates and show `unknown` alongside attributed results. Use 
 ### Inquiry and consultation cohorts
 
 Before collecting production measurements, the Flair owner must record one exact `measurement_start_at` timestamp in the approved operational configuration. It is shared by all records, must not be inferred from contract adoption, GTM verification, or the first baseline month, and cannot change without a new `record_version` and an explicitly documented migration. Cohort eligibility uses this stored boundary.
+
+Before measurement begins, document the qualifying-consultation rule in the approved operational configuration and freeze it for the current `record_version`. A completed valid consultation is a scheduled conversation between an actual prospective creator and an authorized Flair representative whose documented purpose includes evaluating or explaining participation in the agency, and whose operational status is completed. Exclude canceled appointments, no-shows, internal training or tests, and exact duplicate records. Do not exclude a completed consultation because of its duration, the candidate's perceived fit, later responsiveness, decision, or joining outcome. Any incompatible eligibility change requires a new `record_version` and documented migration.
 
 Do not divide consultations completed in a month by inquiries received in that same month. Use a unique-candidate inquiry cohort based on the candidate's lifetime first valid inquiry in the available operational history. A candidate is eligible only when that lifetime-first inquiry occurs on or after measurement begins, and enters exactly once in its calendar month (`Asia/Tokyo`). Fix that inquiry as the qualifying inquiry and observe whether the candidate completes consultation within 30 days of its receipt. Candidates with a valid pre-start inquiry are excluded; later follow-up or repeated inquiries do not create another cohort entry, reset the observation window, or receive credit for the same consultation:
 
