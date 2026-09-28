@@ -27,6 +27,10 @@ This repository manages:
 
 It does **not** contain internal operational systems or creator management tools.
 
+## Operating documentation
+
+- [Creator journey measurement](docs/creator-journey-measurement.md): privacy-conscious attribution, funnel events, candidate-state metrics, monthly review, and baseline rules.
+
 ## Tech Stack
 
 - 11ty (Eleventy)  
