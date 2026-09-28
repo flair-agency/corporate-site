@@ -81,7 +81,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `observed_through` | ISO calendar date | Latest operational data included |
 | `maturity` | `not_applicable`, `provisional`, `matured` | Cohort rate is matured only after every member reaches its observation boundary |
 | `outcome` | `not_applicable`, `consulted`, `joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; preserve negative and unknown results |
-| `count` | Non-negative integer or `suppressed` | `suppressed` for every small-cohort row exposed to the media review |
+| `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
 | `cohort_denominator` | Non-negative integer or `suppressed` | Same defined population for every row in the cohort |
 | `rate` | Decimal, `not_applicable`, or `suppressed` | Calculate only for the two cohort metrics; never derive it from same-month counts |
 | `attribution_class` | `directly_observed`, `assisted`, `unknown`, or `all` | Use `all` for the primary cohort; segment only when privacy rules permit |
@@ -97,6 +97,8 @@ For every optional dimension, take the value attached to the same frozen first-d
 For `consultation_to_join_90d`, assign each cohort member exactly one outcome from their effective status at the end of their individual 90-day observation window. A join completed by that boundary is `joined`, regardless of an earlier deferred or pending state. Otherwise use the latest recorded state at or before the boundary: closed without joining is `declined`, explicitly deferred and not later resumed is `deferred`, an open decision is `still_pending`, and absent or irreconcilable status evidence is `unknown`. Changes after the boundary belong to later operational reporting and do not rewrite the fixed 90-day cohort result. The outcome rows must therefore be mutually exclusive and sum to the cohort denominator before suppression.
 
 The media review may receive a cohort record set only when it meets the minimum size. Otherwise the fixed outcome labels may remain, but every count, denominator, and rate is `suppressed`; source dimensions must be `all`, and only the metric, period, window, maturity, and “sample too small” status remain visible.
+
+Apply the same minimum of five to `inquiry_count` and `consultation_count` period records. When a period contains fewer than five unique candidates, expose only `count: suppressed` with every source dimension set to `all`; do not expose segments. For a permitted segmented period count, the complete-partition and complement rules above still apply.
 
 ### Current-to-target mapping
 
@@ -124,7 +126,7 @@ Report counts before rates and show `unknown` alongside attributed results. Use 
 
 ### Inquiry and consultation cohorts
 
-Do not divide consultations completed in a month by inquiries received in that same month. Use a unique-candidate inquiry cohort: each candidate enters exactly once, in the calendar month of their first valid inquiry (`Asia/Tokyo`) after measurement begins. Fix that inquiry as the qualifying inquiry and observe whether the candidate completes consultation within 30 days of its receipt. Later follow-up or repeated inquiries do not create another cohort entry, reset the observation window, or receive credit for the same consultation:
+Do not divide consultations completed in a month by inquiries received in that same month. Use a unique-candidate inquiry cohort based on the candidate's lifetime first valid inquiry in the available operational history. A candidate is eligible only when that lifetime-first inquiry occurs on or after measurement begins, and enters exactly once in its calendar month (`Asia/Tokyo`). Fix that inquiry as the qualifying inquiry and observe whether the candidate completes consultation within 30 days of its receipt. Candidates with a valid pre-start inquiry are excluded; later follow-up or repeated inquiries do not create another cohort entry, reset the observation window, or receive credit for the same consultation:
 
 ```text
 30-day inquiry-to-consultation rate
@@ -134,7 +136,7 @@ Do not divide consultations completed in a month by inquiries received in that s
 
 Define “valid new inquiry” before reviewing results: exclude documented spam and exact duplicate delivery, but do not remove a person because they declined, did not reply, or appeared unlikely to join. Mark the rate provisional until every cohort member has reached the 30-day boundary and compare only equally matured cohorts.
 
-Do not divide decisions recorded in a month by consultations completed in that same month. Use a unique-candidate cohort: each candidate enters exactly once, in the calendar month of their first completed valid consultation (`Asia/Tokyo`) after measurement begins. Fix that consultation as the qualifying consultation and observe the candidate's outcome for 90 days from its completion date. Later follow-up or repeat consultations do not create another cohort entry or reset the observation window. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
+Do not divide decisions recorded in a month by consultations completed in that same month. Use a unique-candidate cohort based on the candidate's lifetime first completed valid consultation in the available operational history. A candidate is eligible only when that lifetime-first consultation occurs on or after measurement begins, and enters exactly once in its calendar month (`Asia/Tokyo`). Fix that consultation as the qualifying consultation and observe the candidate's outcome for 90 days from its completion date. Candidates with a valid pre-start consultation are excluded; later follow-up or repeat consultations do not create another cohort entry or reset the observation window. Calculate the privacy-safe aggregate in the approved operational system before adding it to the media review:
 
 ```text
 90-day consultation-to-join rate
