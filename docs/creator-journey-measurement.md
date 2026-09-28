@@ -110,7 +110,7 @@ The Flair owner is initially accountable for the review and may assign preparati
 
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
-3. Add aggregate inquiry and consultation counts, plus matured consultation-cohort outcomes calculated in the approved operational system.
+3. Add aggregate inquiry and consultation counts, the matured or explicitly provisional 30-day inquiry-cohort result, and matured 90-day consultation-cohort outcomes calculated in the approved operational system, subject to the small-cohort restriction above. Never derive either conversion rate from the raw same-month counts.
 4. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
 5. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
 6. Record missing data and instrumentation changes before interpreting movement.
