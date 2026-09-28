@@ -124,12 +124,12 @@ Report counts before rates and show `unknown` alongside attributed results. Use 
 
 ### Inquiry and consultation cohorts
 
-Do not divide consultations completed in a month by inquiries received in that same month. Define each inquiry cohort by the calendar month in which a valid new inquiry was received (`Asia/Tokyo`) and observe whether consultation is completed within 30 days of each inquiry:
+Do not divide consultations completed in a month by inquiries received in that same month. Use a unique-candidate inquiry cohort: each candidate enters exactly once, in the calendar month of their first valid inquiry (`Asia/Tokyo`) after measurement begins. Fix that inquiry as the qualifying inquiry and observe whether the candidate completes consultation within 30 days of its receipt. Later follow-up or repeated inquiries do not create another cohort entry, reset the observation window, or receive credit for the same consultation:
 
 ```text
 30-day inquiry-to-consultation rate
 = members of the valid-inquiry cohort completing consultation within 30 days
-/ all valid new inquiries in that cohort
+/ all unique candidates whose qualifying inquiry is in that cohort
 ```
 
 Define “valid new inquiry” before reviewing results: exclude documented spam and exact duplicate delivery, but do not remove a person because they declined, did not reply, or appeared unlikely to join. Mark the rate provisional until every cohort member has reached the 30-day boundary and compare only equally matured cohorts.
