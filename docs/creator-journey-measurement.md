@@ -74,7 +74,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 
 | Field | Allowed value | Rule |
 | --- | --- | --- |
-| `record_version` | `1` | Increment only for an incompatible definition change |
+| `record_version` | Positive integer | Start at `1`; increment for each incompatible definition change |
 | `measurement_start_at` | ISO 8601 timestamp with offset | Immutable boundary recorded before production measurement starts |
 | `metric` | `inquiry_count`, `consultation_count`, `inquiry_to_consultation_30d`, `consultation_to_join_90d` | One metric per record set |
 | `cohort_start` / `cohort_end` | ISO calendar dates | Predefined inquiry-received or consultation-completed period in `Asia/Tokyo` |
