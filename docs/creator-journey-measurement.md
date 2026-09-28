@@ -40,6 +40,16 @@ Use one of these attribution classes in the aggregate monthly review:
 
 Never force an unknown journey into a media source and never sum media-attributed business value into direct media revenue.
 
+### Primary-source rule
+
+Operational source reporting is a mutually exclusive first-discovery classification, not multi-touch credit:
+
+1. Use the candidate's single voluntary answer to “Flairを最初にどこで知りましたか” when one is provided.
+2. Otherwise use the earliest reliably observed tracked external transition in the retained journey evidence.
+3. Otherwise use `direct`, `other`, or `unknown` as applicable.
+
+If a voluntary answer names several sources without identifying the first, classify the primary source as `unknown`; retain the named media only as non-exclusive assisted context in the restricted operational record. Later note, X, site, scouting, or relationship touches never replace the frozen primary source and never add the same person to another primary-source segment. The primary-source segments therefore form one additive partition of the `all` cohort. Do not use this rule to claim that the selected source caused the outcome.
+
 ## Event contract
 
 For new GTM/GA4 configuration, use one event name, `creator_funnel_transition`, with controlled parameters. Existing `click_apply`, `click_dm`, and `click_cta` events remain in place until GTM reports and downstream consumers are migrated and verified.
@@ -78,7 +88,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `account_role` | `corporate`, `personal`, `not_applicable`, `unknown`, or `all` | Role, not an account handle |
 | `content_id` | Public stable content ID, `not_applicable`, `unknown`, or `all` | Public identifier only |
 
-A cohort result is a record set containing the denominator and its applicable outcome rows. The primary record uses `all` for source dimensions. Optional source, campaign, account-role, or content segments are separate record sets and may be exposed only when every displayed segment independently meets the minimum size; do not derive a suppressed segment by subtracting other segments from the total.
+A cohort result is a record set containing the denominator and its applicable outcome rows. The primary record uses `all` for source dimensions. Optional source, campaign, account-role, or content segments are separate record sets. Expose only one segmentation dimension at a time, using a complete mutually exclusive partition that includes `unknown` and `other`. Every cell and the complement of every displayed cell or grouped cell must independently contain at least five cohort members. Do not publish cross-tabulated dimensions. If any cell, complement, or reconstructable grouping fails the threshold, coarsen the partition under a rule fixed before inspecting outcomes or expose only the `all` record.
 
 The media review may receive a cohort record set only when it meets the minimum size. Otherwise the fixed outcome labels may remain, but every count, denominator, and rate is `suppressed`; source dimensions must be `all`, and only the metric, period, window, maturity, and “sample too small” status remain visible.
 
