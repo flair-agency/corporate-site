@@ -34,9 +34,11 @@ Do not add UTMs to internal corporate-site links. A DM reply, consultation, or j
 
 Use one of these attribution classes in the aggregate monthly review:
 
-- `directly_observed`: a tracked transition or explicit voluntary source answer exists;
-- `assisted`: media was mentioned or observed in the journey, but causation is not established;
+- `directly_observed`: a tracked transition or explicit voluntary source answer identifies the reported source;
+- `assisted`: media appears only as contextual journey evidence and no evidence qualifies as `directly_observed` for the reported source;
 - `unknown`: no reliable source evidence exists.
+
+Apply the classes in that order of precedence and assign exactly one class per candidate in a record set. Evidence that qualifies as `directly_observed` must not also be counted as `assisted`; `assisted` is reserved for the remaining contextual evidence. These classes describe evidence strength, not causation.
 
 Never force an unknown journey into a media source and never sum media-attributed business value into direct media revenue.
 
@@ -89,6 +91,8 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `content_id` | Public stable content ID, `not_applicable`, `unknown`, or `all` | Public identifier only |
 
 A cohort result is a record set containing the denominator and its applicable outcome rows. The primary record uses `all` for source dimensions. Optional source, campaign, account-role, or content segments are separate record sets. Expose only one segmentation dimension at a time, using a complete mutually exclusive partition that includes `unknown` and `other`. Every cell and the complement of every displayed cell or grouped cell must independently contain at least five cohort members. Do not publish cross-tabulated dimensions. If any cell, complement, or reconstructable grouping fails the threshold, coarsen the partition under a rule fixed before inspecting outcomes or expose only the `all` record.
+
+For `consultation_to_join_90d`, assign each cohort member exactly one outcome from their effective status at the end of their individual 90-day observation window. A join completed by that boundary is `joined`, regardless of an earlier deferred or pending state. Otherwise use the latest recorded state at or before the boundary: closed without joining is `declined`, explicitly deferred and not later resumed is `deferred`, an open decision is `still_pending`, and absent or irreconcilable status evidence is `unknown`. Changes after the boundary belong to later operational reporting and do not rewrite the fixed 90-day cohort result. The outcome rows must therefore be mutually exclusive and sum to the cohort denominator before suppression.
 
 The media review may receive a cohort record set only when it meets the minimum size. Otherwise the fixed outcome labels may remain, but every count, denominator, and rate is `suppressed`; source dimensions must be `all`, and only the metric, period, window, maturity, and “sample too small” status remain visible.
 
