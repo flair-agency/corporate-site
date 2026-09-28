@@ -63,7 +63,7 @@ For new GTM/GA4 configuration, use one event name, `creator_funnel_transition`, 
 | `channel` | `corporate_site`, `note`, `x`, `tiktok_dm`, `application` | `application` |
 | `account_role` | `corporate`, `personal`, `not_applicable` | `corporate` |
 | `content_id` | Public stable identifier or `not_applicable` | `n6a165826ad75` |
-| `cta_id` | Stable placement and destination | `creator_contact_apply` |
+| `cta_id` | Stable placement and destination, or `not_applicable` | Use `not_applicable` for `view` and any other transition that is not a CTA interaction |
 | `candidate_state` | Values defined below or `unknown` | `checking_terms` |
 
 Browser events cover only observable clicks and views. Consultation and joining decisions use the separate aggregate record below; they are not `creator_funnel_transition` events. Do not upload user-level operational rows or aggregate operational records to GA4.
