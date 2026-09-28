@@ -109,7 +109,7 @@ Store the `inquiry_to_consultation_30d` conversion rate only on its `consulted` 
 
 Apply the same minimum of five to `inquiry_count` and `consultation_count` period records. When a period contains fewer than five unique candidates, expose only `count: suppressed` with every source dimension set to `all`; do not expose segments. For a permitted segmented period count, the complete-partition and complement rules above still apply.
 
-Both period metrics count unique candidates, not events. `inquiry_count` counts only candidates whose lifetime-first valid inquiry occurs in the period, so later follow-up inquiries never re-enter a monthly new-inquiry count. `consultation_count` counts each candidate with at least one completed valid consultation in the period once; additional consultations by the same candidate during that period do not increase the count. Period-count records use `cohort_denominator: not_applicable` and `rate: not_applicable`.
+Both period metrics count unique candidates, not events. `inquiry_count` counts only candidates whose lifetime-first valid inquiry occurs in the period, so later follow-up inquiries never re-enter a monthly new-inquiry count. `consultation_count` counts only candidates whose lifetime-first completed valid consultation occurs in the period; follow-up consultations and candidates with a valid pre-start consultation never enter that period count. This population is identical to the matching consultation cohort denominator before suppression, so the difference between the two records cannot expose a small repeat-consultation group. Period-count records use `cohort_denominator: not_applicable` and `rate: not_applicable`.
 
 ### Current-to-target mapping
 
@@ -130,7 +130,7 @@ Assign a candidate state only when the page, content purpose, or operational ste
 | `interested` | Do they seek more context? | article-to-site transitions, profile visits, relevant replies, repeat content response |
 | `checking_terms` | Do they inspect conditions and support? | Creator-page engaged sessions, term/support article transitions, contact-options inspection clicks |
 | `ready_to_consult` | Do they initiate a conversation or application? | DM clicks, application clicks, aggregate new inquiries, inquiry-to-consultation rate |
-| `deciding` | Can they reach an informed decision? | consultations completed and aggregate decisions recorded |
+| `deciding` | Can they reach an informed decision? | unique candidates completing a lifetime-first valid consultation and aggregate decisions recorded |
 | `joined_or_declined` | What was the outcome without hiding negative evidence? | joined, declined, deferred, and unknown outcomes; consultation-to-join rate |
 
 Report counts before rates and show `unknown` alongside attributed results. Use a rate only when its numerator and denominator cover the same period and population. Small counts must not be presented in a way that could identify a candidate.
@@ -170,7 +170,7 @@ The Flair owner is initially accountable for the review and may assign preparati
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
 3. Maintain an access-restricted maturation queue containing every inquiry or consultation cohort whose observation window or reporting-lag allowance has not closed. Before the cohort starts, identify every operational input required to calculate its denominator and outcomes and freeze `reporting_lag_days` as the maximum allowance across those sources. Recalculate each queued cohort through `observed_through`; only when `observed_through` is on or after the latest individual observation boundary plus that allowance may the cohort be marked matured, published once as a privacy-safe aggregate, and removed from the queue. Never infer coverage from the current date and never copy a provisional snapshot into the media review. Use `record_version`, `measurement_start_at`, `metric`, cohort dates, observation days, `reporting_lag_days`, outcome, `attribution_snapshot_version`, and frozen exposed dimension values as the stable aggregate key, so a matured cohort cannot appear twice.
-4. Add aggregate inquiry and consultation counts and newly matured 30-day and 90-day cohort results calculated in the approved operational system, subject to the small-cohort and outcome-specific restrictions above. Never derive either conversion rate from the raw same-month counts.
+4. Add aggregate inquiry and consultation counts and newly matured 30-day and 90-day cohort results calculated in the approved operational system, subject to the small-cohort and outcome-specific restrictions above. A period count must remain in the restricted queue until `observed_through` is on or after its period end plus the maximum frozen reporting allowance across its required input sources; publish it once only after that coverage gate passes. Never derive either conversion rate from the raw same-month counts.
 5. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
 6. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
 7. Record missing data and instrumentation changes before interpreting movement.
