@@ -118,12 +118,14 @@ Exactly one `record_version` is active at any instant. Before an incompatible ch
 
 ### Current-to-target mapping
 
-| Current event | Target stage/action | Target CTA |
-| --- | --- | --- |
-| `click_cta` / `cta_how-to-start_to_contact` | `content_inspection` / `click` | `creator_flow_contact_options` |
-| `click_apply` / `cta_hero_to_apply` | `contact_intent` / `click` | `creator_hero_apply` |
-| `click_apply` / `cta_contact_to_apply` | `contact_intent` / `click` | `creator_contact_apply` |
-| `click_dm` / `cta_contact_to_dm` | `contact_intent` / `click` | `creator_contact_dm` |
+| Current event / label | `funnel_stage` | `action` | `channel` | `account_role` | `content_id` | `cta_id` | `candidate_state` |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `click_cta` / `cta_how-to-start_to_contact` | `content_inspection` | `click` | `corporate_site` | `corporate` | `corporate_creator_page` | `creator_flow_contact_options` | `checking_terms` |
+| `click_apply` / `cta_hero_to_apply` | `contact_intent` | `click` | `application` | `corporate` | `corporate_creator_page` | `creator_hero_apply` | `ready_to_consult` |
+| `click_apply` / `cta_contact_to_apply` | `contact_intent` | `click` | `application` | `corporate` | `corporate_creator_page` | `creator_contact_apply` | `ready_to_consult` |
+| `click_dm` / `cta_contact_to_dm` | `contact_intent` | `click` | `tiktok_dm` | `corporate` | `corporate_creator_page` | `creator_contact_dm` | `ready_to_consult` |
+
+For this migration, `channel` identifies the transition destination for contact-intent events and the observed surface for on-site inspection events. Do not derive it from the current URL at runtime. The table is the complete parameter contract for these four legacy event/label pairs; an unmapped pair must remain on the legacy event until a reviewed mapping is added.
 
 ## Candidate states and core metrics
 
