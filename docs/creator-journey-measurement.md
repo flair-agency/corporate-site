@@ -80,8 +80,9 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `cohort_start` / `cohort_end` | ISO calendar dates | Predefined inquiry-received or consultation-completed period in `Asia/Tokyo` |
 | `observation_days` | `0`, `30`, or `90` | `0` for period counts; `30` or `90` for the matching cohort metric |
 | `observed_through` | ISO calendar date | Latest operational data included |
+| `reporting_lag_days` | Non-negative integer | Source-specific allowance fixed before the cohort starts |
 | `attribution_frozen_at` | ISO 8601 timestamp with offset or `not_applicable` | Time at which cohort attribution dimensions became immutable |
-| `maturity` | `not_applicable`, `provisional`, `matured` | Cohort rate is matured only after every member reaches its observation boundary |
+| `maturity` | `not_applicable`, `provisional`, `matured` | Mature only when `observed_through` covers the latest member boundary plus `reporting_lag_days` |
 | `outcome` | `not_applicable`, `consulted`, `not_consulted`, `joined`, `not_joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; the two `not_*` values are predefined aggregate buckets |
 | `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
 | `cohort_denominator` | Non-negative integer, `not_applicable`, or `suppressed` | Same defined population for every cohort row; must be `not_applicable` for period-count metrics |
@@ -166,7 +167,7 @@ The Flair owner is initially accountable for the review and may assign preparati
 
 1. Freeze the period and metric definitions used.
 2. Record corporate-site, note, and X aggregate observations by account and content item.
-3. Maintain an access-restricted maturation queue containing every inquiry or consultation cohort whose observation window has not closed. Recalculate each queued cohort through `observed_through`; when all members reach their boundary, publish its privacy-safe matured aggregate once and remove it from the queue. Never copy a provisional snapshot into the media review. Use `record_version`, `measurement_start_at`, `metric`, cohort dates, observation days, outcome, `attribution_frozen_at`, and frozen exposed dimension values as the stable aggregate key, so a matured cohort cannot appear twice.
+3. Maintain an access-restricted maturation queue containing every inquiry or consultation cohort whose observation window or reporting-lag allowance has not closed. Recalculate each queued cohort through `observed_through`; only when `observed_through` is on or after the latest individual observation boundary plus the cohort's frozen `reporting_lag_days` may the cohort be marked matured, published once as a privacy-safe aggregate, and removed from the queue. Never infer coverage from the current date and never copy a provisional snapshot into the media review. Use `record_version`, `measurement_start_at`, `metric`, cohort dates, observation days, `reporting_lag_days`, outcome, `attribution_frozen_at`, and frozen exposed dimension values as the stable aggregate key, so a matured cohort cannot appear twice.
 4. Add aggregate inquiry and consultation counts and newly matured 30-day and 90-day cohort results calculated in the approved operational system, subject to the small-cohort and outcome-specific restrictions above. Never derive either conversion rate from the raw same-month counts.
 5. Compare against the baseline and trailing three complete months; do not treat one spike as a trend.
 6. Record one `continue`, `change`, `stop`, or `investigate` decision with its evidence and owner.
