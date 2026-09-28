@@ -82,7 +82,7 @@ Calculate this record in the approved, access-restricted operational system. Sto
 | `observed_through` | ISO calendar date | Latest operational data included |
 | `attribution_frozen_at` | ISO 8601 timestamp with offset or `not_applicable` | Time at which cohort attribution dimensions became immutable |
 | `maturity` | `not_applicable`, `provisional`, `matured` | Cohort rate is matured only after every member reaches its observation boundary |
-| `outcome` | `not_applicable`, `consulted`, `joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; preserve negative and unknown results |
+| `outcome` | `not_applicable`, `consulted`, `not_consulted`, `joined`, `not_joined`, `declined`, `deferred`, `still_pending`, `unknown` | Use matching outcomes only; the two `not_*` values are predefined aggregate buckets |
 | `count` | Non-negative integer or `suppressed` | `suppressed` for every period or cohort row with fewer than five members exposed to the media review |
 | `cohort_denominator` | Non-negative integer, `not_applicable`, or `suppressed` | Same defined population for every cohort row; must be `not_applicable` for period-count metrics |
 | `rate` | Decimal, `not_applicable`, or `suppressed` | Calculate only for the two cohort metrics; never derive it from same-month counts |
@@ -102,7 +102,7 @@ For `consultation_to_join_90d`, assign each cohort member exactly one outcome fr
 
 The media review may receive a cohort record set only when it meets the minimum size. Otherwise the fixed outcome labels may remain, but every count, denominator, and rate is `suppressed`; source dimensions must be `all`, and only the metric, period, window, maturity, and “sample too small” status remain visible.
 
-For a conversion rate, both its numerator and its complement must independently contain at least five members; otherwise suppress the rate and denominator. Publish an outcome breakdown only when every displayed outcome cell and its complement independently meet the same threshold. If they do not, coarsen outcomes under a rule fixed before inspecting results or suppress the entire breakdown, including counts, denominator, and rate. Never expose a rate or complementary value that reconstructs a suppressed count.
+For a conversion rate, both its numerator and its complement must independently contain at least five members; otherwise suppress the rate and denominator. Publish an outcome breakdown only when every displayed outcome cell and its complement independently meet the same threshold. If a detailed breakdown fails this rule, the only permitted coarsening is the predefined binary partition: `consulted` / `not_consulted` for `inquiry_to_consultation_30d`, or `joined` / `not_joined` for `consultation_to_join_90d`. `not_consulted` combines every cohort member without a completed valid consultation by the boundary; `not_joined` combines `declined`, `deferred`, `still_pending`, and `unknown`. If either binary cell still fails the threshold, suppress the entire breakdown, including counts, denominator, and rate. Never expose a rate or complementary value that reconstructs a suppressed count.
 
 Apply the same minimum of five to `inquiry_count` and `consultation_count` period records. When a period contains fewer than five unique candidates, expose only `count: suppressed` with every source dimension set to `all`; do not expose segments. For a permitted segmented period count, the complete-partition and complement rules above still apply.
 
